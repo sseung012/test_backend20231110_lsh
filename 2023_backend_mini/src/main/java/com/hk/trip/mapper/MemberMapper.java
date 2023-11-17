@@ -32,6 +32,8 @@ public interface MemberMapper {
 	
 	//회원목록 조회(사용중인 회원)
 	public List<MemberDto> getUserList();
+	
+	//ㅇㅇ
 }
 
 
