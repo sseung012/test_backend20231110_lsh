@@ -1,36 +1,42 @@
 package com.hk.trip.dtos;
 
+import java.util.Date;
+
 import org.apache.ibatis.type.Alias;
 
 @Alias(value = "memberDto")
 public class MemberDto {
 
-	private int memberId;
+	private int seq;
 	private String id;
 	private String name;
 	private String password;
-	private String email;
 	private String address;
-	private String role;
+	private String email;
+	private String enabled;
+	private Date regdate;
+	
 	public MemberDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MemberDto(int memberId, String id, String name, String password, String email, String address, String role) {
+	public MemberDto(int seq, String id, String name, String password, String address, String email, String enabled,
+			Date regdate) {
 		super();
-		this.memberId = memberId;
+		this.seq = seq;
 		this.id = id;
 		this.name = name;
 		this.password = password;
-		this.email = email;
 		this.address = address;
-		this.role = role;
+		this.email = email;
+		this.enabled = enabled;
+		this.regdate = regdate;
 	}
-	public int getMemberId() {
-		return memberId;
+	public int getSeq() {
+		return seq;
 	}
-	public void setMemberId(int memberId) {
-		this.memberId = memberId;
+	public void setSeq(int seq) {
+		this.seq = seq;
 	}
 	public String getId() {
 		return id;
@@ -50,29 +56,37 @@ public class MemberDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public String getAddress() {
 		return address;
 	}
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getRole() {
-		return role;
+	public String getEmail() {
+		return email;
 	}
-	public void setRole(String role) {
-		this.role = role;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(String enabled) {
+		this.enabled = enabled;
+	}
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 	@Override
 	public String toString() {
-		return "MemberDto [memberId=" + memberId + ", id=" + id + ", name=" + name + ", password=" + password
-				+ ", email=" + email + ", address=" + address + ", role=" + role + "]";
+		return "MemberDto [seq=" + seq + ", id=" + id + ", name=" + name + ", password=" + password + ", address="
+				+ address + ", email=" + email + ", enabled=" + enabled + ", regdate=" + regdate + "]";
 	}
+	
+	
 	
 	
 }
