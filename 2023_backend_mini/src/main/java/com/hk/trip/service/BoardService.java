@@ -67,6 +67,11 @@ public class BoardService {
 //                             fDto.getStored_filename()));
          }
       }
+
+   //상세보기
+	public BoardDto getBoard(int board_seq) {
+		return boardMapper.getBoard(board_seq);
+	}
       
 }
 

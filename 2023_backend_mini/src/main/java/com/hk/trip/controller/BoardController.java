@@ -83,26 +83,26 @@ public class BoardController {
 	}
 	
 	//수정하기
-	@PostMapping(value = "/boardUpdate")
-	public String boardUpdate(
-				@Validated UpdateBoardCommand updateBoardCommand
-				,BindingResult result
-				,Model model) {
-		
-		if(result.hasErrors()) {
-			System.out.println("수정내용을 모두 입력하세요");
-			//코드 추가--------------------------------------------
-			BoardDto dto=boardService.getBoard(updateBoardCommand.getBoard_seq());
-			model.addAttribute("dto", dto);
-			//--------------------------------------------------
-			return "board/boardDetail";
-		}
-		
-		boardService.updateBoard(updateBoardCommand);
-		
-		return "redirect:/board/boardDetail?board_seq="
-				+ updateBoardCommand.getBoard_seq();
-	}
+//	@PostMapping(value = "/boardUpdate")
+//	public String boardUpdate(
+//				@Validated UpdateBoardCommand updateBoardCommand
+//				,BindingResult result
+//				,Model model) {
+//		
+//		if(result.hasErrors()) {
+//			System.out.println("수정내용을 모두 입력하세요");
+//			//코드 추가--------------------------------------------
+//			BoardDto dto=boardService.getBoard(updateBoardCommand.getBoard_seq());
+//			model.addAttribute("dto", dto);
+//			//--------------------------------------------------
+//			return "board/boardDetail";
+//		}
+//		
+//		boardService.updateBoard(updateBoardCommand);
+//		
+//		return "redirect:/board/boardDetail?board_seq="
+//				+ updateBoardCommand.getBoard_seq();
+//	}
 	
 //	@GetMapping(value = "/download")
 //	public void download(int file_seq, HttpServletRequest request
@@ -115,20 +115,20 @@ public class BoardController {
 //				                ,request,response);
 //	}
 	
-	@RequestMapping(value="mulDel",method = {RequestMethod.POST,RequestMethod.GET})
-	public String mulDel(@Validated DelBoardCommand delBoardCommand
-						 ,BindingResult result
-			             , Model model) {
-		if(result.hasErrors()) {
-			System.out.println("최소하나 체크하기");
-			List<BoardDto> list=boardService.getAllList();
-			model.addAttribute("list", list);
-			return "board/boardlist";
-		}
-		boardService.mulDel(delBoardCommand.getSeq());
-		System.out.println("글삭제함");
-		return "redirect:/board/boardList";
-	}
+//	@RequestMapping(value="mulDel",method = {RequestMethod.POST,RequestMethod.GET})
+//	public String mulDel(@Validated DelBoardCommand delBoardCommand
+//						 ,BindingResult result
+//			             , Model model) {
+//		if(result.hasErrors()) {
+//			System.out.println("최소하나 체크하기");
+//			List<BoardDto> list=boardService.getAllList();
+//			model.addAttribute("list", list);
+//			return "board/boardlist";
+//		}
+//		boardService.mulDel(delBoardCommand.getSeq());
+//		System.out.println("글삭제함");
+//		return "redirect:/board/boardList";
+//	}
 }
 
 
