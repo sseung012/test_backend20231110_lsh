@@ -4,15 +4,15 @@
 <mapper namespace="com.hk.trip.mapper.BoardMapper">
 
 	<!-- 새글 추가하기 -->
-	<insert id="insertBoard" parameterType="AnsDto">
+	<insert id="insertBoard" parameterType="boardDto">
 		INSERT INTO tripboard
 		VALUES(NULL,#{id},#{title},#{content},SYSDATE(),
 		(SELECT NVL(MAX(refer),0)+1
-		FROM answerboard alias_for_subquery),0,0,0,'N')
+		FROM tripboard alias_for_subquery),0,0,0,'N')
 	</insert>
 	
 	<!-- 글 상세조회 -->
-	<select id="getBoard" parameterType="map" resultType="AnsDto">
+	<select id="getBoard" parameterType="map" resultType="boardDto">
 		SELECT seq,id,title,content,regdate,readcount
 		FROM tripboard
 		WHERE seq=#{seq}
@@ -26,7 +26,7 @@
 	</update>
 	
 	<!-- 글 수정 -->
-	<update id="updateBoard" parameterType="AnsDto">
+	<update id="updateBoard" parameterType="boardDto">
 		UPDATE tripboard
 		SET title=#{title}, content=#{content}, regdate=SYSDATE()
 		WHERE seq=#{seq}
@@ -44,7 +44,7 @@
 	</update>
 	
 	<!-- 답글추가 -->
-	<update id="replyUpdate" parameterType="AnsDto">
+	<update id="replyUpdate" parameterType="boardDto">
 		<![CDATA[
 			UPDATE tripboard
 			SET step=step+1	
@@ -52,7 +52,7 @@
 			AND step > (SELECT step FROM answerboard WHERE seq=#{seq})		
 		]]>
 	</update>
-	<insert id="replyInsert" parameterType="AnsDto">
+	<insert id="replyInsert" parameterType="boardDto">
 		<![CDATA[
 		INSERT INTO tripboard
 		VALUES(NULL,#{id},#{title},#{content},SYSDATE(),
