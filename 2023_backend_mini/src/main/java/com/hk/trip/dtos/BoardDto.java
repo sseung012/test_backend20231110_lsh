@@ -1,43 +1,38 @@
 package com.hk.trip.dtos;
 
 import java.util.Date;
-import java.util.List;
 
-import org.apache.ibatis.type.Alias;
-
-//import lombok.Data;
-
-//@Data
-@Alias(value = "boardDto")
 public class BoardDto {
-	
-	private int board_seq;
+
+	private int seq;
 	private String id;
 	private String title;
 	private String content;
-	private Date regdate;
+	private Date regDate;
+	private int refer;
+	private int step;
+	private int depth;
+	private String readCount;
 	private String delflag;
 	
-	//Join용 멤버필드
-	private List<FileBoardDto> fileBoardDto;
+	//date를 String 형식으로 변환하여 저장해줄 변수
+	private String regDateStr;
 	
-	public BoardDto() {
-		super();
-		// TODO Auto-generated constructor stub
+	
+	public String getRegDateStr() {
+		return regDateStr;
 	}
 
-	@Override
-	public String toString() {
-		return "BoardDto [board_seq=" + board_seq + ", id=" + id + ", title=" + title + ", content=" + content
-				+ ", regdate=" + regdate + ", delflag=" + delflag + ", fileBoardDto=" + fileBoardDto + "]";
+	public void setRegDateStr(String regDateStr) {
+		this.regDateStr = regDateStr;
 	}
 
-	public int getBoard_seq() {
-		return board_seq;
+	public int getSeq() {
+		return seq;
 	}
 
-	public void setBoard_seq(int board_seq) {
-		this.board_seq = board_seq;
+	public void setSeq(int seq) {
+		this.seq = seq;
 	}
 
 	public String getId() {
@@ -64,12 +59,44 @@ public class BoardDto {
 		this.content = content;
 	}
 
-	public Date getRegdate() {
-		return regdate;
+	public Date getRegDate() {
+		return regDate;
 	}
 
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+
+	public int getRefer() {
+		return refer;
+	}
+
+	public void setRefer(int refer) {
+		this.refer = refer;
+	}
+
+	public int getStep() {
+		return step;
+	}
+
+	public void setStep(int step) {
+		this.step = step;
+	}
+
+	public int getDepth() {
+		return depth;
+	}
+
+	public void setDepth(int depth) {
+		this.depth = depth;
+	}
+
+	public String getReadCount() {
+		return readCount;
+	}
+
+	public void setReadCount(String readCount) {
+		this.readCount = readCount;
 	}
 
 	public String getDelflag() {
@@ -79,25 +106,24 @@ public class BoardDto {
 	public void setDelflag(String delflag) {
 		this.delflag = delflag;
 	}
-
-	public List<FileBoardDto> getFileBoardDto() {
-		return fileBoardDto;
+	@Override
+	public String toString() {
+		return "AnsDto [seq=" + seq + ", id=" + id + ", title=" + title + ", content=" + content + ", regDate="
+				+ regDate + ", refer=" + refer + ", step=" + step + ", depth=" + depth + ", readCount=" + readCount
+				+ ", delflag=" + delflag + "]";
 	}
-
-	public void setFileBoardDto(List<FileBoardDto> fileBoardDto) {
-		this.fileBoardDto = fileBoardDto;
-	}
-
-	public BoardDto(int board_seq, String id, String title, String content, Date regdate, String delflag,
-			List<FileBoardDto> fileBoardDto) {
-		super();
-		this.board_seq = board_seq;
-		this.id = id;
-		this.title = title;
-		this.content = content;
-		this.regdate = regdate;
-		this.delflag = delflag;
-		this.fileBoardDto = fileBoardDto;
-	}
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
