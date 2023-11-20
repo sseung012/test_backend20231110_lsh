@@ -33,8 +33,8 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
-	@Autowired
-	private FileService fileService;
+//	@Autowired
+//	private FileService fileService;
 	
 	@GetMapping(value = "/boardList")
 	public String boardList(Model model) {
@@ -104,16 +104,16 @@ public class BoardController {
 //				+ updateBoardCommand.getBoard_seq();
 //	}
 	
-	@GetMapping(value = "/download")
-	public void download(int file_seq, HttpServletRequest request
-			                         , HttpServletResponse response) throws UnsupportedEncodingException {
-		
-		FileBoardDto fdto=fileService.getFileInfo(file_seq);//파일정보가져오기
-		
-		fileService.fileDownload(fdto.getOrigin_filename()
-				                ,fdto.getStored_filename()
-				                ,request,response);
-	}
+//	@GetMapping(value = "/download")
+//	public void download(int file_seq, HttpServletRequest request
+//			                         , HttpServletResponse response) throws UnsupportedEncodingException {
+//		
+//		FileBoardDto fdto=fileService.getFileInfo(file_seq);//파일정보가져오기
+//		
+//		fileService.fileDownload(fdto.getOrigin_filename()
+//				                ,fdto.getStored_filename()
+//				                ,request,response);
+//	}
 	
 //	@RequestMapping(value="mulDel",method = {RequestMethod.POST,RequestMethod.GET})
 //	public String mulDel(@Validated DelBoardCommand delBoardCommand

@@ -2,10 +2,11 @@ package com.hk.trip.mapper;
 
 import java.util.List;
 
-//import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Mapper;
 
 import com.hk.trip.dtos.BoardDto;
 
+@Mapper
 public interface BoardMapper {
 
 	//글목록
