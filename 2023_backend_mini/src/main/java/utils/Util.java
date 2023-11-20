@@ -1,4 +1,4 @@
-package com.hk.trip.utils;
+package utils;
 
 //action Tag:<useBean /> --> DTO객체를 구현하는 태그
 public class Util {
