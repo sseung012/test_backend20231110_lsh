@@ -8,7 +8,7 @@ import org.apache.ibatis.type.Alias;
 
 public class BoardDto {
 
-	private int seq;
+	private int Board_seq;
 	private String id;
 	private String title;
 	private String content;
@@ -31,12 +31,12 @@ public class BoardDto {
 		this.regDateStr = regDateStr;
 	}
 
-	public int getSeq() {
-		return seq;
+	public int getBoard_seq() {
+		return Board_seq;
 	}
 
-	public void setSeq(int seq) {
-		this.seq = seq;
+	public void setBoard_seq(int board_seq) {
+		Board_seq = board_seq;
 	}
 
 	public String getId() {
@@ -112,7 +112,7 @@ public class BoardDto {
 	}
 	@Override
 	public String toString() {
-		return "AnsDto [seq=" + seq + ", id=" + id + ", title=" + title + ", content=" + content + ", regDate="
+		return "AnsDto [Board_seq=" + Board_seq + ", id=" + id + ", title=" + title + ", content=" + content + ", regDate="
 				+ regDate + ", refer=" + refer + ", step=" + step + ", depth=" + depth + ", readCount=" + readCount
 				+ ", delflag=" + delflag + "]";
 	}
