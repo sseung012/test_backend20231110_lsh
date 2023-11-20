@@ -1,25 +1,67 @@
 @charset "UTF-8";
 
-
 .content{
-	margin: 70px 150px;
-}
-#container{
-	width: 1100px;
-	margin: 0 auto;
-	}
-.pen{
-	width: 20px;
-	height: 20px;
+	margin: 50px 70px;   
 }
 
-#footer{
-	background-color: lightgray;
-	color:black;
-	line-height: 50px;
-	height: 50px;
+/*.body1 {*/
+/*        background-image: '/image/background.png';*/
+/*        background-size: cover;*/
+/*        background-repeat: no-repeat;*/
+/*        margin: 0;*/
+/*        display: flex;*/
+/*    }*/
+
+body {
+	margin: 0;
+	display: flex;
+/*    flex-direction: column;*/
+    height: 100vh; /* 100% viewport height */
+}
+
+.container {
+	flex-grow: 1;
+    background-image: '/image/pen.png';
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+}
+
+nav {
+	position: absolute;
+    display: flex;
+    flex-direction: column;
+	align-items: center;
+    background-color: #343a40;
+    color: white;
+    padding: 15px;
+    height: 100%;
+    width: 160px;
+}
+    
+.fs-4{
+	font-weight: bold;
+	font-size: 30px;
 	text-align: center;
-	}
+	color: lightblue;
+}
+
+.nav-link {
+	color: white;
+	text-decoration: none;
+	margin: 5px 0;
+}
+.nav-link.active {
+	font-weight: bold;
+}
+/*#footer{*/
+/*	background-color: lightgray;*/
+/*	color:black;*/
+/*	line-height: 50px;*/
+/*	height: 50px;*/
+/*	text-align: center;*/
+/*	}*/
 
 .errorField{
    color : red;
