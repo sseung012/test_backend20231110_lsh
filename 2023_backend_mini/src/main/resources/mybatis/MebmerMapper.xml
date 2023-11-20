@@ -7,7 +7,7 @@
 	<insert id="insertUser" parameterType="memberDto">
 		INSERT INTO tripmember
 		VALUES (NULL, #{id},#{name},#{password},#{address},
-		#{email},#{enabled},SYSDATE())
+		#{email},'Y',SYSDATE())
 	</insert>
 
 	<!-- 아이디 중복체크 -->
