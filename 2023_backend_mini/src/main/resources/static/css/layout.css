@@ -4,15 +4,39 @@
 .content{
 	margin: 70px 150px;
 }
-#container{
-	width: 1100px;
-	margin: 0 auto;
-	}
-.pen{
-	width: 20px;
-	height: 20px;
+
+/*.body1 {*/
+/*        background-image: '/image/background.png';*/
+/*        background-size: cover;*/
+/*        background-repeat: no-repeat;*/
+/*        margin: 0;*/
+/*        display: flex;*/
+/*    }*/
+
+.fs-4{
+	font-weight: bold;
+	font-size: 30px;
+	text-align: center;
+}
+nav{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #343a40;
+    color: white;
+    padding: 15px;
+    width: min-content; /* 최소 내용의 너비만큼 차지 */
+    height: 100vh; /* 화면 높이의 100% 차지 */
 }
 
+.nav-link {
+	color: white;
+	text-decoration: none;
+	margin: 5px 0;
+}
+.nav-link.active {
+	font-weight: bold;
+}
 #footer{
 	background-color: lightgray;
 	color:black;
