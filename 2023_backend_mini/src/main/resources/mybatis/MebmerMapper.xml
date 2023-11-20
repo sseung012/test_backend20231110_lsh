@@ -17,7 +17,7 @@
 	
 	<!-- 로그인 -->
 	<select id="getLogin" parameterType="String" resultType="memberDto"> 
-		SELECT seq, id, NAME, PASSWORD,  ADDRESS , EMAIL, enabled
+		SELECT seq, id, NAME, PASSWORD,  ADDRESS , EMAIL, enabled, regdate
 		FROM tripmember
 		WHERE ID = #{id}
 	</select>
