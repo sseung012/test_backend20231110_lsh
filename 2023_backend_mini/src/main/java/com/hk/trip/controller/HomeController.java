@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-
+		
 	Logger logger=LoggerFactory.getLogger(getClass());
 	
 	@GetMapping(value = "/")
@@ -15,6 +15,4 @@ public class HomeController {
 		logger.info("HOME페이지이동");
 		return "home";
 	}
-}
-
-
+}	
