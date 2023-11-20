@@ -63,10 +63,10 @@
 	</insert>
 	
  	<!-- 게시판 페이징 처리 페이지당 10개씩 -->
-<!-- 	<select id="getPCount" resultType="int"> -->
-<!-- 		SELECT CEIL(COUNT(*)/10) AS pageCount -->
-<!-- 		FROM tripboard -->
-<!-- 	</select> -->
+	<select id="getPCount" resultType="int">
+		SELECT CEIL(COUNT(*)/10) AS pageCount
+		FROM tripboard
+	</select>
 	
 	
 	<select id="getAllList" parameterType="Map" resultType="AnsDto">
