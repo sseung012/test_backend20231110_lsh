@@ -10,7 +10,7 @@ import com.hk.trip.command.AddUserCommand;
 import com.hk.trip.command.LoginCommand;
 import com.hk.trip.dtos.MemberDto;
 import com.hk.trip.mapper.MemberMapper;
-import com.hk.trip.status.RoleStatus;
+
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
