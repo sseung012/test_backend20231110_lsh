@@ -5,6 +5,7 @@ import java.util.Date;
 import org.apache.ibatis.type.Alias;
 
 @Alias(value = "boardDto")
+
 public class BoardDto {
 
 	private int seq;
