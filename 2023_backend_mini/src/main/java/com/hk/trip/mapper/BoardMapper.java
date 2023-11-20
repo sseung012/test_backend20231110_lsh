@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.hk.trip.dtos.BoardDto;
 
+@Mapper
 public interface BoardMapper {
 
 	//글목록
