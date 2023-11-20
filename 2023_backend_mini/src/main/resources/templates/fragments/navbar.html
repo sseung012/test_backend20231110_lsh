@@ -5,11 +5,30 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-	
-</style>
+        /* 스타일은 이전과 동일하게 사용합니다. */
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #343a40;
+            color: white;
+            padding: 15px;
+            width: 280px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+        .nav-link.active {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-<header th:fragment="navbar" class="navbar">
+<nav th:fragment="navbar" class="navbar">
    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
@@ -38,7 +57,7 @@
     </ul>
     <hr>
 	</div>
-  </header>
+  </nav>
   <div style="height: 50px;"></div>
 </body>
 </html>
