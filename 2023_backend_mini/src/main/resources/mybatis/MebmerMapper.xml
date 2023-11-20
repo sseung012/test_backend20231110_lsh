@@ -11,7 +11,7 @@
 	</insert>
 
 	<!-- 아이디 중복체크 -->
-	<select id="idCheck" parameterType="String" resultType="memberDto">
+	<select id="idChk" parameterType="String" resultType="memberDto">
 		SELECT id FROM tripmember WHERE id=#{id}	
 	</select>
 	
