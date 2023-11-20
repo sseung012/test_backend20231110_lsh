@@ -33,9 +33,15 @@
 		<tr>
 			<th><input type="checkbox" name="all" 
 										onclick="allSel(this.checked)" /></th>
+			<th>번호</th>							
 			<th>작성자</th>
 			<th>제목</th>
+			<th>조회수</th>
 			<th>작성일</th>
+			<th>삭제여부</th>
+			<th>refer</th>
+			<th>step</th>
+			<th>depth</th>
 		</tr>
 		<th:block th:if="${#lists.isEmpty(list)}">
 			<tr>
@@ -44,14 +50,20 @@
 		</th:block>
 		<th:block th:unless="${#lists.isEmpty(list)}">
 			<tr th:each="dto:${list}">
-				<td><input type="checkbox" name="seq" th:field="*{seq}"
+				<td><input type="checkbox" name="seq" th:field="*{Board_seq}"
 										   th:value="${dto.board_seq}"/></td>
+				<td th:text="${dto.Board_seq}"></td>
 				<td th:text="${dto.id}"></td>
 				<td>
 					<a th:href="@{/board/boardDetail(board_seq=${dto.board_seq})}"
 					   th:text="${dto.title}"></a>
 				</td>
+				<td th:text="${dto.readcount}"></td>
 				<td th:text="${#dates.format(dto.regdate,'yyyy-MM-dd')}"></td>
+				<td th:text="${dto.delflag}"></td>
+				<td th:text="${dto.refer}"></td>
+				<td th:text="${dto.step}"></td>
+				<td th:text="${dto.depth}"></td>
 			</tr>
 			<tr>
 				<td colspan="4">
