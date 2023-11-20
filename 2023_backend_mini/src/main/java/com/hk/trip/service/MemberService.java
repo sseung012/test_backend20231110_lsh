@@ -44,7 +44,7 @@ public class MemberService {
 	}
 	
 	//로그인
-	public String getLogin(LoginCommand loginCommand, HttpServletRequest request, Model model) {
+	public String Login(LoginCommand loginCommand, HttpServletRequest request, Model model) {
 		MemberDto dto = memberMapper.getLogin(loginCommand.getId());
 		String path = "home";
 		if(dto!=null) {
