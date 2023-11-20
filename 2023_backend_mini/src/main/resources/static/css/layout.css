@@ -2,6 +2,8 @@
 
 .content{
 	margin: 50px 70px;   
+	background-image: '/image/background.png';
+	background-size: cover;
 }
 
 /*.body1 {*/
