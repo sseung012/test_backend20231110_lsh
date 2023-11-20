@@ -62,7 +62,11 @@
 		]]>
 	</insert>
 	
+<<<<<<< HEAD
 <!--  	게시판 페이징 처리 페이지당 10개씩 -->
+=======
+ 	<!-- 게시판 페이징 처리 페이지당 10개씩 -->
+>>>>>>> branch 'main' of https://github.com/sseung012/test_backend20231110_lsh.git
 	<select id="getPCount" resultType="int">
 		SELECT CEIL(COUNT(*)/10) AS pageCount
 		FROM tripboard
