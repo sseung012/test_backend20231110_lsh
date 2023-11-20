@@ -39,7 +39,7 @@ public class BoardController {
 		model.addAttribute("list", list);
 		model.addAttribute("delBoardCommand", new DelBoardCommand());
 		return "board/boardList";// forward 기능, "redirect:board/boardList"
-	}
+	}  
 	
 	@GetMapping(value = "/boardInsert")
 	public String boardInsertForm(Model model) {
