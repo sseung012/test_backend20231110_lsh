@@ -31,8 +31,7 @@
 <form action="/board/mulDel" method="post" th:object="${delBoardCommand}">
 	<table class="table">
 		<tr>
-			<th><input type="checkbox" name="all" 
-										onclick="allSel(this.checked)" /></th>
+			<th><input type="checkbox" name="all" onclick="allSel(this.checked)" /></th>
 			<th>번호</th>							
 			<th>작성자</th>
 			<th>제목</th>
@@ -45,14 +44,14 @@
 		</tr>
 		<th:block th:if="${#lists.isEmpty(list)}">
 			<tr>
-				<td colspan="4" style="text-align: center;" >---작성된 글이 없습니다.---</td>
+				<td colspan="10" style="text-align: center;" >---작성된 글이 없습니다.---</td>
 			</tr> 
 		</th:block>
 		<th:block th:unless="${#lists.isEmpty(list)}">
 			<tr th:each="dto:${list}">
-				<td><input type="checkbox" name="seq" th:field="*{Board_seq}"
+				<td><input type="checkbox" name="board_seq" th:field="*{seq}"
 										   th:value="${dto.board_seq}"/></td>
-				<td th:text="${dto.Board_seq}"></td>
+				<td th:text="${dto.board_seq}"></td>
 				<td th:text="${dto.id}"></td>
 				<td>
 					<a th:href="@{/board/boardDetail(board_seq=${dto.board_seq})}"
@@ -66,11 +65,11 @@
 				<td th:text="${dto.depth}"></td>
 			</tr>
 			<tr>
-				<td colspan="4">
-					<button type="button" class="btn">글추가</button>
+				<td colspan="10">
+					<button type="button" class="btn" th:onclick="|location.href='@{/board/boardInsert}'|">글추가</button>
 					<button type="submit" class="btn">삭제</button>
-					<span th:if="${#fields.hasErrors('seq')}"
-					      th:errors="*{seq}"></span>
+					<span th:if="${#fields.hasErrors('board_seq')}"
+					      th:errors="*{board_seq}"></span>
 				</td>
 			</tr>
 		</th:block>
