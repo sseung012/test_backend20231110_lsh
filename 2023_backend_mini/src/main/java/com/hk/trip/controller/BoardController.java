@@ -2,7 +2,9 @@ package com.hk.trip.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartRequest;
 
 import com.hk.trip.command.DelBoardCommand;
@@ -40,12 +43,6 @@ public class BoardController {
 		model.addAttribute("delBoardCommand", new DelBoardCommand());
 		return "board/boardList";// forward 기능, "redirect:board/boardList"
 	}  
-	
-	@GetMapping(value = "/boardInsert")
-	public String boardInsertForm(Model model) {
-		model.addAttribute("insertBoardCommand", new InsertBoardCommand());
-		return "board/boardInsertForm";
-	}
 	
 	@PostMapping(value = "/boardInsert")
 	public String boardInsert(@Validated InsertBoardCommand insertBoardCommand 
@@ -120,7 +117,7 @@ public class BoardController {
 			model.addAttribute("list", list);
 			return "board/boardlist";
 		}
-		boardService.mulDel(delBoardCommand.getSeq());
+		boardService.mulDel(delBoardCommand.getBoard_seq());
 		System.out.println("글삭제함");
 		return "redirect:/board/boardList";
 	}

@@ -70,23 +70,30 @@
 	</select>
 	
 	
-	<select id="getAllList" parameterType="Map" resultType="BoardDto">
-		SELECT rn, Board_seq, id, title, content, regdate, refer, step, depth, readcount, delflag
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY refer DESC,step) rn,
-		Board_seq, id, title, content, regdate, refer, step, depth, readcount, delflag
-		FROM tripboard) AS a
-		<where>
-			<choose>
-				<when test="seq!=null">
-					Board_seq=#{Board_seq}
-				</when>
-				<otherwise>
-					CEIL(rn/10)=#{pnum}			
-				</otherwise>
-			</choose>
-		</where>
-	</select>
+<!-- 	<select id="getAllList" parameterType="Map" resultType="BoardDto"> -->
+<!-- 		SELECT rn, Board_seq, id, title, content, regdate, refer, step, depth, readcount, delflag -->
+<!-- 		FROM (SELECT ROW_NUMBER() OVER(ORDER BY refer DESC,step) rn, -->
+<!-- 		Board_seq, id, title, content, regdate, refer, step, depth, readcount, delflag -->
+<!-- 		FROM tripboard) AS a -->
+<!-- 		<where> -->
+<!-- 			<choose> -->
+<!-- 				<when test="seq!=null"> -->
+<!-- 					Board_seq=#{Board_seq} -->
+<!-- 				</when> -->
+<!-- 				<otherwise> -->
+<!-- 					CEIL(rn/10)=#{pnum}			 -->
+<!-- 				</otherwise> -->
+<!-- 			</choose> -->
+<!-- 		</where> -->
+<!-- 	</select> -->
 	
+	
+	<select id="getAllList" parameterType="Map" resultType="BoardDto">
+		SELECT Board_seq, id, title, content, regdate,
+		refer, step, depth, readcount, delflag
+		FROM tripboard
+		ORDER BY refer DESC, step
+	</select>
 	
 </mapper>
 

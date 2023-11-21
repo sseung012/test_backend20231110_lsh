@@ -8,35 +8,35 @@ import org.apache.ibatis.type.Alias;
 
 public class BoardDto {
 
-	private int Board_seq;
+	private int board_seq;
 	private String id;
 	private String title;
 	private String content;
-	private Date regDate;
+	private Date regdate;
 	private int refer;
 	private int step;
 	private int depth;
-	private String readCount;
+	private String readcount;
 	private String delflag;
 	
 	//date를 String 형식으로 변환하여 저장해줄 변수
-	private String regDateStr;
+	private String regdateStr;
 	
 	
 	public String getRegDateStr() {
-		return regDateStr;
+		return regdateStr;
 	}
 
-	public void setRegDateStr(String regDateStr) {
-		this.regDateStr = regDateStr;
+	public void setRegdateStr(String regdateStr) {
+		this.regdateStr = regdateStr;
 	}
 
 	public int getBoard_seq() {
-		return Board_seq;
+		return board_seq;
 	}
 
 	public void setBoard_seq(int board_seq) {
-		Board_seq = board_seq;
+		this.board_seq = board_seq;
 	}
 
 	public String getId() {
@@ -63,12 +63,12 @@ public class BoardDto {
 		this.content = content;
 	}
 
-	public Date getRegDate() {
-		return regDate;
+	public Date getRegdate() {
+		return regdate;
 	}
 
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setRegDate(Date regdate) {
+		this.regdate = regdate;
 	}
 
 	public int getRefer() {
@@ -95,12 +95,12 @@ public class BoardDto {
 		this.depth = depth;
 	}
 
-	public String getReadCount() {
-		return readCount;
+	public String getReadcount() {
+		return readcount;
 	}
 
-	public void setReadCount(String readCount) {
-		this.readCount = readCount;
+	public void setReadCount(String readcount) {
+		this.readcount = readcount;
 	}
 
 	public String getDelflag() {
@@ -112,8 +112,8 @@ public class BoardDto {
 	}
 	@Override
 	public String toString() {
-		return "AnsDto [Board_seq=" + Board_seq + ", id=" + id + ", title=" + title + ", content=" + content + ", regDate="
-				+ regDate + ", refer=" + refer + ", step=" + step + ", depth=" + depth + ", readCount=" + readCount
+		return "AnsDto [board_seq=" + board_seq + ", id=" + id + ", title=" + title + ", content=" + content + ", regdate="
+				+ regdate + ", refer=" + refer + ", step=" + step + ", depth=" + depth + ", readcount=" + readcount
 				+ ", delflag=" + delflag + "]";
 	}
 }

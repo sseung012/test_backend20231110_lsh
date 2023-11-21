@@ -25,6 +25,7 @@
 </style>
 </head>
 <body>
+<!-- <jsp:useBean id="util" class="com.hk.trip.utils.Util" /> -->
 <div layout:fragment="content">
 <div id="container">
 <h1>게시판 목록</h1>
@@ -50,9 +51,9 @@
 		</th:block>
 		<th:block th:unless="${#lists.isEmpty(list)}">
 			<tr th:each="dto:${list}">
-				<td><input type="checkbox" name="seq" th:field="*{Board_seq}"
+				<td><input type="checkbox" name="seq" th:field="*{board_seq}"
 										   th:value="${dto.board_seq}"/></td>
-				<td th:text="${dto.Board_seq}"></td>
+				<td th:text="${dto.board_seq}"></td>
 				<td th:text="${dto.id}"></td>
 				<td>
 					<a th:href="@{/board/boardDetail(board_seq=${dto.board_seq})}"
@@ -66,11 +67,11 @@
 				<td th:text="${dto.depth}"></td>
 			</tr>
 			<tr>
-				<td colspan="4">
+				<td colspan="10">
 					<button type="button" class="btn">글추가</button>
 					<button type="submit" class="btn">삭제</button>
-					<span th:if="${#fields.hasErrors('seq')}"
-					      th:errors="*{seq}"></span>
+					<span th:if="${#fields.hasErrors('board_seq')}"
+					      th:errors="*{board_seq}"></span>
 				</td>
 			</tr>
 		</th:block>
