@@ -66,7 +66,7 @@ public class BoardService {
 //			}
 //		}
 		
-	}
+	}   
 	//상세내용조회
 	public BoardDto getBoard(int board_seq) {
 		return boardMapper.getBoard(board_seq);
