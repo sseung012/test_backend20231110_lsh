@@ -21,6 +21,7 @@ import com.hk.trip.command.UpdateBoardCommand;
 import com.hk.trip.dtos.BoardDto;
 import com.hk.trip.service.BoardService;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -31,12 +32,28 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+	//getCookie 기능 구현
+//		public Cookie getCookie(String cookieName, HttpServletRequest request) {
+//			Cookie[] cookies=request.getCookies();
+//			Cookie cookie=null;
+//			if(cookies!=null) {
+//			for (int i = 0; i < cookies.length; i++) {
+//				if(cookies[i].getName().equals(cookieName)) {
+//					cookie=cookies[i];
+//					}
+//				}
+//			}
+//		      return cookie;
+//		   }
+	
 	@GetMapping(value = "/boardList")
 	public String boardList(Model model) {
 		System.out.println("글목록 보기");
 		
+		
 		List<BoardDto> list=boardService.getAllList();
 		model.addAttribute("list", list);
+//		System.out.println("list목록:"+list.size());
 		model.addAttribute("delBoardCommand", new DelBoardCommand());
 		return "board/boardList";// forward 기능, "redirect:board/boardList"
 	}  
@@ -120,7 +137,7 @@ public class BoardController {
 			model.addAttribute("list", list);
 			return "board/boardlist";
 		}
-		boardService.mulDel(delBoardCommand.getSeq());
+		boardService.mulDel(delBoardCommand.getBoard_seq());
 		System.out.println("글삭제함");
 		return "redirect:/board/boardList";
 	}

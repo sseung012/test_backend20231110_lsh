@@ -5,60 +5,60 @@
 
 	<!-- 새글 추가하기 -->
 	<insert id="insertBoard" parameterType="boardDto">
-		INSERT INTO tripboard
+		INSERT INTO TRIPBOARD
 		VALUES(NULL,#{id},#{title},#{content},SYSDATE(),
 		(SELECT NVL(MAX(refer),0)+1
-		FROM tripboard alias_for_subquery),0,0,0,'N')
+		FROM TRIPBOARD ALIAS_FOR_SUBQUERY),0,0,0,'N')
 	</insert>
 	
 	<!-- 글 상세조회 -->
 	<select id="getBoard" parameterType="map" resultType="boardDto">
-		SELECT Board_seq,id,title,content,regdate,readcount
-		FROM tripboard
-		WHERE Board_seq=#{Board_seq}
+		SELECT BOARD_SEQ,ID,TITLE,CONTENT,REGDATE,READCOUNT
+		FROM TRIPBOARD
+		WHERE BOARD_SEQ=#{board_seq}
 	</select>
 	
 	<!-- 글 조회수 -->
 	<update id="readCount" parameterType="int">
-		UPDATE tripboard
-		SET readcount=readcount+1
-		WHERE Board_seq=#{Board_seq}
+		UPDATE TRIPBOARD
+		SET READCOUNT=READCOUNT+1
+		WHERE board_seq=#{board_seq}
 	</update>
 	
 	<!-- 글 수정 -->
 	<update id="updateBoard" parameterType="boardDto">
-		UPDATE tripboard
-		SET title=#{title}, content=#{content}, regdate=SYSDATE()
-		WHERE Board_seq=#{Board_seq}
+		UPDATE TRIPBOARD
+		SET TITLE=#{title}, CONTENT=#{content}, X=SYSDATE()
+		WHERE board_seq=#{board_seq}
 	</update>
 	
 	<!-- 글 삭제 -->
 	<update id="mulDel" parameterType="Map">
-		UPDATE tripboard
-		SET delflag='Y'
-		WHERE Board_seq IN
+		UPDATE TRIPBOARD
+		SET DELFLAG='Y'
+		WHERE board_seq IN
 		<foreach collection="seqs" item="seq" open="(" close=")"
 											  separator=",">
-			#{Board_seq}
+			#{board_seq}
 		</foreach>
 	</update>
 	
 	<!-- 답글추가 -->
 	<update id="replyUpdate" parameterType="boardDto">
 		<![CDATA[
-			UPDATE tripboard
-			SET step=step+1	
-			WHERE refer = (SELECT refer FROM answerboard WHERE Board_seq=#{Board_seq})
-			AND step > (SELECT step FROM answerboard WHERE Board_seq=#{Board_seq})		
+			UPDATE TRIPBOARD
+			SET STEP=STEP+1	
+			WHERE REFER = (SELECT refer FROM answerboard WHERE board_seq=#{board_seq})
+			AND STEP > (SELECT step FROM answerboard WHERE board_seq=#{board_seq})		
 		]]>
 	</update>
 	<insert id="replyInsert" parameterType="boardDto">
 		<![CDATA[
-		INSERT INTO tripboard
+		INSERT INTO TRIPBOARD
 		VALUES(NULL,#{id},#{title},#{content},SYSDATE(),
-       		  (SELECT refer FROM answerboard alias_for_subquery WHERE Board_seq=#{Board_seq}),
-			  (SELECT step FROM answerboard alias_for_subquery WHERE Board_seq=#{Board_seq})+1,
-			  (SELECT depth FROM answerboard alias_for_subquery WHERE Board_seq=#{Board_seq})+1,0,'N')
+       		  (SELECT REFER FROM ANSWERBOARD ALIAS_FOR_SUBQUERY WHERE board_seq=#{board_seq}),
+			  (SELECT STEP FROM ANSWERBOARD ALIAS_FOR_SUBQUERY WHERE board_seq=#{board_seq})+1,
+			  (SELECT DEPTH FROM ANSWERBOARD ALIAS_FOR_SUBQUERY WHERE board_seq=#{board_seq})+1,0,'N')
 		]]>
 	</insert>
 	
@@ -66,25 +66,27 @@
  	<!-- 게시판 페이징 처리 페이지당 10개씩 -->
 	<select id="getPCount" resultType="int">
 		SELECT CEIL(COUNT(*)/10) AS pageCount
-		FROM tripboard
+		FROM TRIPBOARD
 	</select>
 	
 	
 	<select id="getAllList" parameterType="Map" resultType="BoardDto">
-		SELECT rn, Board_seq, id, title, content, regdate, refer, step, depth, readcount, delflag
-		FROM (SELECT ROW_NUMBER() OVER(ORDER BY refer DESC,step) rn,
-		Board_seq, id, title, content, regdate, refer, step, depth, readcount, delflag
-		FROM tripboard) AS a
-		<where>
-			<choose>
-				<when test="seq!=null">
-					Board_seq=#{Board_seq}
-				</when>
-				<otherwise>
-					CEIL(rn/10)=#{pnum}			
-				</otherwise>
-			</choose>
-		</where>
+		SELECT BOARD_SEQ, ID, TITLE, CONTENT, REGDATE, REFER, STEP, DEPTH, READCOUNT, DELFLAG
+		FROM TRIPBOARD
+<!-- 		SELECT rn, Board_seq, id, title, content, regdate, refer, step, depth, readcount, delflag -->
+<!-- 		FROM (SELECT ROW_NUMBER() OVER(ORDER BY refer DESC,step) rn, -->
+<!-- 		Board_seq, id, title, content, regdate, refer, step, depth, readcount, delflag -->
+<!-- 		FROM tripboard) AS a -->
+<!-- 		<where> -->
+<!-- 			<choose> -->
+<!-- 				<when test="seq!=null"> -->
+<!-- 					Board_seq=#{Board_seq} -->
+<!-- 				</when> -->
+<!-- 				<otherwise> -->
+<!-- 					CEIL(rn/10)=#{pnum}			 -->
+<!-- 				</otherwise> -->
+<!-- 			</choose> -->
+<!-- 		</where> -->
 	</select>
 	
 	

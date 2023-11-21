@@ -8,7 +8,7 @@ import org.apache.ibatis.type.Alias;
 
 public class BoardDto {
 
-	private int Board_seq;
+	private int board_seq;
 	private String id;
 	private String title;
 	private String content;
@@ -19,6 +19,7 @@ public class BoardDto {
 	private String readCount;
 	private String delflag;
 	
+
 	//date를 String 형식으로 변환하여 저장해줄 변수
 	private String regDateStr;
 	
@@ -32,11 +33,11 @@ public class BoardDto {
 	}
 
 	public int getBoard_seq() {
-		return Board_seq;
+		return board_seq;
 	}
 
 	public void setBoard_seq(int board_seq) {
-		Board_seq = board_seq;
+		this.board_seq = board_seq;
 	}
 
 	public String getId() {
@@ -112,7 +113,7 @@ public class BoardDto {
 	}
 	@Override
 	public String toString() {
-		return "AnsDto [Board_seq=" + Board_seq + ", id=" + id + ", title=" + title + ", content=" + content + ", regDate="
+		return "AnsDto [Board_seq=" + board_seq + ", id=" + id + ", title=" + title + ", content=" + content + ", regDate="
 				+ regDate + ", refer=" + refer + ", step=" + step + ", depth=" + depth + ", readCount=" + readCount
 				+ ", delflag=" + delflag + "]";
 	}
