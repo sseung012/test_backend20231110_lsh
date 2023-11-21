@@ -7,7 +7,7 @@
 	<insert id="insertUser" parameterType="memberDto">
 		INSERT INTO tripmember
 		VALUES (NULL, #{id},#{name},#{password},#{address},
-		#{email},'Y',SYSDATE())
+		#{email},'Y',SYSDATE(),#{role})
 	</insert>
 
 	<!-- 아이디 중복체크 -->
@@ -17,14 +17,14 @@
 	
 	<!-- 로그인 -->
 	<select id="getLogin" parameterType="String" resultType="memberDto"> 
-		SELECT seq, id, NAME, PASSWORD,  ADDRESS , EMAIL, enabled, regdate
+		SELECT seq, id, NAME, PASSWORD,  ADDRESS , EMAIL, enabled, regdate ,role
 		FROM tripmember
 		WHERE ID = #{id}
 	</select>
 	
 	<!-- 나의 정보 조회 -->
 	<select id="getUserinfo" parameterType="String" resultType="memberDto">
-		SELECT id, NAME, address,email, regdate
+		SELECT id, NAME, address,email, regdate, role
 		FROM tripmember
 		WHERE id=#{id}
 	</select>
@@ -45,15 +45,32 @@
 	
 	<!-- 회원목록 전체조회 -->
 	<select id="getAllUserList"  resultType="memberDto">
-		SELECT seq, id, NAME, address, email, enabled, regdate
+		SELECT seq, id, NAME, address, email, enabled, regdate, role
 		FROM tripmember	
 	</select>
 	
 	<!-- 회원목록 조회(사용중인 회원) -->
 	<select id="getUserList" resultType="memberDto">
-		SELECT seq, id, NAME, address, email, enabled, regdate
+		SELECT seq, id, NAME, address, email, enabled, regdate, role
 		FROM tripmember
 		WHERE enabled='Y'
 	</select>
 	
+	
+
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

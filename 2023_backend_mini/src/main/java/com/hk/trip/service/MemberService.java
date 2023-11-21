@@ -1,5 +1,7 @@
 package com.hk.trip.service;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -10,7 +12,7 @@ import com.hk.trip.command.AddUserCommand;
 import com.hk.trip.command.LoginCommand;
 import com.hk.trip.dtos.MemberDto;
 import com.hk.trip.mapper.MemberMapper;
-
+import com.hk.trip.status.RoleStatus;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +36,7 @@ public class MemberService {
 		mdto.setPassword(passwordEncoder.encode(addUserCommand.getPassword()));
 		mdto.setEmail(addUserCommand.getEmail());
 		mdto.setAddress(addUserCommand.getAddress());
+		mdto.setRole(RoleStatus.USER+"");//등급추가
 		
 		return memberMapper.insertUser(mdto);
 	}
@@ -67,12 +70,12 @@ public class MemberService {
 		return path;
 	}
 	
-//	@GetMapping(value = "/logout")
-//	public String logout(HttpServletRequest request) {
-//		System.out.println("로그아웃");
-//		request.getSession().invalidate();
-//		return "redirect:/";
-//	}
+	@GetMapping(value = "/logout")
+	public String logout(HttpServletRequest request) {
+		System.out.println("로그아웃");
+		request.getSession().invalidate();
+		return "redirect:/";
+	}
 }
 
 
