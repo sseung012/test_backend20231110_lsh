@@ -37,9 +37,9 @@
 		UPDATE tripboard
 		SET delflag='Y'
 		WHERE Board_seq IN
-		<foreach collection="seqs" item="seq" open="(" close=")"
+		<foreach collection="seqs" item="board_seq" open="(" close=")"
 											  separator=",">
-			#{Board_seq}
+			#{board_seq}
 		</foreach>
 	</update>
 	
