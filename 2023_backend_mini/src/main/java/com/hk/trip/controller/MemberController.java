@@ -1,6 +1,7 @@
 package com.hk.trip.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hk.trip.command.AddUserCommand;
+import com.hk.trip.command.DelBoardCommand;
 import com.hk.trip.command.LoginCommand;
+import com.hk.trip.command.UserInfoCommand;
+import com.hk.trip.dtos.BoardDto;
+import com.hk.trip.dtos.MemberDto;
 import com.hk.trip.service.MemberService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -95,5 +100,21 @@ public class MemberController {
 		
 		return path;
 	}
+	
+	
 		
+	//마이페이지 이동
+	@GetMapping(value = "/userinfo")
+	public String userinfo(Model model) {
+		System.out.println("내 정보 보기");
+//		model.addAttribute("userInfoCommand", new UserInfoCommand());
+		return "member/userinfo";
+	}
+	
 }
+
+
+
+
+
+
