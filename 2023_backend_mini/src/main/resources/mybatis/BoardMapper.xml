@@ -29,14 +29,14 @@
 	<update id="updateBoard" parameterType="boardDto">
 		UPDATE tripboard
 		SET title=#{title}, content=#{content}, regdate=SYSDATE()
-		WHERE Board_seq=#{Board_seq}
+		WHERE board_seq=#{board_seq}
 	</update>
 	
 	<!-- 글 삭제 -->
 	<update id="mulDel" parameterType="Map">
 		UPDATE tripboard
 		SET delflag='Y'
-		WHERE Board_seq IN
+		WHERE board_seq IN
 		<foreach collection="seqs" item="board_seq" open="(" close=")"
 											  separator=",">
 			#{board_seq}

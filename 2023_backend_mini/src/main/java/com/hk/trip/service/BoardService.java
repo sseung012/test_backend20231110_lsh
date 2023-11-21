@@ -81,7 +81,9 @@ public class BoardService {
 		dto.setContent(updateBoardCommand.getContent());
 		return boardMapper.updateBoard(dto);
 	}
+	
 
+	//글 상세보기 들어가서 글 삭제
 	public boolean mulDel(String[] seqs) {
 		return boardMapper.mulDel(seqs);
 	}
