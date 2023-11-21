@@ -24,8 +24,8 @@
 </th:block>
 <th:block th:unless="${session.mdto==null}">
 	<p>
-<!-- 		<span th:text="${session.mdto.role}"></span> -->
 		<span th:text="${session.mdto.id}"></span>
+ 		<span th:text="${session.mdto.role}"></span> 
 		<a href="/user/logout">로그아웃</a>
 	</p>
 </th:block>
