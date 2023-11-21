@@ -128,6 +128,7 @@ public class BoardController {
 		System.out.println("글삭제함");
 		return "redirect:/board/boardList";
 	}
+	
 }
 
 
