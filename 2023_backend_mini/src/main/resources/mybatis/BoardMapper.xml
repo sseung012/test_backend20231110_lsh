@@ -92,10 +92,10 @@
 		SELECT Board_seq, id, title, content, regdate,
 		refer, step, depth, readcount, delflag
 		FROM tripboard
-		ORDER BY refer DESC, step
+		ORDER BY refer DESC, step   
 	</select>
 	
-</mapper>
+</mapper> 
 
 
 
