@@ -48,17 +48,17 @@
 		<![CDATA[
 			UPDATE tripboard
 			SET step=step+1	
-			WHERE refer = (SELECT refer FROM answerboard WHERE Board_seq=#{Board_seq})
-			AND step > (SELECT step FROM answerboard WHERE Board_seq=#{Board_seq})		
+			WHERE refer = (SELECT refer FROM tripboard WHERE board_seq=#{board_seq})
+			AND step > (SELECT step FROM tripboard WHERE board_seq=#{board_seq})		
 		]]>
 	</update>
 	<insert id="replyInsert" parameterType="boardDto">
 		<![CDATA[
 		INSERT INTO tripboard
 		VALUES(NULL,#{id},#{title},#{content},SYSDATE(),
-       		  (SELECT refer FROM answerboard alias_for_subquery WHERE Board_seq=#{Board_seq}),
-			  (SELECT step FROM answerboard alias_for_subquery WHERE Board_seq=#{Board_seq})+1,
-			  (SELECT depth FROM answerboard alias_for_subquery WHERE Board_seq=#{Board_seq})+1,0,'N')
+       		  	(SELECT refer FROM tripboard alias_for_subquery WHERE board_seq=#{board_seq}),
+           		(SELECT step FROM tripboard alias_for_subquery WHERE board_seq=#{board_seq})+1,
+           		(SELECT depth FROM tripboard alias_for_subquery WHERE board_seq=#{board_seq})+1,0,'N')
 		]]>
 	</insert>
 	

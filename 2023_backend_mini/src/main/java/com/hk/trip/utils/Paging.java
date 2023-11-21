@@ -1,4 +1,4 @@
-package utils;
+package com.hk.trip.utils;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartRequest;
 
 import com.hk.trip.command.DelBoardCommand;
 import com.hk.trip.command.InsertBoardCommand;
+import com.hk.trip.command.ReplyBoardCommand;
 import com.hk.trip.command.UpdateBoardCommand;
 import com.hk.trip.dtos.BoardDto;
 import com.hk.trip.service.BoardService;
@@ -127,6 +128,30 @@ public class BoardController {
 		boardService.mulDel(delBoardCommand.getBoard_seq());   
 		System.out.println("글삭제함");
 		return "redirect:/board/boardList";
+	}
+	
+	//답글추가
+	@RequestMapping(value = "replyBoard", method = {RequestMethod.POST, RequestMethod.GET})
+	public String replyBoard(@Validated ReplyBoardCommand replyBoardCommand,BindingResult result
+										,HttpServletRequest request
+							            ,Model model) {
+//		boolean isS=BoardService.replyBoard(dto);
+//		
+//		if(isS) {
+//			return "redirect:boardList.do";
+//		}else{
+//			model.addAttribute("msg", "답글 추가 실패");
+//			return "error";
+//		}
+//			
+		if(result.hasErrors()) {
+			System.out.println("글을 모두 입력하세요");
+			return "board/boardDetail";
+		}
+		
+		boardService.replyBoard(replyBoardCommand, request);
+		
+		return "redirect:/board/boardList?board_seq=" + replyBoardCommand.getBoard_seq();
 	}
 	
 }

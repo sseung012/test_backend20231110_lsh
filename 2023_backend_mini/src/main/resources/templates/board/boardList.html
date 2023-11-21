@@ -19,6 +19,40 @@
 		}
 		return false;
 	}
+	
+// 	//상세내용 조회 hover
+// 	 $(function() { //onload이벤트 가능 --> window.onload=function(){}
+// //       alert("test");
+//       //상세내용 조회: ajax로 구현
+//       //해당 제목에 마우스 올리면 내용 보여주기
+//       $("td>a").hover(function() {
+//          //상세조회하려면 seq값이 필요함: detailBoard.do?seq=21
+//          //  a    td       td     td
+//          var seq=$(this).parent().prev().prev().text();
+//          $.ajax({
+//             url:"detailBoardAjax.do", //요청 URL
+//             method:"post",          //전송방식
+//             data:{"seq":seq},         //서버로 전송할 값
+//             dataType:"json",         //받을 값의 타입
+//             async:false,            //ajax메서드를 동기식으로 실행
+//             success:function(obj){    //통신성공하면 실행
+//                //obj={"dto":{seq:5,id:"hk"....}}
+// //                alert(obj["dto"]["regDateStr"]);
+//             	$("#regdate").val(obj.dto.regDateStr);
+//             	$("#id").val(obj.dto.id);
+//             	$("#title").val(obj.dto.title);
+//             	$("#content").val(obj.dto.content);
+//             },error:function(){
+//                alert("통신실패");
+//             }
+//          });
+//       },function(){
+//     	  $("#regdate").val("");
+//       	  $("#id").val("");
+//       	  $("#title").val("");
+//       	  $("#content").val("");
+//       });
+//    });
 </script>
 <style type="text/css">
 
@@ -57,8 +91,11 @@
 				<td th:text="${dto.id}"></td>
 				<td>
 					<a th:href="@{/board/boardDetail(board_seq=${dto.board_seq})}">
-						<span th:if="${dto.delflag eq 'Y'}">---삭제된글입니다---</span>
-      					<span th:unless="${dto.delflag eq 'Y'}" th:text="${dto.title}"></span>
+						<span th:if="${dto.delflag == 'Y'}">---삭제된글입니다---</span>
+      					<span th:unless="${dto.delflag =='Y'}" th:text="${dto.title}">
+      						<span th:text="${Util.arrowNbsp(dto.depth)}"></span>
+    						<a th:text="${dto.title}"></a>
+      					</span>
 					</a>
 				</td>
 				<td th:text="${dto.readcount}"></td>
@@ -79,6 +116,13 @@
 		</th:block>
 	</table>
 </form>
+<!-- 	<div id="ajaxForm"> -->
+<!-- 		<label>작성일 : </label><input class="form-control" type="text" id="regdate"> -->
+<!-- 		<label>작성자 : </label><input class="form-control" type="text" id="id"> -->
+<!-- 		<label>제목 : </label><input class="form-control" type="text" id="title"> -->
+<!-- 		<label>내용 : </label><textarea class="form-control" rows="3" cols="60" id="content"></textarea> -->
+<!-- 		<label></label> -->
+<!-- 	</div> -->
 </div>
 </div>
 </body>

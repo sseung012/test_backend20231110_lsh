@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartRequest;
 
 import com.hk.trip.command.InsertBoardCommand;
+import com.hk.trip.command.ReplyBoardCommand;
 import com.hk.trip.command.UpdateBoardCommand;
 import com.hk.trip.dtos.BoardDto;
 import com.hk.trip.mapper.BoardMapper;
@@ -87,6 +88,25 @@ public class BoardService {
 	public boolean mulDel(String[] seqs) {
 		return boardMapper.mulDel(seqs);
 	}
+	
+	//답글
+	@Transactional
+	public boolean replyBoard(ReplyBoardCommand replyBoardCommand
+            , HttpServletRequest request) {
+		int count=0;
+		BoardDto boardDto=new BoardDto();
+		boardDto.setId(replyBoardCommand.getId());
+		boardDto.setTitle(replyBoardCommand.getTitle());
+		boardDto.setContent(replyBoardCommand.getContent());
+		boardDto.setBoard_seq(replyBoardCommand.getBoard_seq()); 
+		
+		boardMapper.replyUpdate(boardDto);
+		boardMapper.replyInsert(boardDto);//새글 추가
+		
+		return count>0?true:false;
+	}
+	
+	
 }
 
 

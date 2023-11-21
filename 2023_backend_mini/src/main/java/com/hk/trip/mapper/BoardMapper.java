@@ -20,4 +20,7 @@ public interface BoardMapper {
 	//글 삭제
 	public boolean mulDel(String[] seqs);
 	
+	//답글달기
+	public boolean replyUpdate(BoardDto dto);
+	public int replyInsert(BoardDto dto);
 }
