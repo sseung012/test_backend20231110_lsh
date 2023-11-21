@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function allSel(bool){
-		var chks=document.getElementsByName("seq");// [seq,seq,seq,seq..]
+		var chks=document.getElementsByName("board_seq");// [seq,seq,seq,seq..]
 		for (var i = 0; i < chks.length; i++) {
 			chks[i].checked=bool;//각각의 체크박스에 체크여부를 true/false로 적용
 		}
@@ -56,8 +56,10 @@
 				<td th:text="${dto.board_seq}"></td>
 				<td th:text="${dto.id}"></td>
 				<td>
-					<a th:href="@{/board/boardDetail(board_seq=${dto.board_seq})}"
-					   th:text="${dto.title}"></a>
+					<a th:href="@{/board/boardDetail(board_seq=${dto.board_seq})}">
+						<span th:if="${dto.delflag eq 'Y'}">---삭제된글입니다---</span>
+      					<span th:unless="${dto.delflag eq 'Y'}" th:text="${dto.title}"></span>
+					</a>
 				</td>
 				<td th:text="${dto.readcount}"></td>
 				<td th:text="${#dates.format(dto.regdate,'yyyy-MM-dd')}"></td>
