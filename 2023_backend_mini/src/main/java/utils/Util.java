@@ -13,7 +13,7 @@ public class Util {
 			nbsp+="&nbsp;&nbsp;&nbsp;&nbsp;";
 		}
 		//답글 조건: depth>0
-		this.arrowNbsp=nbsp+(depthInt>0?"(ง˙∇˙)ว <img width='15px' height='15px' src='resources/img/arrow_icon.png'/ >":"");
+		this.arrowNbsp=nbsp+(depthInt>0?"(ง˙∇˙)ว <img width='15px' height='15px' src='resources/imgage/arrow_icon.png'/ >":"");
 	}
 	
 	public String getArrowNbsp() {

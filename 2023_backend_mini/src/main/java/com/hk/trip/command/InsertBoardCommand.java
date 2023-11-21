@@ -5,10 +5,13 @@ import jakarta.validation.constraints.NotBlank;
 public class InsertBoardCommand {
 
 	private String id;
+	
 	@NotBlank(message = "제목을 입력하세요")
 	private String title;
+	
 	@NotBlank(message = "내용을 입력하세요")
 	private String content;
+	
 	public InsertBoardCommand() {
 		super();
 		// TODO Auto-generated constructor stub

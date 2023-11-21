@@ -16,7 +16,8 @@ public class DelBoardCommand {
 
 	public DelBoardCommand(@NotEmpty(message = "최소 하나 이상 체크해야 합니다.") String[] board_seq) {
 		super();
-		this.board_seq = board_seq;
+		this.board_seq =board_seq;
+
 	}
 
 	public String[] getBoard_seq() {
