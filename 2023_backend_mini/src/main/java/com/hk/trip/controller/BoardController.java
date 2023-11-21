@@ -117,7 +117,7 @@ public class BoardController {
 			model.addAttribute("list", list);
 			return "board/boardlist";
 		}
-		boardService.mulDel(delBoardCommand.getBoard_seq());
+		boardService.mulDel(delBoardCommand.getBoard_seq());   
 		System.out.println("글삭제함");
 		return "redirect:/board/boardList";
 	}
