@@ -90,14 +90,14 @@
 				<td th:text="${dto.board_seq}"></td>
 				<td th:text="${dto.id}"></td>
 				<td>
-					<a th:href="@{/board/boardDetail(board_seq=${dto.board_seq})}">
-						<span th:if="${dto.delflag == 'Y'}">---삭제된글입니다---</span>
-      					<span th:unless="${dto.delflag =='Y'}" th:text="${dto.title}">
-      						<span th:href="${/board/boardDetail(board_seq=${dto.board_seq})}" th:text="${Util.arrowNbsp(dto.depth)}"></span>
-    						<a th:text="${dto.title}"></a>
 
-      					</span>  
-					</a>
+				    <span th:if="${dto.delflag == 'Y'}">---삭제된글입니다---</span>
+				    <span th:unless="${dto.delflag =='Y'}">
+			            [(${@util.setArrowNbsp(dto.depth)})]
+			            <a th:href="@{/board/boardDetail(board_seq=${dto.board_seq})}" th:text="${dto.title}">
+			    		</a>
+				    </span>
+
 				</td>
 				<td th:text="${dto.readcount}"></td>
 				<td th:text="${#dates.format(dto.regdate,'yyyy-MM-dd')}"></td>

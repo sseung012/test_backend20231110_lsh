@@ -117,6 +117,14 @@ public class MemberController {
 		return "member/userinfo";
 	}
 	
+
+	@GetMapping(value="/logout")
+	public String logout(HttpServletRequest request) {
+		System.out.println("로그아웃");
+		request.getSession().invalidate();
+		return "redirect:/";
+	}
+
 	
 }
 
