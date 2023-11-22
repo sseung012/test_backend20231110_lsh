@@ -24,6 +24,7 @@ import com.hk.trip.command.ReplyBoardCommand;
 import com.hk.trip.command.UpdateBoardCommand;
 import com.hk.trip.dtos.BoardDto;
 import com.hk.trip.service.BoardService;
+import com.hk.trip.utils.Util;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -35,6 +36,10 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+	//답글 들여쓰기
+//	@Autowired
+//	private Util util; // Util 클래스 주입
+	
 	@GetMapping(value = "/boardList")
 	public String boardList(Model model) {
 		System.out.println("글목록 보기");
@@ -42,6 +47,14 @@ public class BoardController {
 		List<BoardDto> list=boardService.getAllList();
 		model.addAttribute("list", list);
 		model.addAttribute("delBoardCommand", new DelBoardCommand());
+		
+		//답글들여쓰기 부분
+		// Util 클래스를 사용하여 arrowNbsp 값 설정
+//		String depth = "yourDepthValue"; // 적절한 depth 값을 지정
+//		util.setArrowNbsp(depth);
+//		// 모델에 arrowNbsp 값을 추가
+//		model.addAttribute("arrowNbsp", util.getArrowNbsp());
+		
 		return "board/boardList";// forward 기능, "redirect:board/boardList"
 	}  
 
