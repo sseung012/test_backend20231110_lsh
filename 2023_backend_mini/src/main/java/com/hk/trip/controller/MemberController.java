@@ -20,6 +20,7 @@ import com.hk.trip.dtos.MemberDto;
 import com.hk.trip.service.MemberService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -105,14 +106,19 @@ public class MemberController {
 		
 	//마이페이지 이동
 	@GetMapping(value = "/userinfo")
-	public String userinfo(Model model) {
+	public String userinfo(Model model,HttpServletRequest request) {
 		System.out.println("내 정보 보기");
-//		model.addAttribute("userInfoCommand", new UserInfoCommand());
+		HttpSession session = request.getSession();
+		MemberDto mdto=(MemberDto)session.getAttribute("mdto");
+		String id=mdto.getId();
+		//model.addAttribute("addUserCommand", new AddUserCommand());
+		MemberDto dto=memberService.Userinfo(id);
+		model.addAttribute("dto", dto);
 		return "member/userinfo";
 	}
 	
+	
 }
-
 
 
 

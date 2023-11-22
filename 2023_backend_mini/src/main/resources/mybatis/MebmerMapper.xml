@@ -23,7 +23,7 @@
 	</select>
 	
 	<!-- 나의 정보 조회 -->
-	<select id="getUserinfo" parameterType="String" resultType="memberDto">
+	<select id="getUserInfo" parameterType="String" resultType="memberDto">
 		SELECT id, NAME, address,email, regdate, role
 		FROM tripmember
 		WHERE id=#{id}

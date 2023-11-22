@@ -1,6 +1,8 @@
 package com.hk.trip.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.hk.trip.command.AddUserCommand;
 import com.hk.trip.command.LoginCommand;
 import com.hk.trip.command.UserInfoCommand;
+import com.hk.trip.dtos.BoardDto;
 import com.hk.trip.dtos.MemberDto;
 import com.hk.trip.mapper.MemberMapper;
 import com.hk.trip.status.RoleStatus;
@@ -25,6 +28,10 @@ public class MemberService {
 	private MemberMapper memberMapper;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+//	public List<MemberDto> getUserinfo(){
+//		return memberMapper.getUserinfo();
+//	}
 	
 	//회원가입
 	public boolean addUser(AddUserCommand addUserCommand) {
@@ -77,26 +84,14 @@ public class MemberService {
 //		return "redirect:/";
 //	}
 //	
-	
-	
-	
-	
-	
-	//mypage
-//	public String Userinfo(UserInfoCommand userInfoCommand) {
-//		
-//		MemberDto mdto1=new MemberDto();
-//		mdto1.setId(UserInfoCommand.getId());
-//		mdto1.setName(UserInfoCommand.getName());
-//		//password암호화하여 저장하자
-//		mdto1.setPassword(passwordEncoder.encode(UserInfoCommand.getPassword()));
-//		mdto1.setEmail(UserInfoCommand.getEmail());
-//		mdto1.setAddress(UserInfoCommand.getAddress());
-//		mdto1.setRole(UserInfoCommand.getRole);//등급추가
-//		return memberMapper.getUserinfo(mdto1);
-//	}
-	
 
+	//mypage
+	public MemberDto Userinfo(String id) {
+	
+		return memberMapper.getUserInfo(id);
+	}
+//	
+//
 }
 
 

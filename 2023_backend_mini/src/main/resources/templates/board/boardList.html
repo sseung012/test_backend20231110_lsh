@@ -93,8 +93,9 @@
 					<a th:href="@{/board/boardDetail(board_seq=${dto.board_seq})}">
 						<span th:if="${dto.delflag == 'Y'}">---삭제된글입니다---</span>
       					<span th:unless="${dto.delflag =='Y'}" th:text="${dto.title}">
-      						<span th:text="${Util.arrowNbsp(dto.depth)}"></span>
+      						<span th:href="${/board/boardDetail(board_seq=${dto.board_seq})}" th:text="${Util.arrowNbsp(dto.depth)}"></span>
     						<a th:text="${dto.title}"></a>
+
       					</span>  
 					</a>
 				</td>

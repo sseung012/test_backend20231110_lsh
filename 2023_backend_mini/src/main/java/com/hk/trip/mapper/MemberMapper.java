@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.hk.trip.dtos.BoardDto;
 import com.hk.trip.dtos.MemberDto;
 
 @Mapper
@@ -19,7 +20,7 @@ public interface MemberMapper {
 	public MemberDto getLogin(String id);
 	
 	//나의 정보 조회
-	public MemberDto getUserinfo(String id);
+	public MemberDto getUserInfo(String id);
 	
 	//나의 정보 수정
 	public boolean updateUser(MemberDto dto);
