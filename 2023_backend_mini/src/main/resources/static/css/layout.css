@@ -1,36 +1,29 @@
 @charset "UTF-8";
 
-/*.bg{*/
-/*	background-image: url(/image/background.png);*/
-/*	background-size: cover;*/
-/*}*/
 .content{
-	margin: 50px 70px;   
-	background-image: '/image/background.png';
-	background-size: cover;
+	margin: 50px 70px;
 }
 
-/*.body1 {*/
-/*        background-image: '/image/background.png';*/
-/*        background-size: cover;*/
-/*        background-repeat: no-repeat;*/
-/*        margin: 0;*/
-/*        display: flex;*/
-/*    }*/
+.home{
+	background-image: url('/image/sky.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	opacity: 0.8;
+}
+
+.content1{
+	margin: 50px 70px;
+}
 
 body {
 	margin: 0;
 	display: flex;
-/*    flex-direction: column;*/
     height: 100vh; /* 100% viewport height */
     
 }
 
 .container {
 	flex-grow: 1;
-/*    background-image: '/image/pen.png';*/
-    background-size: cover;
-    background-repeat: no-repeat;
     position: relative;
     display: flex;
 }
@@ -74,6 +67,7 @@ nav {
 /*	height: 50px;*/
 /*	text-align: center;*/
 /*	}*/
+
 
 .errorField{
    color : red;
