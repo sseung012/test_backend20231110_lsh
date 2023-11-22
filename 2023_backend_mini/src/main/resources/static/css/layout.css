@@ -23,6 +23,7 @@ body {
 	display: flex;
 /*    flex-direction: column;*/
     height: 100vh; /* 100% viewport height */
+    
 }
 
 .container {
@@ -77,3 +78,6 @@ nav {
 .errorField{
    color : red;
    }
+
+   
+

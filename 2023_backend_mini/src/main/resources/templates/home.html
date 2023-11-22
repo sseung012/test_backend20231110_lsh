@@ -9,10 +9,18 @@
 
 </script>
 <style type="text/css">
-
+	body {
+            margin: 0; /* body의 margin을 0으로 설정하여 여백을 제거합니다. */
+            padding: 0; /* body의 padding을 0으로 설정하여 여백을 제거합니다. */
+            background-image: url('/static/image/background.png'); /* 이미지 경로를 수정하세요. */
+            background-size: cover; /* 이미지가 꽉 차도록 설정합니다. */
+            background-position: center; /* 이미지를 가운데 정렬합니다. */
+            height: 100vh; /* body를 화면의 100% 높이로 설정합니다. */
+        }
 </style>
 </head>
 <body>
+
 
 <div layout:fragment="content">
 <h1>HOME</h1>

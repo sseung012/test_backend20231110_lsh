@@ -90,7 +90,6 @@
 				<td th:text="${dto.board_seq}"></td>
 				<td th:text="${dto.id}"></td>
 				<td>
-
 				    <span th:if="${dto.delflag == 'Y'}">---삭제된글입니다---</span>
 				    <span th:unless="${dto.delflag =='Y'}">
 			            [(${@util.setArrowNbsp(dto.depth)})]
