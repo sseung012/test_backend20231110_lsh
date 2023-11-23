@@ -56,7 +56,7 @@ public class MemberService {
 	//로그인
 	public String login(LoginCommand loginCommand, HttpServletRequest request, Model model) {
 		MemberDto dto = memberMapper.getLogin(loginCommand.getId());
-		String path = "home";
+		String path = "";
 		if(dto!=null) {
 			//로그인 폼에서 입력받은 패스워드값과 DB에 암호화된 패스워드 비교
 			if(passwordEncoder.matches(loginCommand.getPassword(), dto.getPassword())) {

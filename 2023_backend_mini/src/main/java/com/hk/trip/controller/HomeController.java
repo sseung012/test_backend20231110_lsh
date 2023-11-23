@@ -14,5 +14,6 @@ public class HomeController {
 	public String home() {
 		logger.info("HOME페이지이동");
 		return "home";
+		
 	}
 }	
