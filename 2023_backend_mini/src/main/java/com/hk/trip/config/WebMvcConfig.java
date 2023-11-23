@@ -13,6 +13,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		registry.addInterceptor(new LoginInterceptor())
 				.order(1) //우선순위 설정
 				.addPathPatterns("/**") //전체요청에 대해 적용
-				.excludePathPatterns("/error","/board/**","/","/user/**","/css/**","/js/**");
+				.excludePathPatterns("/error","/board/**","/","/user/**","/css/**","/js/**","/image/**");
 	}
 }

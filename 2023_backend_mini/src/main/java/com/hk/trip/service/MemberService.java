@@ -96,7 +96,7 @@ public class MemberService {
 	
 		return memberMapper.getUserInfo(id);
 	}
-
+	
 	//나의 정보 수정
 	public boolean updateUser(UserInfoCommand userInfoCommand){
 		MemberDto mdto=new MemberDto();
@@ -111,7 +111,7 @@ public class MemberService {
 		return memberMapper.getAllUserList();
 	}
 	
-	
+
 }
 
 

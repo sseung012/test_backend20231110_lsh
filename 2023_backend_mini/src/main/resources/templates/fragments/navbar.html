@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/homelayout}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <style type="text/css">
-
 </style>
 </head>
+
 <body>
 <div class="container">
-<nav th:fragment="navbar" class="navbar">
-	<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 160px;">
-		<svg class="bi me-1" width="20" height="32"><use xlink:href="#bootstrap"></use></svg>
-		<span class="fs-4">Travel</span>
+	<nav th:fragment="navbar" class="navbar">
+		<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 160px;">
+			<svg class="bi me-1" width="20" height="32"><use xlink:href="#bootstrap"></use></svg>
+			<span class="fs-4">Travel</span>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
@@ -36,9 +37,47 @@
       </li>
     </ul>
     <hr>
-	</div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+	  <th:block th:if="${session.mdto==null}" >
+	      <li class="nav-item">
+	        	<a href="/user/login" class="nav-link active">
+		          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+		          SignIn
+		        </a>
+	      </li>
+	      <li class="nav-item">
+	        	<a href="/user/addUser" class="nav-link active">
+		          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+		          SignUp
+		        </a>
+	      </li>
+	  </th:block>
+	  <th:block th:unless="${session.mdto==null}">
+	      <li class="nav-item">
+			  <a href="/user/userinfo" class="nav-link active">
+		        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+	        	<span th:text="${session.mdto.id}"></span>
+		 		<span th:text="${session.mdto.role}"></span>
+			  </a> 
+	      </li>
+	      <li class="nav-item">
+	        	<a href="/user/logout" class="nav-link active">
+		          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+		          로그아웃
+		        </a>
+	      </li>
+	  </th:block>
+    </ul>
+
+   
+   
+   </div>
   </nav>
 </div>
   <div style="height: 50px;"></div>
+  
+  
 </body>
 </html>
