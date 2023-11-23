@@ -9,31 +9,41 @@
 
 </script>
 <style type="text/css">
-
+	h1{
+		color: darkslateblue;
+		opacity: 1.0;
+	}
+	
+	h3{
+		opacity: 1.0;
+		color: black;
+	}
+	#trip{
+		background-color: rgba(255,255,255,0.6);
+/* 		opacity: 0.7; */
+		width: 800px;
+		height : 350px;
+		text-align: center;
+		padding: 90px;
+		margin-left:230px; 
+		margin-top: 150px;
+		
+	}
+	
 </style>
 </head>
 
-<body class="home">
-<!--	<div layout:fragment="content">-->
-<!--	<h1>HOME</h1>-->
-<!--		<th:block th:if="${session.mdto==null}" >-->
-<!--			<p>-->
-<!--				<a href="/user/login">SignIn</a>-->
-<!--				<a href="/user/addUser">SignUp</a>-->
-<!--			</p>-->
-		
-<!--		</th:block>-->
-<!--		<th:block th:unless="${session.mdto==null}">-->
-<!--			<p>-->
-<!--				<span th:text="${session.mdto.id}"></span>-->
-<!--		 		<span th:text="${session.mdto.role}"></span>-->
-<!--				<a href="/user/logout">로그아웃</a>-->
-<!--			</p>-->
-<!--		</th:block>-->
-<!--			<p><a href="/board/boardList">게시판</a></p>-->
-<!--	</div>-->
-
-
+<body class="home" >
+<div id="trip" layout:fragment="content">
+	<div id="main">
+		<h1>✈ TRAVEL ✈</h1>
+		<hr/>
+		<h3>여행 후기와 추천하고 싶은 장소, 꿀Tip!을 공유해주세요.</h3>
+<!-- 		<p> -->
+<!-- 			<img alt="" src="/image/a.png"> -->
+<!-- 		</p> -->
+	</div>
+</div>
 </body>
 </html>
 
