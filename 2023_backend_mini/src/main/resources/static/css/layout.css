@@ -5,7 +5,7 @@
 }
 
 .home{
-	background-image: url('/image/sky.jpg');
+	background-image: url('/image/sky.png');
 	background-size: cover;
 	background-repeat: no-repeat;
 	opacity: 0.8;
@@ -18,9 +18,11 @@
 body {
 	margin: 0;
 	display: flex;
-    height: 100vh; /* 100% viewport height */
+    height: 100vh; /* 100% of the viewport height */
+  	width: 100vw; /* 100% of the viewport width */
     
 }
+
 
 .container {
 	flex-grow: 1;
@@ -32,6 +34,7 @@ body {
 	width: 1000px;
 	margin: 0 auto;
 }
+
 
 nav {
 	position: absolute;
