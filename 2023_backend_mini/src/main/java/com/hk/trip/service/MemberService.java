@@ -65,7 +65,7 @@ public class MemberService {
 				request.getSession().setAttribute("mdto", dto);
 				
 				if(dto.getRole().toUpperCase().equals("ADMIN")) {
-					path="member/admin_main";
+					path="admin_main";
 				}else if(dto.getRole().toUpperCase().equals("USER")){
 					path="home";
 				}
@@ -107,10 +107,20 @@ public class MemberService {
 		return memberMapper.updateUser(mdto);
 	}
 
+	//회원정보 조회
 	public List<MemberDto> getAllList() {
 		return memberMapper.getAllUserList();
 	}
-	
+
+	public MemberDto getMemberById(String id) {
+	    return memberMapper.getMemberById(id);
+	}
+
+	// 회원등급 수정
+	public void updateUserRole(String id, String role) {
+	    // 실제로는 데이터베이스에서 회원의 등급을 업데이트하거나 다른 작업을 수행할 수 있습니다.
+	    memberMapper.updateUserRole(id, role);
+	}
 
 }
 

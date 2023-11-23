@@ -42,7 +42,11 @@
 			<th:block th:unless="${#lists.isEmpty(list)}">
 				<tr th:each="dto:${list}">
 					<td th:text="${dto.seq}"></td>
-					<td th:text="${dto.id}"></td>
+					<td>
+	                    <a th:href="@{'/user/userRoleForm?id=' + ${dto.id}}">
+	                        <span th:text="${dto.id}"></span>
+	                    </a>
+                    </td>
 					<td th:text="${dto.name}"></td>
 					<td th:text="${dto.address}"></td>
 					<td th:text="${dto.email}"></td>

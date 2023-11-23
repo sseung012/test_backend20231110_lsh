@@ -33,6 +33,12 @@ public interface MemberMapper {
 	
 	//회원목록 조회(사용중인 회원)
 	public List<MemberDto> getUserList();
+	
+	//회원정보 수정(등급)
+	public void updateUserRole(String id, String role);
+	
+	public MemberDto getMemberById(String id);
+
 
 }
 

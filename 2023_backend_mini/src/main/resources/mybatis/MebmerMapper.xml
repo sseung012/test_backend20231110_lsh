@@ -57,6 +57,15 @@
 	</select>
 	
 	
+	<select id="getMemberById" resultType="MemberDto">
+	    SELECT * FROM tripmember WHERE id = #{id}
+	</select>
+
+	<!-- 회원등급 수정 -->
+	<update id="updateUserRole">
+	    UPDATE tripmember SET role = #{role} WHERE id = #{id}
+	</update>
+	
 
 </mapper>
 

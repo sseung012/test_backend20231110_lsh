@@ -18,10 +18,20 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="/" class="nav-link active" aria-current="page">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-          Home
-        </a>
+        <a th:if="${session.mdto == null}" href="/" class="nav-link active" aria-current="page">
+		    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+		    HOME
+		</a>
+		<a th:if="${session.mdto != null and session.mdto.role == 'USER'}" href="/" class="nav-link active"
+		   aria-current="page">
+		    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+		    HOME
+		</a>
+		<a th:if="${session.mdto != null and session.mdto.role == 'ADMIN'}" href="admin_main"
+		   class="nav-link active" aria-current="page">
+		    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+		    HOME
+		</a>
       </li>
       <li>
         <a href="/board/boardList" class="nav-link text-white">
@@ -59,7 +69,7 @@
 			  <a href="/user/userinfo" class="nav-link active">
 		        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
 	        	<span th:text="${session.mdto.id}"></span>
-		 		<span th:text="${session.mdto.role}"></span>
+		 		[<span th:text="${session.mdto.role}"></span>]
 			  </a> 
 	      </li>
 	      <li class="nav-item">

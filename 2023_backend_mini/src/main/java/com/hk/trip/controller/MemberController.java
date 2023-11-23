@@ -104,6 +104,11 @@ public class MemberController {
       return path;
    }
    
+   @GetMapping("/admin_main")
+   public String adminMain() {
+       // 여기에 필요한 로직 추가
+       return "/admin_main";
+   }
    
       
    //마이페이지 이동
@@ -175,7 +180,17 @@ public class MemberController {
 		
 		return "member/userAllList";
 	}
+	
 
+	@GetMapping("/userRoleForm")
+	public String updateUserRole(Model model, @RequestParam String id) {
+	    MemberDto memberDto = memberService.getMemberById(id);
+
+	    // 조회된 회원 정보를 모델에 추가하여 뷰로 전달
+	    model.addAttribute("dto", memberDto);
+	    
+	    return "member/userRoleForm";
+	}
 }
 
 

@@ -64,6 +64,12 @@ public class BoardController {
 		return "board/boardInsertForm";
 	}
 
+	@GetMapping("/admin_main")
+	   public String adminMain() {
+	       // 여기에 필요한 로직 추가
+	       return "/admin_main";
+	   }
+	
 	//글 추가하기
 	@PostMapping(value = "/boardInsert")
 	public String boardInsert(@Validated InsertBoardCommand insertBoardCommand 
