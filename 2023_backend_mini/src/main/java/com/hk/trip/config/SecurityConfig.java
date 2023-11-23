@@ -23,6 +23,7 @@ public class SecurityConfig {
 			.csrf(AbstractHttpConfigurer::disable) // cors, csrf 비활성화
 			.formLogin(AbstractHttpConfigurer::disable); //loginform 비활성화
 		
+		
 		return  http.build();
 	}
 	
