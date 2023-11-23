@@ -90,16 +90,18 @@ public class MemberService {
 	
 		return memberMapper.getUserInfo(id);
 	}
-
+	
 	//나의 정보 수정
-	public boolean updateUser(UserInfoCommand userInfoCommand){
-		MemberDto mdto=new MemberDto();
-		mdto.setId(userInfoCommand.getId());
-		mdto.setAddress(userInfoCommand.getAddress());
-		mdto.setEmail(userInfoCommand.getEmail());
-		
-		return memberMapper.updateUser(mdto);
-	}
+	   public boolean updateUser(UserInfoCommand userInfoCommand){
+	      MemberDto mdto=new MemberDto();
+	      mdto.setId(userInfoCommand.getId());
+	      mdto.setAddress(userInfoCommand.getAddress());
+	      mdto.setEmail(userInfoCommand.getEmail());
+	      
+	      return memberMapper.updateUser(mdto);
+	   }
+	
+
 }
 
 
