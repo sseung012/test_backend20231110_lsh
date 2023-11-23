@@ -63,7 +63,13 @@ public class MemberService {
 				System.out.println("패스워드 같음 : 회원이 맞음");
 				//session객체에 로그인 정보 저장
 				request.getSession().setAttribute("mdto", dto);
-				return path;
+				
+				if(dto.getRole().toUpperCase().equals("ADMIN")) {
+					path="member/admin_main";
+				}else if(dto.getRole().toUpperCase().equals("USER")){
+					path="home";
+				}
+//				return path;
 			}else {
 				System.out.println("패스워드 틀림");
 				model.addAttribute("msg", "패스워드를 확인하세요");
@@ -100,6 +106,12 @@ public class MemberService {
 		
 		return memberMapper.updateUser(mdto);
 	}
+
+	public List<MemberDto> getAllList() {
+		return memberMapper.getAllUserList();
+	}
+	
+	
 }
 
 

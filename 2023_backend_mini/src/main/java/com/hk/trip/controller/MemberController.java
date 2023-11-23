@@ -165,8 +165,16 @@ public class MemberController {
 	    return "redirect:/user/userinfo?id=" + userInfoCommand.getId();
 	}
 
-
-
+//	public List<MemberDto> getAllUserList();
+	@GetMapping(value="/userAllList")
+	public String getAllUserList(Model model,HttpServletRequest request) {
+		System.out.println("전체회원목록");
+		
+		List<MemberDto> list=memberService.getAllList();
+		model.addAttribute("list", list);
+		
+		return "member/userAllList";
+	}
 
 }
 
