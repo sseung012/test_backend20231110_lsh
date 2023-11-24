@@ -174,14 +174,14 @@ public class MemberController {
 //      
 //   }
    
-   @PostMapping(value="/updateUser")
+   @PostMapping(value="/updateUserRole")
    public String updateUser(@Validated UserInfoCommand userInfoCommand
-                            , BindingResult result
-                            , Model model) {
+                           , MemberDto mdto
+                           , BindingResult result
+                           , Model model) {
        if(result.hasErrors()) {
-           System.out.println("수정내용을 모두 입력하세요");
            // 코드 추가 --------------------------------------------
-           MemberDto mdto = memberService.Userinfo(userInfoCommand.getId());
+           mdto = memberService.Userinfo(userInfoCommand.getId());
            model.addAttribute("mdto", mdto);
            // -------------------------------------------------------
            return "member/userinfo";
@@ -189,7 +189,8 @@ public class MemberController {
 
        memberService.updateUser(userInfoCommand);
 
-       return "redirect:/user/userinfo?id=" + userInfoCommand.getId();
+       // 수정 후에 userAllList.html로 리다이렉트
+       return "redirect:/user/userAllList";
    }
 
 //	public List<MemberDto> getAllUserList();
