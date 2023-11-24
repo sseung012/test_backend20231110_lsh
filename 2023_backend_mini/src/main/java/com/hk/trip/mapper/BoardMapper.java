@@ -14,6 +14,7 @@ public interface BoardMapper {
 	public List<BoardDto> getAllList(Map<String, String> map);
 	//1-2. 페이지수 구하기
 	public int getPCount();
+
 	//글상세조회
 	public BoardDto getBoard(int board_seq);
 	//글추가
@@ -22,6 +23,8 @@ public interface BoardMapper {
 	public boolean updateBoard(BoardDto dto);
 	//글 삭제
 	public boolean mulDel(String[] seqs);
+	//조회수
+	public boolean readCount(int board_seq);
 	
 	//답글달기
 	public boolean replyUpdate(BoardDto dto);

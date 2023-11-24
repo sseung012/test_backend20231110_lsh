@@ -6,13 +6,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+
+	body{
+		 height: 100vh;
+	}
 </style>
 </head>
 
 <body>
 <div class="container">
 	<nav th:fragment="navbar" class="navbar">
-		<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 160px;">
+		<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" 
+								style="width: 160px; height: 100vh;">
 			<svg class="bi me-1" width="28" height="32"><use xlink:href="#bootstrap"></use></svg>
 			<span class="fs-4">Travel</span>
     <hr>

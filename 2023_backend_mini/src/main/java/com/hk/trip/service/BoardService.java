@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +47,11 @@ public class BoardService {
 	public int getPCount() {
 		return boardMapper.getPCount();
 	}
+	
+//	//페이지수 구하기
+//	public int getPCount() {
+//		return boardMapper.getPCount();
+//	}
 
 	//글 추가
 	@Transactional
@@ -99,6 +105,14 @@ public class BoardService {
 		
 		boardMapper.replyUpdate(boardDto);
 		boardMapper.replyInsert(boardDto);//새글 추가
+		
+		return count>0?true:false;
+	}
+
+	//조회수
+	public boolean readCount(int board_seq) {
+		int count=0;
+		boardMapper.readCount(board_seq);
 		
 		return count>0?true:false;
 	}

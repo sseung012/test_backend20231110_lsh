@@ -24,25 +24,48 @@ import com.hk.trip.command.InsertBoardCommand;
 import com.hk.trip.command.ReplyBoardCommand;
 import com.hk.trip.command.UpdateBoardCommand;
 import com.hk.trip.dtos.BoardDto;
+import com.hk.trip.dtos.MemberDto;
 import com.hk.trip.service.BoardService;
 import com.hk.trip.utils.Paging;
 import com.hk.trip.utils.Util;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping(value = "/board")
-//@SessionAttributes("pnum") // 세션에 "pnum" 속성을 저장
+
 public class BoardController {
 
     @Autowired
     private BoardService boardService;
 
+
+	//getCookie 기능 구현
+	public Cookie getCookie(String cookieName, HttpServletRequest request) {
+		Cookie[] cookies=request.getCookies();
+		Cookie cookie=null;
+		if(cookies!=null) {
+			for (int i = 0; i < cookies.length; i++) {
+				if(cookies[i].getName().equals(cookieName)) {
+					cookie=cookies[i];
+				}
+			}
+		}
+		return cookie;
+	}	
+
     @GetMapping(value = "/boardList")
     public String boardList(@RequestParam(name = "pnum", required = false) String pnum,
-                            Model model) {
+                            Model model,HttpServletRequest request,HttpServletResponse response) {
+	//글목록으로 이동하면 쿠키 rseq값을 삭제하자
+		Cookie cookie=getCookie("rseq", request);
+		if(cookie!=null) {
+			cookie.setMaxAge(0); //유효기간 0 --> 삭제됨
+			response.addCookie(cookie); //클라이언트로 변경사항을 전달
+		} //쿠키 삭제 코드 종료-------------
         System.out.println("글목록 보기");
         System.out.println("페이지번호:"+pnum);
         List<BoardDto> list = boardService.getAllList(pnum);
@@ -71,6 +94,7 @@ public class BoardController {
         return "board/boardList"; // "WEB-INF/views/" + boardList + ".jsp
     }
 			
+
 
 	@GetMapping(value = "/boardInsert")
 	public String boardInsertForm(Model model) {
@@ -106,7 +130,19 @@ public class BoardController {
 	
 	//상세보기
 	@GetMapping(value = "/boardDetail")
-	public String boardDetail(int board_seq, Model model) {
+	public String boardDetail(int board_seq, Model model
+					, HttpServletRequest request
+					, HttpServletResponse response) {
+		//로그인 되어있지 않은경우
+		HttpSession session = request.getSession();
+	    MemberDto mdto = (MemberDto) session.getAttribute("mdto");
+
+	    // 사용자가 로그인되어 있지 않은 경우
+	    if (mdto == null) {
+	        // 로그인 페이지로 리다이렉트
+	        return "redirect:/user/login";
+	    }
+		
 		BoardDto dto=boardService.getBoard(board_seq);
 		
 		//유효값처리용
@@ -114,6 +150,31 @@ public class BoardController {
 		//출력용
 		model.addAttribute("dto", dto);
 		System.out.println(dto);
+		
+		
+		//--------getCookie메서드 구현해서 활용하기
+		Cookie cookieObj=getCookie("rseq", request);
+		
+		String s=null;
+		if(cookieObj!=null) {
+			s = cookieObj.getValue();				
+		}
+		
+		//"rseq"라는 이름의 값이 있는지 확인(쿠키값이 없는 경우)
+		if(s==null || !s.equals(String.valueOf(board_seq))) {
+			//쿠키객체 생성하기
+			//				cookie에 값을 저장할 때 타입은 String이다.
+			Cookie cookie=new Cookie("rseq", String.valueOf(board_seq));
+			cookie.setMaxAge(60*10); //유효기간 설정
+			response.addCookie(cookie); //클라이언트로 cookie객체 전달
+			
+			//---조회수 올리기 코드
+			boardService.readCount(board_seq);//조회수 증가
+			//조회수 코드 종료			
+			
+		}
+		//-------여기까지 쿠키
+		
 		return "board/boardDetail";
 	}
 	

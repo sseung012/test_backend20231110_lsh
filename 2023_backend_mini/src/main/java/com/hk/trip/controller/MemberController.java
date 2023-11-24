@@ -21,6 +21,7 @@ import com.hk.trip.dtos.BoardDto;
 import com.hk.trip.dtos.MemberDto;
 import com.hk.trip.service.MemberService;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -34,6 +35,20 @@ public class MemberController {
 
    @Autowired
    private MemberService memberService;
+   
+   //쿠키
+   public Cookie getCookie(String cookieName, HttpServletRequest request) {
+		Cookie[] cookies=request.getCookies();
+		Cookie cookie=null;
+		if(cookies!=null) {
+			for (int i = 0; i < cookies.length; i++) {
+				if(cookies[i].getName().equals(cookieName)) {
+					cookie=cookies[i];
+				}
+			}
+		}
+		return cookie;
+	}
    
    @GetMapping(value = "/addUser")
    public String addUserForm(Model model) {
@@ -117,6 +132,13 @@ public class MemberController {
       System.out.println("내 정보 보기");
       HttpSession session = request.getSession();
       MemberDto mdto=(MemberDto)session.getAttribute("mdto");
+      
+      // 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리다이렉트
+      if (mdto == null) {
+          // 로그인 페이지 경로를 실제 애플리케이션에서 사용하는 경로로 수정하세요.
+          return "redirect:/user/login";
+      }
+      
       String id=mdto.getId();
       //model.addAttribute("addUserCommand", new AddUserCommand());
       MemberDto dto=memberService.Userinfo(id);
