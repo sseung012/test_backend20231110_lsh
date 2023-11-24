@@ -1,6 +1,7 @@
 package com.hk.trip.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,7 +11,9 @@ import com.hk.trip.dtos.BoardDto;
 public interface BoardMapper {
 
 	//글목록
-	public List<BoardDto> getAllList();
+	public List<BoardDto> getAllList(Map<String, String> map);
+	//1-2. 페이지수 구하기
+	public int getPCount();
 	//글상세조회
 	public BoardDto getBoard(int board_seq);
 	//글추가

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartRequest;
 
 import com.hk.trip.command.DelBoardCommand;
@@ -24,39 +25,52 @@ import com.hk.trip.command.ReplyBoardCommand;
 import com.hk.trip.command.UpdateBoardCommand;
 import com.hk.trip.dtos.BoardDto;
 import com.hk.trip.service.BoardService;
+import com.hk.trip.utils.Paging;
 import com.hk.trip.utils.Util;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping(value = "/board")
+//@SessionAttributes("pnum") // 세션에 "pnum" 속성을 저장
 public class BoardController {
-	
-	@Autowired
-	private BoardService boardService;
-	
-	//답글 들여쓰기
-//	@Autowired
-//	private Util util; // Util 클래스 주입
-	
-	@GetMapping(value = "/boardList")
-	public String boardList(Model model) {
-		System.out.println("글목록 보기");
-		
-		List<BoardDto> list=boardService.getAllList();
-		model.addAttribute("list", list);
-		model.addAttribute("delBoardCommand", new DelBoardCommand());
-		
-		//답글들여쓰기 부분
-		// Util 클래스를 사용하여 arrowNbsp 값 설정
-//		String depth = "yourDepthValue"; // 적절한 depth 값을 지정
-//		util.setArrowNbsp(depth);
-//		// 모델에 arrowNbsp 값을 추가
-//		model.addAttribute("arrowNbsp", util.getArrowNbsp());
-		
-		return "board/boardList";// forward 기능, "redirect:board/boardList"
-	}  
+
+    @Autowired
+    private BoardService boardService;
+
+    @GetMapping(value = "/boardList")
+    public String boardList(@RequestParam(name = "pnum", required = false) String pnum,
+                            Model model) {
+        System.out.println("글목록 보기");
+        System.out.println("페이지번호:"+pnum);
+        List<BoardDto> list = boardService.getAllList(pnum);
+        System.out.println("list:"+list.size());
+        model.addAttribute("list", list);
+        model.addAttribute("delBoardCommand", new DelBoardCommand());
+
+        int pcount = boardService.getPCount();
+        model.addAttribute("pcount", pcount);
+
+        // ----페이지 번호 유지를 위한 코드-------------
+        // 페이지 번호를 전달하지 않으면 세션에 저장된 페이지 번호를 사용
+        if (pnum == null) {
+            pnum = (String) model.asMap().get("pnum"); // 현재 조회 중인 글 페이지 번호
+        } else {
+            // 새로 페이지를 요청할 경우 세션에 저장
+            model.addAttribute("pnum", pnum);
+        }
+        // ---페이지 번호 유지를 위한 코드 종료------------
+
+        // ---페이지에 페이징 처리 기능 추가
+        // 필요한 값: 페이지수, 페이지번호, 페이지범위(페이지수)
+        Map<String, Integer> map = Paging.pagingValue(pcount, pnum, 10);
+        model.addAttribute("pMap", map);
+
+        return "board/boardList"; // "WEB-INF/views/" + boardList + ".jsp
+    }
+			
 
 	@GetMapping(value = "/boardInsert")
 	public String boardInsertForm(Model model) {
@@ -69,6 +83,8 @@ public class BoardController {
 	       // 여기에 필요한 로직 추가
 	       return "/admin_main";
 	   }
+	
+
 	
 	//글 추가하기
 	@PostMapping(value = "/boardInsert")
@@ -138,10 +154,10 @@ public class BoardController {
 	public String mulDel(@Validated DelBoardCommand delBoardCommand
 						 ,BindingResult result
 			             , Model model) {
+		
 		if(result.hasErrors()) {
 			System.out.println("최소하나 체크하기");
-			List<BoardDto> list=boardService.getAllList();
-			model.addAttribute("list", list);
+//	        model.addAttribute("list", list);
 			return "board/boardlist";
 		}
 		boardService.mulDel(delBoardCommand.getBoard_seq());   

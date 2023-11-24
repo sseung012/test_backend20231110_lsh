@@ -116,6 +116,7 @@ public class BoardDto {
 				+ regdate + ", refer=" + refer + ", step=" + step + ", depth=" + depth + ", readcount=" + readcount
 				+ ", delflag=" + delflag + "]";
 	}
+	
 }
 
 

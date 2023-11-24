@@ -85,7 +85,7 @@
 		</th:block>
 		<th:block th:unless="${#lists.isEmpty(list)}">
 			<tr th:each="dto:${list}">
-				<td><input type="checkbox" name="seq" th:field="*{board_seq}"
+				<td><input type="checkbox" name="board_seq" 
 										   th:value="${dto.board_seq}"/></td>
 				<td th:text="${dto.board_seq}"></td>
 				<td th:text="${dto.id}"></td>
@@ -113,6 +113,30 @@
 					      th:errors="*{board_seq}"></span>
 				</td>
 			</tr>    
+	 		<tr>
+				 <td colspan="10" style="text-align:center;">
+					 <!-- 페이징 처리부분 시작 -->
+						 <ul class="pagination">
+						    <li>
+						        <a th:href="@{/board/boardList(pnum=${pMap.prePageNum})}" aria-label="Previous">
+						            <span aria-hidden="true">&laquo;</span>
+						        </a>
+						    </li>
+						    <th:block th:each="i: ${#numbers.sequence(pMap.startPage, pMap.endPage)}">
+						        <li th:class="${pnum} == ${i} ? 'active' : ''">
+<!--								<li>-->
+						            <a th:href="@{/board/boardList(pnum=${i})}" th:text="${i}"></a>
+						        </li>
+						    </th:block>
+						    <li>
+						        <a th:href="@{/board/boardList(pnum=${pMap.nextPageNum})}" aria-label="Next">
+						            <span aria-hidden="true">&raquo;</span>
+						        </a>
+						    </li>
+						</ul>
+	            <!-- 페이징 처리부분 종료 -->
+		         </td> 
+         	</tr>
 		</th:block>
 	</table>
 </form>
