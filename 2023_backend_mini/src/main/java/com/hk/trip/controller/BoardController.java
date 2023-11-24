@@ -44,28 +44,28 @@ public class BoardController {
 //	private Util util; // Util 클래스 주입
 	
 	//getCookie 기능 구현
-//	public Cookie getCookie(String cookieName, HttpServletRequest request) {
-//		Cookie[] cookies=request.getCookies();
-//		Cookie cookie=null;
-//		if(cookies!=null) {
-//			for (int i = 0; i < cookies.length; i++) {
-//				if(cookies[i].getName().equals(cookieName)) {
-//					cookie=cookies[i];
-//				}
-//			}
-//		}
-//		return cookie;
-//	}
+	public Cookie getCookie(String cookieName, HttpServletRequest request) {
+		Cookie[] cookies=request.getCookies();
+		Cookie cookie=null;
+		if(cookies!=null) {
+			for (int i = 0; i < cookies.length; i++) {
+				if(cookies[i].getName().equals(cookieName)) {
+					cookie=cookies[i];
+				}
+			}
+		}
+		return cookie;
+	}
 	
 	@GetMapping(value = "/boardList")
 	public String boardList(Model model,HttpServletRequest request,
 			HttpServletResponse response) {
-//		//글목록으로 이동하면 쿠키 rseq값을 삭제하자
-//		Cookie cookie=getCookie("rseq", request);
-//		if(cookie!=null) {
-//			cookie.setMaxAge(0); //유효기간 0 --> 삭제됨
-//			response.addCookie(cookie); //클라이언트로 변경사항을 전달
-//		} //쿠키 삭제 코드 종료-------------
+		//글목록으로 이동하면 쿠키 rseq값을 삭제하자
+		Cookie cookie=getCookie("rseq", request);
+		if(cookie!=null) {
+			cookie.setMaxAge(0); //유효기간 0 --> 삭제됨
+			response.addCookie(cookie); //클라이언트로 변경사항을 전달
+		} //쿠키 삭제 코드 종료-------------
 //		
 //		//--------페이지번호 유지를 위한 코드
 //		//페이지번호를 전달하지 않으면 세션에 저장된 페이지번호를 사용
@@ -140,6 +140,29 @@ public class BoardController {
 		model.addAttribute("dto", dto);
 		System.out.println(dto);
 		
+		
+		//--------getCookie메서드 구현해서 활용하기
+		Cookie cookieObj=getCookie("rseq", request);
+		
+		String s=null;
+		if(cookieObj!=null) {
+			s = cookieObj.getValue();				
+		}
+		
+		//"rseq"라는 이름의 값이 있는지 확인(쿠키값이 없는 경우)
+		if(s==null || !s.equals(String.valueOf(board_seq))) {
+			//쿠키객체 생성하기
+			//				cookie에 값을 저장할 때 타입은 String이다.
+			Cookie cookie=new Cookie("rseq", String.valueOf(board_seq));
+			cookie.setMaxAge(60*10); //유효기간 설정
+			response.addCookie(cookie); //클라이언트로 cookie객체 전달
+			
+			//---조회수 올리기 코드
+			boardService.readCount(board_seq);//조회수 증가
+			//조회수 코드 종료			
+			
+		}
+		//-------여기까지 쿠키
 		
 		return "board/boardDetail";
 	}

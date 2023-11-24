@@ -27,6 +27,16 @@
 	#replyForm{
 		display:none;
 	}
+	
+	#container {
+        overflow-y: auto; /* 세로 스크롤을 허용하도록 설정 */
+        max-height: 80vh; /* 화면 높이의 80%까지만 허용하도록 설정 */
+        width: 1200px;
+    }
+    
+    #table{
+    	margin-right: 20px;
+    }
 </style>
 </head>
 <body>
@@ -83,8 +93,8 @@
 		<input type="hidden" name="board_seq" th:value="${dto.board_seq}" /> 
 		<table class="table table-striped">
 		<tr>
-			<th>작성자</th>
-			<td><input class="form-control" type="text" name="id" pattern="^[a-zA-Z]+$" required="required"/></td>
+			<th>작성자[ID]</th>
+			<td th:text="${dto.id}"></td>
 		</tr>
 		<tr>
 			<th>제목</th>

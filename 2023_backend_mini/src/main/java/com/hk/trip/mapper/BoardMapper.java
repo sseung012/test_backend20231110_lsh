@@ -22,7 +22,7 @@ public interface BoardMapper {
 	//글 삭제
 	public boolean mulDel(String[] seqs);
 	//조회수
-	public void readCount(int board_seq);
+	public boolean readCount(int board_seq);
 	
 	//답글달기
 	public boolean replyUpdate(BoardDto dto);

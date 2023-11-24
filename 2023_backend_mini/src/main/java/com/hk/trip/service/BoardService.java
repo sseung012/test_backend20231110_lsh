@@ -113,9 +113,12 @@ public class BoardService {
 		return count>0?true:false;
 	}
 
-	public void readCount(int board_seq) {
-		// TODO Auto-generated method stub
+	//조회수
+	public boolean readCount(int board_seq) {
+		int count=0;
+		boardMapper.readCount(board_seq);
 		
+		return count>0?true:false;
 	}
 	
 	
