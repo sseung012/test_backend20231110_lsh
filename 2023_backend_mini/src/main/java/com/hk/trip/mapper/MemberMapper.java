@@ -35,7 +35,7 @@ public interface MemberMapper {
 	public List<MemberDto> getUserList();
 	
 	//회원정보 수정(등급)
-	public void updateUserRole(String id, String role);
+	public boolean updateUserRole(MemberDto dto);
 	
 	public MemberDto getMemberById(String id);
 

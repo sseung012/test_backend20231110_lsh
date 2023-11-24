@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import com.hk.trip.command.AddUserCommand;
 import com.hk.trip.command.DelBoardCommand;
 import com.hk.trip.command.LoginCommand;
 import com.hk.trip.command.UpdateBoardCommand;
+import com.hk.trip.command.UpdateUserRoleCommand;
 import com.hk.trip.command.UserInfoCommand;
 import com.hk.trip.dtos.BoardDto;
 import com.hk.trip.dtos.MemberDto;
@@ -154,6 +156,7 @@ public class MemberController {
       return "redirect:/";
    }
    
+   //마이페이지에서 정보수정
    @PostMapping(value="/updateUser")
    public String updateUser(@Validated UserInfoCommand userInfoCommand
                      , BindingResult result
@@ -174,39 +177,53 @@ public class MemberController {
       
    }
    
-   @PostMapping(value="/updateUserRole")
-   public String updateUser(@Validated UserInfoCommand userInfoCommand
-                           , MemberDto mdto
-                           , BindingResult result
-                           , Model model) {
-       if(result.hasErrors()) {
-           // 코드 추가 --------------------------------------------
-           mdto = memberService.Userinfo(userInfoCommand.getId());
-           model.addAttribute("mdto", mdto);
-           // -------------------------------------------------------
-           return "member/userinfo";
+   //관리자가 등급수정
+   @PostMapping(value = "/updateUserRole")
+   public String updateUserRole(@Validated UpdateUserRoleCommand updateUserRoleCommand,
+                                BindingResult result) {
+       if (result.hasErrors()) {
+           // Handle validation errors
+           return "user/userAllList";
        }
 
-       memberService.updateUser(userInfoCommand);
+       // Call the service method with the command object
+       boolean updateResult = memberService.updateUserRole(updateUserRoleCommand);
 
-       // 수정 후에 userAllList.html로 리다이렉트
-       return "redirect:/user/userAllList";
+       if (updateResult) {
+           // Redirect to userAllList.html if the role is successfully updated
+           return "redirect:/user/userAllList";
+       } else {
+           // Redirect to an error page or handle the error appropriately
+           return "error";
+       }
    }
 
 //	public List<MemberDto> getAllUserList();
+//	@GetMapping(value="/userAllList")
+//	public String getAllUserList(Model model,HttpServletRequest request) {
+//		System.out.println("전체회원목록");
+//		
+//		List<MemberDto> list=memberService.getAllList();
+//		model.addAttribute("list", list);
+//		
+//		return "member/userAllList";
+//	}
+   //위에꺼를 아래껄로 수정
 	@GetMapping(value="/userAllList")
-	public String getAllUserList(Model model,HttpServletRequest request) {
-		System.out.println("전체회원목록");
-		
-		List<MemberDto> list=memberService.getAllList();
-		model.addAttribute("list", list);
-		
-		return "member/userAllList";
+	public String getAllUserList(Model model, HttpServletRequest request) {
+	    System.out.println("전체회원목록");
+	    
+	    List<MemberDto> list = memberService.getAllList();
+	    model.addAttribute("list", list);
+	    
+	    return "/member/userAllList";  // 혹은 "user/userAllList"
 	}
 	
 
+	//회원등급수정페이지로 이동
 	@GetMapping("/userRoleForm")
-	public String updateUserRole(Model model, @RequestParam String id) {
+	public String updateUser(@Validated UpdateUserRoleCommand updateUserRoleCommand,
+						Model model, @RequestParam String id) {
 	    MemberDto memberDto = memberService.getMemberById(id);
 
 	    // 조회된 회원 정보를 모델에 추가하여 뷰로 전달

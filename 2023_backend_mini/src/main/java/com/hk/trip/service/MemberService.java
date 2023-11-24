@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.hk.trip.command.AddUserCommand;
 import com.hk.trip.command.LoginCommand;
+import com.hk.trip.command.UpdateUserRoleCommand;
 import com.hk.trip.command.UserInfoCommand;
 import com.hk.trip.dtos.BoardDto;
 import com.hk.trip.dtos.MemberDto;
@@ -104,7 +105,6 @@ public class MemberService {
 		mdto.setAddress(userInfoCommand.getAddress());
 		mdto.setEmail(userInfoCommand.getEmail());
 		
-//		return "redirect:/user/userinfo?id=" + userInfoCommand.getId();
 		
 		return memberMapper.updateUser(mdto);
 	}
@@ -119,11 +119,22 @@ public class MemberService {
 	}
 
 	// 회원등급 수정
-	public void updateUserRole(String id, String role) {
-	    // 실제로는 데이터베이스에서 회원의 등급을 업데이트하거나 다른 작업을 수행할 수 있습니다.
-	    memberMapper.updateUserRole(id, role);
-	}
+	public boolean updateUserRole(UpdateUserRoleCommand updateUserRoleCommand) {
+	    MemberDto dto = new MemberDto();
+	    dto.setId(updateUserRoleCommand.getId());
+	    dto.setRole(updateUserRoleCommand.getRole());
 
+	    // Call memberMapper.updateUserRole to update the role in the database or perform other operations.
+	    boolean result = memberMapper.updateUserRole(dto);
+
+	    if (result) {
+	        System.out.println("Role successfully updated. ID: " + dto.getId() + ", New Role: " + dto.getRole());
+	    } else {
+	        System.out.println("Failed to update role. ID: " + dto.getId());
+	    }
+
+	    return result;
+	}
 }
 
 

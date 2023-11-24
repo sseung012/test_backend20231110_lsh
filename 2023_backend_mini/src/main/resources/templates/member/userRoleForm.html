@@ -24,6 +24,7 @@
 	<br/>
 	<div id="userRoleForm">
 		<form action="/user/updateUserRole" method="post">
+		<input type="hidden" name="id" th:value="${dto.id}" />
 		<table class="table">
 			<tr>
 				<th>아이디</th>
