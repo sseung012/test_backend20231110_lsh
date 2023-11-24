@@ -104,6 +104,8 @@ public class MemberService {
 		mdto.setAddress(userInfoCommand.getAddress());
 		mdto.setEmail(userInfoCommand.getEmail());
 		
+//		return "redirect:/user/userinfo?id=" + userInfoCommand.getId();
+		
 		return memberMapper.updateUser(mdto);
 	}
 

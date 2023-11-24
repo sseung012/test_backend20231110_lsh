@@ -154,25 +154,25 @@ public class MemberController {
       return "redirect:/";
    }
    
-//   @PostMapping(value="/updateUser")
-//   public String updateUser(@Validated UserInfoCommand userInfoCommand
-//                     , BindingResult result
-//                     ,Model model) {
-//      if(result.hasErrors()) {
-//         System.out.println("수정내용을 모두 입력하세요");
-//         //코드 추가--------------------------------------------
-//         MemberDto mdto=memberService.Userinfo(userInfoCommand.getId());
-//         model.addAttribute("mdto", mdto);
-//         //--------------------------------------------------
-//         return "member/userinfo";
-//      }
-//   
-//      memberService.updateUser(userInfoCommand);
-//   
-//      return "redirect:/member/userinfo?id="
-//            + userInfoCommand.getId();
-//      
-//   }
+   @PostMapping(value="/updateUser")
+   public String updateUser(@Validated UserInfoCommand userInfoCommand
+                     , BindingResult result
+                     ,Model model) {
+      if(result.hasErrors()) {
+         System.out.println("수정내용을 모두 입력하세요");
+         //코드 추가--------------------------------------------
+         MemberDto mdto=memberService.Userinfo(userInfoCommand.getId());
+         model.addAttribute("mdto", mdto);
+         //--------------------------------------------------
+         return "user/userinfo";
+      }
+   
+      memberService.updateUser(userInfoCommand);
+   
+      return "redirect:/user/userinfo?id="
+            + userInfoCommand.getId();
+      
+   }
    
    @PostMapping(value="/updateUserRole")
    public String updateUser(@Validated UserInfoCommand userInfoCommand
