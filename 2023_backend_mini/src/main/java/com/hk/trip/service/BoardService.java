@@ -1,8 +1,10 @@
 package com.hk.trip.service;
 
 import java.io.IOException;
-import java.util.Iterator;
+//import java.util.HashMap;
+//import java.util.Iterator;
 import java.util.List;
+//import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,11 @@ public class BoardService {
 	public List<BoardDto> getAllList(){
 		return boardMapper.getAllList();
 	}
+	
+//	//페이지수 구하기
+//	public int getPCount() {
+//		return boardMapper.getPCount();
+//	}
 
 	//글 추가, 파일업로드및 파일정보 추가
 	@Transactional
@@ -104,6 +111,11 @@ public class BoardService {
 		boardMapper.replyInsert(boardDto);//새글 추가
 		
 		return count>0?true:false;
+	}
+
+	public void readCount(int board_seq) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

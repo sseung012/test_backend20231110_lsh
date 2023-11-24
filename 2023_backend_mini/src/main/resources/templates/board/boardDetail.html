@@ -62,14 +62,14 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-					<button class="btn btn-secondary" type="button" id="replyBtn">답글</button>
-<!-- 				<th:block th:if="${session.mdto!=null&&session.mdto.id==dto.id}"> -->
+				<button class="btn btn-secondary" type="button" id="replyBtn">답글</button>
+				<button type="button" class="btn"
+				 th:onclick="|location.href='@{/board/boardList}'|">목록</button>
+				<th:block th:if="${session.mdto!=null&&session.mdto.id==dto.id}">
 					<button type="submit" class="btn">수정</button>
 					<button type="button" class="btn"
 					 th:onclick="|location.href='@{/board/mulDel(board_seq=${dto.board_seq})}'|">삭제</button>
-<!-- 				</th:block> -->
-				<button type="button" class="btn"
-				 th:onclick="|location.href='@{/board/boardList}'|">목록</button>
+				</th:block>
 			</td>
 		</tr>
 	</table>
