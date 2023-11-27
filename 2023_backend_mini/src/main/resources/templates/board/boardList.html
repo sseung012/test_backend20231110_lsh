@@ -128,7 +128,6 @@
 						    </li>
 						    <th:block th:each="i: ${#numbers.sequence(pMap.startPage, pMap.endPage)}">
 						        <li th:class="${pnum} == ${i} ? 'active' : ''">
-<!--								<li>-->
 						            <a th:href="@{/board/boardList(pnum=${i})}" th:text="${i}"></a>
 						        </li>
 						    </th:block>

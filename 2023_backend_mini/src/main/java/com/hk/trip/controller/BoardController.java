@@ -76,6 +76,7 @@ public class BoardController {
         int pcount = boardService.getPCount();
         model.addAttribute("pcount", pcount);
 
+        
         // ----페이지 번호 유지를 위한 코드-------------
         // 페이지 번호를 전달하지 않으면 세션에 저장된 페이지 번호를 사용
         
@@ -86,6 +87,7 @@ public class BoardController {
             pnum = (String) model.asMap().get("pnum"); // 현재 조회 중인 글 페이지 번호
         } else {
             // 새로 페이지를 요청할 경우 세션에 저장
+        	request.getSession().setAttribute("pnum", pnum);
             model.addAttribute("pnum", pnum);
         }
         // ---페이지 번호 유지를 위한 코드 종료------------
@@ -95,7 +97,9 @@ public class BoardController {
         Map<String, Integer> map = Paging.pagingValue(pcount, pnum, 10);
         model.addAttribute("pMap", map);
 
+        
         return "board/boardList"; // "WEB-INF/views/" + boardList + ".jsp
+        
     }
 			
 
@@ -121,7 +125,9 @@ public class BoardController {
 			                ,MultipartRequest multipartRequest //multipart data를 처리할때 사용
 							,HttpServletRequest request
 			                ,Model model) throws IllegalStateException, IOException {
-		if(result.hasErrors()) {
+		
+	    
+	    if(result.hasErrors()) {
 			System.out.println("글을 모두 입력하세요");
 			return "board/boardInsertForm";
 		}
