@@ -128,7 +128,7 @@ public class BoardController {
 		boardService.insertBoard(insertBoardCommand,multipartRequest
 				                ,request);
 		
-		return "redirect:/board/boardList";
+		return "redirect:/board/boardList?pnum="+1;
 	}
 	
 	//상세보기
