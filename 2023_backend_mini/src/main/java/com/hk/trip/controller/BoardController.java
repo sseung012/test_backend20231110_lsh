@@ -76,6 +76,7 @@ public class BoardController {
         int pcount = boardService.getPCount();
         model.addAttribute("pcount", pcount);
 
+        
         // ----페이지 번호 유지를 위한 코드-------------
         // 페이지 번호를 전달하지 않으면 세션에 저장된 페이지 번호를 사용
         if (pnum == null) {
