@@ -92,6 +92,7 @@ public class BoardController {
         model.addAttribute("pMap", map);
 
         return "board/boardList"; // "WEB-INF/views/" + boardList + ".jsp
+        
     }
 			
 
