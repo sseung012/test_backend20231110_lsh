@@ -55,7 +55,10 @@
 //    });
 </script>
 <style type="text/css">
-
+	
+	.btns {
+ 		text-align: right;
+	}
 </style>
 </head>
 <body>
@@ -106,7 +109,7 @@
 				<td th:text="${dto.depth}"></td>
 			</tr>
 			<tr>
-				<td colspan="10">
+				<td colspan="10" class="btns">
 					<button type="button" class="btn" th:onclick="|location.href='@{/board/boardInsert}'|">글추가</button>
 					<button type="submit" class="btn">삭제</button>
 					<span th:if="${#fields.hasErrors('board_seq')}"
