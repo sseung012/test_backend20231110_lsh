@@ -83,6 +83,7 @@ public class BoardController {
             pnum = (String) model.asMap().get("pnum"); // 현재 조회 중인 글 페이지 번호
         } else {
             // 새로 페이지를 요청할 경우 세션에 저장
+        	request.getSession().setAttribute("pnum", pnum);
             model.addAttribute("pnum", pnum);
         }
         // ---페이지 번호 유지를 위한 코드 종료------------
