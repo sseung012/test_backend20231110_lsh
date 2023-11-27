@@ -38,6 +38,9 @@
     	margin-right: 20px;
     }
 
+	.btns {
+ 		text-align: right;
+	}
 </style>
 </head>
 <body>
@@ -72,7 +75,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2">
+			<td colspan="2" class="btns">
 				<button class="btn" type="button" id="replyBtn">답글</button>
 				<button type="button" class="btn"
 				 th:onclick="|location.href='@{/board/boardList(pnum=1)}'|">목록</button>
@@ -106,7 +109,7 @@
 			<td><textarea class="form-control" name="content" required="required" rows="10" cols="60"></textarea></td>
 		</tr>
 		<tr>
-			<td colspan="2">
+			<td colspan="2" class="btns">
 				<button class="btn btn-secondary" type="submit" >답글등록</button>
 				<button class="btn btn-secondary" type="button" th:onclick="|location.href='@{/board/boardList}'|">목록</button>
 			</td>
