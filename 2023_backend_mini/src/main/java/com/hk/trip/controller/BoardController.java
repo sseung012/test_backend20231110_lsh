@@ -78,6 +78,10 @@ public class BoardController {
 
         // ----페이지 번호 유지를 위한 코드-------------
         // 페이지 번호를 전달하지 않으면 세션에 저장된 페이지 번호를 사용
+        
+        //페이지번호 받기
+        pnum=request.getParameter("pnum");
+        
         if (pnum == null) {
             pnum = (String) model.asMap().get("pnum"); // 현재 조회 중인 글 페이지 번호
         } else {
@@ -131,6 +135,7 @@ public class BoardController {
 	//상세보기
 	@GetMapping(value = "/boardDetail")
 	public String boardDetail(int board_seq, Model model
+					, @RequestParam(name = "pnum") String pnum
 					, HttpServletRequest request
 					, HttpServletResponse response) {
 		//로그인 되어있지 않은경우
@@ -151,6 +156,7 @@ public class BoardController {
 		model.addAttribute("dto", dto);
 		System.out.println(dto);
 		
+
 		
 		//--------getCookie메서드 구현해서 활용하기
 		Cookie cookieObj=getCookie("rseq", request);
@@ -174,7 +180,7 @@ public class BoardController {
 			
 		}
 		//-------여기까지 쿠키
-		
+
 		return "board/boardDetail";
 	}
 	
