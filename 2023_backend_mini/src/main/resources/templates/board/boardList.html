@@ -78,8 +78,9 @@
 <h1>게시판 목록</h1>
 <form action="/board/mulDel" method="post" onsubmit="return isAllCheck()"th:object="${delBoardCommand}">
 	<table class="table">
-		<tr>
-			<th><input type="checkbox" name="all" 
+		<tr>			
+			<th th:if="${session.mdto != null and session.mdto.role == 'ADMIN'}">
+				<input type="checkbox" name="all" 
 										onclick="allSel(this.checked)" /></th>
 			<th>번호</th>							
 			<th>작성자</th>
@@ -98,33 +99,33 @@
 		</th:block>
 		<th:block th:unless="${#lists.isEmpty(list)}">
 			<tr th:each="dto:${list}">
-				<td><input type="checkbox" name="board_seq" 
-										   th:value="${dto.board_seq}"/></td>
-				<td th:text="${dto.board_seq}"></td>
-				<td th:text="${dto.id}"></td>
-				<td>
-				    <span th:if="${dto.delflag == 'Y'}">---삭제된글입니다---</span>
-				    <span th:unless="${dto.delflag =='Y'}">
+			    <!-- 체크박스와 삭제 버튼은 로그인이 되어 있고, 사용자 역할이 ADMIN인 경우에만 보이도록 설정 -->
+			    <td th:if="${session.mdto != null and session.mdto.role == 'ADMIN'}">
+			        <input type="checkbox" name="board_seq" th:value="${dto.board_seq}" />
+			    </td>			
+			    <td th:text="${dto.board_seq}"></td>
+			    <td th:text="${dto.id}"></td>
+			    <td>
+			        <span th:if="${dto.delflag == 'Y'}">---삭제된글입니다---</span>
+			        <span th:unless="${dto.delflag =='Y'}">
 			            [(${@util.setArrowNbsp(dto.depth)})]
-<!-- 			            <a th:href="@{/board/boardDetail(board_seq=${dto.board_seq})}" th:text="${dto.title}"> -->
-			            <a th:href="@{/board/boardDetail(board_seq=${dto.board_seq}, pnum=${pnum})}" th:text="${dto.title}">
-			    		</a>
-				    </span>
-
-				</td>
-				<td th:text="${dto.readcount}"></td>
-				<td th:text="${#dates.format(dto.regdate,'yyyy-MM-dd')}"></td>
-				<td th:text="${dto.delflag}"></td>
-				<td th:text="${dto.refer}"></td>
-				<td th:text="${dto.step}"></td>
-				<td th:text="${dto.depth}"></td>
+			            <a th:href="@{/board/boardDetail(board_seq=${dto.board_seq}, pnum=${pnum})}" th:text="${dto.title}"></a>
+			        </span>
+			    </td>
+			    <td th:text="${dto.readcount}"></td>
+			    <td th:text="${#dates.format(dto.regdate,'yyyy-MM-dd')}"></td>
+			    <td th:text="${dto.delflag}"></td>
+			    <td th:text="${dto.refer}"></td>
+			    <td th:text="${dto.step}"></td>
+			    <td th:text="${dto.depth}"></td>
 			</tr>
 			<tr>
 				<td colspan="10" class="btns">
 					<button type="button" class="btn" th:onclick="|location.href='@{/board/boardInsert}'|">글추가</button>
-					<button type="submit" class="btn">삭제</button>
+					<button type="submit" class="btn" th:if="${session.mdto != null and session.mdto.role == 'ADMIN'}">삭제</button>
 					<span th:if="${#fields.hasErrors('board_seq')}"
 					      th:errors="*{board_seq}"></span>
+
 				</td>
 			</tr>    
 	 		<tr>
