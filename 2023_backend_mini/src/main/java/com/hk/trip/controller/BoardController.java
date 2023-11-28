@@ -213,7 +213,10 @@ public class BoardController {
 //				                ,fdto.getStored_filename()
 //				                ,request,response);
 //	}
-//	
+
+	
+	
+	//삭제하기
 	@RequestMapping(value="mulDel",method = {RequestMethod.POST,RequestMethod.GET})
 	public String mulDel(@Validated DelBoardCommand delBoardCommand
 						 ,BindingResult result
@@ -226,7 +229,7 @@ public class BoardController {
 		}
 		boardService.mulDel(delBoardCommand.getBoard_seq());   
 		System.out.println("글삭제함");
-		return "redirect:/board/boardList";
+		return "redirect:/board/boardList?pnum="+1;
 	}
 	
 	//답글추가
