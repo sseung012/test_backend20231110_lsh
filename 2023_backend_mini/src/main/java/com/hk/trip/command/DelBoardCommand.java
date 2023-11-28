@@ -8,6 +8,22 @@ public class DelBoardCommand {
 
 	@NotEmpty(message = "최소 하나 이상 체크해야 합니다.")
 	private String[] board_seq;
+	
+	public DelBoardCommand(@NotEmpty(message = "최소 하나 이상 체크해야 합니다.") String[] board_seq, String id) {
+		super();
+		this.board_seq = board_seq;
+		this.id = id;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	private String id;
 
 	public DelBoardCommand() {
 		super();
@@ -30,7 +46,7 @@ public class DelBoardCommand {
 
 	@Override
 	public String toString() {
-		return "DelBoardCommand [board_seq=" + Arrays.toString(board_seq) + "]";
+		return "DelBoardCommand [board_seq=" + Arrays.toString(board_seq) + ", id=" + id + "]";
 	}
 	
 	

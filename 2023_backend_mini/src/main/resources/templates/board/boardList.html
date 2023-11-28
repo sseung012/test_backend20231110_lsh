@@ -3,6 +3,7 @@
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	  layout:decorate="~{layouts/layout}">
 <head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -33,7 +34,7 @@
 	    }
 	    return true;
 	}
-
+	
 </script>
 <style type="text/css">
 	
@@ -76,7 +77,6 @@
 <div id="container">
 <h1>게시판 목록</h1>
 <form action="/board/mulDel" method="post" onsubmit="return isAllCheck()" th:object="${delBoardCommand}">
-<!-- 	<input type="hidden" name="id" th:value="${dto.id}" /> -->
 	<table class="table">
 		<tr>
 			<th><input type="checkbox" name="all" 

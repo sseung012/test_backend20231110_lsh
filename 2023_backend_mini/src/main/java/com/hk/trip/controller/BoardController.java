@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -78,6 +79,13 @@ public class BoardController {
         int pcount = boardService.getPCount();
         model.addAttribute("pcount", pcount);
 
+        // 현재 로그인한 사용자의 ID를 모델에 추가
+        HttpSession session = request.getSession();
+        MemberDto mdto = (MemberDto) session.getAttribute("mdto");
+        if (mdto != null) {
+            model.addAttribute("id", mdto.getId());
+        }
+        
         
         // ----페이지 번호 유지를 위한 코드-------------
         // 페이지 번호를 전달하지 않으면 세션에 저장된 페이지 번호를 사용
@@ -223,16 +231,6 @@ public class BoardController {
 				+ updateBoardCommand.getBoard_seq();
 	}
 	
-//	@GetMapping(value = "/download")
-//	public void download(int file_seq, HttpServletRequest request
-//			                         , HttpServletResponse response) throws UnsupportedEncodingException {
-//		
-//		FileBoardDto fdto=fileService.getFileInfo(file_seq);//파일정보가져오기
-//		
-//		fileService.fileDownload(fdto.getOrigin_filename()
-//				                ,fdto.getStored_filename()
-//				                ,request,response);
-//	}
 
 	
 	
@@ -251,21 +249,7 @@ public class BoardController {
 	        return "redirect:/user/login";
 	    }
 		
-	    // 선택한 게시물의 ID를 가져온다.
-	    List<Long> selectedPostIds = Arrays.stream(delBoardCommand.getBoard_seq())
-	            .map(Long::parseLong)
-	            .collect(Collectors.toList());
 
-	    // 선택한 게시물의 작성자 ID를 가져와서 로그인한 사용자의 ID와 비교한다.
-	    List<BoardDto> selectedPosts = boardService.getPostsByIds(selectedPostIds);
-
-	    for (BoardDto post : selectedPosts) {
-	        if (!mdto.getId().equals(post.getId())) {
-	            // 작성자 ID와 로그인한 사용자의 ID가 일치하지 않으면 에러 메시지를 표시하고 삭제를 중단한다.
-	            model.addAttribute("errorMessage", "자신의 글만 삭제할 수 있습니다.");
-	            return "board/boardlist";
-	        }
-	    }
 	    
 		if(result.hasErrors()) {
 			System.out.println("최소하나 체크하기");

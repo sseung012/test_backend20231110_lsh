@@ -32,8 +32,7 @@ public interface BoardMapper {
 	
 	
 	//자신의 글만 삭제
-	public List<BoardDto> getPostsByIds(List<Long> selectedPostIds);
+//	public List<BoardDto> getPostsByIds(List<Long> selectedPostIds);
 	
-	//자신의 글만 삭제
-//	public List<BoardDto> getPostsByIds(List<Long> postIds);
+	
 }
