@@ -40,6 +40,34 @@
 	.btns {
  		text-align: right;
 	}
+
+
+
+	.a {
+	   background: whitesmoke;
+	   color: black;
+	   border: none;
+	   position: relative;
+	   width: 40px; /* 수정: 너비를 50px로 고정 */
+	   height: 40px; /* 수정: 높이를 30px로 고정 */
+	   font-size: 13px;
+	   padding: 0 1em; /* 수정: 좌우 패딩을 1em로 수정 */
+	   cursor: pointer;
+	   transition: 400ms ease all;
+	   outline: none;
+	   content: '';
+	   height: 100%;
+	   display: inline-block;
+	   vertical-align: middle;
+	}
+
+	.pagination .active a {
+        background-color:slateblue;
+        color: white;
+    }
+
+
+
 </style>
 </head>
 <body>
@@ -103,21 +131,22 @@
 					 <!-- 페이징 처리부분 시작 -->
 						 <ul class="pagination">
 						    <li>
-						        <a th:href="@{/board/boardList(pnum=${pMap.prePageNum})}" aria-label="Previous">
+						        <a class="a" th:href="@{/board/boardList(pnum=${pMap.prePageNum})}" aria-label="Previous">
 						            <span aria-hidden="true">&laquo;</span>
 						        </a>
 						    </li>
 						    <th:block th:each="i: ${#numbers.sequence(pMap.startPage, pMap.endPage)}">
 						        <li th:class="${pnum} == ${i} ? 'active' : ''">
-						            <a th:href="@{/board/boardList(pnum=${i})}" th:text="${i}"></a>
+						            <a class="a" th:href="@{/board/boardList(pnum=${i})}" th:text="${i}"></a>
 						        </li>
 						    </th:block>
 						    <li>
-						        <a th:href="@{/board/boardList(pnum=${pMap.nextPageNum})}" aria-label="Next">
+						        <a class="a" th:href="@{/board/boardList(pnum=${pMap.nextPageNum})}" aria-label="Next">
 						            <span aria-hidden="true">&raquo;</span>
 						        </a>
 						    </li>
 						</ul>
+						
 	            <!-- 페이징 처리부분 종료 -->
 		         </td> 
          	</tr>
