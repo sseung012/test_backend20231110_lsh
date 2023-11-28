@@ -267,15 +267,8 @@ public class BoardController {
 	public String replyBoard(@Validated ReplyBoardCommand replyBoardCommand,BindingResult result
 										,HttpServletRequest request
 							            ,Model model) {
-//		boolean isS=BoardService.replyBoard(dto);
-//		
-//		if(isS) {
-//			return "redirect:boardList.do";
-//		}else{
-//			model.addAttribute("msg", "답글 추가 실패");
-//			return "error";
-//		}
-//			
+
+			
 		if(result.hasErrors()) {
 			System.out.println("글을 모두 입력하세요");
 			return "board/boardDetail";
