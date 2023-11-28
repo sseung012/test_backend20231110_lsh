@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .content{
-   margin: 50px 70px;
+   margin: 50px 130px;
 }
 
 .home{
@@ -12,14 +12,14 @@
 }
 
 .content1{
-   margin: 50px 70px;
+   margin: 50px 130px;
 }
 
 body {
    margin: 0;
    display: flex;
-    height: 100vh; /* 100% of the viewport height */
-     width: 100vw; /* 100% of the viewport width */
+   height: 100vh; /* 100% of the viewport height */
+   width: 100vw; /* 100% of the viewport width */
     
 }
 
