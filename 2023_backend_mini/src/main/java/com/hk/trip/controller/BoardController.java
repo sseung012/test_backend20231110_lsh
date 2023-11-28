@@ -252,20 +252,20 @@ public class BoardController {
 	    }
 		
 	    // 선택한 게시물의 ID를 가져온다.
-	    List<Long> selectedPostIds = Arrays.stream(delBoardCommand.getBoard_seq())
-	            .map(Long::parseLong)
-	            .collect(Collectors.toList());
-
-	    // 선택한 게시물의 작성자 ID를 가져와서 로그인한 사용자의 ID와 비교한다.
-	    List<BoardDto> selectedPosts = boardService.getPostsByIds(selectedPostIds);
-
-	    for (BoardDto post : selectedPosts) {
-	        if (!mdto.getId().equals(post.getId())) {
-	            // 작성자 ID와 로그인한 사용자의 ID가 일치하지 않으면 에러 메시지를 표시하고 삭제를 중단한다.
-	            model.addAttribute("errorMessage", "자신의 글만 삭제할 수 있습니다.");
-	            return "board/boardlist";
-	        }
-	    }
+//	    List<Long> selectedPostIds = Arrays.stream(delBoardCommand.getBoard_seq())
+//	            .map(Long::parseLong)
+//	            .collect(Collectors.toList());
+//
+//	    // 선택한 게시물의 작성자 ID를 가져와서 로그인한 사용자의 ID와 비교한다.
+//	    List<BoardDto> selectedPosts = boardService.getPostsByIds(selectedPostIds);
+//
+//	    for (BoardDto post : selectedPosts) {
+//	        if (!mdto.getId().equals(post.getId())) {
+//	            // 작성자 ID와 로그인한 사용자의 ID가 일치하지 않으면 에러 메시지를 표시하고 삭제를 중단한다.
+//	            model.addAttribute("errorMessage", "자신의 글만 삭제할 수 있습니다.");
+//	            return "board/boardlist";
+//	        }
+//	    }
 	    
 		if(result.hasErrors()) {
 			System.out.println("최소하나 체크하기");
