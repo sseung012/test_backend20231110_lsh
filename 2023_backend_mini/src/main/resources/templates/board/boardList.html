@@ -76,7 +76,7 @@
 <div layout:fragment="content">
 <div id="container">
 <h1>게시판 목록</h1>
-<form action="/board/mulDel" method="post" onsubmit="return isAllCheck()" th:object="${delBoardCommand}">
+<form action="/board/mulDel" method="post" onsubmit="return isAllCheck()"th:object="${delBoardCommand}">
 	<table class="table">
 		<tr>
 			<th><input type="checkbox" name="all" 
