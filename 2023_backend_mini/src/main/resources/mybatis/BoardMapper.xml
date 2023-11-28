@@ -87,7 +87,12 @@
 		</where>
 	</select>
 	
-	
+	<select id="getPostsByIds" resultType="BoardDto">
+        SELECT * FROM tripboard WHERE board_seq IN
+        <foreach collection="postIds" item="postId" open="(" separator="," close=")">
+            #{postId}
+        </foreach>
+    </select>
 
 	
 </mapper> 

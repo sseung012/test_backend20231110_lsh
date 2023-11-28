@@ -48,6 +48,7 @@
 <div id="container">
 <h1>게시판 목록</h1>
 <form action="/board/mulDel" method="post" onsubmit="return isAllCheck()" th:object="${delBoardCommand}">
+<!-- 	<input type="hidden" name="id" th:value="${dto.id}" /> -->
 	<table class="table">
 		<tr>
 			<th><input type="checkbox" name="all" 

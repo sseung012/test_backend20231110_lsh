@@ -116,6 +116,21 @@ public class BoardService {
 		
 		return count>0?true:false;
 	}
+	public List<BoardDto> getPostsByIds(List<Long> selectedPostIds) {
+		return boardMapper.getPostsByIds(selectedPostIds);
+	}	
+	
+	
+//	public List<BoardDto> getPostsByIds(List<Long> selectedPostIds) {
+//		return boardMapper.getPostsByIds(selectedPostIds);
+//	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

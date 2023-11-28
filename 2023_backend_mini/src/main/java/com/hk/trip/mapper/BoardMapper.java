@@ -29,4 +29,11 @@ public interface BoardMapper {
 	//답글달기
 	public boolean replyUpdate(BoardDto dto);
 	public int replyInsert(BoardDto dto);
+	
+	
+	//자신의 글만 삭제
+	public List<BoardDto> getPostsByIds(List<Long> selectedPostIds);
+	
+	//자신의 글만 삭제
+//	public List<BoardDto> getPostsByIds(List<Long> postIds);
 }
