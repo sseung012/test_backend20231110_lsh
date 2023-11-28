@@ -34,7 +34,6 @@
 	    return true;
 	}
 
-
 </script>
 <style type="text/css">
 	
@@ -78,7 +77,8 @@
 				    <span th:if="${dto.delflag == 'Y'}">---삭제된글입니다---</span>
 				    <span th:unless="${dto.delflag =='Y'}">
 			            [(${@util.setArrowNbsp(dto.depth)})]
-			            <a th:href="@{/board/boardDetail(board_seq=${dto.board_seq})}" th:text="${dto.title}">
+<!-- 			            <a th:href="@{/board/boardDetail(board_seq=${dto.board_seq})}" th:text="${dto.title}"> -->
+			            <a th:href="@{/board/boardDetail(board_seq=${dto.board_seq}, pnum=${pnum})}" th:text="${dto.title}">
 			    		</a>
 				    </span>
 

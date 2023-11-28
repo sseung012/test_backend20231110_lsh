@@ -79,6 +79,10 @@ public class BoardController {
         
         // ----페이지 번호 유지를 위한 코드-------------
         // 페이지 번호를 전달하지 않으면 세션에 저장된 페이지 번호를 사용
+        
+        //페이지번호 받기
+        pnum=request.getParameter("pnum");
+        
         if (pnum == null) {
             pnum = (String) model.asMap().get("pnum"); // 현재 조회 중인 글 페이지 번호
         } else {
@@ -93,6 +97,7 @@ public class BoardController {
         Map<String, Integer> map = Paging.pagingValue(pcount, pnum, 10);
         model.addAttribute("pMap", map);
 
+        
         return "board/boardList"; // "WEB-INF/views/" + boardList + ".jsp
         
     }
@@ -100,7 +105,17 @@ public class BoardController {
 
 
 	@GetMapping(value = "/boardInsert")
-	public String boardInsertForm(Model model) {
+	public String boardInsertForm(Model model
+									,HttpServletRequest request) {
+		//로그인 되어있지 않은경우
+		HttpSession session = request.getSession();
+	    MemberDto mdto = (MemberDto) session.getAttribute("mdto");
+
+	    // 사용자가 로그인되어 있지 않은 경우
+	    if (mdto == null) {
+	        // 로그인 페이지로 리다이렉트
+	        return "redirect:/user/login";
+	    }
 		model.addAttribute("insertBoardCommand", new InsertBoardCommand());
 		return "board/boardInsertForm";
 	}
@@ -120,7 +135,8 @@ public class BoardController {
 			                ,MultipartRequest multipartRequest //multipart data를 처리할때 사용
 							,HttpServletRequest request
 			                ,Model model) throws IllegalStateException, IOException {
-		if(result.hasErrors()) {
+		
+	    if(result.hasErrors()) {
 			System.out.println("글을 모두 입력하세요");
 			return "board/boardInsertForm";
 		}
@@ -134,6 +150,7 @@ public class BoardController {
 	//상세보기
 	@GetMapping(value = "/boardDetail")
 	public String boardDetail(int board_seq, Model model
+					, @RequestParam(name = "pnum") String pnum
 					, HttpServletRequest request
 					, HttpServletResponse response) {
 		//로그인 되어있지 않은경우
@@ -154,6 +171,7 @@ public class BoardController {
 		model.addAttribute("dto", dto);
 		System.out.println(dto);
 		
+
 		
 		//--------getCookie메서드 구현해서 활용하기
 		Cookie cookieObj=getCookie("rseq", request);
@@ -177,7 +195,7 @@ public class BoardController {
 			
 		}
 		//-------여기까지 쿠키
-		
+
 		return "board/boardDetail";
 	}
 	
@@ -220,13 +238,24 @@ public class BoardController {
 	@RequestMapping(value="mulDel",method = {RequestMethod.POST,RequestMethod.GET})
 	public String mulDel(@Validated DelBoardCommand delBoardCommand
 						 ,BindingResult result
+						 , HttpServletRequest request
 			             , Model model) {
+		//로그인 되어있지 않은경우
+		HttpSession session = request.getSession();
+	    MemberDto mdto = (MemberDto) session.getAttribute("mdto");
+
+	    // 사용자가 로그인되어 있지 않은 경우
+	    if (mdto == null) {
+	        // 로그인 페이지로 리다이렉트
+	        return "redirect:/user/login";
+	    }
 		
 		if(result.hasErrors()) {
 			System.out.println("최소하나 체크하기");
 //	        model.addAttribute("list", list);
 			return "board/boardlist";
 		}
+		
 		boardService.mulDel(delBoardCommand.getBoard_seq());   
 		System.out.println("글삭제함");
 		return "redirect:/board/boardList?pnum="+1;

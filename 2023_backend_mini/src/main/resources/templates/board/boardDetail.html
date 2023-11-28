@@ -21,6 +21,8 @@
 			document.getElementsByTagName("form")[1].reset(); //JS
 		});
 	});
+	
+	
 </script>
 <style type="text/css">
 	/*답글 폼 안보이게 처리*/
@@ -78,7 +80,7 @@
 			<td colspan="2" class="btns">
 				<button class="btn" type="button" id="replyBtn">답글</button>
 				<button type="button" class="btn"
-				 th:onclick="|location.href='@{/board/boardList(pnum=${session.pnum})}'|">목록</button>
+					 th:onclick="|location.href='@{/board/boardList(pnum=${session.pnum})}'|">목록</button>
 				<th:block th:if="${session.mdto!=null&&session.mdto.id==dto.id}">
 					<button type="submit" class="btn">수정</button>
 					<button type="button" class="btn"
