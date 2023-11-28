@@ -137,7 +137,6 @@ public class MemberController {
       
       // 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리다이렉트
       if (mdto == null) {
-          // 로그인 페이지 경로를 실제 애플리케이션에서 사용하는 경로로 수정하세요.
           return "redirect:/user/login";
       }
       

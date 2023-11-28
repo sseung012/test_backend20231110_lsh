@@ -105,7 +105,17 @@ public class BoardController {
 
 
 	@GetMapping(value = "/boardInsert")
-	public String boardInsertForm(Model model) {
+	public String boardInsertForm(Model model
+									,HttpServletRequest request) {
+		//로그인 되어있지 않은경우
+		HttpSession session = request.getSession();
+	    MemberDto mdto = (MemberDto) session.getAttribute("mdto");
+
+	    // 사용자가 로그인되어 있지 않은 경우
+	    if (mdto == null) {
+	        // 로그인 페이지로 리다이렉트
+	        return "redirect:/user/login";
+	    }
 		model.addAttribute("insertBoardCommand", new InsertBoardCommand());
 		return "board/boardInsertForm";
 	}
@@ -126,7 +136,6 @@ public class BoardController {
 							,HttpServletRequest request
 			                ,Model model) throws IllegalStateException, IOException {
 		
-	    
 	    if(result.hasErrors()) {
 			System.out.println("글을 모두 입력하세요");
 			return "board/boardInsertForm";
@@ -226,16 +235,27 @@ public class BoardController {
 	@RequestMapping(value="mulDel",method = {RequestMethod.POST,RequestMethod.GET})
 	public String mulDel(@Validated DelBoardCommand delBoardCommand
 						 ,BindingResult result
+						 , HttpServletRequest request
 			             , Model model) {
+		//로그인 되어있지 않은경우
+		HttpSession session = request.getSession();
+	    MemberDto mdto = (MemberDto) session.getAttribute("mdto");
+
+	    // 사용자가 로그인되어 있지 않은 경우
+	    if (mdto == null) {
+	        // 로그인 페이지로 리다이렉트
+	        return "redirect:/user/login";
+	    }
 		
 		if(result.hasErrors()) {
 			System.out.println("최소하나 체크하기");
 //	        model.addAttribute("list", list);
 			return "board/boardlist";
 		}
+		
 		boardService.mulDel(delBoardCommand.getBoard_seq());   
 		System.out.println("글삭제함");
-		return "redirect:/board/boardList";
+		return "redirect:/board/boardList?pnum="+1;
 	}
 	
 	//답글추가
