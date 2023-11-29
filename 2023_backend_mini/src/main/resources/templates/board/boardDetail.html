@@ -96,7 +96,8 @@
 	<div id="replyForm">
 		<h2>답글작성하기</h2>
 		<form action="/board/replyBoard" method="post" th:object="${replyBoardCommand}">
-		<input type="hidden" name="board_seq" th:value="${dto.board_seq}" /> 
+		<input type="hidden" name="board_seq" th:value="${dto.board_seq}" />
+		<input type="hidden" name="id" th:value="${session.mdto.id}" /> 
 		<table class="table table-striped">
 		<tr>
 			<th>작성자[ID]</th>

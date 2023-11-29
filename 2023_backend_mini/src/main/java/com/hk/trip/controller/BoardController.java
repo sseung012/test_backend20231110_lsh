@@ -63,6 +63,18 @@ public class BoardController {
     @GetMapping(value = "/boardList")
     public String boardList(@RequestParam(name = "pnum", required = false) String pnum,
                             Model model,HttpServletRequest request,HttpServletResponse response) {
+        // ----페이지 번호 유지를 위한 코드-------------
+        // 페이지 번호를 전달하지 않으면 세션에 저장된 페이지 번호를 사용
+        
+        if (pnum == null) {
+            pnum = (String)request.getSession().getAttribute("pnum");
+        } else {
+            // 새로 페이지를 요청할 경우 세션에 저장
+        	request.getSession().setAttribute("pnum", pnum);
+            model.addAttribute("pnum", pnum);
+        }
+        // ---페이지 번호 유지를 위한 코드 종료------------
+        
 	//글목록으로 이동하면 쿠키 rseq값을 삭제하자
 		Cookie cookie=getCookie("rseq", request);
 		if(cookie!=null) {
@@ -87,20 +99,7 @@ public class BoardController {
         }
         
         
-        // ----페이지 번호 유지를 위한 코드-------------
-        // 페이지 번호를 전달하지 않으면 세션에 저장된 페이지 번호를 사용
-        
-        //페이지번호 받기
-        pnum=request.getParameter("pnum");
-        
-        if (pnum == null) {
-            pnum = (String) model.asMap().get("pnum"); // 현재 조회 중인 글 페이지 번호
-        } else {
-            // 새로 페이지를 요청할 경우 세션에 저장
-        	request.getSession().setAttribute("pnum", pnum);
-            model.addAttribute("pnum", pnum);
-        }
-        // ---페이지 번호 유지를 위한 코드 종료------------
+
 
         // ---페이지에 페이징 처리 기능 추가
         // 필요한 값: 페이지수, 페이지번호, 페이지범위(페이지수)
