@@ -16,6 +16,7 @@ import com.hk.trip.command.InsertBoardCommand;
 import com.hk.trip.command.ReplyBoardCommand;
 import com.hk.trip.command.UpdateBoardCommand;
 import com.hk.trip.dtos.BoardDto;
+import com.hk.trip.dtos.MemberDto;
 import com.hk.trip.mapper.BoardMapper;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -98,6 +99,7 @@ public class BoardService {
             , HttpServletRequest request) {
       int count=0;
       BoardDto boardDto=new BoardDto();
+      
       boardDto.setId(replyBoardCommand.getId());
       boardDto.setTitle(replyBoardCommand.getTitle());
       boardDto.setContent(replyBoardCommand.getContent());
