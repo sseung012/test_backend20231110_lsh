@@ -73,7 +73,7 @@ public class BoardController {
         	request.getSession().setAttribute("pnum", pnum);
             model.addAttribute("pnum", pnum);
         }
-        // ---페이지 번호 유지를 위한 코드 종료------------
+        // ---페이지 번호 유지를 위한 코드 종료------------ 
         
 	//글목록으로 이동하면 쿠키 rseq값을 삭제하자
 		Cookie cookie=getCookie("rseq", request);
