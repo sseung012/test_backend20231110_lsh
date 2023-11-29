@@ -81,7 +81,7 @@
 				<button class="btn" type="button" id="replyBtn">답글</button>
 				<button type="button" class="btn"
 					 th:onclick="|location.href='@{/board/boardList(pnum=${session.pnum})}'|">목록</button>
-				<th:block th:if="${session.mdto!=null&&session.mdto.id==dto.id}">
+				<th:block th:if="${session.mdto!=null&&session.mdto.id==dto.id||session.mdto.role=='ADMIN'}">
 					<button type="submit" class="btn">수정</button>
 					<button type="button" class="btn"
 					 th:onclick="|location.href='@{/board/mulDel(board_seq=${dto.board_seq})}'|">삭제</button>

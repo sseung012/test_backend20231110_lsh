@@ -159,7 +159,6 @@ public class BoardController {
 	//상세보기
 	@GetMapping(value = "/boardDetail")
 	public String boardDetail(int board_seq, Model model
-					, @RequestParam(name = "pnum") String pnum
 					, HttpServletRequest request
 					, HttpServletResponse response) {
 		//로그인 되어있지 않은경우
