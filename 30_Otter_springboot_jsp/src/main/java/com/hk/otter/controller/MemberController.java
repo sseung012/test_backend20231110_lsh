@@ -22,6 +22,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hk.otter.dtos.UserDto;
 import com.hk.otter.service.UserService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/user")
 public class MemberController {
@@ -117,5 +120,37 @@ public class MemberController {
 		return map;
 	}
 	
+	//로그인 폼 이동하기
+	@GetMapping("/signin")
+	public String signinForm() {
+		System.out.println("로그인폼 이동");
+		return "signin";
+	}
+	
+	//로그인하기
+	@PostMapping("/login")
+	public String login(UserDto dto, HttpServletRequest request) {
+		UserDto ldto=userService.loginUser(dto);
+		if(ldto==null) {
+			System.out.println("회원이 아님");
+			return "redirect:/user/signin";
+		} else {
+			System.out.println("회원이 맞음");
+			HttpSession session=request.getSession();
+			session.setAttribute("ldto", ldto); //로그인 정보를 session에 저장
+			session.setMaxInactiveInterval(60*10);
+			return "redirect:/index";
+		}
+	}
+	
+	//로그아웃하기
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request) {
+		System.out.println("로그아웃");
+		HttpSession session=request.getSession();
+		session.invalidate();
+		
+		return "redirect:/";
+	}
 
 }
