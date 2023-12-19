@@ -10834,17 +10834,13 @@ textarea.form-control-lg {
 .pyy-5 {
 	padding-top: 0rem !important;
 	padding-bottom: 3rem !important;
-	margin-top: 5rem; /* 예시로 5rem의 상단 마진을 추가했습니다. 원하는 크기로 조절 가능합니다. */
+	margin-top: 1rem; /* 예시로 5rem의 상단 마진을 추가했습니다. 원하는 크기로 조절 가능합니다. */
     margin-bottom: 5rem; /* 예시로 5rem의 하단 마진을 추가했습니다. 원하는 크기로 조절 가능합니다. */
-    width: 50%; /* 원하는 가로 크기로 조절 가능합니다. */
+    width: 35%; /* 원하는 가로 크기로 조절 가능합니다. */
     margin-left: auto;
     margin-right: auto;
 }
 
-.container myy-5{
-	margin-top: 0rem; 
-
-}
 .roww justify-content-center{
 	--bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
