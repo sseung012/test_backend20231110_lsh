@@ -176,8 +176,8 @@
             	<form action="/user/adduser" method="post" onsubmit="return submitChk()">
 <!--             	onsubmit="return isPW(this) -->
 	            	<div class="signup">
-		            	<label for="userid" class="form-label">아이디</label>
-		            	<input type="text" name="userid" class="form-control" required="required"/>
+		            	<label for="id" class="form-label">아이디</label>
+		            	<input type="text" name="id" class="form-control" required="required"/>
 	            	</div>
 
 	            	<div class="signup">
@@ -193,11 +193,11 @@
 		            	<input type="text" name="username" class="form-control"/>
 	            	</div>
 	            	<div class="signup">
-		            	<label for="userphone" class="form-label">전화번호</label>
-		            	<input type="text" class="form-control" onblur="validatePhoneNumber()"/>
+		            	<label for="phone" class="form-label">전화번호</label>
+		            	<input type="text" name="phone" class="form-control" onblur="validatePhoneNumber()"/>
 	            	</div>
 	            	<div class="signup"> 
-		            	<label for="email" class="form-label">이메일</label>
+		            	<label for="useremail" class="form-label">이메일</label>
 		            	<input type="email" name="useremail" class="form-control"/>
 	            	</div>
 	            	<div class="signup">
