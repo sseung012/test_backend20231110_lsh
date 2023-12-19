@@ -44,16 +44,11 @@
 				</ul>
 				
 				<form class="d-flex">
-					<i class="bi-cart-fill me-1"></i>
-					<a class="btn btn-outline-dark" type="submit" href="/join">
-                    <i class="bi-cart-fill me-1"></i>
-                    	login
-					</a>
 					&nbsp;
-					<a class="btn btn-outline-dark" type="submit">
-                    <i class="bi-cart-fill me-1"></i>
-                    	signup
-					</a>
+					<a class="btn btn-outline-dark" type="submit" href="/user/join">
+                    <i class="bi-cart-fill me-1" ></i>
+                    	login
+					</a> 
 				</form>
 			</div>
 	</div>
