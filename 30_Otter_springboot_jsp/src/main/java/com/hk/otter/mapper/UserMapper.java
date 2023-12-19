@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.hk.otter.dtos.UserDto;
 
+
 @Mapper
 public interface UserMapper {
 	

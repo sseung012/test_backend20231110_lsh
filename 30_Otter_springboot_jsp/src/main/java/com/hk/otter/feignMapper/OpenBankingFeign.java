@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hk.otter.apidto.UserMeDto;
 
+
 // restAPI 서버(openbanking)에 요청하고 결과값을 받아 주는 기능
 @FeignClient(name = "feign", url = "https://testapi.openbanking.or.kr")
 public interface OpenBankingFeign {
