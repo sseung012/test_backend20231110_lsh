@@ -141,22 +141,6 @@
 //           }
 //       } 
 
-
-	function confirmId(resultId){
-		
-		var parentInputId=opener.document.getElementsByName("id")[0];	//id입력 박스
-		var idChkSpan=opener.document.getElementById("idChk");	//중복여부 span
-		if(resultId=='null'){		//사용 가능한 id는 문자열 'null'
-			//사용 가능한 id이므로 다음 입력단계인 이름 입력박스로 커서 이동
-			opener.document.getElementsByName("name")[0].focus();
-			idChkSpan.textContent='y';	//y는 사용가능한 표시 및 중복 체크 완료 표시
-		}else{
-			idChkSpan.textContent='n';
-			parentInputId.focus();	//중복된 id이기 때문에 다시 id입력칸에 커서를 넣어줌
-		}
-		
-		self.close();
-	}
 </script>
 </head>
 <body>
