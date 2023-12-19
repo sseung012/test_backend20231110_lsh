@@ -4,17 +4,11 @@
 <mapper namespace="com.hk.otter.mapper.UserMapper">
 
 	<insert id="addUser" parameterType="UserDto">
-		INSERT INTO FINTECH_USER
-		VALUES(#{username},#{useremail},#{userpassword},#{useraccesstoken}
-		      ,#{userrefreshtoken},#{userseqno})
+		INSERT INTO USER
+		VALUES(#{id},#{userpassword},#{username}, #{phone}, #{useremail},
+		#{useraccesstoken}, #{userrefreshtoken},#{userseqno})
 	</insert>
 	
-	<select id="loginUser" parameterType="UserDto" resultType="UserDto">
-		SELECT USERNAME, USEREMAIL,USERPASSWORD,USERACCESSTOKEN,USERREFRESHTOKEN,
-		       USERSEQNO
-		FROM FINTECH_USER
-		WHERE USEREMAIL=#{useremail} AND USERPASSWORD=#{userpassword}
-	</select> 
 </mapper>
 
 
