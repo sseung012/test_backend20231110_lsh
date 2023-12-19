@@ -2,7 +2,6 @@ package com.hk.otter.dtos;
 
 public class UserDto {
 	
-	private int seq;
 	private String id;
 	private String userpassword;
 	private String username;
@@ -19,10 +18,9 @@ public class UserDto {
 		super();
 	}
 
-	public UserDto(int seq, String id, String userpassword, String username, String phone, String useremail,
+	public UserDto(String id, String userpassword, String username, String phone, String useremail,
 			String useraccesstoken, String userrefreshtoken, int userseqno, String role, String delflag) {
 		super();
-		this.seq = seq;
 		this.id = id;
 		this.userpassword = userpassword;
 		this.username = username;
@@ -33,14 +31,6 @@ public class UserDto {
 		this.userseqno = userseqno;
 		this.role = role;
 		this.delflag = delflag;
-	}
-
-	public int getSeq() {
-		return seq;
-	}
-
-	public void setSeq(int seq) {
-		this.seq = seq;
 	}
 
 	public String getId() {
@@ -125,7 +115,7 @@ public class UserDto {
 
 	@Override
 	public String toString() {
-		return "UserDto [seq=" + seq + ", id=" + id + ", userpassword=" + userpassword + ", username=" + username
+		return "UserDto [ id=" + id + ", userpassword=" + userpassword + ", username=" + username
 				+ ", phone=" + phone + ", useremail=" + useremail + ", useraccesstoken=" + useraccesstoken
 				+ ", userrefreshtoken=" + userrefreshtoken + ", userseqno=" + userseqno + ", role=" + role
 				+ ", delflag=" + delflag + "]";

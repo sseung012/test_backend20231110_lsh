@@ -143,24 +143,6 @@
 
 </script>
 </head>
-<body>
-<%
-	//request에 저장하면 Object로 형변환 됌 --> (String)request--> 형변환해서 가져오기
-	String resultId=(String)request.getAttribute("resultId");
-%>
-<div>
-	<span><%=resultId==null?"사용 가능한 아이디입니다.":"중복된 아이디입니다." %></span>
-	<span><button onclick="confirmId('<%=resultId%>')">확인</button></span>
-</div>
-
-
-
-
-
-
-
-</script>
-</head>
 <body class="join">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -177,7 +159,7 @@
 <!--             	onsubmit="return isPW(this) -->
 	            	<div class="signup">
 		            	<label for="userid" class="form-label">아이디</label>
-		            	<input type="text" name="userid" class="form-control" required="required"/>
+		            	<input type="text" name="id" class="form-control" required="required"/>
 	            	</div>
 
 	            	<div class="signup">
