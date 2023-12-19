@@ -4,15 +4,15 @@
 <mapper namespace="com.hk.otter.mapper.UserMapper">
 
 	<insert id="addUser" parameterType="UserDto">
-		INSERT INTO user
-		VALUES(NULL,#{id},#{userpassword},#{username},#{phone},#{useremail},
-				#{useraccesstoken},#{userrefreshtoken}, #{userseqno}, 'USER', 'N');
+		INSERT INTO USER
+		VALUES(NULL, #{id}, #{userpassword}, #{username}, #{phone}, #{useremail},
+				#{useraccesstoken},#{userrefreshtoken}, #{userseqno}, 'USER', 'N')
 	</insert>
 	
 	<select id="loginUser" parameterType="UserDto" resultType="UserDto">
 		SELECT USERNAME, USEREMAIL,USERPASSWORD,USERACCESSTOKEN,USERREFRESHTOKEN,
 		       USERSEQNO
-		FROM user
+		FROM USER
 		WHERE USEREMAIL=#{useremail} AND USERPASSWORD=#{userpassword}
 	</select> 
 	
