@@ -34,26 +34,25 @@
          <div class="roww justify-content-center">
             <div class="coll-lg-6">
             	<form action="/user/login" method="post">
-	            	<table class="table">            		
-						<tr>
-	            			<th>아이디</th>
-	            			<td><input type="text" name="id" class="form-control"/></td>
-	            		</tr>
-	            		<tr>
-	            			<th>비밀번호</th>
-	            			<td><input type="password" name="userpassword" class="form-control"/></td>
-	            		</tr>
-	            		<tr>   
-                       		<td colspan="2">       
-						        <div style="display: flex;">
-						            <a class="nav-link" href="/user/signin">Login</a> &nbsp;&nbsp;&nbsp;    
-						            <a class="nav-link" href="/user/join">SignUp</a>
-						        </div>
-						    </td>
-	            		</tr>	            			
-            		</table>
-            	
-            	</form>
+				    <table class="table">
+				        <tr>
+				            <th>아이디</th>
+				            <td><input type="text" name="id" class="form-control"/></td>
+				        </tr>
+				        <tr>
+				            <th>비밀번호</th>
+				            <td><input type="password" name="userpassword" class="form-control"/></td>
+				        </tr>
+				        <tr>   
+				            <td colspan="2">       
+				                <div style="display: flex;">
+				                    <button type="submit" class="form-control">Login</button> &nbsp;&nbsp;&nbsp;    
+				                    <a class="btn form-control" href="/user/join" style="border: 1px solid #ccc;">SignUp</a>
+				                </div>
+				            </td>
+				        </tr>	            			
+				    </table>
+				</form>
             </div>
          </div>
       </div>
