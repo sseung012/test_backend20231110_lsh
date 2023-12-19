@@ -45,9 +45,9 @@
 				
 				<form class="d-flex">
 					&nbsp;
-					<a class="btn btn-outline-dark" type="submit" href="/user/join">
+					<a class="btn btn-outline-dark" type="submit" href="/user/signin">
                     <i class="bi-cart-fill me-1" ></i>
-                    	login
+                    	login/signUp
 					</a> 
 				</form>
 			</div>
