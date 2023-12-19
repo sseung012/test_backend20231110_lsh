@@ -72,7 +72,7 @@
 	            	</div>
 	            	<div>
 		            	<label for="userphone" class="form-label">전화번호</label>
-		            	<input type= name="userphone" class="form-control" onblur="validatePhoneNumber()"/>
+		            	<input type="text" class="form-control" onblur="validatePhoneNumber()"/>
 	            	</div>
 	            	<div>
 		            	<label for="email" class="form-label">이메일</label>
