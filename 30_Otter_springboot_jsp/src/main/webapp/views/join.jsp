@@ -41,7 +41,7 @@
       }
 </script>
 </head>
-<body>
+<body class="join">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container px-4 px-lg-5">
@@ -49,20 +49,20 @@
     </div>
 </nav>
 
-<section class="py-5">
-      <div class="container my-5">
-         <div class="row justify-content-center">
-            <div class="col-lg-6">
+<section class="pyy-5">
+      <div class="container myy-5">
+         <div class="roww justify-content-center">
+            <div class="coll-lg-6">
             	<form action="/user/adduser" method="post">
-	            	<div>
+	            	<div class="signup">
 		            	<label for="userid" class="form-label">아이디</label>
 		            	<input type="text" name="username" class="form-control"/>
 	            	</div>
-	            	<div>
+	            	<div class="signup">
 		            	<label for="userpassword" class="form-label">비밀번호</label>
 		            	<input type="password" name="userpassword" class="form-control"/>
 	            	</div>
-	            	<div>
+	            	<div class="signup">
 		            	<label for="userpassword2" class="form-label">비밀번호 확인</label>
 		            	<input type="password" name="userpassword2" class="form-control"/>
 	            	</div>
