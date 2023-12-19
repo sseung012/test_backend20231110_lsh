@@ -143,13 +143,6 @@
       } 
 
 
-
-
-
-
-
-
-
 </script>
 </head>
 <body class="join">
