@@ -29,16 +29,16 @@
          window.open(url,"인증하기","width=400px, height=600px");
       }
 	 
-//       function validatePhoneNumber() {
-//           var phoneNumberInput = document.getElementsByName("userphone")[0];
-//           var phoneNumber = phoneNumberInput.value.replace(/\D/g, ''); // 숫자 이외의 문자 제거
+      function validatePhoneNumber() {
+          var phoneNumberInput = document.getElementsByName("userphone")[0];
+          var phoneNumber = phoneNumberInput.value.replace(/\D/g, ''); // 숫자 이외의 문자 제거
 
-//           // 입력된 전화번호가 11자리가 아니면 경고 메시지 출력
-//           if (phoneNumber.length !== 11) {
-//               alert("전화번호를 11자리로 입력해주세요.");
-//               phoneNumberInput.value = ""; // 입력 값을 비움
-//           }
-//       }
+          // 입력된 전화번호가 11자리가 아니면 경고 메시지 출력
+          if (phoneNumber.length !== 11) {
+              alert("전화번호를 11자리로 입력해주세요.");
+              phoneNumberInput.value = ""; // 입력 값을 비움
+          }
+      }
 </script>
 </head>
 <body>
@@ -55,12 +55,16 @@
             <div class="col-lg-6">
             	<form action="/user/adduser" method="post">
 	            	<div>
-		            	<label for="userid" class="form-label">ID</label>
+		            	<label for="userid" class="form-label">아이디</label>
 		            	<input type="text" name="username" class="form-control"/>
 	            	</div>
 	            	<div>
-		            	<label for="username" class="form-label">Password</label>
+		            	<label for="userpassword" class="form-label">비밀번호</label>
 		            	<input type="password" name="userpassword" class="form-control"/>
+	            	</div>
+	            	<div>
+		            	<label for="userpassword2" class="form-label">비밀번호 확인</label>
+		            	<input type="password" name="userpassword2" class="form-control"/>
 	            	</div>
 					<div>
 		            	<label for="username" class="form-label">이름</label>
@@ -68,7 +72,7 @@
 	            	</div>
 	            	<div>
 		            	<label for="userphone" class="form-label">전화번호</label>
-		            	<input type="text" name="userphone" class="form-control" onblur="validatePhoneNumber()"/>
+		            	<input type= name="userphone" class="form-control" onblur="validatePhoneNumber()"/>
 	            	</div>
 	            	<div>
 		            	<label for="email" class="form-label">이메일</label>
