@@ -58,7 +58,7 @@
 					<a class="btn btn-outline-dark" type="submit" href="/user/join">
                     <i class="bi-cart-fill me-1" ></i>
                     	signUp
-					</a>
+					</a> 
 				</form>
 			</div>
 	</div>
