@@ -5,15 +5,15 @@
 
 	<insert id="addUser" parameterType="UserDto">
 		INSERT INTO user
-		VALUES(NULL,#{id},#{userpassword},#{username},#{phone}, #{useremail},
+		VALUES(NULL,#{id},#{userpassword},#{username},#{phone},#{useremail},
 				#{useraccesstoken},#{userrefreshtoken}, #{userseqno}, 'USER', 'N');
 	</insert>
 	
 	<select id="loginUser" parameterType="UserDto" resultType="UserDto">
-		SELECT USERNAME, USEREMAIL,USERPASSWORD,USERACCESSTOKEN,USERREFRESHTOKEN,
-		       USERSEQNO
+		SELECT USERNAME, USEREMAIL,USERPASSWORD,USERACCESSTOKEN,USERREFRESHTOKEN,USERSEQNO		 
 		FROM USER
 		WHERE ID=#{id} AND USERPASSWORD=#{userpassword} AND DELFLAG='N'
+
 	</select> 
 	
 	<select id="idChk" parameterType="String" resultType="String">

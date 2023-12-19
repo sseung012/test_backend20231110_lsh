@@ -107,7 +107,7 @@ public class MemberController {
 	}
 	
 	//아이디중복체크 
-//	@ResponseBody
+	@ResponseBody
 	@GetMapping(value = "/idChk")
 	public Map<String,String> idChk(String id){
 		System.out.println("ID중복체크");
