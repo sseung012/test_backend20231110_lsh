@@ -10,14 +10,13 @@ public class UserDto {
 	private String useremail;
 	
 	private String useraccesstoken; // 접근을 위한 토큰
-	private String userrefreshtoken;// 갱신을 위한 토큰
+	private String userrefreshtoken; // 갱신을 위한 토큰
 	private int userseqno; // 사용자일련번호
 	private String role;
 	private String delflag;
 	
 	public UserDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public UserDto(int seq, String id, String userpassword, String username, String phone, String useremail,
