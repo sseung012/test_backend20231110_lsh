@@ -20,6 +20,12 @@ public class UserService {
 	public UserDto loginUser(UserDto dto) {
 		return userMapper.loginUser(dto);
 	}
+	
+	
+	//아이디중복체크
+	public String idChk(String id) {
+		return userMapper.idChk(id);
+	}
 }
 
 

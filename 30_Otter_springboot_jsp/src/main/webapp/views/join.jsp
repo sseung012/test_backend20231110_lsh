@@ -28,6 +28,50 @@
                
          window.open(url,"인증하기","width=400px, height=600px");
       }
+	 
+//       document.addEventListener("DOMContentLoaded", function () {
+//     	    // 아이디 입력란에 키 입력 시 중복 체크
+//     	    var idInput = document.querySelector("input[name=id]");
+//     	    idInput.addEventListener("keyup", function () {
+//     	        var id = this.value;
+//     	        var xhr = new XMLHttpRequest();
+
+//     	        xhr.onreadystatechange = function () {
+//     	            if (xhr.readyState == 4) {
+//     	                if (xhr.status == 200) {
+//     	                    var data = JSON.parse(xhr.responseText);
+//     	                    var idChkElement = document.getElementById("idChk");
+
+//     	                    if (data.id !== null) {
+//     	                        idChkElement.className = "n";
+//     	                        idChkElement.style.color = "red";
+//     	                        idChkElement.textContent = "사용할 수 없는 아이디입니다.";
+//     	                    } else {
+//     	                        idChkElement.className = "y";
+//     	                        idChkElement.style.color = "green";
+//     	                        idChkElement.textContent = "사용 가능한 아이디입니다.";
+//     	                    }
+//     	                } else {
+//     	                    alert("통신 오류: " + xhr.status);
+//     	                }
+//     	            }
+//     	        };
+
+//     	        xhr.open("GET", "/user/idChk?id=" + id, true);
+//     	        xhr.send();
+//     	    });
+
+//     	    // 중복된 아이디로 submit할 경우 처리
+//     	    function submitChk() {
+//     	        var classValue = document.getElementById("idChk").className;
+//     	        if (classValue === "n") {
+//     	            alert("아이디를 확인하세요");
+//     	            return false;
+//     	        }
+//     	        return true;
+//     	    }
+//     	});
+
 </script>
 </head>
 <body>
@@ -45,9 +89,13 @@
             	<form action="/user/adduser" method="post">
             			<table class="table">
 	            		<tr>
+	            			<th>아이디</th>
+	            			<td><input type="text" name="id" class="form-control"/></td>
+	            		</tr>
+	            		<tr>
 	            			<th>이름</th>
 	            			<td><input type="text" name="username" class="form-control"/></td>
-	            		</tr>
+	            		</tr>            		
 	            		<tr>
 	            			<th>이메일</th>
 	            			<td><input type="email" name="useremail" class="form-control"/></td>
@@ -67,6 +115,10 @@
 	            		<tr>
 	            			<th>userSeqNo</th>
 	            			<td><input type="text" name="userseqno" class="form-control"/></td>
+	            		</tr>
+	            		<tr>
+	            			<th>전화번호</th>
+	            			<td><input type="text" name="phone" class="form-control"/></td>
 	            		</tr>
 	            		<tr>
 	            			<td colspan="2">
