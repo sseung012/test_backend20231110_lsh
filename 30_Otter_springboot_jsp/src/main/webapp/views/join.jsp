@@ -38,7 +38,7 @@
               alert("전화번호를 11자리로 입력해주세요.");
               phoneNumberInput.value = ""; // 입력 값을 비움
           }
-      }
+      } 
 </script>
 </head>
 <body class="join">
