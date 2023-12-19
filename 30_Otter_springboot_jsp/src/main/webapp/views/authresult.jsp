@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Otter</title>
 </head>
 <body>
 <div id="accessToken">${access_token}</div>
@@ -25,11 +25,6 @@
 
 </body>
 </html>
-
-
-
-
-
 
 
 

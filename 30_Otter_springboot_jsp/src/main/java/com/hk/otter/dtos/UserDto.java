@@ -13,10 +13,12 @@ public class UserDto {
 	private int userseqno; // 사용자일련번호
 	private String role;
 	private String delflag;
+	
 	public UserDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public UserDto(String id, String userpassword, String username, String phone, String useremail,
 			String useraccesstoken, String userrefreshtoken, int userseqno, String role, String delflag) {
 		super();
@@ -91,15 +93,13 @@ public class UserDto {
 	public void setDelflag(String delflag) {
 		this.delflag = delflag;
 	}
+	
 	@Override
 	public String toString() {
 		return "UserDto [id=" + id + ", userpassword=" + userpassword + ", username=" + username + ", phone=" + phone
 				+ ", useremail=" + useremail + ", useraccesstoken=" + useraccesstoken + ", userrefreshtoken="
 				+ userrefreshtoken + ", userseqno=" + userseqno + ", role=" + role + ", delflag=" + delflag + "]";
 	}
-	
-	
-	
 	
 	
 }

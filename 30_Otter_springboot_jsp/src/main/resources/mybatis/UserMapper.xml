@@ -19,6 +19,7 @@
 	<select id="idChk" parameterType="String" resultType="String">
 		SELECT ID FROM USER WHERE ID=#{id}
 	</select>
+
 </mapper>
 
 
