@@ -177,7 +177,7 @@
 		            	<label for="userphone" class="form-label">전화번호</label>
 		            	<input type="text" class="form-control" onblur="validatePhoneNumber()"/>
 	            	</div>
-	            	<div class="signup">
+	            	<div class="signup"> 
 		            	<label for="email" class="form-label">이메일</label>
 		            	<input type="email" name="useremail" class="form-control"/>
 	            	</div>
