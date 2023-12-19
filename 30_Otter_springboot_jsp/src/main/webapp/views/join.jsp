@@ -179,15 +179,14 @@
 		            	<label for="id" class="form-label">아이디</label>
 		            	<input type="text" name="id" class="form-control" required="required"/>
 	            	</div>
-
 	            	<div class="signup">
 		            	<label for="userpassword" class="form-label">비밀번호</label>
 		            	<input type="password" name="userpassword" class="form-control"/>
 	            	</div>
-<!-- 	            	<div class="signup"> -->
-<!-- 		            	<label for="userpassword2" class="form-label">비밀번호 확인</label> -->
-<!-- 		            	<input type="password" name="userpassword2" class="form-control"/> -->
-<!-- 	            	</div> -->
+	            	<div class="signup">
+		            	<label for="userpassword2" class="form-label">비밀번호 확인</label>
+		            	<input type="password" name="userpassword2" class="form-control"/>
+	            	</div>
 					<div class="signup">
 		            	<label for="username" class="form-label">이름</label>
 		            	<input type="text" name="username" class="form-control"/>
