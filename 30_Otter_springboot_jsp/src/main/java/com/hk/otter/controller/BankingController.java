@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hk.fintech.feignMapper.OpenBankingFeign;
-import com.hk.fintech.service.UserService;
+import com.hk.otter.feignMapper.OpenBankingFeign;
+import com.hk.otter.service.UserService;
+
 
 @Controller
 @RequestMapping("/banking")
