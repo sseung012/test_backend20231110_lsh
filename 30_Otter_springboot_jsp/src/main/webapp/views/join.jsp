@@ -207,7 +207,7 @@
 	            	<div class="signup">
 		            	<label for="userrefreshtoken" class="form-label">RefreshToken</label>
 		            	<input type="text" name="userrefreshtoken" class="form-control"/>
-	            	</div>
+	            	</div> 
 	            	<div class="signup">
 		            	<label for="userseqno" class="form-label">userSeqNo</label>
 		            	<input type="text" name="userseqno" class="form-control"/>
