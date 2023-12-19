@@ -1,0 +1,20 @@
+package com.hk.otter.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.hk.fintech.feignMapper.OpenBankingFeign;
+import com.hk.fintech.service.UserService;
+
+@Controller
+@RequestMapping("/banking")
+public class BankingController {
+	
+	@Autowired
+	private OpenBankingFeign openBankingFeign;
+	
+	@Autowired
+	private UserService userService;
+
+}
