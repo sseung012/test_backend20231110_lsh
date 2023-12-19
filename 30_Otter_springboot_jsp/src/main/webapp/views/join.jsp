@@ -4,10 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8"/>
+<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
+<title>Otter</title>
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="resources/assets/favicon.ico" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="/resources/css/styles.css" rel="stylesheet" />
+
+        	
 <script type="text/javascript">
 	 //사용자 인증 요청하기(사용자 인증하면서 계좌등록까지 진행함)
       function authorization(){
@@ -22,13 +29,6 @@
          window.open(url,"인증하기","width=400px, height=600px");
       }
 </script>
-<title>Otter</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!--         Bootstrap icons -->
-<!--         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" /> -->
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href="resources/css/styles.css" rel="stylesheet" />
 </head>
 <body>
 <!-- Navigation-->
@@ -43,7 +43,7 @@
          <div class="row justify-content-center">
             <div class="col-lg-6">
             	<form action="/user/adduser" method="post">
-            		<table class="table">
+            			<table class="table">
 	            		<tr>
 	            			<th>이름</th>
 	            			<td><input type="text" name="username" class="form-control"/></td>
@@ -75,6 +75,7 @@
 	            			</td>
 	            		</tr>
             		</table>
+            	
             	</form>
             </div>
          </div>
