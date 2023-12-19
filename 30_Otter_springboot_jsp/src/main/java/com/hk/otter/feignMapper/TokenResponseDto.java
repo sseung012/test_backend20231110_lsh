@@ -1,4 +1,4 @@
-package com.otter.feignMapper;
+package com.hk.otter.feignMapper;
 
 public class TokenResponseDto {
 
