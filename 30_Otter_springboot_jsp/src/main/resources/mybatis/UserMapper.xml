@@ -12,8 +12,8 @@
 	<select id="loginUser" parameterType="UserDto" resultType="UserDto">
 		SELECT USERNAME, USEREMAIL,USERPASSWORD,USERACCESSTOKEN,USERREFRESHTOKEN,
 		       USERSEQNO
-		FROM FINTECH_USER
-		WHERE USEREMAIL=#{useremail} AND USERPASSWORD=#{userpassword}
+		FROM USER
+		WHERE ID=#{id} AND USERPASSWORD=#{userpassword} AND DELFLAG='N'
 	</select> 
 	
 	<select id="idChk" parameterType="String" resultType="String">

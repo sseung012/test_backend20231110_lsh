@@ -139,7 +139,7 @@ public class MemberController {
 			HttpSession session=request.getSession();
 			session.setAttribute("ldto", ldto); //로그인 정보를 session에 저장
 			session.setMaxInactiveInterval(60*10);
-			return "redirect:/index";
+			return "redirect:/";
 		}
 	}
 	

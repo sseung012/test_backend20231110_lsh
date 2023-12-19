@@ -97,6 +97,7 @@
 		    <artifactId>spring-cloud-starter-openfeign</artifactId>
 		    <version>4.0.2</version>
 		</dependency>
+
 		
 	</dependencies>
 
