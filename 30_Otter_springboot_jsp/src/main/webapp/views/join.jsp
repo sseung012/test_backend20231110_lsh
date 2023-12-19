@@ -158,28 +158,27 @@
             	<form action="/user/adduser" method="post" onsubmit="return submitChk()">
 <!--             	onsubmit="return isPW(this) -->
 	            	<div class="signup">
-		            	<label for="userid" class="form-label">아이디</label>
+		            	<label for="id" class="form-label">아이디</label>
 		            	<input type="text" name="id" class="form-control" required="required"/>
 	            	</div>
-
 	            	<div class="signup">
 		            	<label for="userpassword" class="form-label">비밀번호</label>
 		            	<input type="password" name="userpassword" class="form-control"/>
 	            	</div>
-<!-- 	            	<div class="signup"> -->
-<!-- 		            	<label for="userpassword2" class="form-label">비밀번호 확인</label> -->
-<!-- 		            	<input type="password" name="userpassword2" class="form-control"/> -->
-<!-- 	            	</div> -->
+	            	<div class="signup">
+		            	<label for="userpassword2" class="form-label">비밀번호 확인</label>
+		            	<input type="password" name="userpassword2" class="form-control"/>
+	            	</div>
 					<div class="signup">
 		            	<label for="username" class="form-label">이름</label>
 		            	<input type="text" name="username" class="form-control"/>
 	            	</div>
 	            	<div class="signup">
-		            	<label for="userphone" class="form-label">전화번호</label>
-		            	<input type="text" class="form-control" onblur="validatePhoneNumber()"/>
+		            	<label for="phone" class="form-label">전화번호</label>
+		            	<input type="text" name="phone" class="form-control" onblur="validatePhoneNumber()"/>
 	            	</div>
 	            	<div class="signup"> 
-		            	<label for="email" class="form-label">이메일</label>
+		            	<label for="useremail" class="form-label">이메일</label>
 		            	<input type="email" name="useremail" class="form-control"/>
 	            	</div>
 	            	<div class="signup">
@@ -189,7 +188,7 @@
 	            	<div class="signup">
 		            	<label for="userrefreshtoken" class="form-label">RefreshToken</label>
 		            	<input type="text" name="userrefreshtoken" class="form-control"/>
-	            	</div>
+	            	</div> 
 	            	<div class="signup">
 		            	<label for="userseqno" class="form-label">userSeqNo</label>
 		            	<input type="text" name="userseqno" class="form-control"/>
