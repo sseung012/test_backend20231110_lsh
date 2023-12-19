@@ -44,16 +44,16 @@
 				</ul>
 				
 				<form class="d-flex">
-<!-- 				cart는 로그인 했을때만 보이게? -->
+					<i class="bi-cart-fill me-1"></i>
 					<a class="btn btn-outline-dark" type="submit" href="/join">
                     <i class="bi-cart-fill me-1"></i>
                     	login
 					</a>
 					&nbsp;
-					<button class="btn btn-outline-dark" type="submit">
+					<a class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>
                     	signup
-					</button>
+					</a>
 				</form>
 			</div>
 	</div>
