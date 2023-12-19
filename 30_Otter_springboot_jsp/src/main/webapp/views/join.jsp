@@ -28,6 +28,17 @@
                
          window.open(url,"인증하기","width=400px, height=600px");
       }
+	 
+//       function validatePhoneNumber() {
+//           var phoneNumberInput = document.getElementsByName("userphone")[0];
+//           var phoneNumber = phoneNumberInput.value.replace(/\D/g, ''); // 숫자 이외의 문자 제거
+
+//           // 입력된 전화번호가 11자리가 아니면 경고 메시지 출력
+//           if (phoneNumber.length !== 11) {
+//               alert("전화번호를 11자리로 입력해주세요.");
+//               phoneNumberInput.value = ""; // 입력 값을 비움
+//           }
+//       }
 </script>
 </head>
 <body>
@@ -43,38 +54,42 @@
          <div class="row justify-content-center">
             <div class="col-lg-6">
             	<form action="/user/adduser" method="post">
-            			<table class="table">
-	            		<tr>
-	            			<th>이름</th>
-	            			<td><input type="text" name="username" class="form-control"/></td>
-	            		</tr>
-	            		<tr>
-	            			<th>이메일</th>
-	            			<td><input type="email" name="useremail" class="form-control"/></td>
-	            		</tr>
-	            		<tr>
-	            			<th>비밀번호</th>
-	            			<td><input type="password" name="userpassword" class="form-control"/></td>
-	            		</tr>
-	            		<tr>
-	            			<th>AccessToken</th>
-	            			<td><input type="text" name="useraccesstoken" class="form-control"/></td>
-	            		</tr>
-	            		<tr>
-	            			<th>RefreshToken</th>
-	            			<td><input type="text" name="userrefreshtoken" class="form-control"/></td>
-	            		</tr>
-	            		<tr>
-	            			<th>userSeqNo</th>
-	            			<td><input type="text" name="userseqno" class="form-control"/></td>
-	            		</tr>
-	            		<tr>
-	            			<td colspan="2">
-	            				<input type="button" value="인증하기" onclick="authorization()" class="btn"/>
-	            				<input type="submit" value="가입하기" class="btn"/>
-	            			</td>
-	            		</tr>
-            		</table>
+	            	<div>
+		            	<label for="userid" class="form-label">ID</label>
+		            	<input type="text" name="username" class="form-control"/>
+	            	</div>
+	            	<div>
+		            	<label for="username" class="form-label">Password</label>
+		            	<input type="password" name="userpassword" class="form-control"/>
+	            	</div>
+					<div>
+		            	<label for="username" class="form-label">이름</label>
+		            	<input type="text" name="username" class="form-control"/>
+	            	</div>
+	            	<div>
+		            	<label for="userphone" class="form-label">전화번호</label>
+		            	<input type="text" name="userphone" class="form-control" onblur="validatePhoneNumber()"/>
+	            	</div>
+	            	<div>
+		            	<label for="email" class="form-label">이메일</label>
+		            	<input type="email" name="useremail" class="form-control"/>
+	            	</div>
+	            	<div>
+		            	<label for="useraccesstoken" class="form-label">AccessToken</label>
+		            	<input type="text" name="useraccesstoken" class="form-control"/>
+	            	</div>
+	            	<div>
+		            	<label for="userrefreshtoken" class="form-label">RefreshToken</label>
+		            	<input type="text" name="userrefreshtoken" class="form-control"/>
+	            	</div>
+	            	<div>
+		            	<label for="email" class="form-label">userSeqNo</label>
+		            	<input type="text" name="userseqno" class="form-control"/>
+	            	</div>
+	            	<input type="button" value="인증하기" onclick="authorization()" class="btn"/>
+	            	<input type="submit" value="가입하기" class="btn"/>
+
+
             	
             	</form>
             </div>
