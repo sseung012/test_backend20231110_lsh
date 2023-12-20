@@ -28,33 +28,33 @@ public class RewardController {
          
          // addCalBoardfForm 페이지에서 유효값 처리를 위해 
          // insertCalCommand 받고 있기 때문에 보내줘야 해!
-         model.addAttribute("insertProductCommand", insertProductCommand);
-         return "addProductForm";
+         model.addAttribute("insertProductCommand", insertRewardCommand);
+         return "insertRewardForm";
       }
       
       
       @PostMapping(value = "/insertReward")
-      public String insertReward(@Validated InsertProductCommand insertProductCommand,
+      public String insertReward(@Validated InsertRewardCommand insertRewardCommand,
                           BindingResult result)throws Exception {
     	  
          // 파라미터 순서 꼭 맞춰줄 것!
          // logger.info("일정추가하기");
-         System.out.println(insertProductCommand);
+         System.out.println(insertRewardCommand);
          
          if(result.hasErrors()) { // 에러가 있으면 돌려보냄
             System.out.println("프로젝트 만들기 유효값 오류");
-            return "addProductForm";
+            return "insertRewardForm";
          }
          
          
          try {
-			// productService.insertProduct(insertProductCommand);
-			System.out.println("프로젝트 만들기 성공");
+			rewardService.insertReward(insertRewardCommand);
+			System.out.println("프로젝트_리워드 만들기 성공");
 			return "redirect:/";
 		} catch (Exception e) {
-			System.out.println("프로젝트 만들기 실패");
+			System.out.println("프로젝트_리워드 만들기 실패");
 			e.printStackTrace();
-			return "redirect:insertProduct";
+			return "redirect:insertReward";
 		}
       }
 	

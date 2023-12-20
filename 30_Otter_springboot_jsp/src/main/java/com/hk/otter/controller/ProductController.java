@@ -46,7 +46,7 @@ public class ProductController {
          
          
          try {
-			// productService.insertProduct(insertProductCommand);
+			productService.insertProduct(insertProductCommand);
 			System.out.println("프로젝트 만들기 성공");
 			return "redirect:/";
 		} catch (Exception e) {
