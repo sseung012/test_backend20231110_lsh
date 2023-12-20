@@ -22,7 +22,7 @@ public class ProductController {
          // addCalBoardfForm 페이지에서 유효값 처리를 위해 
          // insertCalCommand 받고 있기 때문에 보내줘야 해!
          model.addAttribute("insertProductCommand", insertProductCommand);
-         return "thymeleaf/product/addProductForm";
+         return "/product/addProductForm";
       }
       
       
