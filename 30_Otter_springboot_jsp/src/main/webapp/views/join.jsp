@@ -28,7 +28,7 @@
                
          window.open(url,"인증하기","width=400px, height=600px");
       }
-	 
+
 
 
       window.onload = function () {

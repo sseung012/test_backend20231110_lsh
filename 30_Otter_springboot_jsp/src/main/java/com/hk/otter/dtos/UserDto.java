@@ -29,8 +29,18 @@ public class UserDto {
 		this.useraccesstoken = useraccesstoken;
 		this.userrefreshtoken = userrefreshtoken;
 		this.userseqno = userseqno;
-		this.role = role;
-		this.delflag = delflag;
+		this.role = "USER"; // 기본값으로 'USER' 설정
+	    this.delflag = "N"; // 기본값으로 'N' 설정
+	}
+
+	public UserDto(String id, String username, String phone, String useremail, String role, String delflag) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.phone = phone;
+		this.useremail = useremail;
+		this.role = "USER"; // 기본값으로 'USER' 설정
+	    this.delflag = "N"; // 기본값으로 'N' 설정
 	}
 
 	public String getId() {
