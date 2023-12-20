@@ -12,7 +12,6 @@ public class RewardDto {
 	
 	public RewardDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public RewardDto(int seq, String reward_name, int price, String combination, int stock, int product_seq,
