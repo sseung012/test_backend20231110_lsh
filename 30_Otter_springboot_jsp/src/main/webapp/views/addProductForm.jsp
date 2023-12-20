@@ -31,7 +31,7 @@
         <div class="container myy-5">
             <div class="roww justify-content-center">
                 <div class="coll-lg-6">
-                    <form action="/user/adduser" method="post" >
+                    <form action="/prodcut/insertProduct" method="post" >
                         
                         <div class="addProduct">
                             <label for="img" class="form-label">대표 이미지</label>
