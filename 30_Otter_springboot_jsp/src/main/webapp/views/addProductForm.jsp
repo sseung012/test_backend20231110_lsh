@@ -76,10 +76,10 @@
                         </div>
                         <div class="addProduct">
                             <label for="userseqno" class="form-label">리워드</label>
-                            <input type="text" name="userseqno" class="form-control" />
-                            <input type="text" name="userseqno" class="form-control" />
-                            <input type="text" name="userseqno" class="form-control" />
-                            <input type="text" name="userseqno" class="form-control" />
+                            <input type="text" name="userseqno" class="form-control" placeholder="리워드 제목" />
+                            <input type="text" name="userseqno" class="form-control" placeholder="리워드 가격"/>
+                            <input type="text" name="userseqno" class="form-control" placeholder="리워드 설명"/>
+                            <input type="text" name="userseqno" class="form-control" placeholder="리워드 수량"/>
                             <input type="submit" value="추가" class="btn" />
                         </div>
                         <input type="submit" value="등록" class="btn" />
