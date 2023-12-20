@@ -9,12 +9,12 @@
 	</insert>
 	
 	<select id="loginUser" parameterType="UserDto" resultType="UserDto">
-	    SELECT id, USERNAME,USERPASSWORD, phone, USEREMAIL, ROLE, delflag
-	    FROM USER 
-	    WHERE ID = #{id} AND USERPASSWORD = #{userpassword}
+	   	SELECT id, USERNAME,USERPASSWORD, phone, USEREMAIL, ROLE, delflag
+		FROM user
+		WHERE ID=#{id} AND USERPASSWORD=#{userpassword}
 	</select>
 	
-	<select id="idChk" parameterType="String" resultType="String">
+	<select id="idChk" parameterType="String" resultType="UserDto">
 		SELECT ID FROM USER WHERE ID=#{id}
 	</select>
 	
