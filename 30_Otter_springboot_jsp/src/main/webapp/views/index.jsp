@@ -50,6 +50,13 @@
                     	login/signUp
 					</a> 
 				</form>
+				<form class="d-flex">
+					&nbsp;
+					<a class="btn btn-outline-dark" type="submit" href="/user/myinfo">
+                    <i class="bi-cart-fill me-1" ></i>
+                    	나의정보
+					</a> 
+				</form>
 			</div>
 	</div>
 </nav>

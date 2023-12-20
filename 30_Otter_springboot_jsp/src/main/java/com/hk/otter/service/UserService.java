@@ -1,5 +1,6 @@
 package com.hk.otter.service;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,20 @@ public class UserService {
 	public String idChk(String id) {
 		return userMapper.idChk(id);
 	}
+	
+	//마이페이지
+	public UserDto UserInfo(String id) {
+		return userMapper.UserInfo(id);
+	}
+	
+	
+	
+	
 }
+
+
+
+
 
 
 

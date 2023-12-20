@@ -23,6 +23,7 @@ import com.hk.otter.dtos.UserDto;
 import com.hk.otter.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -140,6 +141,7 @@ public class MemberController {
 			session.setAttribute("ldto", ldto); //로그인 정보를 session에 저장
 			session.setMaxInactiveInterval(60*10);
 			System.out.println("로그인성공");
+			System.out.println("로그인한 사용자: " + ldto);
 			return "redirect:/";
 		}
 	}
@@ -154,4 +156,43 @@ public class MemberController {
 		return "redirect:/";
 	}
 
+	@GetMapping("/myinfo")
+	public String myinfo(UserDto dto, Model model, HttpServletRequest request) {
+		System.out.println("내 정보 보기");
+		HttpSession session = request.getSession();
+		UserDto ldto = (UserDto)session.getAttribute("ldto");
+		request.setAttribute("dto", ldto);
+		
+		// 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리다이렉트
+		if (ldto == null) {
+			return "redirect:/user/signin";
+		}
+		
+		String id=ldto.getId();
+		dto=userService.UserInfo(id);
+		model.addAttribute("dto", dto);
+		return "myinfo";
+	}
+	
+	
+	
+	
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

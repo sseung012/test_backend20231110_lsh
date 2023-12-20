@@ -9,15 +9,21 @@
 	</insert>
 	
 	<select id="loginUser" parameterType="UserDto" resultType="UserDto">
-		SELECT USERNAME, USEREMAIL,USERPASSWORD,USERACCESSTOKEN,USERREFRESHTOKEN,USERSEQNO
-		FROM USER
-		WHERE ID=#{id} AND USERPASSWORD=#{userpassword} AND DELFLAG='N'
-	</select> 
+	    SELECT id, USERNAME,USERPASSWORD, phone, USEREMAIL, ROLE, delflag
+	    FROM USER 
+	    WHERE ID = #{id} AND USERPASSWORD = #{userpassword}
+	</select>
 	
 	<select id="idChk" parameterType="String" resultType="String">
 		SELECT ID FROM USER WHERE ID=#{id}
 	</select>
-
+	
+<!-- 	나의정보조회 -->
+	<select id="UserInfo" parameterType="String" resultType="userDto">
+	    SELECT id, USERNAME, phone, USEREMAIL, ROLE, delflag
+	    FROM USER 
+	    WHERE ID=#{id}
+	</select>
 </mapper>
 
 
