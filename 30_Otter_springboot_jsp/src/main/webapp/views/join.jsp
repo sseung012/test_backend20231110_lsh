@@ -91,7 +91,6 @@
   			return false;	//false를 리턴하면 이벤트를 취소시킴 -> submit취소
   			}
   		}
-  	}
 
 </script>
 </head>
