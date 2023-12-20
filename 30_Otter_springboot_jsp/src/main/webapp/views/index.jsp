@@ -72,40 +72,66 @@
 <!-- 					</a>  -->
 <!-- 				</form>	 -->
             
+				
 				<%
 				    if (ldto == null) {
 				%>
+				    <!-- 로그인되지 않은 경우의 버튼들 -->
 				    <form class="d-flex">
 				        &nbsp;
 				        <a class="btn btn-outline-dark" type="submit" href="/user/signin">
-				            <i class="bi-cart-fill me-1" ></i>
-				            로그인/가입
+				            <i class="bi-cart-fill me-1"></i>
+				            로그인/회원가입
 				        </a> 
 				        &nbsp; 
 				    </form>
 				<%
 				    } else {
+				        if ("ADMIN".equals(ldto.getRole())) {
 				%>
-				    <form class="d-flex">
-				        &nbsp;
-				        <a class="btn btn-outline-dark" type="submit" href="/user/logout">
-				            <i class="bi-cart-fill me-1" ></i>
-				            로그아웃
-				        </a> 
-				        &nbsp;
-				        <a class="btn btn-outline-dark" type="submit" href="/product/insertProductForm">
-				            <i class="bi-cart-fill me-1" ></i>
-				            프로젝트 만들기
-				        </a> 
-				    </form>
-				    <form class="d-flex">
-				        &nbsp;
-				        <a class="btn btn-outline-dark" type="submit" href="/user/myinfo">
-				            <i class="bi-cart-fill me-1" ></i>
-				            나의 정보
-				        </a> 
-				    </form>
+				            <!-- ADMIN인 경우의 버튼들 -->
+				            <form class="d-flex">
+				                &nbsp;
+				                <a class="btn btn-outline-dark" type="submit" href="/user/manage">
+				                    <i class="bi-cart-fill me-1"></i>
+				                    회원관리
+				                </a> 
+				                &nbsp;
+				                <a class="btn btn-outline-dark" type="submit" href="/project/manage">
+				                    <i class="bi-cart-fill me-1"></i>
+				                    프로젝트 관리
+				                </a>
+				                &nbsp;
+				                <a class="btn btn-outline-dark" type="submit" href="/user/logout">
+				                    <i class="bi-cart-fill me-1"></i>
+				                    로그아웃
+				                </a> 
+				            </form>
 				<%
+				        } else {
+				%>
+				            <!-- ADMIN이 아닌 경우의 버튼들 -->
+				            <form class="d-flex">
+				                &nbsp;
+				                <a class="btn btn-outline-dark" type="submit" href="/user/logout">
+				                    <i class="bi-cart-fill me-1"></i>
+				                    로그아웃
+				                </a> 
+				                &nbsp;
+				                <a class="btn btn-outline-dark" type="submit" href="/project/insertProductForm">
+				                    <i class="bi-cart-fill me-1"></i>
+				                    프로젝트 만들기
+				                </a> 
+				            </form>
+				            <form class="d-flex">
+				                &nbsp;
+				                <a class="btn btn-outline-dark" type="submit" href="/user/myinfo">
+				                    <i class="bi-cart-fill me-1"></i>
+				                    나의 정보
+				                </a> 
+				            </form>
+				<%
+				        }
 				    }
 				%>
 
