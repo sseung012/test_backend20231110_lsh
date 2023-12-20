@@ -41,5 +41,7 @@ public class InsertProductCommand {
 	private String product_check;
 	
 	
+	
+	
 
 }
