@@ -94,7 +94,7 @@
 				                <a class="btn btn-outline-dark" type="submit" href="/user/manage">
 				                    <i class="bi-cart-fill me-1"></i>
 				                    회원관리
-				                </a> 
+				                </a>  
 				                &nbsp;
 				                <a class="btn btn-outline-dark" type="submit" href="/project/manage">
 				                    <i class="bi-cart-fill me-1"></i>
