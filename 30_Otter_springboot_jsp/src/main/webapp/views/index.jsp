@@ -8,7 +8,7 @@
 
 <head>
 <%
-    UserDto ldto = (UserDto)request.getAttribute("ldto");
+	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
     // 이제 ldto 변수를 사용할 수 있음
 %>
 <meta charset="UTF-8"/>
@@ -79,7 +79,7 @@
 				        &nbsp;
 				        <a class="btn btn-outline-dark" type="submit" href="/user/signin">
 				            <i class="bi-cart-fill me-1" ></i>
-				            login/signUp
+				            로그인/가입
 				        </a> 
 				        &nbsp; 
 				    </form>
@@ -88,9 +88,9 @@
 				%>
 				    <form class="d-flex">
 				        &nbsp;
-				        <a class="btn btn-outline-dark" type="submit" href="/user/signin">
+				        <a class="btn btn-outline-dark" type="submit" href="/user/logout">
 				            <i class="bi-cart-fill me-1" ></i>
-				            logout
+				            로그아웃
 				        </a> 
 				        &nbsp;
 				        <a class="btn btn-outline-dark" type="submit" href="/product/insertProductForm">
@@ -102,7 +102,7 @@
 				        &nbsp;
 				        <a class="btn btn-outline-dark" type="submit" href="/user/myinfo">
 				            <i class="bi-cart-fill me-1" ></i>
-				            나의정보
+				            나의 정보
 				        </a> 
 				    </form>
 				<%
