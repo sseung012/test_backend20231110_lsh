@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
+<%@ page import="com.hk.otter.dtos.UserDto" %>
 <%-- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
 <!DOCTYPE html>
 <html>
 
 <head>
+<%
+	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
+    // 이제 ldto 변수를 사용할 수 있음
+%>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
@@ -42,49 +47,69 @@
                                 <li><a class="dropdown-item" href="#!">출판</a></li>
                                 <li><a class="dropdown-item" href="#!">반려동물</a></li>
                             </ul>
-               </li>
-            </ul>
+	               </li>
+	            </ul>
             
-            <c:choose>
-				<c:when test="${ ldto==null}">
-					<form class="d-flex">
-						&nbsp;
-						<a class="btn btn-outline-dark" type="submit" href="/user/signin">
-	                    <i class="bi-cart-fill me-1" ></i>
-	                    	login/signUp
-						</a> 
-						&nbsp; 
-					</form>
-					<form class="d-flex">
-						&nbsp;
-						<a class="btn btn-outline-dark" type="submit" href="/user/myinfo">
-	                    <i class="bi-cart-fill me-1" ></i>
-	                    	나의정보
-						</a> 
-					</form>
-				</c:when>
-				<c:otherwise>
-					<form class="d-flex">
-						&nbsp;
-						<a class="btn btn-outline-dark" type="submit" href="/user/signin">
-	                    <i class="bi-cart-fill me-1" ></i>
-	                    	logout
-						</a> 
-						&nbsp;
-						<a class="btn btn-outline-dark" type="submit" href="/product/insertProductForm">
-	                    <i class="bi-cart-fill me-1" ></i>
-	                    	프로젝트 만들기
-						</a> 
-					</form>
-					<form class="d-flex">
-						&nbsp;
-						<a class="btn btn-outline-dark" type="submit" href="/user/myinfo">
-	                    <i class="bi-cart-fill me-1" ></i>
-	                    	나의정보
-						</a> 
-					</form>
-				</c:otherwise>
-			</c:choose>
+
+
+<!--             	<form class="d-flex"> -->
+<!-- 					&nbsp; -->
+<!-- 					<a class="btn btn-outline-dark" type="submit" href="/user/signin"> -->
+<!--                     <i class="bi-cart-fill me-1" ></i> -->
+<!--                     	login/signUp -->
+<!-- 					</a>  -->
+<!-- 					&nbsp;  -->
+<!-- 					<a class="btn btn-outline-dark" type="submit" href="/product/insertProductForm"> -->
+<!--                     <i class="bi-cart-fill me-1" ></i> -->
+<!--                     	프로젝트 만들기 -->
+<!-- 					</a>  -->
+<!-- 				</form> -->
+<!-- 				<form class="d-flex"> -->
+<!-- 					&nbsp; -->
+<!-- 					<a class="btn btn-outline-dark" type="submit" href="/user/myinfo"> -->
+<!--                     <i class="bi-cart-fill me-1" ></i> -->
+<!--                     	나의정보 -->
+<!-- 					</a>  -->
+<!-- 				</form>	 -->
+            
+				<%
+				    if (ldto == null) {
+				%>
+				    <form class="d-flex">
+				        &nbsp;
+				        <a class="btn btn-outline-dark" type="submit" href="/user/signin">
+				            <i class="bi-cart-fill me-1" ></i>
+				            로그인/가입
+				        </a> 
+				        &nbsp; 
+				    </form>
+				<%
+				    } else {
+				%>
+				    <form class="d-flex">
+				        &nbsp;
+				        <a class="btn btn-outline-dark" type="submit" href="/user/logout">
+				            <i class="bi-cart-fill me-1" ></i>
+				            로그아웃
+				        </a> 
+				        &nbsp;
+				        <a class="btn btn-outline-dark" type="submit" href="/product/insertProductForm">
+				            <i class="bi-cart-fill me-1" ></i>
+				            프로젝트 만들기
+				        </a> 
+				    </form>
+				    <form class="d-flex">
+				        &nbsp;
+				        <a class="btn btn-outline-dark" type="submit" href="/user/myinfo">
+				            <i class="bi-cart-fill me-1" ></i>
+				            나의 정보
+				        </a> 
+				    </form>
+				<%
+				    }
+				%>
+
+
          </div>
    </div>
 </nav>

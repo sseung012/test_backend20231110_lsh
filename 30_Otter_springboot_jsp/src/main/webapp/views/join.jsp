@@ -91,7 +91,6 @@
   			return false;	//false를 리턴하면 이벤트를 취소시킴 -> submit취소
   			}
   		}
-  	}
 
 </script>
 </head>
@@ -99,7 +98,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
    <div class="container px-4 px-lg-5">
-       <a class="navbar-brand" href="#!">Otter</a>
+       <a class="navbar-brand" href="/">Otter</a>
     </div>
 </nav>
 
