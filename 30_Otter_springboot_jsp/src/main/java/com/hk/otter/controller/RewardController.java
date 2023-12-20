@@ -9,17 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hk.otter.command.InsertProductCommand;
 import com.hk.otter.command.InsertRewardCommand;
 import com.hk.otter.service.ProductService;
-import com.hk.otter.service.RewardService;
 
 @Controller
 @RequestMapping("/reward")
 public class RewardController {
 	
 	@Autowired
-	private RewardService rewardService;
+	private ProductService productService;
    
 	@GetMapping(value = "/insertRewardForm")
       public String insertRewardForm(Model model, InsertRewardCommand insertRewardCommand) {
@@ -48,7 +46,7 @@ public class RewardController {
          
          
          try {
-			rewardService.insertReward(insertRewardCommand);
+			productService.insertReward(insertRewardCommand);
 			System.out.println("프로젝트_리워드 만들기 성공");
 			return "redirect:/";
 		} catch (Exception e) {
