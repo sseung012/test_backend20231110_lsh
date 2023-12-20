@@ -42,7 +42,7 @@ public class RewardController {
          System.out.println(insertRewardCommand);
          
          if(result.hasErrors()) { // 에러가 있으면 돌려보냄
-            System.out.println("프로젝트 만들기 유효값 오류");
+            System.out.println("프로젝트_리워드 만들기 유효값 오류");
             return "insertRewardForm";
          }
          

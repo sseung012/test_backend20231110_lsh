@@ -20,7 +20,7 @@ public class ProductController {
 	private ProductService productService;
    
 	@GetMapping(value = "/insertProductForm")
-      public String addCalBoardForm(Model model, InsertProductCommand insertProductCommand) {
+      public String insertProductForm(Model model, InsertProductCommand insertProductCommand) {
          // logger.info("프로젝트만들기폼이동");
          System.out.println(insertProductCommand);
          

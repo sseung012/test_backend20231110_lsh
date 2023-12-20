@@ -9,8 +9,7 @@ import com.hk.otter.mapper.ProductMapper;
 
 @Service
 public class ProductService {
-	
-	
+		
 	@Autowired
 	private ProductMapper productMapper;
 	
