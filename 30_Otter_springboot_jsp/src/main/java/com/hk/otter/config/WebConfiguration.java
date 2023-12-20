@@ -6,6 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.hk.otter.config.LoginInterceptor;
 
+
 @Configuration
 public class WebConfiguration implements WebMvcConfigurer{
 	
