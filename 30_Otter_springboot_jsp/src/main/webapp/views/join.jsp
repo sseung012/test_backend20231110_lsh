@@ -9,14 +9,15 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Otter</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="resources/assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/styles.css" rel="stylesheet" />
 
-        	
+           
 <script type="text/javascript">
-	 //사용자 인증 요청하기(사용자 인증하면서 계좌등록까지 진행함)
+    //사용자 인증 요청하기(사용자 인증하면서 계좌등록까지 진행함)
       function authorization(){
          var url="https://testapi.openbanking.or.kr/oauth/2.0/authorize?"
                +"response_type=code&" //고정갑 code:인증요청시 반환되는 값의 형식 의미
@@ -28,18 +29,17 @@
                
          window.open(url,"인증하기","width=400px, height=600px");
       }
+	 
 
-
-
-      window.onload = function () {
-          // ID 중복 체크를 완료한 후에 다른 정보를 입력할 수 있게 처리
+      onload = function () {
+          // id 중복체크를 완료한 후에 다른 정보를 입력할 수 있게 처리
           // 입력박스에 입력하기 전에 idChk=y/n 여부를 확인해서 y면 입력 실행, n이면 id 입력박스로 커서 이동
           var inputs = document.querySelectorAll("input[name]");
           var idChk = document.getElementById("idChk");
 
           for (var i = 1; i < inputs.length; i++) {
               inputs[i].onfocus = function () {
-                  if ("<c:out value='${idChk}'/>" === "n") {
+                  if (idChk.textContent === "n") {
                       alert("ID 중복체크를 먼저 확인해주세요");
                       inputs[0].focus(); // id 입력박스로 이동
                   }
@@ -47,15 +47,39 @@
           }
       };
 
-      // ID 중복 체크
-      function idChk() {
-          // 입력된 ID값 구하기
-          var id = document.getElementsByName("id")[0].value;
-          if (id == "") {
-              alert("ID를 입력하세요");
-          } else if(id==#{resultId}){
-        	  alert("사용중인 ID입니다. 다른 ID를 입력해주세요.")
 
+  	//ID중복체크
+  	function idChk(){
+  		//입력된 ID값 구하기
+  		var id=document.getElementsByName("id")[0].value;
+  		if(id==""){
+  			alert("ID를 입력하세요");
+  		}else{
+//   			window.open("userController.jsp?command=idChk"
+//   						+ "&id="+id,"ID 확인", "width=300px, height=300px");
+  			$.ajax({
+  				url:"/user/idChk",	//요청 url
+  				method:"get",		//전송방식
+  				data:{"id":id},		//전송할 데이터
+  				dataType:"json",	//전달받을 데이터 타입(xml,text,html,json....)
+  				async:false,		//$.ajax()메서드를 실행하는 방식
+  				success:function(data){	//데이터 받기 성공하면 함수 실행하겠다는 뜻
+//  					alert(data.id);
+  					if(data.id==undefined){
+  						$("#enabledId").css("color","black").text("사용가능합니다");
+  						$("#idChk").text("y");
+  						$("input[name=name]").focus();
+  					}else{
+  						$("#enabledId").css("color","red").text("중복된 ID입니다");
+  						$("#idChk").text("n");
+  					}
+  				},
+  				error:function(){	//데이터 받기 실패하면 함수 실행하겠다는 뜻
+  					alert("통신실패");
+  				}
+  			});
+  		}
+  	}
   	
   	// 패스워드 확인하기
   	function isPW(form){
@@ -65,38 +89,17 @@
   			form.password2.value="";
   			form.password.focus();	//비밀번호를 바로 입력할 수 있도록 커서 넣기
   			return false;	//false를 리턴하면 이벤트를 취소시킴 -> submit취소
+  			}
   		}
   	}
-
-
-//   	// 패스워드 확인하기
-//   	function isPW(form){
-//   		if(form.password.value!=form.password2.value){
-//   			alert("비밀번호를 확인하세요");
-//   			form.password.value="";	//비밀번호 초기화
-//   			form.password2.value="";
-//   			form.password.focus();	//비밀번호를 바로 입력할 수 있도록 커서 넣기
-//   			return false;	//false를 리턴하면 이벤트를 취소시킴 -> submit취소
-//   		}
-//   	}
-
-
-
-          // 입력된 전화번호가 11자리가 아니면 경고 메시지 출력
-          if (phoneNumber.length !== 11) {
-              alert("전화번호를 11자리로 입력해주세요.");
-              phoneNumberInput.value = ""; // 입력 값을 비움
-          }
-      } 
-
 
 </script>
 </head>
 <body class="join">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<div class="container px-4 px-lg-5">
-    	<a class="navbar-brand" href="#!">Otter</a>
+   <div class="container px-4 px-lg-5">
+       <a class="navbar-brand" href="#!">Otter</a>
     </div>
 </nav>
 

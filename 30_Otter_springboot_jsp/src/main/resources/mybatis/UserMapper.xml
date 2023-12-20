@@ -14,7 +14,7 @@
 		WHERE ID=#{id} AND USERPASSWORD=#{userpassword}
 	</select>
 	
-	<select id="idChk" parameterType="String" resultType="UserDto">
+	<select id="idChk" parameterType="String" resultType="String">
 		SELECT ID FROM USER WHERE ID=#{id}
 	</select>
 	
