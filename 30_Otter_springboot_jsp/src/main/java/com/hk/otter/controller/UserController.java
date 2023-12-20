@@ -27,7 +27,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user")
-public class MemberController {
+public class UserController {
 	
 	@Autowired
 	private UserService userService;
@@ -108,7 +108,7 @@ public class MemberController {
 	
 	//아이디중복체크 
 	@ResponseBody
-	@GetMapping(value = "/idChk")
+	@GetMapping("/idChk")
 	public Map<String,String> idChk(String id){
 		System.out.println("ID중복체크");
 		
