@@ -34,38 +34,38 @@
                     <form action="/user/adduser" method="post" >
                         
                         <div class="addProduct">
-                            <label for="userpassword" class="form-label">대표 이미지</label>
-                            <input type="password" name="userpassword" class="form-control" />
+                            <label for="img" class="form-label">대표 이미지</label>
+                            <input type="file" name="img" class="form-control" />
                         </div>
-                        <div class="signup">
-                            <label for="userpassword2" class="form-label">회사명</label>
-                            <input type="password" name="userpassword2" class="form-control" />
+                        <div class="addProduct">
+                            <label for="maker" class="form-label">회사명</label>
+                            <input type="text" name="maker" class="form-control" />
                         </div>
-                        <div class="signup">
-                            <label for="username" class="form-label">목표 금액</label>
-                            <input type="text" name="username" class="form-control" />
+                        <div class="addProduct">
+                            <label for="goal_price" class="form-label">목표 금액</label>
+                            <input type="text" name="goal_price" class="form-control" />
                         </div>
-                        <div class="signup">
-                            <label for="phone" class="form-label">제목</label>
-                            <input type="text" name="phone" class="form-control" onblur="validatePhoneNumber()" />
+                        <div class="addProduct">
+                            <label for="title" class="form-label">제목</label>
+                            <input type="text" name="title" class="form-control" />
                         </div>
-                        <div class="signup">
-                            <label for="useremail" class="form-label">신청 날짜</label>
-                            <input type="email" name="useremail" class="form-control" />
+                        <div class="addProduct">
+                            <label for="created_date" class="form-label">신청 날짜</label>
+                            <input type="email" name="created_date" class="form-control" />
                         </div>
-                        <div class="signup">
+                        <div class="addProduct">
                             <label for="useraccesstoken" class="form-label">마감일</label>
                             <input type="text" name="useraccesstoken" class="form-control" />
                         </div>
-                        <div class="signup">
+                        <div class="addProduct">
                             <label for="userrefreshtoken" class="form-label">상세내용</label>
                             <input type="text" name="userrefreshtoken" class="form-control" />
                         </div>
-                        <div class="signup">
+                        <div class="addProduct">
                             <label for="userseqno" class="form-label">카테고리 선택</label>
                             <input type="text" name="userseqno" class="form-control" />
                         </div>
-                        <div class="signup">
+                        <div class="addProduct">
                             <label for="userseqno" class="form-label">리워드</label>
                             <input type="text" name="userseqno" class="form-control" />
                             <input type="text" name="userseqno" class="form-control" />
