@@ -4,7 +4,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.hk.otter.dtos.ProductDto;
 
-
 @Mapper
 public interface ProductMapper {
 	
