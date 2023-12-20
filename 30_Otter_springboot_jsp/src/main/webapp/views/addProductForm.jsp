@@ -23,7 +23,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container px-4 px-lg-5">
-    	<a class="navbar-brand" href="#!">Otter</a>
+    	<a class="navbar-brand" href="/">Otter</a>
     </div>
 </nav>
 
@@ -31,8 +31,8 @@
         <div class="container myy-5">
             <div class="roww justify-content-center">
                 <div class="coll-lg-6">
-                    <form action="/user/adduser" method="post" >
-                        
+                    <form action="/prodcut/insertProduct" method="post" >
+                                  
                         <div class="addProduct">
                             <label for="img" class="form-label">대표 이미지</label>
                             <input type="file" name="img" class="form-control" />
@@ -63,7 +63,16 @@
                         </div>
                         <div class="addProduct">
                             <label for="userseqno" class="form-label">카테고리 선택</label>
-                            <input type="text" name="userseqno" class="form-control" />
+                            <select name="category" id="category">
+                            	<option>-- 카테고리 선택 --</option>
+                            	<option>전체</option>
+                            	<option>홈/리빙</option>
+                            	<option>패션/잡화</option>
+                            	<option>뷰티</option>
+                            	<option>푸드</option>
+                            	<option>출판</option>
+                            	<option>반려동물</option>
+                            </select>
                         </div>
                         <div class="addProduct">
                             <label for="userseqno" class="form-label">리워드</label>
