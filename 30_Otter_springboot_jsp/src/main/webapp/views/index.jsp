@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 
@@ -10,6 +11,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Otter</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!--         Bootstrap icons -->
@@ -43,25 +45,46 @@
                </li>
             </ul>
             
-            <form class="d-flex">
-               &nbsp;
-               <a class="btn btn-outline-dark" type="submit" href="/user/signin">
-                    <i class="bi-cart-fill me-1" ></i>
-                       login/signUp
-               </a> 
-               &nbsp;
-               <a class="btn btn-outline-dark" type="submit" href="/product/insertProductForm">
-                    <i class="bi-cart-fill me-1" ></i>
-                       프로젝트 만들기
-               </a> 
-            </form>
-            <form class="d-flex">
-               &nbsp;
-               <a class="btn btn-outline-dark" type="submit" href="/user/myinfo">
-                    <i class="bi-cart-fill me-1" ></i>
-                       나의정보
-               </a> 
-            </form>
+            <c:choose>
+				<c:when test="${ ldto==null}">
+					<form class="d-flex">
+						&nbsp;
+						<a class="btn btn-outline-dark" type="submit" href="/user/signin">
+	                    <i class="bi-cart-fill me-1" ></i>
+	                    	login/signUp
+						</a> 
+						&nbsp; 
+					</form>
+					<form class="d-flex">
+						&nbsp;
+						<a class="btn btn-outline-dark" type="submit" href="/user/myinfo">
+	                    <i class="bi-cart-fill me-1" ></i>
+	                    	나의정보
+						</a> 
+					</form>
+				</c:when>
+				<c:otherwise>
+					<form class="d-flex">
+						&nbsp;
+						<a class="btn btn-outline-dark" type="submit" href="/user/signin">
+	                    <i class="bi-cart-fill me-1" ></i>
+	                    	logout
+						</a> 
+						&nbsp;
+						<a class="btn btn-outline-dark" type="submit" href="/product/insertProductForm">
+	                    <i class="bi-cart-fill me-1" ></i>
+	                    	프로젝트 만들기
+						</a> 
+					</form>
+					<form class="d-flex">
+						&nbsp;
+						<a class="btn btn-outline-dark" type="submit" href="/user/myinfo">
+	                    <i class="bi-cart-fill me-1" ></i>
+	                    	나의정보
+						</a> 
+					</form>
+				</c:otherwise>
+			</c:choose>
          </div>
    </div>
 </nav>
