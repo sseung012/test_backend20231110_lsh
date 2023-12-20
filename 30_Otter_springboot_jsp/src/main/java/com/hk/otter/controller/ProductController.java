@@ -1,5 +1,6 @@
 package com.hk.otter.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,10 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hk.otter.command.InsertProductCommand;
+import com.hk.otter.service.ProductService;
 
 @Controller
 @RequestMapping("/product")
 public class ProductController {
+	
+	@Autowired
+	private ProductService productService;
    
 	@GetMapping(value = "/insertProductForm")
       public String addCalBoardForm(Model model, InsertProductCommand insertProductCommand) {
@@ -35,17 +40,19 @@ public class ProductController {
          System.out.println(insertProductCommand);
          
          if(result.hasErrors()) { // 에러가 있으면 돌려보냄
-            System.out.println("글을 모두 입력해야 함");
+            System.out.println("프로젝트 만들기 유효값 오류");
             return "addProductForm";
          }
          
-         return null;
-         
-         // 정상적으로 처리가 된다면
-//         calService.insertCalBoard(insertCalCommand);
-//         
-//         return "redirect:/schedule/calendar?year="+insertCalCommand.getYear()
-//         +"&month="+insertCalCommand.getMonth();
+         try {
+			// productService.insertProduct(insertProductCommand);
+			System.out.println("프로젝트 만들기 성공");
+			return "redirect:/";
+		} catch (Exception e) {
+			System.out.println("프로젝트 만들기 실패");
+			e.printStackTrace();
+			return "redirect:insertProduct";
+		}
       }
 
 }
