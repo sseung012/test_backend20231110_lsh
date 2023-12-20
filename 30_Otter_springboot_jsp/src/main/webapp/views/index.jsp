@@ -9,7 +9,6 @@
 <head>
 <%
 	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
-    // 이제 ldto 변수를 사용할 수 있음
 %>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
