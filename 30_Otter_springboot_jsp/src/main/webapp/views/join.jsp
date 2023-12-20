@@ -28,6 +28,7 @@
                
          window.open(url,"인증하기","width=400px, height=600px");
       }
+	
 
 //       function idchk(){
 //   		//id 중복체크를 완료한 후에 다른 정보를 입력할 수 있게 처리
