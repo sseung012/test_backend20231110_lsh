@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
-<%-- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 
@@ -46,7 +46,7 @@
             </ul>
             
             <c:choose>
-				<c:when test="${ ldto==null}">
+				<c:when test="${ldto==null}">
 					<form class="d-flex">
 						&nbsp;
 						<a class="btn btn-outline-dark" type="submit" href="/user/signin">
@@ -82,7 +82,7 @@
 	                    <i class="bi-cart-fill me-1" ></i>
 	                    	나의정보
 						</a> 
-					</form>
+					</form> 
 				</c:otherwise>
 			</c:choose>
          </div>
