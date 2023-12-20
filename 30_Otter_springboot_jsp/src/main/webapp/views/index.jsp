@@ -49,6 +49,11 @@
                     <i class="bi-cart-fill me-1" ></i>
                     	login/signUp
 					</a> 
+					&nbsp;
+					<a class="btn btn-outline-dark" type="submit" href="/product/insertProductForm">
+                    <i class="bi-cart-fill me-1" ></i>
+                    	프로젝트 만들기
+					</a> 
 				</form>
 				<form class="d-flex">
 					&nbsp;

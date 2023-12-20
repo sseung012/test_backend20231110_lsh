@@ -28,8 +28,7 @@
                
          window.open(url,"인증하기","width=400px, height=600px");
       }
-	 
-	
+
 //       function idchk(){
 //   		//id 중복체크를 완료한 후에 다른 정보를 입력할 수 있게 처리
 //   		//입력박스에 입력하기 전에 idChk=y/n여부를 확인해서 y면 입력 실행, n이면 id입력박스로 커서 이동

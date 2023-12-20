@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>펀딩 프로젝트 신청</title>
+<script type="text/javascript">
+
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<div layout:fragment="content">
+<div id="container">
+	<h1>펀딩 프로젝트 신청</h1>
+	<form th:action="@{/product/insertProduct}" method="post" 
+											   th:object="${insertProductCommand}">
+		<table class="table">
+		
+			<tr>
+				<th>대표이미지</th>
+				<td><input type="file" name="filename"/></td>
+			</tr>
+			
+			<tr>
+				<th>회사명 입력</th>
+				<td>
+					<input type="text" name="maker" th:field="*{maker}" />
+					<span class="errorField" th:if="${#fields.hasErrors('maker')}" 
+											 th:errors="*{maker}"></span>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>목표 금액</th>
+				<td>
+					<input type="text" name="goal_price" th:value="*{goal_price}" />
+					<span class="errorField" th:if="${#fields.hasErrors('goal_price')}" 
+											 th:errors="*{goal_price}"></span>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>제목</th> 
+<!--				type 뭘로하고 name 뭘로할지 정해야함-->
+				<td>
+					<input type="text" name="title" th:field="*{title}"/>
+					<span class="errorField" th:if="${#fields.hasErrors('title')}" 
+											 th:errors="*{title}"></span>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>신청 날짜</th>
+<!--				type, name 정해야함, 신청날짜는 자동으로 그날 불러오기-->
+				<td>
+					<input type="text" name="id" th:value="${session.mdto.id}" />
+					<span class="errorField" th:if="${#fields.hasErrors('id')}" 
+											 th:errors="*{id}"></span>
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<th>마감일</th>
+				<td>
+					<select name="year" >
+						<th:block th:each="i:${#numbers.sequence(insertCalCommand.year-5,insertCalCommand.year+5)}">
+							<th:block th:if="${insertCalCommand.year == i}">
+								<option th:value="${i}" th:text="${i}" selected="selected"></option>
+							</th:block>
+							<th:block th:unless="${insertCalCommand.year == i}">
+								<option th:value="${i}" th:text="${i}"></option>
+							</th:block>
+						</th:block>
+					</select>년
+					<select name="month" >
+						<th:block th:each="i:${#numbers.sequence(1,12)}">
+							<th:block th:if="${insertCalCommand.month == i}">
+								<option th:value="${i}" th:text="${i}" selected="selected"></option>
+							</th:block>
+							<th:block th:unless="${insertCalCommand.month == i}">
+								<option th:value="${i}" th:text="${i}"></option>
+							</th:block>
+						</th:block>
+					</select>월
+					<select name="date" >
+						<th:block th:each="i:${#numbers.sequence(1,31)}">
+							<th:block th:if="${insertCalCommand.date == i}">
+								<option th:value="${i}" th:text="${i}" selected="selected"></option>
+							</th:block>
+							<th:block th:unless="${insertCalCommand.date == i}">
+								<option th:value="${i}" th:text="${i}"></option>
+							</th:block>
+						</th:block>
+					</select>일
+				</td>
+			</tr>
+			
+			<tr>
+				<th>상세내용</th>
+				<td>
+					<textarea rows="10" cols="60" name="content" th:field="*{content}"></textarea>
+					<span class="errorField" th:if="${#fields.hasErrors('content')}" 
+											 th:errors="*{content}"></span>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>카테고리</th>
+<!--				고쳐야함, 카테고리 선택할 수 있는걸로-->
+				<td>
+				<label for="lang">카테고리 선택</label>
+				  <select name="languages" id="lang" multiple>
+				    <option value="whole">전체</option>
+				    <option value="homeliving">홈/리빙</option>
+				    <option value="fashion">패션/잡화</option>
+				    <option value="beauty">뷰티</option>
+				    <option value="food">푸드</option>
+				    <option value="publish">출판</option>
+				    <option value="animal">반려동물</option>
+				  </select>
+  				<input type="submit" value="submit" />
+				
+<!--					<input type="text" name="category" th:field="*{category}"/>-->
+<!--					<span class="errorField" th:if="${#fields.hasErrors('category')}" -->
+<!--											 th:errors="*{category}"></span>-->
+				</td>
+			</tr>
+			
+			<tr>
+				<th>리워드</th>
+<!--				고쳐야함, 리워드 추가 버튼 누르면 또 리워드 넣을 수 있게 칸이 생겨야함-->
+				<td>
+					<input type="text" name="reward title" th:field="*{reward title}"/>
+					<span class="errorField" th:if="${#fields.hasErrors('reward title')}" 
+											 th:errors="*{reward title}"></span>
+				</td>
+				
+				<td>
+					<input type="text" name="reward price" th:field="*{reward price}"/>
+					<span class="errorField" th:if="${#fields.hasErrors('reward price')}" 
+											 th:errors="*{reward price}"></span>
+				</td>
+				
+				<td>
+					<input type="text" name="reward stock" th:field="*{reward stock}"/>
+					<span class="errorField" th:if="${#fields.hasErrors('reward stock')}" 
+											 th:errors="*{reward stock}"></span>
+				</td>
+				
+				<td>
+					<input type="text" name="title" th:field="*{title}"/>
+					<span class="errorField" th:if="${#fields.hasErrors('title')}" 
+											 th:errors="*{title}"></span>
+				</td>
+				
+				<input type="submit" value="리워드 추가" style="background-color:#D1B2BA; border:none;
+														border-radius:5px; font-weight:bold;"/>
+			</tr>
+			
+			<tr>
+				<td colspan="2">
+<!--					<input type="submit" value="리워드 추가" style="background-color:#D1B2BA; border:none;-->
+<!--														border-radius:5px; font-weight:bold;"/>-->
+					
+					<input type="submit" value="등록" style="background-color:#D1B2BA; border:none;
+														border-radius:5px; font-weight:bold;"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+</div>
+</body>
+</html>
