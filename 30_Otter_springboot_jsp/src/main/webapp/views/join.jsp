@@ -134,29 +134,12 @@
 //           var phoneNumberInput = document.getElementsByName("userphone")[0];
 //           var phoneNumber = phoneNumberInput.value.replace(/\D/g, ''); // 숫자 이외의 문자 제거
 
-//           // 입력된 전화번호가 11자리가 아니면 경고 메시지 출력
-//           if (phoneNumber.length !== 11) {
-//               alert("전화번호를 11자리로 입력해주세요.");
-//               phoneNumberInput.value = ""; // 입력 값을 비움
-//           }
-//       } 
-
-</script>
-</head>
-<body>
-<%
-	//request에 저장하면 Object로 형변환 됌 --> (String)request--> 형변환해서 가져오기
-	String resultId=(String)request.getAttribute("resultId");
-%>
-<div>
-	<span><%=resultId==null?"사용 가능한 아이디입니다.":"중복된 아이디입니다." %></span>
-	<span><button onclick="confirmId('<%=resultId%>')">확인</button></span>
-</div>
-
-
-
-
-
+          // 입력된 전화번호가 11자리가 아니면 경고 메시지 출력
+          if (phoneNumber.length !== 11) {
+              alert("전화번호를 11자리로 입력해주세요.");
+              phoneNumberInput.value = ""; // 입력 값을 비움
+          }
+      } 
 
 
 </script>
@@ -170,55 +153,52 @@
 </nav>
 
 <section class="pyy-5">
-      <div class="container myy-5">
-         <div class="roww justify-content-center">
-            <div class="coll-lg-6">
-            	<form action="/user/adduser" method="post" onsubmit="return submitChk()">
-<!--             	onsubmit="return isPW(this) -->
-	            	<div class="signup">
-		            	<label for="id" class="form-label">아이디</label>
-		            	<input type="text" name="id" class="form-control" required="required"/>
-	            	</div>
-
-	            	<div class="signup">
-		            	<label for="userpassword" class="form-label">비밀번호</label>
-		            	<input type="password" name="userpassword" class="form-control"/>
-	            	</div>
-<!-- 	            	<div class="signup"> -->
-<!-- 		            	<label for="userpassword2" class="form-label">비밀번호 확인</label> -->
-<!-- 		            	<input type="password" name="userpassword2" class="form-control"/> -->
-<!-- 	            	</div> -->
-					<div class="signup">
-		            	<label for="username" class="form-label">이름</label>
-		            	<input type="text" name="username" class="form-control"/>
-	            	</div>
-	            	<div class="signup">
-		            	<label for="phone" class="form-label">전화번호</label>
-		            	<input type="text" name="phone" class="form-control" onblur="validatePhoneNumber()"/>
-	            	</div>
-	            	<div class="signup"> 
-		            	<label for="useremail" class="form-label">이메일</label>
-		            	<input type="email" name="useremail" class="form-control"/>
-	            	</div>
-	            	<div class="signup">
-		            	<label for="useraccesstoken" class="form-label">AccessToken</label>
-		            	<input type="text" name="useraccesstoken" class="form-control"/>
-	            	</div>
-	            	<div class="signup">
-		            	<label for="userrefreshtoken" class="form-label">RefreshToken</label>
-		            	<input type="text" name="userrefreshtoken" class="form-control"/>
-	            	</div> 
-	            	<div class="signup">
-		            	<label for="userseqno" class="form-label">userSeqNo</label>
-		            	<input type="text" name="userseqno" class="form-control"/>
-	            	</div>
-	            	<input type="button" value="인증하기" onclick="authorization()" class="btn"/>
-	            	<input type="submit" value="가입하기" class="btn"/>
-
-            	</form>
+        <div class="container myy-5">
+            <div class="roww justify-content-center">
+                <div class="coll-lg-6">
+                    <form action="/user/adduser" method="post" onsubmit="return submitChk()">
+                        <div class="signup">
+                            <label for="id" class="form-label">아이디</label>
+                            <input type="text" name="id" class="form-control" required="required" />
+                        </div>
+                        <div class="signup">
+                            <label for="userpassword" class="form-label">비밀번호</label>
+                            <input type="password" name="userpassword" class="form-control" />
+                        </div>
+                        <div class="signup">
+                            <label for="userpassword2" class="form-label">비밀번호 확인</label>
+                            <input type="password" name="userpassword2" class="form-control" />
+                        </div>
+                        <div class="signup">
+                            <label for="username" class="form-label">이름</label>
+                            <input type="text" name="username" class="form-control" />
+                        </div>
+                        <div class="signup">
+                            <label for="phone" class="form-label">전화번호</label>
+                            <input type="text" name="phone" class="form-control" onblur="validatePhoneNumber()" />
+                        </div>
+                        <div class="signup">
+                            <label for="useremail" class="form-label">이메일</label>
+                            <input type="email" name="useremail" class="form-control" />
+                        </div>
+                        <div class="signup">
+                            <label for="useraccesstoken" class="form-label">AccessToken</label>
+                            <input type="text" name="useraccesstoken" class="form-control" />
+                        </div>
+                        <div class="signup">
+                            <label for="userrefreshtoken" class="form-label">RefreshToken</label>
+                            <input type="text" name="userrefreshtoken" class="form-control" />
+                        </div>
+                        <div class="signup">
+                            <label for="userseqno" class="form-label">userSeqNo</label>
+                            <input type="text" name="userseqno" class="form-control" />
+                        </div>
+                        <input type="button" value="인증하기" onclick="authorization()" class="btn" />
+                        <input type="submit" value="가입하기" class="btn" />
+                    </form>
+                </div>
             </div>
-         </div>
-      </div>
-   </section>
+        </div>
+    </section>
 </body>
 </html>
