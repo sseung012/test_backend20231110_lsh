@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.hk.otter.feignMapper.OpenBankingFeign;
 import com.hk.otter.service.UserService;
 
+
 @Controller
 @RequestMapping("/banking")
 public class FundingController {

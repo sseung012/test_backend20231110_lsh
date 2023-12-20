@@ -28,7 +28,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user")
-public class MemberController {
+public class UserController {
 	
 	@Autowired
 	private UserService userService;
