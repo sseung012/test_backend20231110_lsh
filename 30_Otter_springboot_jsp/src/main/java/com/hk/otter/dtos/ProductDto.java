@@ -6,8 +6,10 @@ public class ProductDto {
 	
 	private int seq;
 	private int user_seq;
+	
 	private String img;
-	private String maker;
+	
+	private String maker;	
 	private String goal_price;
 	private String title;
 	private Date created_date;
@@ -21,7 +23,6 @@ public class ProductDto {
 	
 	public ProductDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public ProductDto(int seq, int user_seq, String img, String maker, String goal_price, String title,
