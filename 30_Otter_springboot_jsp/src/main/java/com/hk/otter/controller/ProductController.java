@@ -14,7 +14,7 @@ import com.hk.otter.command.InsertProductCommand;
 @RequestMapping("/product")
 public class ProductController {
    
-   @GetMapping(value = "/insertProductForm")
+	@GetMapping(value = "/insertProductForm")
       public String addCalBoardForm(Model model, InsertProductCommand insertProductCommand) {
          // logger.info("프로젝트만들기폼이동");
          System.out.println(insertProductCommand);
@@ -22,7 +22,7 @@ public class ProductController {
          // addCalBoardfForm 페이지에서 유효값 처리를 위해 
          // insertCalCommand 받고 있기 때문에 보내줘야 해!
          model.addAttribute("insertProductCommand", insertProductCommand);
-         return "/product/addProductForm";
+         return "addProductForm";
       }
       
       
@@ -36,7 +36,7 @@ public class ProductController {
          
          if(result.hasErrors()) { // 에러가 있으면 돌려보냄
             System.out.println("글을 모두 입력해야 함");
-            return "thymeleaf/product/addProductForm";
+            return "addProductForm";
          }
          
          return null;
