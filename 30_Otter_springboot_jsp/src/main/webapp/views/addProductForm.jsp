@@ -32,7 +32,7 @@
             <div class="roww justify-content-center">
                 <div class="coll-lg-6">
                     <form action="/prodcut/insertProduct" method="post" >
-                          
+                                  
                         <div class="addProduct">
                             <label for="img" class="form-label">대표 이미지</label>
                             <input type="file" name="img" class="form-control" />
