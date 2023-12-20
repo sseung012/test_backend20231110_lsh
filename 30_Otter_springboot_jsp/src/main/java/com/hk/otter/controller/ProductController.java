@@ -29,6 +29,7 @@ public class ProductController {
       @PostMapping(value = "/insertProduct")
       public String insertProduct(@Validated InsertProductCommand insertProductCommand,
                           BindingResult result)throws Exception {
+    	  
          // 파라미터 순서 꼭 맞춰줄 것!
          // logger.info("일정추가하기");
          System.out.println(insertProductCommand);
