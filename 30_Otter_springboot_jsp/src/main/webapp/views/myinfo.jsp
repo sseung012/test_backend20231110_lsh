@@ -75,7 +75,7 @@
 											<button type="button" class="form-control" onclick="delUser('${dto.id}')">탈퇴</button>
 										</div>
 									</td>
-								</tr>
+								</tr> 
 							</table>
 						</form>
 					</div>
