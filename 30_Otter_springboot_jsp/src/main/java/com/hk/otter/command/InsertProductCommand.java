@@ -1,8 +1,10 @@
 package com.hk.otter.command;
 
+
 import java.util.Date;
 
 import jakarta.validation.constraints.NotBlank;
+
 
 public class InsertProductCommand {
 	
