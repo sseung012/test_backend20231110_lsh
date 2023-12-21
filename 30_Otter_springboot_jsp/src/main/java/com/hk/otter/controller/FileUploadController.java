@@ -34,7 +34,7 @@ public class FileUploadController{
 	   
 	   OutputStream out = null;
 	   PrintWriter printWriter = null;
-	   
+	          
 	   //인코딩
 	   response.setCharacterEncoding("utf-8");
 	   response.setContentType("text/html;charset=utf-8");
