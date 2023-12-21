@@ -14,6 +14,8 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -174,6 +176,26 @@ public class UserController {
 		return "myinfo";
 	}
 	
+	 //마이페이지에서 정보수정
+	   @PostMapping(value="/updateUser")
+	   public String updateUser(@Validated UserDto dto
+	                     , BindingResult result
+	                     ,Model model) {
+	      if(result.hasErrors()) {
+	         System.out.println("수정내용을 모두 입력하세요");
+	         //코드 추가--------------------------------------------
+	         UserDto mdto=userService.UserInfo(dto.getId());
+	         model.addAttribute("mdto", mdto);
+	         //--------------------------------------------------
+	         return "redirect:/user/myinfo";
+	      }
+	   
+	      userService.updateUser(dto);
+	   
+	      return "redirect:/user/myinfo?id="
+	            + dto.getId();
+	      
+	   }
 	
 	
 	
