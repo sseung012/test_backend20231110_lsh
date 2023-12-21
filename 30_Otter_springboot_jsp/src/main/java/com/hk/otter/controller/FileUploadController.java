@@ -25,7 +25,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class FileUploadController{
 	//이미지 업로드
-	@RequestMapping(value = "file/imageUpload.do",method=RequestMethod.POST)
+	@RequestMapping(value = "/file/imageUpload.do",method=RequestMethod.POST)
 	public void imageUpload(HttpServletRequest request,
 	      HttpServletResponse response, MultipartHttpServletRequest multiFile
 	      , @RequestParam MultipartFile upload) throws Exception{
