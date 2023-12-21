@@ -8,4 +8,6 @@
 		VALUES(NULL, #{reward_name}, #{price}, #{combination}, #{stock}, #{product_seq}, #{sold_stock})		
 	</insert>
 	
+	
+	
 </mapper>
