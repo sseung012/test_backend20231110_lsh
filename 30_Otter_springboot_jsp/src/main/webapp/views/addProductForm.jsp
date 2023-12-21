@@ -46,38 +46,37 @@ window.onload = function() {
                         <div class="addProduct">
                             <label for="img" class="form-label">대표 이미지</label>
                             <input type="file" name="img" class="form-control" />
-                        </div>
+                        </div>&nbsp;
                         <div class="addProduct">
                             <label for="maker" class="form-label">회사명</label>
                             <input type="text" name="maker" class="form-control" />
-                        </div>
+                        </div>&nbsp;
                         <div class="addProduct">
                             <label for="goal_price" class="form-label">목표 금액</label>
                             <input type="text" name="goal_price" class="form-control" />
-                        </div>
+                        </div>&nbsp;
                         <div class="addProduct">
                             <label for="title" class="form-label">제목</label>
                             <input type="text" name="title" class="form-control" />
-                        </div>
+                        </div>&nbsp;
                         <div class="addProduct">
                             <label for="created_date" class="form-label">신청 날짜</label>
                             
                             <input type="date" name="created_date" id="created_date" class="form-control" />
 							
-                        </div>
+                        </div>&nbsp;
                         <div class="addProduct">
                             <label for="close_date" class="form-label">마감일</label>
                             <input type="date" name="close_date" class="form-control" />
-                        </div>
+                        </div>&nbsp;
                         <div class="addProduct" id="addProduct">
                             <label for="content" class="form-label">상세내용</label>
                             <textarea id = "content" name = "content"></textarea>
 							<script>CKEDITOR.replace('content',
 									{filebrowserUploadUrl:'/file/imageUpload.do'});</script>
 <!--                             <input type="text" name="content" class="form-control" style="height:300px; width:510px;"/> -->
-								 
-						
-                        </div>
+								 						
+                        </div>&nbsp;
                         <div class="addProduct">
                             <label for="userseqno" class="form-label">카테고리 선택</label>
                             <select name="category" id="category">
@@ -90,15 +89,14 @@ window.onload = function() {
                             	<option>출판</option>
                             	<option>반려동물</option>
                             </select>
-                        </div>
+                        </div>&nbsp;
                         <div class="addProduct">
                             <label for="userseqno" class="form-label">리워드</label>
-                            <input type="text" name="reward_name" class="form-control" placeholder="리워드 제목" />
-                            <input type="text" name="price" class="form-control" placeholder="리워드 가격"/>
-                            <input type="text" name="combination" class="form-control" placeholder="리워드 설명"/>
+                            <input type="text" name="reward_name" class="form-control" placeholder="리워드 제목" />&nbsp;
+                            <input type="text" name="price" class="form-control" placeholder="리워드 가격"/>&nbsp;
+                            <input type="text" name="combination" class="form-control" placeholder="리워드 설명"/>&nbsp;
                             <input type="number" name="stock" class="form-control" placeholder="리워드 수량"/>
-          
-                            
+                        
                             <input type="submit" value="추가" class="btn btn-outline-dark" />
                             
                         </div>
