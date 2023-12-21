@@ -3,14 +3,11 @@
 
 <mapper namespace="com.hk.otter.mapper.ProductMapper">
 	
-	<insert id="insertProduct" parameterType="ProductDto">
+	<insert id="insertProduct" parameterType="ProductDto"
+	useGeneratedKeys="true" keyProperty="seq">
 		INSERT INTO product
-		VALUES(NULL, #{user_seq}, #{img}, 
-				#{maker}, #{goal_price}, #{title}, 
-				SYSDATE(), #{close_date}, #{content}, #{cate_seq}, 'Y')		
+		VALUES(NULL, #{user_seq}, #{img}, #{maker}, #{goal_price}, #{title}, 
+				SYSDATE(), NULL, #{close_date}, #{content}, NULL, NULL, #{cate_seq}, 'Y')		
 	</insert>
-
-
-
 
 </mapper>

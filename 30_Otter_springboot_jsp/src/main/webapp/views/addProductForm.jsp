@@ -51,11 +51,15 @@
                         </div>
                         <div class="addProduct">
                             <label for="created_date" class="form-label">신청 날짜</label>
-                            <input type="email" name="created_date" class="form-control" />
+<!--                             <input type="text" name="created_date" class="form-control" /> -->
+<!-- 							<script type="text" name="created_date" class="form-control" -->
+<!--         					date = new Date().toLocaleDateString(); -->
+<!--         					document.write(date); -->
+<!--     						</script> -->
                         </div>
                         <div class="addProduct">
                             <label for="useraccesstoken" class="form-label">마감일</label>
-                            <input type="text" name="useraccesstoken" class="form-control" />
+                            <input type="date" name="useraccesstoken" class="form-control" />
                         </div>
                         <div class="addProduct">
                             <label for="userrefreshtoken" class="form-label">상세내용</label>
@@ -76,10 +80,10 @@
                         </div>
                         <div class="addProduct">
                             <label for="userseqno" class="form-label">리워드</label>
-                            <input type="text" name="userseqno" class="form-control" />
-                            <input type="text" name="userseqno" class="form-control" />
-                            <input type="text" name="userseqno" class="form-control" />
-                            <input type="text" name="userseqno" class="form-control" />
+                            <input type="text" name="reward_name" class="form-control" placeholder="리워드 제목" />
+                            <input type="text" name="price" class="form-control" placeholder="리워드 가격"/>
+                            <input type="text" name="combination" class="form-control" placeholder="리워드 설명"/>
+                            <input type="number" name="stock" class="form-control" placeholder="리워드 수량"/>
                             <input type="submit" value="추가" class="btn" />
                         </div>
                         <input type="submit" value="등록" class="btn" />

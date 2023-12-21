@@ -20,7 +20,7 @@ public class ProductController {
 	private ProductService productService;
    
 	@GetMapping(value = "/insertProductForm")
-      public String addCalBoardForm(Model model, InsertProductCommand insertProductCommand) {
+      public String insertProductForm(Model model, InsertProductCommand insertProductCommand) {
          // logger.info("프로젝트만들기폼이동");
          System.out.println(insertProductCommand);
          
@@ -46,7 +46,7 @@ public class ProductController {
          
          
          try {
-			// productService.insertProduct(insertProductCommand);
+			productService.insertProduct(insertProductCommand);
 			System.out.println("프로젝트 만들기 성공");
 			return "redirect:/";
 		} catch (Exception e) {
