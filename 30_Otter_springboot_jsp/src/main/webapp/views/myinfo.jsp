@@ -17,9 +17,8 @@
         	
 <script type="text/javascript">
 
-
-
 </script>
+
 </head>
 <body class="join">
 <!-- Navigation-->
@@ -28,52 +27,56 @@
     	<a class="navbar-brand" href="/">Otter</a>
     </div>
 </nav>
-
 <section class="pyy-5">
       <div class="container myy-5">
          <div class="roww justify-content-center">
             <div class="coll-lg-6">
             	<div class="contents">
-					<h1>사용자 페이지</h1>
-					<h2>나의 정보</h2>
+					<h1>나의 정보</h1>
 					<div id="myinfo">
-						<form action="updateUser.user" method="post">
+						<form action="/user/updateUser" method="post">
 							<input type="hidden" name="id" value="${ldto.id}"/>
-							<table class="table">
+							<table class="table1">
 								<tr>
 									<th>아이디</th>
-									<td>${dto.id}</td>
+									<td>
+										<input type="text" name="id" value="${dto.id}" readonly="readonly" class="form-control1"/>
+									</td>
 								</tr>
 								<tr>
 								    <th>이름</th>
-								    <td>${dto.username}</td>
+								    <td>
+								    	<input type="text" name="name" value="${dto.username}" readonly="readonly" class="form-control1"/>
+								    </td>
 								</tr>
 								<tr>
 								    <th>연락처</th>
 								    <td>
-								        <input type="text" name="phone" value="${dto.phone}" />
+								        <input type="text" name="phone" value="${dto.phone}" class="form-control"/>
 								    </td>
 								</tr>
 								<tr>
 								    <th>이메일</th>
 								    <td>
-								        <input type="email" name="email" value="${dto.useremail}" />
+								        <input type="email" name="email" value="${dto.useremail}" class="form-control"/>
 								    </td>
 								</tr>
 								<tr>
 									<th>등급</th>
-									<td>${dto.role}</td>
+									<td>
+										<input type="text" name="role" value="${dto.role}" readonly="readonly" class="form-control1"/>
+									</td>
 								</tr>
 								<tr>
 									<th>탈퇴여부</th>
-									<td>${dto.delflag}</td>
+									<td>
+										<input type="text" name="delflag" value="${dto.delflag}" readonly="readonly" class="form-control1"/>
+									</td>
 								</tr>
 								<tr>
 									<td colspan="2">
-										<div style="display: flex;">
-											<button type="submit" class="form-control">수정</button>
-											<button type="button" class="form-control" onclick="delUser('${dto.id}')">탈퇴</button>
-										</div>
+										<input type="button" value="탈퇴" onclick="delUser('${dto.id}')" class="btn btn-outline-darkk" style="float:right; margin-left:5px;" />
+										<input type="submit" value="수정" class="btn btn-outline-darkk" style="float:right;"/>
 									</td>
 								</tr> 
 							</table>

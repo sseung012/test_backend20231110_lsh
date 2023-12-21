@@ -69,9 +69,7 @@
 <!--                     <i class="bi-cart-fill me-1" ></i> -->
 <!--                     	나의정보 -->
 <!-- 					</a>  -->
-<!-- 				</form>	 -->
-            
-				
+<!-- 				</form>	 -->				
 				<%
 				    if (ldto == null) {
 				%>
