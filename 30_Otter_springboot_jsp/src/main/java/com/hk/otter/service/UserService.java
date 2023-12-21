@@ -1,10 +1,14 @@
 package com.hk.otter.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.hk.otter.dtos.UserDto;
 import com.hk.otter.mapper.UserMapper;
+
 
 @Service
 public class UserService {
@@ -31,7 +35,22 @@ public class UserService {
 	public UserDto UserInfo(String id) {
 		return userMapper.UserInfo(id);
 	}
+
+	//회원목록조회
+	public List<UserDto> getUserList() {
+		return userMapper.getUserList();
+	}
 	
+	//나의 정보 수정
+	public boolean updateUser(UserDto dto){
+		UserDto mdto=new UserDto();
+		mdto.setId(dto.getId());
+		mdto.setPhone(dto.getPhone());
+		mdto.setUseremail(dto.getUsername());
+		
+		
+		return userMapper.updateUser(mdto);
+	}
 	
 	
 	

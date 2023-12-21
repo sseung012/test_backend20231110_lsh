@@ -97,9 +97,13 @@ window.onload = function() {
                             <input type="text" name="price" class="form-control" placeholder="리워드 가격"/>
                             <input type="text" name="combination" class="form-control" placeholder="리워드 설명"/>
                             <input type="number" name="stock" class="form-control" placeholder="리워드 수량"/>
-                            <input type="submit" value="추가" class="btn" />
+          
+                            
+                            <input type="submit" value="추가" class="btn btn-outline-dark" />
+                            
                         </div>
-                        <input type="submit" value="등록" class="btn" />
+                        <br/>
+                        <input type="submit" value="등록" class="btn btn-outline-dark" />
                     </form>
                 </div>
             </div>
