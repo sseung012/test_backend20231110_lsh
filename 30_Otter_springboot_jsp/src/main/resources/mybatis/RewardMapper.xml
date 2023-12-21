@@ -3,7 +3,7 @@
 
 <mapper namespace="com.hk.otter.mapper.RewardMapper">
 
-	<insert id="insertReward" parameterType="RewardDto">
+	<insert id="insertReward" parameterType="RewardDto" useGeneratedKeys="true" keyProperty="seq">
 		INSERT INTO reward
 		VALUES(NULL, #{reward_name}, #{price}, #{combination}, #{stock}, #{product_seq}, #{sold_stock})		
 	</insert>
