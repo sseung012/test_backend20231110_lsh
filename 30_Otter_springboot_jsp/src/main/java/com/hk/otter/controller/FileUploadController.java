@@ -56,7 +56,7 @@ public class FileUploadController{
 	         e.getStackTrace();
 	      }
 	   }
-	   
+	              
 	   out = new FileOutputStream(new File(ckUploadPath));
 	   out.write(bytes);
 	   out.flush(); // outputStram에 저장된 데이터를 전송하고 초기화
