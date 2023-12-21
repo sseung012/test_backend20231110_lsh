@@ -21,7 +21,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<style type="text/css">
+<style type="text/css"> 
 h2{
 	margin-top: 20px;
 }
