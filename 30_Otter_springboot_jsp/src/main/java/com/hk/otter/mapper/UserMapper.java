@@ -1,5 +1,7 @@
 package com.hk.otter.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.hk.otter.dtos.UserDto;
@@ -16,5 +18,7 @@ public interface UserMapper {
 	public String idChk(String id);
 	//나의 정보 조회
 	public UserDto UserInfo(String id);
+	//회원목록조회
+	public List<UserDto> getUserList();
 
 }

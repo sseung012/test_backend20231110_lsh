@@ -10,7 +10,7 @@
 	
 	<select id="loginUser" parameterType="UserDto" resultType="UserDto">
 	   	SELECT id, USERNAME,USERPASSWORD, phone, USEREMAIL, ROLE, delflag
-		FROM user
+		FROM USER 
 		WHERE ID=#{id} AND USERPASSWORD=#{userpassword}
 	</select>
 	
@@ -23,6 +23,12 @@
 	    SELECT id, USERNAME, phone, USEREMAIL, ROLE, delflag
 	    FROM USER 
 	    WHERE ID=#{id}
+	</select>
+	
+	<!-- 회원목록 전체조회 -->
+	<select id="getUserList"  resultType="userDto">
+		SELECT seq, id, USERNAME, phone, USEREMAIL, ROLE, delflag
+		FROM USER	
 	</select>
 </mapper>
 

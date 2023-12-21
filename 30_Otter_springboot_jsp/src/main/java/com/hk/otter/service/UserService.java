@@ -1,5 +1,7 @@
 package com.hk.otter.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,11 @@ public class UserService {
 	//마이페이지
 	public UserDto UserInfo(String id) {
 		return userMapper.UserInfo(id);
+	}
+
+	//회원목록조회
+	public List<UserDto> getUserList() {
+		return userMapper.getUserList();
 	}
 	
 	
