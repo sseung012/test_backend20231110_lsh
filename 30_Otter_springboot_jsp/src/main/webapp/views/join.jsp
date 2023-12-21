@@ -81,16 +81,23 @@
   		}
   	}
   	
-  	// 패스워드 확인하기
-  	function isPW(form){
-  		if(form.password.value!=form.password2.value){
-  			alert("비밀번호를 확인하세요");
-  			form.password.value="";	//비밀번호 초기화
-  			form.password2.value="";
-  			form.password.focus();	//비밀번호를 바로 입력할 수 있도록 커서 넣기
-  			return false;	//false를 리턴하면 이벤트를 취소시킴 -> submit취소
-  			}
-  		}
+  	function isPW() {
+      var p1 = document.getElementsByName('userpassword')[0];
+      var p2 = document.getElementsByName('userpassword2')[0];
+      
+      if( p1.value != p2.value ) {
+            p1.value="";	//비밀번호 초기화
+			p2.value="";
+			p1.focus();	//비밀번호를 바로 입력할 수 있도록 커서 넣기
+			document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.'
+	        document.getElementById('check').style.color='red';
+            return false;
+          } else{
+            document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
+            document.getElementById('check').style.color='blue';
+            return true;
+          }
+    }
 
 </script>
 </head>
@@ -118,10 +125,12 @@
                         <div class="signup">
                             <label for="userpassword" class="form-label">비밀번호</label>
                             <input type="password" name="userpassword" class="form-control" />
+                            
                         </div>
                         <div class="signup">
                             <label for="userpassword2" class="form-label">비밀번호 확인</label>
-                            <input type="password" name="userpassword2" class="form-control" />
+                            <input type="password" name="userpassword2" class="form-control" onchange="isPW()"/>
+                            <span id="check"></span>
                         </div>
                         <div class="signup">
                             <label for="username" class="form-label">이름</label>
