@@ -10952,3 +10952,45 @@ textarea.form-control-lg {
   border-color: var(--bs-table-border-color);
 }
 
+/*.dd-flex{*/
+/*	--bs-gutter-x: 1.5rem;*/
+/*    --bs-gutter-y: 0;*/
+/*    width: 100%;*/
+/*    padding-right: calc(var(--bs-gutter-x) * 0.5);*/
+/*    padding-left: calc(var(--bs-gutter-x) * 30);*/
+/*    margin-right: auto;*/
+/*    margin-left: auto;*/
+/*}*/
+
+
+/*.table2 {*/
+/*  --bs-table-color: var(--bs-body-color);*/
+/*  --bs-table-bg: transparent;*/
+/*  --bs-table-border-color: var(--bs-border-color);*/
+/*  --bs-table-accent-bg: transparent;*/
+/*  --bs-table-striped-color: var(--bs-body-color);*/
+/*  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);*/
+/*  --bs-table-active-color: var(--bs-body-color);*/
+/*  --bs-table-active-bg: rgba(0, 0, 0, 0.1);*/
+/*  --bs-table-hover-color: var(--bs-body-color);*/
+/*  --bs-table-hover-bg: rgba(0, 0, 0, 0.075);*/
+/*  width: 150%;*/
+/*  margin-bottom: 1rem;*/
+/*  color: var(--bs-table-color);*/
+/*  vertical-align: top;*/
+/*  border-color: var(--bs-table-border-color);*/
+/*}*/
+
+.table2 > :not(caption) > * > * {
+  padding: 0.5rem 0.5rem;
+  background-color: var(--bs-table-bg);
+  border-bottom-width: 1px;
+  box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+}
+.table2 > tr {
+  vertical-align: inherit;
+}
+.table2 > td{
+  vertical-align: bottom;
+}
+
