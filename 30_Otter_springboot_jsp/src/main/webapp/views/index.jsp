@@ -91,17 +91,17 @@
 				            <!-- ADMIN인 경우의 버튼들 -->
 				            <form class="d-flex">
 				                &nbsp;
-				                <a class="btn btn-outline-dark" type="submit" href="/user/manage">
+				                <a class="btn btn-outline-darkk" type="submit" href="/user/manage">
 				                    <i class="bi-cart-fill me-1"></i>
 				                    회원관리
 				                </a>  
 				                &nbsp;
-				                <a class="btn btn-outline-dark" type="submit" href="/project/manage">
+				                <a class="btn btn-outline-darkk" type="submit" href="/project/manage">
 				                    <i class="bi-cart-fill me-1"></i>
 				                    프로젝트 관리
 				                </a>
 				                &nbsp;
-				                <a class="btn btn-outline-dark" type="submit" href="/user/logout">
+				                <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
 				                    <i class="bi-cart-fill me-1"></i>
 				                    로그아웃
 				                </a> 
@@ -112,17 +112,17 @@
 				            <!-- ADMIN이 아닌 경우의 버튼들 -->
 				            <form class="d-flex">
 				                &nbsp;
-				                <a class="btn btn-outline-dark" type="submit" href="/product/insertProductForm">
+				                <a class="btn btn-outline-darkk" type="submit" href="/project/insertProductForm">
 				                    <i class="bi-cart-fill me-1"></i>
 				                    프로젝트 만들기
 				                </a> 
 				                &nbsp;
-				                <a class="btn btn-outline-dark" type="submit" href="/user/myinfo">
+				                <a class="btn btn-outline-darkk" type="submit" href="/user/myinfo">
 				                    <i class="bi-cart-fill me-1"></i>
 				                    나의 정보
 				                </a> 
 				                &nbsp;
-				                <a class="btn btn-outline-dark" type="submit" href="/user/logout">
+				                <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
 				                    <i class="bi-cart-fill me-1"></i>
 				                    로그아웃
 				                </a> 
