@@ -69,9 +69,7 @@
 <!--                     <i class="bi-cart-fill me-1" ></i> -->
 <!--                     	나의정보 -->
 <!-- 					</a>  -->
-<!-- 				</form>	 -->
-            
-				
+<!-- 				</form>	 -->				
 				<%
 				    if (ldto == null) {
 				%>
@@ -112,7 +110,7 @@
 				            <!-- ADMIN이 아닌 경우의 버튼들 -->
 				            <form class="d-flex">
 				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/project/insertProductForm">
+				                <a class="btn btn-outline-darkk" type="submit" href="/product/insertProductForm">
 				                    <i class="bi-cart-fill me-1"></i>
 				                    프로젝트 만들기
 				                </a> 

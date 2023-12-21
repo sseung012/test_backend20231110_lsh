@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -176,6 +177,7 @@ public class UserController {
 		return "myinfo";
 	}
 	
+
 	 //마이페이지에서 정보수정
 	   @PostMapping(value="/updateUser")
 	   public String updateUser(@Validated UserDto dto
@@ -198,6 +200,18 @@ public class UserController {
 	   }
 	
 	
+
+	//회원목록
+	@GetMapping(value="/manage")
+	public String getUserList(Model model, HttpServletRequest request) {
+		System.out.println("전체회원목록");
+
+	    List<UserDto> list = userService.getUserList();
+	    model.addAttribute("list", list);
+
+	    return "userList"; // 혹은 "user/userAllList"
+	}
+
 	
 	
 	

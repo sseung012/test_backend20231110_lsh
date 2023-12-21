@@ -10,7 +10,7 @@
 	
 	<select id="loginUser" parameterType="UserDto" resultType="UserDto">
 	   	SELECT id, USERNAME,USERPASSWORD, phone, USEREMAIL, ROLE, delflag
-		FROM user
+		FROM USER 
 		WHERE ID=#{id} AND USERPASSWORD=#{userpassword}
 	</select>
 	
@@ -25,12 +25,20 @@
 	    WHERE ID=#{id}
 	</select>
 	
+
 <!--  나의정보 수정 -->
 	<update id="updateUser" parameterType="UserDto">
 		UPDATE user
 		SET phone=#{phone}, useremail=#{useremail}
 		WHERE id=#{id};	
 	</update>	
+
+	<!-- 회원목록 전체조회 -->
+	<select id="getUserList"  resultType="userDto">
+		SELECT seq, id, USERNAME, phone, USEREMAIL, ROLE, delflag
+		FROM USER	
+	</select>
+
 </mapper>
 
 

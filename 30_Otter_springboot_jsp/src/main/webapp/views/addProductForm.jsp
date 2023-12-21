@@ -16,8 +16,18 @@
 
         	
 <script type="text/javascript">
-	
+window.onload = function() {
+   today = new Date();
+   console.log("today.toISOString() >>>" + today.toISOString());
+   today = today.toISOString().slice(0, 10);
+   console.log("today >>>> " + today);
+   bir = document.getElementById("created_date");
+   bir.value = today;
+}
+
 </script>
+<script src="//cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
 </head>
 <body class="addProductForm">
 <!-- Navigation-->
@@ -51,19 +61,22 @@
                         </div>
                         <div class="addProduct">
                             <label for="created_date" class="form-label">신청 날짜</label>
-<!--                             <input type="text" name="created_date" class="form-control" /> -->
-<!-- 							<script type="text" name="created_date" class="form-control" -->
-<!--         					date = new Date().toLocaleDateString(); -->
-<!--         					document.write(date); -->
-<!--     						</script> -->
+                            
+                            <input type="date" name="created_date" id="created_date" class="form-control" />
+							
                         </div>
                         <div class="addProduct">
-                            <label for="useraccesstoken" class="form-label">마감일</label>
-                            <input type="date" name="useraccesstoken" class="form-control" />
+                            <label for="close_date" class="form-label">마감일</label>
+                            <input type="date" name="close_date" class="form-control" />
                         </div>
-                        <div class="addProduct">
-                            <label for="userrefreshtoken" class="form-label">상세내용</label>
-                            <input type="text" name="userrefreshtoken" class="form-control" />
+                        <div class="addProduct" id="addProduct">
+                            <label for="content" class="form-label">상세내용</label>
+                            <textarea id = "content" name = "content"></textarea>
+							<script>CKEDITOR.replace('content',
+									{filebrowserUploadUrl:'/file/imageUpload.do'});</script>
+<!--                             <input type="text" name="content" class="form-control" style="height:300px; width:510px;"/> -->
+								 
+						
                         </div>
                         <div class="addProduct">
                             <label for="userseqno" class="form-label">카테고리 선택</label>
