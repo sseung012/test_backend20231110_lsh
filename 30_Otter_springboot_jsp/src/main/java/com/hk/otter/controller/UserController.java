@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hk.otter.dtos.UserDto;
 import com.hk.otter.service.UserService;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -35,6 +36,20 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	//쿠키
+    public Cookie getCookie(String cookieName, HttpServletRequest request) {
+		Cookie[] cookies=request.getCookies();
+		Cookie cookie=null;
+		if(cookies!=null) {
+			for (int i = 0; i < cookies.length; i++) {
+				if(cookies[i].getName().equals(cookieName)) {
+					cookie=cookies[i];
+				}
+			}
+		}
+		return cookie;
+	}
 	
 	//회원가입 폼 이동
 	@GetMapping("/join")
@@ -172,33 +187,56 @@ public class UserController {
 		}
 		
 		String id=ldto.getId();
+
 		dto=userService.UserInfo(id);
 		model.addAttribute("dto", dto);
 		return "myinfo";
 	}
 	
 
-	 //마이페이지에서 정보수정
-	   @PostMapping(value="/updateUser")
-	   public String updateUser(@Validated UserDto dto
-	                     , BindingResult result
-	                     ,Model model) {
-	      if(result.hasErrors()) {
-	         System.out.println("수정내용을 모두 입력하세요");
-	         //코드 추가--------------------------------------------
-	         UserDto mdto=userService.UserInfo(dto.getId());
-	         model.addAttribute("mdto", mdto);
-	         //--------------------------------------------------
-	         return "redirect:/user/myinfo";
-	      }
-	   
-	      userService.updateUser(dto);
-	   
-	      return "redirect:/user/myinfo?id="
-	            + dto.getId();
-	      
-	   }
+	//마이페이지에서 정보수정
+//	@PostMapping(value = "/updateUser")
+//	public String updateUser(@Validated UserDto dto, BindingResult result, Model model) {
+//	    if (result.hasErrors()) {
+//	        System.out.println("수정내용을 모두 입력하세요");
+//	        UserDto mdto = userService.UserInfo(dto.getId());
+//	        model.addAttribute("mdto", mdto);
+//	        return "redirect:/user/myinfo?id=" + dto.getId();
+//	    }
+//
+//	    // UserService를 통해 seq 값을 가져와서 dto에 설정
+//	    UserDto userInfo = userService.UserInfo(dto.getId());
+//	    dto.setSeq(userInfo.getSeq());
+//
+//	    userService.updateUser(dto);
+//	    System.out.println(dto);
+//
+//	    // id를 쿼리 스트링으로 추가하여 리다이렉트
+//	    return "redirect:/user/myinfo?id=" + dto.getId();
+//	}
 	
+	
+	@PostMapping(value = "/updateUser")
+	public String updateUser(@Validated UserDto dto, HttpServletRequest request, HttpServletResponse response, BindingResult result, Model model) {
+	    if (result.hasErrors()) {
+	        System.out.println("수정내용을 모두 입력하세요");
+	        return "redirect:/user/myinfo?id=" + request.getParameter("id");
+	    }
+
+	    String id = request.getParameter("id");
+	    String phone = request.getParameter("phone");
+	    String useremail = request.getParameter("useremail");
+
+	    boolean isS = userService.updateUser(new UserDto(id, phone, useremail));
+	    
+	    // Check if the update was successful
+	    if (isS) {
+	        return "redirect:/user/myinfo?id=" + id; // Use the correct id for redirection
+	    } else {
+	        System.out.println("수정 실패 메시지 또는 다른 처리를 추가하세요");
+	        return "redirect:/user/myinfo?id=" + id; // Use the correct id for redirection
+	    }
+	}
 	
 
 	//회원목록

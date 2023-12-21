@@ -42,17 +42,9 @@ public class UserService {
 	}
 	
 	//나의 정보 수정
-	public boolean updateUser(UserDto dto){
-		UserDto mdto=new UserDto();
-		mdto.setId(dto.getId());
-		mdto.setPhone(dto.getPhone());
-		mdto.setUseremail(dto.getUsername());
-		
-		
-		return userMapper.updateUser(mdto);
+	public boolean updateUser(UserDto dto) {
+	    return userMapper.updateUser(dto);
 	}
-	
-	
 	
 }
 

@@ -46,7 +46,7 @@
 								<tr>
 								    <th>이름</th>
 								    <td>
-								    	<input type="text" name="name" value="${dto.username}" readonly="readonly" class="form-control1"/>
+								    	<input type="text" name="username" value="${dto.username}" readonly="readonly" class="form-control1"/>
 								    </td>
 								</tr>
 								<tr>
@@ -58,7 +58,7 @@
 								<tr>
 								    <th>이메일</th>
 								    <td>
-								        <input type="email" name="email" value="${dto.useremail}" class="form-control"/>
+								        <input type="email" name="useremail" value="${dto.useremail}" class="form-control"/>
 								    </td>
 								</tr>
 								<tr>

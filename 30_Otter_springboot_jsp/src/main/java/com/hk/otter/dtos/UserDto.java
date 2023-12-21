@@ -1,17 +1,18 @@
 package com.hk.otter.dtos;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class UserDto {
 	
-	private int seq;
 	
-	public int getSeq() {
-		return seq;
+	public UserDto(String id, String phone, String useremail) {
+		super();
+		this.id = id;
+		this.phone = phone;
+		this.useremail = useremail;
 	}
 
-	public void setSeq(int seq) {
-		this.seq = seq;
-	}
-
+	private int seq;
 	private String id;
 	private String userpassword;
 	private String username;
@@ -28,6 +29,15 @@ public class UserDto {
 		super();
 	}
 
+	public UserDto(String id, String username, String phone, String useremail, String role, String delflag) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.phone = phone;
+		this.useremail = useremail;
+		this.role = role;
+		this.delflag = delflag;
+	}
 
 
 	public UserDto(int seq, String id, String username, String phone, String useremail, String role, String delflag) {
@@ -57,16 +67,14 @@ public class UserDto {
 		this.delflag = delflag;
 	}
 
-	public UserDto(String id, String username, String phone, String useremail, String role, String delflag) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.phone = phone;
-		this.useremail = useremail;
-		this.role = "USER"; // 기본값으로 'USER' 설정
-	    this.delflag = "N"; // 기본값으로 'N' 설정
+	public int getSeq() {
+		return seq;
 	}
 
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
+	
 	public String getId() {
 		return id;
 	}

@@ -21,7 +21,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<style type="text/css"> 
+<style type="text/css">
 h2{
 	margin-top: 20px;
 }
@@ -52,22 +52,22 @@ h2{
 	               </li>
 	            </ul>
 	            <form class="d-flex">
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/user/manage">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    회원관리
-				                </a>  
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/project/manage">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    프로젝트 관리
-				                </a>
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    로그아웃
-				                </a> 
-				            </form>
+	                &nbsp;
+	                <a class="btn btn-outline-darkk" type="submit" href="/user/manage">
+	                    <i class="bi-cart-fill me-1"></i>
+	                    회원관리
+	                </a>  
+	                &nbsp;
+	                <a class="btn btn-outline-darkk" type="submit" href="/project/manage">
+	                    <i class="bi-cart-fill me-1"></i>
+	                    프로젝트 관리
+	                </a>
+	                &nbsp;
+	                <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
+	                    <i class="bi-cart-fill me-1"></i>
+	                    로그아웃
+	                </a> 
+	            </form>
 		</div>
    </div>
 </nav>
