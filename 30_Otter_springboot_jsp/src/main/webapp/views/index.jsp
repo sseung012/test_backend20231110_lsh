@@ -28,7 +28,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
    <div class="container px-4 px-lg-5">
-       <a class="navbar-brand" href="#!">Otter</a>
+       <a class="navbar-brand0" href="/">Otter</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -48,28 +48,7 @@
                             </ul>
 	               </li>
 	            </ul>
-            
-
-
-<!--             	<form class="d-flex"> -->
-<!-- 					&nbsp; -->
-<!-- 					<a class="btn btn-outline-dark" type="submit" href="/user/signin"> -->
-<!--                     <i class="bi-cart-fill me-1" ></i> -->
-<!--                     	login/signUp -->
-<!-- 					</a>  -->
-<!-- 					&nbsp;  -->
-<!-- 					<a class="btn btn-outline-dark" type="submit" href="/product/insertProductForm"> -->
-<!--                     <i class="bi-cart-fill me-1" ></i> -->
-<!--                     	프로젝트 만들기 -->
-<!-- 					</a>  -->
-<!-- 				</form> -->
-<!-- 				<form class="d-flex"> -->
-<!-- 					&nbsp; -->
-<!-- 					<a class="btn btn-outline-dark" type="submit" href="/user/myinfo"> -->
-<!--                     <i class="bi-cart-fill me-1" ></i> -->
-<!--                     	나의정보 -->
-<!-- 					</a>  -->
-<!-- 				</form>	 -->				
+            			
 				<%
 				    if (ldto == null) {
 				%>
