@@ -16,6 +16,7 @@
 
         	
 <script type="text/javascript">
+//현재 날짜 나타내기
 window.onload = function() {
    today = new Date();
    console.log("today.toISOString() >>>" + today.toISOString());
@@ -24,8 +25,21 @@ window.onload = function() {
    bir = document.getElementById("created_date");
    bir.value = today;
 }
-
 </script>
+
+<script type="text/javascript">
+const add_textbox = () => {
+    const box = document.getElementById("rewardbox");
+    const newP = document.createElement('p');
+    newP.innerHTML = "<input type='text'> <input type='button' value='삭제' onclick='remove(this)'>";
+    box.appendChild(newP);
+}
+const remove = (obj) => {
+    document.getElementById('rewardbox').removeChild(obj.parentNode);
+}
+</script>
+
+<!-- ckeditor 추가 -->
 <script src="//cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 
 </head>
@@ -41,7 +55,7 @@ window.onload = function() {
         <div class="container myy-5">
             <div class="roww justify-content-center">
                 <div class="coll-lg-6">
-                    <form action="/prodcut/insertProduct" method="post" >
+                    <form action="/product/insertProduct" method="post" >
                                   
                         <div class="addProduct">
                             <label for="img" class="form-label">대표 이미지</label>
@@ -90,14 +104,15 @@ window.onload = function() {
                             	<option>반려동물</option>
                             </select>
                         </div>&nbsp;
-                        <div class="addProduct">
+                        <div class="addProduct" id="rewardbox">
                             <label for="userseqno" class="form-label">리워드</label>
                             <input type="text" name="reward_name" class="form-control" placeholder="리워드 제목" />&nbsp;
                             <input type="text" name="price" class="form-control" placeholder="리워드 가격"/>&nbsp;
                             <input type="text" name="combination" class="form-control" placeholder="리워드 설명"/>&nbsp;
                             <input type="number" name="stock" class="form-control" placeholder="리워드 수량"/>
                         
-                            <input type="submit" value="추가" class="btn btn-outline-dark" />
+                            <input type="button" value="추가" class="btn btn-outline-dark" onclick="add_textbox()" />
+<!--                             <input type="submit" value="삭제" class="btn btn-outline-dark" /> -->
                             
                         </div>
                         <br/>
