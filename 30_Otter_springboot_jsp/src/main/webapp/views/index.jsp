@@ -45,7 +45,7 @@
                                 <li><a class="dropdown-item" href="#!">푸드</a></li>
                                 <li><a class="dropdown-item" href="#!">출판</a></li>
                                 <li><a class="dropdown-item" href="#!">반려동물</a></li>
-                            </ul>
+                            </ul> 
 	               </li>
 	            </ul>
             			
