@@ -24,6 +24,8 @@ public class ProductDto {
 	public ProductDto() {
 		super();
 	}
+	
+	
 
 	public ProductDto(int seq, int user_seq, String img, String maker, String goal_price, String title,
 			Date created_date, String open_date, String close_date, String content, int total_price,
