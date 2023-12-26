@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartRequest;
 
 import com.hk.otter.dtos.ProductDto;
 import com.hk.otter.dtos.RewardDto;
+import com.hk.otter.mapper.ProductMapper;
 
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,7 +28,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class FileService {
 	
 	@Autowired
-	private ProductDto productMapper;
+	private ProductMapper productMapper;
 	
 	// 파일업로드하기
 	public List<ProductDto> uploadFiles(String uploadPath,
