@@ -19,6 +19,7 @@ import com.hk.otter.dtos.RewardDto;
 import com.hk.otter.service.ProductService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/product")
@@ -30,7 +31,7 @@ public class ProductController {
 	@GetMapping(value = "/insertProductForm")
       public String insertProductForm(Model model, InsertProductCommand insertProductCommand) {
          // logger.info("프로젝트만들기폼이동");
-         System.out.println(insertProductCommand);
+//         System.out.println(insertProductCommand);
          
          // addCalBoardfForm 페이지에서 유효값 처리를 위해 
          // insertCalCommand 받고 있기 때문에 보내줘야 해!
@@ -38,7 +39,7 @@ public class ProductController {
          return "addProductForm";
       }
       
-      
+      /*
       @PostMapping(value = "/insertProduct")
       public String insertProduct(@Validated InsertProductCommand insertProductCommand,
                           BindingResult result
@@ -53,16 +54,20 @@ public class ProductController {
             System.out.println("프로젝트 만들기 유효값 오류");
             return "addProductForm";
          }
-         
-         
+       */  
+	@PostMapping(value = "/insertProduct")
+    public String insertProduct(InsertProductCommand insertProductCommand,
+                         MultipartRequest multipartRequest
+            			  , Model model, HttpServletRequest request)throws Exception { 
+		System.out.println(insertProductCommand);
          try {
 			productService.insertProduct(insertProductCommand, multipartRequest, request);
-			System.out.println("프로젝트 만들기 성공");
+			System.out.println("프로젝트 만들기 성공");			
 			return "redirect:/";
 		} catch (Exception e) {
 			System.out.println("프로젝트 만들기 실패");
 			e.printStackTrace();
-			return "redirect:insertProduct";
+			return "redirect:insertProductForm";
 		}
       }
 

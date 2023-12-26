@@ -19,6 +19,7 @@ public interface UserMapper {
 	//아이디중복체크
 	public String idChk(String id);
 	
+	
 	//나의 정보 조회
 	public UserDto UserInfo(String id);
 

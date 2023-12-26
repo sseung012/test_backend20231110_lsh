@@ -24,36 +24,31 @@
 <link href="/resources/css/styles.css" rel="stylesheet" />
 </head>
 <script type="text/javascript">
-	function delUser() {
-		var id=document.getElementsByName("id")[0].value;
-		if(id=="${dto.id}"){
-  			alert("탈퇴?");
-		location.href="/user/delUser";
-  		}else{
-  			$.ajax({
-  				url:"/user/delUser",	//요청 url
-  				method:"get",		//전송방식
-  				data:{"delflag":delflag},		//전송할 데이터
-  				dataType:"json",	//전달받을 데이터 타입(xml,text,html,json....)
-  				async:false,		//$.ajax()메서드를 실행하는 방식
-  				success:function(data){	//데이터 받기 성공하면 함수 실행하겠다는 뜻
-//  					alert(data.id);
-  					if(data.delflag=="Y"){
-  						$("#dleUser").css("color","black").text("사용가능합니다");
-  						$("#delUser").text("y");
-  						$("input[name=name]").focus();
-  					}else{
-  						$("#enabledId").css("color","red").text("중복된 ID입니다");
-  						$("#idChk").text("n");
-  					}
-  				},
-  				error:function(){	//데이터 받기 실패하면 함수 실행하겠다는 뜻
-  					alert("통신실패");
-  				}
-  			});
-  		} 
-  	}
+    function delUser() {
+        var isConfirmed = confirm("회원 탈퇴하시겠습니까?");
+
+        if (isConfirmed) {
+            $.ajax({ 
+                url: "/user/delUser",
+                method: "GET",
+                data: {},
+                dataType: "json",
+                success: function(data) {
+                    if (data.delUser) {
+                        alert("회원 탈퇴가 성공적으로 이루어졌습니다.");
+                        window.location.href = "/"; // 메인 페이지로 리다이렉트
+                    } else {
+                        alert("회원 탈퇴에 실패했습니다. 다시 시도해주세요.");
+                    }
+                },
+                error: function() {
+                    alert("서버와의 통신 중 오류가 발생했습니다.");
+                }
+            });
+        }
+    }
 </script>
+
 <body >
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -112,7 +107,7 @@
             	<div class="contents">
 					<h1>나의 정보</h1>
 					<div id="myinfo">
-						<form action="/user/updateUser" method="post" onsubmit="return delUser()" >
+						<form action="/user/updateUser" method="post">
 							<input type="hidden" name="id" value="${ldto.id}"/>
 							<table class="table1">
 								<tr>
