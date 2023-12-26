@@ -87,7 +87,6 @@ const remove = (obj) => {
                         </div>&nbsp;
                         <div class="addProduct">
                             <label for="created_date" class="form-label">신청 날짜</label>
-                            
                             <input type="date" name="created_date" id="created_date" class="form-control" />
 							
                         </div>&nbsp;
