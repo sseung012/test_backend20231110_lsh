@@ -49,7 +49,9 @@ public class ProductService {
 		
 		//rewardDto <---command 이동
 		//list<rewardDto> 저장
+		RewardDto rdto = 
 		List<RewardDto> reList=new ArrayList<RewardDto>();
+		
 		
 		
 		productMapper.insertProduct(pdto); //새 글 추가
