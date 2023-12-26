@@ -5,7 +5,7 @@ import java.util.Date;
 
 import jakarta.validation.constraints.NotBlank;
 
-
+        
 public class InsertProductCommand {
 	
 	private int seq;
