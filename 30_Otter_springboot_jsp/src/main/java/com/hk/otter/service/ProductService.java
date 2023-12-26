@@ -53,7 +53,10 @@ public class ProductService {
 		
 		
 		
+<<<<<<< HEAD
 		
+=======
+>>>>>>> branch 'main' of https://github.com/sseung012/test_backend20231110_lsh.git
 		productMapper.insertProduct(pdto); //새 글 추가
 		
 		System.out.println("파일첨부여부: " + multipartRequest.getFiles("img").get(0).isEmpty());
@@ -79,6 +82,10 @@ public class ProductService {
 //									  pdto.getSeq()));			
 			}
 		}
+	}
+
+	public List<ProductDto> getProductList() {
+		return productMapper.getProductList();
 	}
 
 }
