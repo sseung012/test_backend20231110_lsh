@@ -6,7 +6,6 @@
 <%-- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <%
 	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
@@ -24,7 +23,37 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/styles.css" rel="stylesheet" />
 </head>
-
+<script type="text/javascript">
+	function delUser() {
+		var id=document.getElementsByName("id")[0].value;
+		if(id=="${dto.id}"){
+  			alert("탈퇴?");
+		location.href="/user/delUser";
+  		}else{
+  			$.ajax({
+  				url:"/user/delUser",	//요청 url
+  				method:"get",		//전송방식
+  				data:{"delflag":delflag},		//전송할 데이터
+  				dataType:"json",	//전달받을 데이터 타입(xml,text,html,json....)
+  				async:false,		//$.ajax()메서드를 실행하는 방식
+  				success:function(data){	//데이터 받기 성공하면 함수 실행하겠다는 뜻
+//  					alert(data.id);
+  					if(data.delflag=="Y"){
+  						$("#dleUser").css("color","black").text("사용가능합니다");
+  						$("#delUser").text("y");
+  						$("input[name=name]").focus();
+  					}else{
+  						$("#enabledId").css("color","red").text("중복된 ID입니다");
+  						$("#idChk").text("n");
+  					}
+  				},
+  				error:function(){	//데이터 받기 실패하면 함수 실행하겠다는 뜻
+  					alert("통신실패");
+  				}
+  			});
+  		} 
+  	}
+</script>
 <body >
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -83,7 +112,7 @@
             	<div class="contents">
 					<h1>나의 정보</h1>
 					<div id="myinfo">
-						<form action="/user/updateUser" method="post">
+						<form action="/user/updateUser" method="post" onsubmit="return delUser()" >
 							<input type="hidden" name="id" value="${ldto.id}"/>
 							<table class="table1">
 								<tr>
@@ -124,7 +153,7 @@
 								</tr>
 								<tr>
 									<td colspan="2">
-										<input type="button" value="탈퇴" onclick="delUser('${dto.id}')" class="btn btn-outline-darkk" style="float:right; margin-left:5px;" />
+										<input type="button" value="탈퇴" onclick="delUser('${ldto.id}')" class="btn btn-outline-darkk" style="float:right; margin-left:5px;" />
 										<input type="submit" value="수정" class="btn btn-outline-darkk" style="float:right;"/>
 									</td>
 								</tr> 

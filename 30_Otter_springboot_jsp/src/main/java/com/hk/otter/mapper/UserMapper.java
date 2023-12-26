@@ -22,7 +22,6 @@ public interface UserMapper {
 	//나의 정보 조회
 	public UserDto UserInfo(String id);
 
-	
 	//나의 정보 수정
 	public boolean updateUser(UserDto dto);
 		
