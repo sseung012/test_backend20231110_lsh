@@ -30,6 +30,7 @@ public class FileService {
 	@Autowired
 	private ProductMapper productMapper;
 	
+	
 	// 파일업로드하기
 	public List<ProductDto> uploadFiles(String uploadPath,
 							MultipartRequest multipartRequest) throws IllegalStateException, IOException {
