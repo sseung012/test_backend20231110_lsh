@@ -11,7 +11,7 @@
 	<select id="loginUser" parameterType="UserDto" resultType="UserDto">
 	   	SELECT seq,id, USERNAME,USERPASSWORD, phone, USEREMAIL, ROLE, delflag
 		FROM USER 
-		WHERE ID=#{id} AND USERPASSWORD=#{userpassword}
+		WHERE ID=#{id} AND USERPASSWORD=#{userpassword} and delflag="N"
 	</select>
 	
 	<select id="idChk" parameterType="String" resultType="String">
@@ -30,8 +30,15 @@
 	<update id="updateUser" parameterType="UserDto">
 		UPDATE user
 		SET phone=#{phone}, USEREMAIL=#{useremail}
-		WHERE id=#{id};	
+		WHERE id=#{id}
 	</update>	
+	
+<!-- 	회원탈퇴 -->
+	<update id="delUser" parameterType="String">
+		UPDATE user
+		SET delflag = "Y"
+		WHERE id=#{id}
+	</update>
 
 	<!-- 회원목록 전체조회 -->
 	<select id="getUserList"  resultType="userDto">

@@ -238,6 +238,30 @@ public class UserController {
 	    }
 	}
 	
+	// 탈퇴하기
+	@GetMapping(value = "/delUser")
+	public String delUser(UserDto dto, Model model, HttpServletRequest request) {
+		UserDto ldto=userService.loginUser(dto);
+		if (ldto != null) {
+	        boolean delUser = userService.delUser(ldto.getId());
+
+	        if (delUser) {
+                HttpSession session=request.getSession();
+        		session.invalidate();
+        		System.out.println("탈퇴?");
+        		return "redirect:/";
+	        } else {
+	        	// 회원 탈퇴 실패 시 적절한 에러 페이지로 이동 또는 메시지 처리
+	        	System.out.println("탈퇴실패");
+	        	return "redirect:/";
+	            }
+	        } else {
+	            // 로그인한 사용자 정보가 없는 경우의 예외 처리
+	            return "redirect:/"; // 또는 적절한 경로로 이동
+	        } 
+		}
+	    
+
 
 	//회원목록
 	@GetMapping(value="/manage")

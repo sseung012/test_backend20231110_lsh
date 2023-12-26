@@ -93,11 +93,7 @@
 							%>
 							            <tr>
 							                <td><%= dto.getSeq() %></td>
-							                <td>
-							                    <a href='/user/userRoleForm?id=<%= dto.getId() %>'>
-							                        <span><%= dto.getId() %></span>
-							                    </a>
-							                </td>
+							                <td><%= dto.getId() %></td>
 							                <td><%= dto.getUsername() %></td>
 							                <td><%= dto.getPhone() %></td>
 							                <td><%= dto.getUseremail() %></td>
