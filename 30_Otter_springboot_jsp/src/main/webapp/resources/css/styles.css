@@ -3729,14 +3729,14 @@ textarea.form-control-lg {
 
 .navbar {
   --bs-navbar-padding-x: 0;
-  --bs-navbar-padding-y: 0.5rem;
+  --bs-navbar-padding-y: 0.3rem;
   --bs-navbar-color: rgba(0, 0, 0, 0.55);
   --bs-navbar-hover-color: rgba(0, 0, 0, 0.7);
   --bs-navbar-disabled-color: rgba(0, 0, 0, 0.3);
   --bs-navbar-active-color: rgba(0, 0, 0, 0.9);
   --bs-navbar-brand-padding-y: 0.3125rem;
   --bs-navbar-brand-margin-end: 1rem;
-  --bs-navbar-brand-font-size: 1.25rem;
+  --bs-navbar-brand-font-size: 1.75rem;
   --bs-navbar-brand-color: rgba(0, 0, 0, 0.9);
   --bs-navbar-brand-hover-color: rgba(0, 0, 0, 0.9);
   --bs-navbar-nav-link-padding-x: 0.5rem;
@@ -10963,23 +10963,23 @@ textarea.form-control-lg {
 /*}*/
 
 
-/*.table2 {*/
-/*  --bs-table-color: var(--bs-body-color);*/
-/*  --bs-table-bg: transparent;*/
-/*  --bs-table-border-color: var(--bs-border-color);*/
-/*  --bs-table-accent-bg: transparent;*/
-/*  --bs-table-striped-color: var(--bs-body-color);*/
-/*  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);*/
-/*  --bs-table-active-color: var(--bs-body-color);*/
-/*  --bs-table-active-bg: rgba(0, 0, 0, 0.1);*/
-/*  --bs-table-hover-color: var(--bs-body-color);*/
-/*  --bs-table-hover-bg: rgba(0, 0, 0, 0.075);*/
-/*  width: 150%;*/
-/*  margin-bottom: 1rem;*/
-/*  color: var(--bs-table-color);*/
-/*  vertical-align: top;*/
-/*  border-color: var(--bs-table-border-color);*/
-/*}*/
+.table2 {
+  --bs-table-color: var(--bs-body-color);
+  --bs-table-bg: transparent;
+  --bs-table-border-color: var(--bs-border-color);
+  --bs-table-accent-bg: transparent;
+  --bs-table-striped-color: var(--bs-body-color);
+  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+  --bs-table-active-color: var(--bs-body-color);
+  --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+  --bs-table-hover-color: var(--bs-body-color);
+  --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+  width: 150%;
+  margin-bottom: 1rem;
+  color: var(--bs-table-color);
+  vertical-align: top;
+  border-color: var(--bs-table-border-color);
+}
 
 .table2 > :not(caption) > * > * {
   padding: 0.5rem 0.5rem;
@@ -10987,10 +10987,51 @@ textarea.form-control-lg {
   border-bottom-width: 1px;
   box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
 }
-.table2 > tr {
+.table2 > th {
   vertical-align: inherit;
+  width: auto;
+  text-align: center;
+ 
 }
 .table2 > td{
   vertical-align: bottom;
+  text-align: center;
 }
 
+.myyy-5 {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+  margin-left: -150px;
+}
+.pyyy-5 {
+	padding-top: 0rem !important;
+	padding-bottom: 3rem !important;
+	margin-top: 1rem; /* 예시로 5rem의 상단 마진을 추가했습니다. 원하는 크기로 조절 가능합니다. */
+    margin-bottom: 5rem; /* 예시로 5rem의 하단 마진을 추가했습니다. 원하는 크기로 조절 가능합니다. */
+    width:45%; /* 원하는 가로 크기로 조절 가능합니다. */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rowww justify-content-center{
+	--bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+
+.navbar-brand0 {
+  padding-top: var(--bs-navbar-brand-padding-y);
+  padding-bottom: var(--bs-navbar-brand-padding-y);
+  margin-right: var(--bs-navbar-brand-margin-end);
+  font-size: var(--bs-navbar-brand-font-size);
+  color: var(--bs-navbar-brand-color);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.navbar-brand0:hover, .navbar-brand0:focus {
+  color: var(--bs-navbar-brand-hover-color);
+}

@@ -6,29 +6,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Otter</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="resources/assets/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!--         Bootstrap icons -->
+<!--         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" /> -->
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/styles.css" rel="stylesheet" />
+
 <%
  	List<UserDto> list=(List<UserDto>)request.getAttribute("list");
 %>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 
-
-<style type="text/css"> 
-h1{
-	margin-top: 20px;
-}
-
-</style>
 </head>
+
 <body>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -36,7 +32,14 @@ h1{
        <a class="navbar-brand" href="/">Otter</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<form class="dd-flex">
+               <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                   <li class="nav-item"><a class="nav-link active" aria-current="page"></a></li>
+                    <li class="nav-item"><a class="nav-link"></a></li>
+                    <li class="nav-item dropdown">
+                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
+	               </li>
+	            </ul>
+            	<form class="dd-flex">
 					&nbsp;
 					<a class="btn btn-outline-darkk" type="submit" href="/user/manage" >
 						<i class="bi-cart-fill me-1"></i>
@@ -53,12 +56,16 @@ h1{
 						로그아웃
 					</a> 
 				</form>
-			</div>
-		</div>
+         </div>
+   </div>
 </nav>
-<section class="pyy-5">
+        
+
+
+
+<section class="pyyy-5">
       <div class="container myyy-5">
-         <div class="roww justify-content-center">
+         <div class="rowww justify-content-center">
             <div class="coll-lg-6">
             	<div class="contents">
 			        <h1>전체회원목록</h1>
