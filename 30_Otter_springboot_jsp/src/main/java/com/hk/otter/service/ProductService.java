@@ -1,5 +1,6 @@
 package com.hk.otter.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class ProductService {
 	@Transactional
 	public void insertProduct(InsertProductCommand insertProductCommand, 
 			MultipartRequest multipartRequest,
-			HttpServletRequest request) {
+			HttpServletRequest request) throws IllegalStateException, IOException {
 		
 		ProductDto pdto = new ProductDto();
 
@@ -42,7 +43,7 @@ public class ProductService {
 		pdto.setMaker(insertProductCommand.getMaker());
 		pdto.setGoal_price(insertProductCommand.getGoal_price());
 		pdto.setTitle(insertProductCommand.getTitle());
-		pdto.setCreated_date(insertProductCommand.getCreated_date()); //string-->date타입(java.util.Date,java.sql.Date)
+//		pdto.setCreated_date(insertProductCommand.getCreated_date()); //string-->date타입(java.util.Date,java.sql.Date)
 		pdto.setClose_date(insertProductCommand.getClose_date());
 		pdto.setContent(insertProductCommand.getContent());
 		pdto.setCate_seq(insertProductCommand.getCate_seq());
