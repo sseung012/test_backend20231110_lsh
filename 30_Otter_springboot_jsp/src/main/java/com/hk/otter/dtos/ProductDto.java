@@ -1,6 +1,8 @@
 package com.hk.otter.dtos;
 
-import java.util.Date;
+import java.util.Arrays;
+//import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 
@@ -44,8 +46,6 @@ public class ProductDto {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-
 	public ProductDto(int seq, int user_seq, String img, String maker, String goal_price, String title,
 			Date created_date, String open_date, String close_date, String content, int total_price,
 			int total_supporters, int cate_seq, String product_check, List<RewardDto> rList) {
@@ -187,7 +187,7 @@ public class ProductDto {
 		this.rList = rList;
 	}
 
-	@Override
+//	@Override
 	public String toString() {
 		return "ProductDto [seq=" + seq + ", user_seq=" + user_seq + ", img=" + img + ", maker=" + maker
 				+ ", goal_price=" + goal_price + ", title=" + title + ", created_date=" + created_date + ", open_date="

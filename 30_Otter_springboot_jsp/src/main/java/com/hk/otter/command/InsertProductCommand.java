@@ -24,7 +24,7 @@ public class InsertProductCommand {
 	@NotBlank(message = "펀딩 프로젝트명을 등록하세요!")
 	private String title;
 	
-	private Date created_date;
+	private String created_date;
 	
 	private String open_date;
 	
@@ -41,7 +41,10 @@ public class InsertProductCommand {
 	private int cate_seq;
 	
 	private String product_check;
+	
+	private String[] 
 
+			
 	public InsertProductCommand() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -49,7 +52,7 @@ public class InsertProductCommand {
 
 	public InsertProductCommand(int seq, int user_seq, @NotBlank(message = "대표 이미지를 등록하세요!") String img,
 			@NotBlank(message = "회사명을 등록하세요!") String maker, @NotBlank(message = "목표금액을 등록하세요!") String goal_price,
-			@NotBlank(message = "펀딩 프로젝트명을 등록하세요!") String title, Date created_date, String open_date,
+			@NotBlank(message = "펀딩 프로젝트명을 등록하세요!") String title, String created_date, String open_date,
 			@NotBlank(message = "마감일을 등록하세요!") String close_date, @NotBlank(message = "상세 내용을 등록하세요!") String content,
 			int total_price, int total_supporters, int cate_seq, String product_check) {
 		super();
@@ -117,11 +120,11 @@ public class InsertProductCommand {
 		this.title = title;
 	}
 
-	public Date getCreated_date() {
+	public String getCreated_date() {
 		return created_date;
 	}
 
-	public void setCreated_date(Date created_date) {
+	public void setCreated_date(String created_date) {
 		this.created_date = created_date;
 	}
 
