@@ -1,9 +1,13 @@
+<%@page import="com.hk.otter.dtos.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
+<%
+	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
+%>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
@@ -68,6 +72,13 @@ const remove = (obj) => {
                 <div class="coll-lg-6">
                     <form action="/product/insertProduct" method="post" 
                     enctype="multipart/form-data">
+                    	<input type="hidden" name="id" value="${ldto.id}"/>
+                    	<div class="addProduct">                          
+<!--                             <input type="hidden" name="seq"/> -->
+                        </div>&nbsp;                        
+                        <div class="addProduct">                     
+                            <input type="hidden" name="user_seq" value="${ldto.seq}" />
+                        </div>&nbsp;
                                   
                         <div class="addProduct">
                             <label for="img" class="form-label">대표 이미지</label>
@@ -87,7 +98,6 @@ const remove = (obj) => {
                         </div>&nbsp;
                         <div class="addProduct">
                             <label for="created_date" class="form-label">신청 날짜</label>
-                            
                             <input type="date" name="created_date" id="created_date" class="form-control" />
 							
                         </div>&nbsp;
@@ -105,15 +115,15 @@ const remove = (obj) => {
                         </div>&nbsp;
                         <div class="addProduct">
                             <label for="userseqno" class="form-label">카테고리 선택</label>
-                            <select name="category" id="category">
+                            <select name="cate_seq" id="category">
                             	<option>-- 카테고리 선택 --</option>
                             	<option>전체</option>
-                            	<option>홈/리빙</option>
-                            	<option>패션/잡화</option>
-                            	<option>뷰티</option>
-                            	<option>푸드</option>
-                            	<option>출판</option>
-                            	<option>반려동물</option>
+                            	<option value="1">홈/리빙</option>
+                            	<option value="2">패션/잡화</option>
+                            	<option value="3">뷰티</option>
+                            	<option value="4">푸드</option>
+                            	<option value="5">출판</option>
+                            	<option value="6">반려동물</option>
                             </select>
                         </div>&nbsp;
                         <div  id="rewardbox">
