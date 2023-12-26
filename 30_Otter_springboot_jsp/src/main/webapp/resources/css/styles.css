@@ -126,7 +126,7 @@ h1, .h1 {
 }
 @media (min-width: 1200px) {
   h1, .h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 }
 
@@ -3738,7 +3738,7 @@ textarea.form-control-lg {
   --bs-navbar-brand-margin-end: 1rem;
   --bs-navbar-brand-font-size: 1.75rem;
   --bs-navbar-brand-color: rgba(0, 0, 0, 0.9);
-  --bs-navbar-brand-hover-color: rgba(0, 0, 0, 0.9);
+  --bs-navbar-brand-hover-color: #483D8B;
   --bs-navbar-nav-link-padding-x: 0.5rem;
   --bs-navbar-toggler-padding-y: 0.25rem;
   --bs-navbar-toggler-padding-x: 0.75rem;
@@ -10832,7 +10832,7 @@ textarea.form-control-lg {
 /*}*/
 
 .pyy-5 {
-	padding-top: 0rem !important;
+	padding-top: 1rem !important;
 	padding-bottom: 3rem !important;
 	margin-top: 1rem; /* 예시로 5rem의 상단 마진을 추가했습니다. 원하는 크기로 조절 가능합니다. */
     margin-bottom: 5rem; /* 예시로 5rem의 하단 마진을 추가했습니다. 원하는 크기로 조절 가능합니다. */
@@ -11021,17 +11021,4 @@ textarea.form-control-lg {
     margin-top: calc(-1 * var(--bs-gutter-y));
     margin-right: calc(-.5 * var(--bs-gutter-x));
     margin-left: calc(-.5 * var(--bs-gutter-x));
-}
-
-.navbar-brand0 {
-  padding-top: var(--bs-navbar-brand-padding-y);
-  padding-bottom: var(--bs-navbar-brand-padding-y);
-  margin-right: var(--bs-navbar-brand-margin-end);
-  font-size: var(--bs-navbar-brand-font-size);
-  color: var(--bs-navbar-brand-color);
-  text-decoration: none;
-  white-space: nowrap;
-}
-.navbar-brand0:hover, .navbar-brand0:focus {
-  color: var(--bs-navbar-brand-hover-color);
 }

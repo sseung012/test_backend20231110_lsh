@@ -148,20 +148,21 @@ public class UserController {
 	
 	//로그인하기
 	@PostMapping("/login")
-	public String login(UserDto dto, HttpServletRequest request) {
-		UserDto ldto=userService.loginUser(dto);
-		if(ldto==null) {
-			System.out.println("회원이 아님");
-			return "redirect:/user/signin";
-		} else {
-			System.out.println("회원이 맞음");
-			HttpSession session=request.getSession();
-			session.setAttribute("ldto", ldto); //로그인 정보를 session에 저장
-			session.setMaxInactiveInterval(60*10);
-			System.out.println("로그인성공");
-			System.out.println("로그인한 사용자: " + ldto);
-			return "redirect:/";
-		}
+	public String login(UserDto dto, HttpServletRequest request, Model model) {
+	    UserDto ldto = userService.loginUser(dto);
+	    if (ldto == null || !ldto.getUserpassword().equals(dto.getUserpassword())) {
+	        System.out.println("로그인 실패: 아이디 또는 비밀번호가 올바르지 않습니다.");
+	        model.addAttribute("loginResult", "N");
+	        return "redirect:/user/signin";
+	    } else {
+	        System.out.println("로그인 성공");
+	        HttpSession session = request.getSession();
+	        session.setAttribute("ldto", ldto);
+	        session.setMaxInactiveInterval(60 * 10);
+	        System.out.println("로그인한 사용자: " + ldto);
+	        model.addAttribute("loginResult", "Y");
+	        return "redirect:/";
+	    }
 	}
 	
 	//로그아웃하기
@@ -238,6 +239,29 @@ public class UserController {
 	    }
 	}
 	
+	// 탈퇴하기
+	@GetMapping(value = "/delUser")
+	public String delUser(UserDto dto, Model model, HttpServletRequest request) {
+		UserDto ldto=userService.loginUser(dto);
+		if (ldto != null) {
+	        boolean delUser = userService.delUser(ldto.getId());
+
+	        if (delUser) {
+                HttpSession session=request.getSession();
+        		session.invalidate();
+        		System.out.println("탈퇴?");
+        		return "redirect:/";
+	        } else {
+	        	// 회원 탈퇴 실패 시 적절한 에러 페이지로 이동 또는 메시지 처리
+	        	System.out.println("탈퇴실패");
+	        	return "redirect:/";
+	            }
+	        } else {
+	            // 로그인한 사용자 정보가 없는 경우의 예외 처리
+	            return "redirect:/"; // 또는 적절한 경로로 이동
+	        } 
+		}
+	    
 
 	//회원목록
 	@GetMapping(value="/manage")
