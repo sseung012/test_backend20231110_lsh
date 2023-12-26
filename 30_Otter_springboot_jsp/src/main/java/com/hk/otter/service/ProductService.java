@@ -1,5 +1,7 @@
 package com.hk.otter.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,6 +9,7 @@ import com.hk.otter.command.InsertProductCommand;
 import com.hk.otter.command.InsertRewardCommand;
 import com.hk.otter.dtos.ProductDto;
 import com.hk.otter.dtos.RewardDto;
+import com.hk.otter.dtos.UserDto;
 import com.hk.otter.mapper.ProductMapper;
 import com.hk.otter.mapper.RewardMapper;
 
@@ -41,4 +44,23 @@ public class ProductService {
 		
 		return rewardMapper.insertReward(rdto);
 	}
+
+	//관리자-프로젝트전체조회
+	public List<ProductDto> getProductList() {
+		return productMapper.getProductList();
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

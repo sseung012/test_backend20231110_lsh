@@ -1,5 +1,7 @@
 package com.hk.otter.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hk.otter.command.InsertProductCommand;
+import com.hk.otter.dtos.ProductDto;
+import com.hk.otter.dtos.UserDto;
 import com.hk.otter.service.ProductService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/product")
@@ -56,6 +62,17 @@ public class ProductController {
 		}
       }
 
+      
+    //프로젝트목록
+  	@GetMapping(value="/productList")
+  	public String getProductList(Model model, HttpServletRequest request) {
+  		System.out.println("전체회원목록");
+
+  	    List<ProductDto> list = productService.getProductList();
+  	    model.addAttribute("list", list);
+
+  	    return "productList"; // 혹은 "user/userAllList"
+  	}
 }
 
 

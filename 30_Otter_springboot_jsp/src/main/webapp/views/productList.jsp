@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
-<%@ page import="com.hk.otter.dtos.UserDto" %>
+<%@ page import="com.hk.otter.dtos.ProductDto" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,7 @@
 <link href="/resources/css/styles.css" rel="stylesheet" />
 
 <%
- 	List<UserDto> list=(List<UserDto>)request.getAttribute("list");
+ 	List<ProductDto> list=(List<ProductDto>)request.getAttribute("list");
 %>
 
 </head>
@@ -68,18 +68,18 @@
          <div class="rowww justify-content-center">
             <div class="coll-lg-6">
             	<div class="contents">
-			        <h1>전체회원목록</h1>
+			        <h1>프로젝트 목록</h1>
 			        <br />
-			        <div id="getUserList">
+			        <div id="getProductList">
 			            <table class="table2">
 			                <tr>
-			                    <th>회원번호</th>
-			                    <th>아이디</th>
-			                    <th>이름</th>
-			                    <th>연락처</th>
-			                    <th>이메일</th>
-			                    <th>회원등급</th>
-			                    <th>탈퇴여부</th>
+			                    <th>글번호</th>
+			                    <th>카테고리</th>
+			                    <th>제목</th>
+			                    <th>회사명</th>
+			                    <th>검토요청일</th>
+			                    <th>승인일</th>
+			                    <th>승인상태</th>
 			                </tr>
 							<%
 							    if (list == null || list.isEmpty()) {
@@ -89,16 +89,53 @@
 							    </tr>
 							<%
 							    } else {
-							        for (UserDto dto : list) {
+							        for (ProductDto dto : list) {
 							%>
 							            <tr>
-							                <td><%= dto.getSeq() %></td>
-							                <td><%= dto.getId() %></td>
-							                <td><%= dto.getUsername() %></td>
-							                <td><%= dto.getPhone() %></td>
-							                <td><%= dto.getUseremail() %></td>
-							                <td><%= dto.getRole() %></td>
-							                <td><%= (dto.getDelflag().equals("Y") ? "탈퇴" : "유저") %></td>
+							                <td><%= dto.getSeq()%></td>
+							                <td>
+											    <% 
+											        int categorySeq = dto.getCate_seq();
+											        String categoryName = "";
+											
+											        switch (categorySeq) {
+											            case 1:
+											                categoryName = "홈/리빙";
+											                break;
+											            case 2:
+											                categoryName = "패션/잡화";
+											                break;
+											            case 3:
+											                categoryName = "뷰티";
+											                break;
+											            case 4:
+											                categoryName = "푸드";
+											                break;
+											            case 5:
+											                categoryName = "출판";
+											                break;
+											            case 6:
+											                categoryName = "반려동물";
+											                break;
+											            default:
+											                categoryName = "알 수 없음";
+											                break;
+											        }
+											
+											        out.print(categoryName);
+											    %>
+											</td>
+							                <td>
+							                    <a href='/product/productApprove?seq=<%= dto.getSeq() %>'>
+							                        <span><%= dto.getTitle() %></span>
+							                    </a>
+							                </td>
+							                <td><%= dto.getMaker()%></td>
+							                <td><%= dto.getCreated_date()%></td>
+							                <td><%= dto.getOpen_date()%></td>
+							                <td style="<%= (dto.getProduct_check().equals("N") ? "color: red;" : "") %>">
+							                	<%= (dto.getProduct_check().equals("Y") ? "승인완료" : "승인대기")%>
+							                </td>
 							            </tr>
 							<%
 							        }
