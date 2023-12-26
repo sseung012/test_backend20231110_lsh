@@ -42,15 +42,15 @@ public class ProductService {
 		pdto.setMaker(insertProductCommand.getMaker());
 		pdto.setGoal_price(insertProductCommand.getGoal_price());
 		pdto.setTitle(insertProductCommand.getTitle());
-		pdto.setCreated_date(insertProductCommand.getCreated_date());//string-->date타입(java.util.Date,java.sql.Date)
+		pdto.setCreated_date(insertProductCommand.getCreated_date()); //string-->date타입(java.util.Date,java.sql.Date)
 		pdto.setClose_date(insertProductCommand.getClose_date());
 		pdto.setContent(insertProductCommand.getContent());
 		pdto.setCate_seq(insertProductCommand.getCate_seq());
 		
 		//rewardDto <---command 이동
 		//list<rewardDto> 저장
-		RewardDto rdto = 
 		List<RewardDto> reList=new ArrayList<RewardDto>();
+		
 		
 		
 		
