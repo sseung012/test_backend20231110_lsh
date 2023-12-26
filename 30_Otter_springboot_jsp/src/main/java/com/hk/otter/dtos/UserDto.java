@@ -1,7 +1,5 @@
 package com.hk.otter.dtos;
 
-import jakarta.validation.constraints.NotEmpty;
-
 public class UserDto {
 	
 	

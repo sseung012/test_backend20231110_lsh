@@ -22,32 +22,16 @@
 <!--         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" /> -->
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/styles.css" rel="stylesheet" />
-</head>
 <script type="text/javascript">
     function delUser() {
         var isConfirmed = confirm("회원 탈퇴하시겠습니까?");
-
         if (isConfirmed) {
-            $.ajax({ 
-                url: "/user/delUser",
-                method: "GET",
-                data: {},
-                dataType: "json",
-                success: function(data) {
-                    if (data.delUser) {
-                        alert("회원 탈퇴가 성공적으로 이루어졌습니다.");
-                        window.location.href = "/"; // 메인 페이지로 리다이렉트
-                    } else {
-                        alert("회원 탈퇴에 실패했습니다. 다시 시도해주세요.");
-                    }
-                },
-                error: function() {
-                    alert("서버와의 통신 중 오류가 발생했습니다.");
-                }
-            });
+            location.href="/user/delUser";
         }
     }
+
 </script>
+</head>
 
 <body >
 <!-- Navigation-->
@@ -148,7 +132,7 @@
 								</tr>
 								<tr>
 									<td colspan="2">
-										<input type="button" value="탈퇴" onclick="delUser('${ldto.id}')" class="btn btn-outline-darkk" style="float:right; margin-left:5px;" />
+										<input type="button" value="탈퇴" onclick="delUser()" class="btn btn-outline-darkk" style="float:right; margin-left:5px;" />
 										<input type="submit" value="수정" class="btn btn-outline-darkk" style="float:right;"/>
 									</td>
 								</tr> 
