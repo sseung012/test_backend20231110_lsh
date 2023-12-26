@@ -35,6 +35,11 @@ public class UserService {
 	public UserDto UserInfo(String id) {
 		return userMapper.UserInfo(id);
 	}
+	
+	//탈퇴	
+	public boolean delUser(String id) {
+	      return userMapper.delUser(id);
+	   }
 
 	//회원목록조회
 	public List<UserDto> getUserList() {

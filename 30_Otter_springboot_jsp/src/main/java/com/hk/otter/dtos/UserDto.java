@@ -5,12 +5,6 @@ import jakarta.validation.constraints.NotEmpty;
 public class UserDto {
 	
 	
-	public UserDto(String id, String phone, String useremail) {
-		super();
-		this.id = id;
-		this.phone = phone;
-		this.useremail = useremail;
-	}
 
 	private int seq;
 	private String id;
@@ -26,7 +20,24 @@ public class UserDto {
 	private String delflag;
 	
 	public UserDto() {
+		super();	
+	}
+	
+	
+	
+	public UserDto(String id, String delflag) {
 		super();
+		this.id = id;
+		this.delflag = delflag;
+	}
+
+
+
+	public UserDto(String id, String phone, String useremail) {
+		super();
+		this.id = id;
+		this.phone = phone;
+		this.useremail = useremail;
 	}
 
 	public UserDto(String id, String username, String phone, String useremail, String role, String delflag) {

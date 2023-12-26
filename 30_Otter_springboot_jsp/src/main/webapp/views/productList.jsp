@@ -3,6 +3,10 @@
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
 <%@ page import="com.hk.otter.dtos.ProductDto" %>
+<%@ page import="org.springframework.web.bind.annotation.RequestParam" %>
+<%@ page import="org.springframework.web.bind.annotation.ModelAttribute" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +26,6 @@
 <%
  	List<ProductDto> list=(List<ProductDto>)request.getAttribute("list");
 %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
 
 </head>
 
