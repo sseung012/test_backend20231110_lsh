@@ -60,7 +60,7 @@ public class ProductService {
 			= fileService.uploadFiles(filePath, multipartRequest);
 			
 			
-			// 리워드 정보를 DB에 추가
+//			// 리워드 정보를 DB에 추가
 			for(RewardDto rdto : reList) {
 				rewardMapper.insertReward(
 						new RewardDto(rdto.getReward_name(),
