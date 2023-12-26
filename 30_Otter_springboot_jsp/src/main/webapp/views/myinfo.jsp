@@ -28,7 +28,7 @@
         var isConfirmed = confirm("회원 탈퇴하시겠습니까?");
 
         if (isConfirmed) {
-            $.ajax({
+            $.ajax({ 
                 url: "/user/delUser",
                 method: "GET",
                 data: {},
