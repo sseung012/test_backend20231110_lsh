@@ -25,7 +25,7 @@
 	    WHERE ID=#{id}
 	</select>
 	
-
+        
 <!--  나의정보 수정 -->
 	<update id="updateUser" parameterType="UserDto">
 		UPDATE user
