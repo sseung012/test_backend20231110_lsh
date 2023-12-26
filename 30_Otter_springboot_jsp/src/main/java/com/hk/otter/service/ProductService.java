@@ -61,7 +61,7 @@ public class ProductService {
 			= fileService.uploadFiles(filePath, multipartRequest);
 			
 			
-//			// 리워드 정보를 DB에 추가
+			// 리워드 정보를 DB에 추가
 			for(RewardDto rdto : reList) {
 				rewardMapper.insertReward(
 						new RewardDto(rdto.getReward_name(),
@@ -72,27 +72,6 @@ public class ProductService {
 			}
 		}
 	}
-
-
-	
-//	@Autowired
-//	private RewardMapper rewardMapper;
-	
-	public int insertReward(InsertRewardCommand insertRewardCommand) {
-		RewardDto rdto = new RewardDto();
-		rdto.setReward_name(insertRewardCommand.getReward_name());
-		rdto.setPrice(insertRewardCommand.getPrice());
-		rdto.setCombination(insertRewardCommand.getCombination());
-		rdto.setStock(insertRewardCommand.getStock());
-		
-		return rewardMapper.insertReward(rdto);
-	}
-
-	//관리자-프로젝트전체조회
-	public List<ProductDto> getProductList() {
-		return productMapper.getProductList();
-	}
-
 
 }
 
