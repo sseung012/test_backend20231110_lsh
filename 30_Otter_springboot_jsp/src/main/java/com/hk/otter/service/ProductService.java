@@ -79,8 +79,14 @@ public class ProductService {
 		}
 	}
 
+	//프로젝트 조회
 	public List<ProductDto> getProductList() {
 		return productMapper.getProductList();
+	}
+
+	//index에서 프로젝트 작게조회
+	public List<ProductDto> getProductMini() {
+		return productMapper.getProductMini();
 	}
 
 }

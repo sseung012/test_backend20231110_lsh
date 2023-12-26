@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,18 +17,19 @@
     <link href="/resources/css/styles.css" rel="stylesheet" />
 
 <script type="text/javascript">
-    // 클라이언트에서 전달받은 플래그 확인
-    var loginResult = "<%= request.getAttribute("loginResult") %>";
-
-    // 로그인 버튼 클릭 시 에러가 있으면 알람창 띄우기
+    // 로그인 결과에 따라 알람창 띄우기
     function checkLoginResult() {
-        if (loginResult === "Y") {
+        var loginResult = "<%= request.getParameter("loginResult") %>";
+        console.log(loginResult);
+        if (loginResult.trim() === "Y") {
             alert("로그인 성공");
-        } else {
+        }
+        if (loginResult.trim() === "N") {
             alert("아이디 또는 비밀번호가 올바르지 않습니다.");
         }
-    };
+    }
 </script>
+
 </head>
 <body class="join">
     <!-- Navigation-->

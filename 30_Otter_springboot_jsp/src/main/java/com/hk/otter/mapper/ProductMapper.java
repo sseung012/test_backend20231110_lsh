@@ -14,4 +14,6 @@ public interface ProductMapper {
 
 	public List<ProductDto> getProductList();
 
+	public List<ProductDto> getProductMini();
+
 }
