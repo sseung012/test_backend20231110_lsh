@@ -30,9 +30,16 @@ window.onload = function() {
 <script type="text/javascript">
 const add_textbox = () => {
     const box = document.getElementById("rewardbox");
-    const newP = document.createElement('p');
-    newP.innerHTML = "<input type='text'> <input type='button' value='삭제' onclick='remove(this)'>";
-    box.appendChild(newP);
+    const addRewardForm=document.getElementsByClassName("addReward")[0];
+    const rewardEle=addRewardForm.cloneNode(true);
+    rewardEle.children[1].value="";
+    rewardEle.children[2].value="";
+    rewardEle.children[3].value="";
+    rewardEle.children[4].value="";
+    box.append(rewardEle);
+//     const newP = document.createElement('p');
+//     newP.innerHTML = "<input type='text'> <input type='button' value='삭제' onclick='remove(this)'>";
+//     box.appendChild(newP);
 }
 const remove = (obj) => {
     document.getElementById('rewardbox').removeChild(obj.parentNode);
@@ -40,7 +47,11 @@ const remove = (obj) => {
 </script>
 
 <!-- ckeditor 추가 -->
-<script src="//cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.22.1/standard/ckeditor.js">
+	
+
+
+</script>
 
 </head>
 <body class="addProductForm">
@@ -55,7 +66,8 @@ const remove = (obj) => {
         <div class="container myy-5">
             <div class="roww justify-content-center">
                 <div class="coll-lg-6">
-                    <form action="/product/insertProduct" method="post" >
+                    <form action="/product/insertProduct" method="post" 
+                    enctype="multipart/form-data">
                                   
                         <div class="addProduct">
                             <label for="img" class="form-label">대표 이미지</label>
@@ -104,17 +116,17 @@ const remove = (obj) => {
                             	<option>반려동물</option>
                             </select>
                         </div>&nbsp;
-                        <div class="addProduct" id="rewardbox">
-                            <label for="userseqno" class="form-label">리워드</label>
-                            <input type="text" name="reward_name" class="form-control" placeholder="리워드 제목" />&nbsp;
-                            <input type="text" name="price" class="form-control" placeholder="리워드 가격"/>&nbsp;
-                            <input type="text" name="combination" class="form-control" placeholder="리워드 설명"/>&nbsp;
-                            <input type="number" name="stock" class="form-control" placeholder="리워드 수량"/>
-                        
-                            <input type="button" value="추가" class="btn btn-outline-dark" onclick="add_textbox()" />
-<!--                             <input type="submit" value="삭제" class="btn btn-outline-dark" /> -->
-                            
+                        <div  id="rewardbox">
+                        	<div class="addReward">
+	                            <label for="userseqno" class="form-label">리워드</label>
+	                            <input type="text" name="reward_name" class="form-control" placeholder="리워드 제목" />&nbsp;
+	                            <input type="text" name="price" class="form-control" placeholder="리워드 가격"/>&nbsp;
+	                            <input type="text" name="combination" class="form-control" placeholder="리워드 설명"/>&nbsp;
+	                            <input type="number" name="stock" class="form-control" placeholder="리워드 수량"/>
+                        	</div>
                         </div>
+                        <input type="button" value="추가" class="btn btn-outline-dark" onclick="add_textbox()" />
+<!--                             <input type="submit" value="삭제" class="btn btn-outline-dark" /> -->
                         <br/>
                         <input type="submit" value="등록" class="btn btn-outline-dark" />
                     </form>

@@ -1,5 +1,8 @@
 package com.hk.otter.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,9 +11,14 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartRequest;
 
 import com.hk.otter.command.InsertProductCommand;
+import com.hk.otter.dtos.ProductDto;
+import com.hk.otter.dtos.RewardDto;
 import com.hk.otter.service.ProductService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/product")
@@ -33,10 +41,12 @@ public class ProductController {
       
       @PostMapping(value = "/insertProduct")
       public String insertProduct(@Validated InsertProductCommand insertProductCommand,
-                          BindingResult result)throws Exception {
-    	  
+                          BindingResult result
+                          , MultipartRequest multipartRequest
+              			  , Model model, HttpServletRequest request)throws Exception { 
+
          // 파라미터 순서 꼭 맞춰줄 것!
-         // logger.info("일정추가하기");
+//          logger.info("일정추가하기");
          System.out.println(insertProductCommand);
          
          if(result.hasErrors()) { // 에러가 있으면 돌려보냄
@@ -46,7 +56,7 @@ public class ProductController {
          
          
          try {
-			productService.insertProduct(insertProductCommand);
+			productService.insertProduct(insertProductCommand, multipartRequest, request);
 			System.out.println("프로젝트 만들기 성공");
 			return "redirect:/";
 		} catch (Exception e) {
@@ -56,6 +66,17 @@ public class ProductController {
 		}
       }
 
+      
+    //프로젝트목록
+  	@GetMapping(value="/productList")
+  	public String getProductList(Model model, HttpServletRequest request) {
+  		System.out.println("전체회원목록");
+
+  	    List<ProductDto> list = productService.getProductList();
+  	    model.addAttribute("list", list);
+
+  	    return "productList"; 
+  	}
 }
 
 

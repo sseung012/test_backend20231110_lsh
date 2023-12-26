@@ -13,6 +13,16 @@ public class RewardDto {
 	public RewardDto() {
 		super();
 	}
+	
+	public RewardDto(String reward_name, int price, String combination, int stock, int product_seq) {
+		super();
+		this.reward_name = reward_name;
+		this.price = price;
+		this.combination = combination;
+		this.stock = stock;
+		this.product_seq = product_seq;
+	}
+
 
 	public RewardDto(int seq, String reward_name, int price, String combination, int stock, int product_seq,
 			int sold_stock) {

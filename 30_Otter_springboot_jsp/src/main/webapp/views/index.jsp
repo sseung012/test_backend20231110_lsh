@@ -73,7 +73,7 @@
 				                    회원관리
 				                </a>  
 				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/project/manage">
+				                <a class="btn btn-outline-darkk" type="submit" href="/product/productList">
 				                    <i class="bi-cart-fill me-1"></i>
 				                    프로젝트 관리
 				                </a>
