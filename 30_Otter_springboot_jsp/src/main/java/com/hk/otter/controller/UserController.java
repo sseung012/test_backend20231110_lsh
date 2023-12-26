@@ -148,20 +148,21 @@ public class UserController {
 	
 	//로그인하기
 	@PostMapping("/login")
-	public String login(UserDto dto, HttpServletRequest request) {
-		UserDto ldto=userService.loginUser(dto);
-		if(ldto==null) {
-			System.out.println("회원이 아님");
-			return "redirect:/user/signin";
-		} else {
-			System.out.println("회원이 맞음");
-			HttpSession session=request.getSession();
-			session.setAttribute("ldto", ldto); //로그인 정보를 session에 저장
-			session.setMaxInactiveInterval(60*10);
-			System.out.println("로그인성공");
-			System.out.println("로그인한 사용자: " + ldto);
-			return "redirect:/";
-		}
+	public String login(UserDto dto, HttpServletRequest request, Model model) {
+	    UserDto ldto = userService.loginUser(dto);
+	    if (ldto == null || !ldto.getUserpassword().equals(dto.getUserpassword())) {
+	        System.out.println("로그인 실패: 아이디 또는 비밀번호가 올바르지 않습니다.");
+	        model.addAttribute("loginResult", "N");
+	        return "redirect:/user/signin";
+	    } else {
+	        System.out.println("로그인 성공");
+	        HttpSession session = request.getSession();
+	        session.setAttribute("ldto", ldto);
+	        session.setMaxInactiveInterval(60 * 10);
+	        System.out.println("로그인한 사용자: " + ldto);
+	        model.addAttribute("loginResult", "Y");
+	        return "redirect:/";
+	    }
 	}
 	
 	//로그아웃하기
