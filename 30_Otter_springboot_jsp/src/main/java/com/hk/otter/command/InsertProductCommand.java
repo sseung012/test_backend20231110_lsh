@@ -1,6 +1,7 @@
 package com.hk.otter.command;
 
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -15,8 +16,8 @@ public class InsertProductCommand {
 	
 	private int user_seq;
 	       
-	@NotBlank(message = "대표 이미지를 등록하세요!")
-	private String img;
+//	@NotBlank(message = "대표 이미지를 등록하세요!")
+//	private String img;
 	
 	@NotBlank(message = "회사명을 등록하세요!")
 	private String maker;
@@ -46,11 +47,80 @@ public class InsertProductCommand {
 	private String product_check;
 	
 	private List<RewardDto> reList;
-
-			
+	
+	//----reward
+	private String[] reward_name;
+	private int[] price;
+	private String[] combination;
+	private int[] stock;
+	private int[] product_seq;
+	private int[] sold_stock;
+	//----
+	public String[] getReward_name() {
+		return reward_name;
+	}
+	
+	
+	public void setReward_name(String[] reward_name) {
+		this.reward_name = reward_name;
+	}
+	
+	
+	public int[] getPrice() {
+		return price;
+	}
+	
+	
+	public void setPrice(int[] price) {
+		this.price = price;
+	}
+	
+	
+	public String[] getCombination() {
+		return combination;
+	}
+	
+	
+	public void setCombination(String[] combination) {
+		this.combination = combination;
+	}
+	
+	
+	public int[] getStock() {
+		return stock;
+	}
+	
+	
+	public void setStock(int[] stock) {
+		this.stock = stock;
+	}
+	//-------------------------		
+	
 	public InsertProductCommand() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+	public int[] getProduct_seq() {
+		return product_seq;
+	}
+
+
+	public void setProduct_seq(int[] product_seq) {
+		this.product_seq = product_seq;
+	}
+
+
+	public int[] getSold_stock() {
+		return sold_stock;
+	}
+
+
+	public void setSold_stock(int[] sold_stock) {
+		this.sold_stock = sold_stock;
 	}
 
 
@@ -62,7 +132,7 @@ public class InsertProductCommand {
 		super();
 		this.seq = seq;
 		this.user_seq = user_seq;
-		this.img = img;
+//		this.img = img;
 		this.maker = maker;
 		this.goal_price = goal_price;
 		this.title = title;
@@ -98,14 +168,14 @@ public class InsertProductCommand {
 	}
 
 
-	public String getImg() {
-		return img;
-	}
-
-
-	public void setImg(String img) {
-		this.img = img;
-	}
+//	public String getImg() {
+//		return img;
+//	}
+//
+//
+//	public void setImg(String img) {
+//		this.img = img;
+//	}
 
 
 	public String getMaker() {
@@ -230,12 +300,25 @@ public class InsertProductCommand {
 
 	@Override
 	public String toString() {
-		return "InsertProductCommand [seq=" + seq + ", user_seq=" + user_seq + ", img=" + img + ", maker=" + maker
-				+ ", goal_price=" + goal_price + ", title=" + title + ", created_date=" + created_date + ", open_date="
-				+ open_date + ", close_date=" + close_date + ", content=" + content + ", total_price=" + total_price
+		return "InsertProductCommand [seq=" + seq + ", user_seq=" + user_seq + ", maker=" + maker + ", goal_price="
+				+ goal_price + ", title=" + title + ", created_date=" + created_date + ", open_date=" + open_date
+				+ ", close_date=" + close_date + ", content=" + content + ", total_price=" + total_price
 				+ ", total_supporters=" + total_supporters + ", cate_seq=" + cate_seq + ", product_check="
-				+ product_check + ", reList=" + reList + "]";
+				+ product_check + ", reList=" + reList + ", reward_name=" + Arrays.toString(reward_name) + ", price="
+				+ Arrays.toString(price) + ", combination=" + Arrays.toString(combination) + ", stock="
+				+ Arrays.toString(stock) + ", product_seq=" + Arrays.toString(product_seq) + ", sold_stock="
+				+ Arrays.toString(sold_stock) + "]";
 	}
+
+
+//	@Override
+//	public String toString() {
+//		return "InsertProductCommand [seq=" + seq + ", user_seq=" + user_seq + ", img=, maker=" + maker
+//				+ ", goal_price=" + goal_price + ", title=" + title + ", created_date=" + created_date + ", open_date="
+//				+ open_date + ", close_date=" + close_date + ", content=" + content + ", total_price=" + total_price
+//				+ ", total_supporters=" + total_supporters + ", cate_seq=" + cate_seq + ", product_check="
+//				+ product_check + ", reList=" + reList + "]";
+//	}
 
 	
 	
