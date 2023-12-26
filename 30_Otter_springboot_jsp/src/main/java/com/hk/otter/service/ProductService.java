@@ -50,13 +50,7 @@ public class ProductService {
 		//rewardDto <---command 이동
 		//list<rewardDto> 저장
 		List<RewardDto> reList=new ArrayList<RewardDto>();
-		
-		
-		
-<<<<<<< HEAD
-		
-=======
->>>>>>> branch 'main' of https://github.com/sseung012/test_backend20231110_lsh.git
+
 		productMapper.insertProduct(pdto); //새 글 추가
 		
 		System.out.println("파일첨부여부: " + multipartRequest.getFiles("img").get(0).isEmpty());
