@@ -67,7 +67,7 @@
                                         <button type="submit" class="form-control">Login</button> &nbsp;&nbsp;&nbsp;    
                                         <a class="btn form-control" href="/user/join" style="border: 1px solid #ccc;">SignUp</a>
                                     
-                                    </div>
+                                    </div> 
                                     
                                 </td>
                             </tr>                                
