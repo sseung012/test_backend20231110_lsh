@@ -2,6 +2,7 @@ package com.hk.otter.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.hk.otter.config.LoginInterceptor;
@@ -16,5 +17,12 @@ public class WebConfiguration implements WebMvcConfigurer{
 		registry.addInterceptor(new LoginInterceptor())
 				.addPathPatterns("/banking/*");
 	}
+	
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/images/**")
+                .addResourceLocations("/");
+    }
 
 }

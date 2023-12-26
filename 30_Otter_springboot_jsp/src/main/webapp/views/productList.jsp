@@ -22,6 +22,8 @@
 <%
  	List<ProductDto> list=(List<ProductDto>)request.getAttribute("list");
 %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 
 </head>
 
@@ -131,7 +133,19 @@
 							                    </a>
 							                </td>
 							                <td><%= dto.getMaker()%></td>
-							                <td><%= dto.getCreated_date()%></td>
+							                <td>
+											    <% 
+											        String createdDateStr = "";
+											        Date createdDate = dto.getCreated_date();
+											
+											        if (createdDate != null) {
+											            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+											            createdDateStr = dateFormat.format(createdDate);
+											        }
+											
+											        out.print(createdDateStr);
+											    %>
+											</td>
 							                <td><%= dto.getOpen_date()%></td>
 							                <td style="<%= (dto.getProduct_check().equals("N") ? "color: red;" : "") %>">
 							                	<%= (dto.getProduct_check().equals("Y") ? "승인완료" : "승인대기")%>

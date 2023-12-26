@@ -3,16 +3,56 @@
 
 <mapper namespace="com.hk.otter.mapper.ProductMapper">
 	
-	<insert id="insertProduct" parameterType="ProductDto">
+	<insert id="insertProduct" parameterType="ProductDto"
+	 useGeneratedKeys="true" keyProperty="seq">
 		INSERT INTO product
 		VALUES(NULL, #{user_seq}, #{img}, #{maker}, #{goal_price}, #{title}, 
 				SYSDATE(), NULL, #{close_date}, #{content}, NULL, NULL, #{cate_seq}, 'Y')		
 	</insert>
 	
+
 <!-- 	관리자-프로젝트 전체조회(승인) -->
 	<select id="getProductList"  resultType="ProductDto">
 		SELECT seq, cate_seq, title, maker, created_date, open_date, product_check
 		FROM product	
 	</select>
 
+	<resultMap type="ProductDto" id="ProductDtoMap">
+      <id property="seq" column="SEQ"/>
+      <result property="img" column="IMG" />
+      <result property="maker" column="MAKER" />
+      <result property="goal_price" column="GOAL_PRICE" />
+      <result property="title" column="TITLE" />
+      <result property="created_date" column="CREATED_DATE" />
+      <result property="close_date" column="CLOSE_DATE" />
+      <result property="content" column="CONTENT" />
+      <result property="cate_seq" column="CATE_SEQ" />
+<!--       <association property="fileBoardDto"></association> -->
+      <collection property="RewardDto" resultMap="RewardDtoMap" ></collection>
+   </resultMap>
+   
+   <resultMap type="RewardDto" id="RewardDtoMap">
+      <id property="seq"            column="SEQ"/>
+      <result property="reward_name"       column="REWARD_NAME"/>
+      <result property="price" column="PRICE"/>
+      <result property="combination" column="COMBINATION"/>
+      <result property="stock" column="STOCK"/>
+   </resultMap>
+
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
