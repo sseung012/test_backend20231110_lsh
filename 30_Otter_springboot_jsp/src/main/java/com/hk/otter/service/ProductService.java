@@ -79,6 +79,10 @@ public class ProductService {
 		}
 	}
 
+	public List<ProductDto> getProductList() {
+		return productMapper.getProductList();
+	}
+
 }
 
 

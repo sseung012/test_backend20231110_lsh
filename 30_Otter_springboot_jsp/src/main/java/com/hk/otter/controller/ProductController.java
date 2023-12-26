@@ -75,7 +75,7 @@ public class ProductController {
   	    List<ProductDto> list = productService.getProductList();
   	    model.addAttribute("list", list);
 
-  	    return "productList"; // 혹은 "user/userAllList"
+  	    return "productList"; 
   	}
 }
 
