@@ -12,6 +12,7 @@ import com.hk.otter.command.InsertProductCommand;
 
 import com.hk.otter.dtos.ProductDto;
 import com.hk.otter.dtos.RewardDto;
+import com.hk.otter.dtos.UserDto;
 import com.hk.otter.mapper.ProductMapper;
 import com.hk.otter.mapper.RewardMapper;
 
@@ -57,7 +58,7 @@ public class ProductService {
 		
 		System.out.println("파일첨부여부: " + multipartRequest.getFiles("img").get(0).isEmpty());
 		
-		if(!multipartRequest.getFiles("img").get(0).isEmpty()) {
+	if(!multipartRequest.getFiles("img").get(0).isEmpty()) {
 			String filePath = request.getSession().getServletContext()
 									.getRealPath("upload");
 			System.out.println("파일저장경로: " + filePath);
@@ -68,7 +69,7 @@ public class ProductService {
 			fileService.uploadFiles(filePath, multipartRequest);
 			
 			
-//			// 리워드 정보를 DB에 추가
+			// 리워드 정보를 DB에 추가
 			for(RewardDto rdto : reList) {
 //				rewardMapper.insertReward(
 //						new RewardDto(rdto.getReward_name(),
@@ -81,4 +82,5 @@ public class ProductService {
 	}
 
 }
+
 

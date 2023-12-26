@@ -25,7 +25,25 @@ public class ProductDto {
 	private int cate_seq;
 	private String product_check;
 	
+<<<<<<< HEAD
 	private List<RewardDto> reList;
+=======
+
+	//관리자-프로젝트 전체보기용
+	public ProductDto(int seq, String maker, String title, Date created_date, String open_date, int cate_seq,
+			String product_check) {
+		super();
+		this.seq = seq;
+		this.maker = maker;
+		this.title = title;
+		this.created_date = created_date;
+		this.open_date = open_date;
+		this.cate_seq = cate_seq;
+		this.product_check = product_check;
+	}
+
+	private List<RewardDto> rList;
+>>>>>>> branch 'main' of https://github.com/sseung012/test_backend20231110_lsh.git
 
 	public ProductDto() {
 		super();

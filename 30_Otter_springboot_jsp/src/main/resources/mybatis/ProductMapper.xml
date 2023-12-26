@@ -10,6 +10,13 @@
 				SYSDATE(), NULL, #{close_date}, #{content}, NULL, NULL, #{cate_seq}, 'Y')		
 	</insert>
 	
+
+<!-- 	관리자-프로젝트 전체조회(승인) -->
+	<select id="getProductList"  resultType="ProductDto">
+		SELECT seq, cate_seq, title, maker, created_date, open_date, product_check
+		FROM product	
+	</select>
+
 	<resultMap type="ProductDto" id="ProductDtoMap">
       <id property="seq" column="SEQ"/>
       <result property="img" column="IMG" />

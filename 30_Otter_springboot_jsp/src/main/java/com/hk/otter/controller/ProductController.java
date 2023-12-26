@@ -66,6 +66,17 @@ public class ProductController {
 		}
       }
 
+      
+    //프로젝트목록
+  	@GetMapping(value="/productList")
+  	public String getProductList(Model model, HttpServletRequest request) {
+  		System.out.println("전체회원목록");
+
+  	    List<ProductDto> list = productService.getProductList();
+  	    model.addAttribute("list", list);
+
+  	    return "productList"; // 혹은 "user/userAllList"
+  	}
 }
 
 
