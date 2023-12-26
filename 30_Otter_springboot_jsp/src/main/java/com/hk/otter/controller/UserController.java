@@ -153,7 +153,7 @@ public class UserController {
 		if(ldto==null) {
 			System.out.println("회원이 아님");
 			return "redirect:/user/signin";
-		} else {
+		}else {
 			System.out.println("회원이 맞음");
 			HttpSession session=request.getSession();
 			session.setAttribute("ldto", ldto); //로그인 정보를 session에 저장

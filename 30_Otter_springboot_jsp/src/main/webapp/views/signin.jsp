@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@page import="java.util.List"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
+<%@ page import="com.hk.otter.dtos.UserDto" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +19,9 @@
         	
 <script type="text/javascript">
 
-
+<%
+UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
+%>
 
 </script>
 </head>
