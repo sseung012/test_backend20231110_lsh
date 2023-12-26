@@ -44,6 +44,7 @@ public class InsertProductCommand {
 	
 	private String[] 
 
+			
 	public InsertProductCommand() {
 		super();
 		// TODO Auto-generated constructor stub
