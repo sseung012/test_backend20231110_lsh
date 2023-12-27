@@ -134,7 +134,7 @@
 <!--                         <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
                         	 <tr>
                         	 <td>
-								<img src="../upload/${dto.img}"/>
+								<img src="/upload/${dto.img}"/>
 							</td>
 							</tr>
                         <!-- Post content-->
@@ -214,7 +214,7 @@
 							</tr>
 							<br/>
 							<tr>
-							<td>${dto.remainingdays}</td>
+							<td>${dto.remainingDays}</td>
 							</tr>
                             </div>
 <!--                         </div> -->
