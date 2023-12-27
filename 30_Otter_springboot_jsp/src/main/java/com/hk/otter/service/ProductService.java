@@ -107,9 +107,9 @@ public class ProductService {
 	}
 
 	//내프로젝트 조회
-	public List<ProductDto> myProject() {
-		return productMapper.myProject();
-	}
+//	public List<ProductDto> myProject(int userSeq) {
+//		return productMapper.myProject(userSeq);
+//	}
 
 
 }

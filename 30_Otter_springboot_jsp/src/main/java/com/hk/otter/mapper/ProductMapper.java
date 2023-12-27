@@ -23,7 +23,7 @@ public interface ProductMapper {
 	public ProductDto productDetail(int seq);
 	
 	//내 프로젝트 조회
-	public List<ProductDto> myProject();
+//	public List<ProductDto> myProject(int userSeq);
 
 	public ProductDto productDetail(Integer seq);
 
