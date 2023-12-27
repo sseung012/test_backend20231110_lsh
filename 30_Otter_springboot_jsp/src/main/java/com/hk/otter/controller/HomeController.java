@@ -25,9 +25,9 @@ public class HomeController {
 		return "index";
 	}
 	
-//	//프로젝트목록
+//	//인덱스-프로젝트 작게 조회
 //  	@GetMapping(value="/index")
-//  	public String getProductList(Model model, HttpServletRequest request) {
+//  	public String getProductMini(Model model, HttpServletRequest request) {
 //  		System.out.println("프로젝트목록");
 //
 //  	    List<ProductDto> list = productService.getProductMini();
