@@ -1,6 +1,5 @@
 package com.hk.otter.dtos;
 
-import java.util.Arrays;
 //import java.util.Date;
 import java.sql.Date;
 import java.util.List;
@@ -52,17 +51,6 @@ public class ProductDto {
 
 	private List<RewardDto> reList;
 
-
-	public ProductDto(String img, String maker, String title, String close_date, int total_supporters) {
-		super();
-		this.img = img;
-		this.maker = maker;
-		this.title = title;
-		this.close_date = close_date;
-		this.total_supporters = total_supporters;
-	}
-
-
 	// 관리자-프로젝트 전체보기용
 	public ProductDto(int seq, String maker, String title, Date created_date, String open_date, int cate_seq,
 			String product_check) {
@@ -75,6 +63,18 @@ public class ProductDto {
 		this.cate_seq = cate_seq;
 		this.product_check = product_check;
 	}
+
+	
+// 네모 프로젝트
+	public ProductDto(String img, String maker, String title, String close_date, int total_supporters) {
+		super();
+		this.img = img;
+		this.maker = maker;
+		this.title = title;
+		this.close_date = close_date;
+		this.total_supporters = total_supporters;
+	}
+
 
 	//프로젝트 상세보기
 	public ProductDto(int seq, String img, String maker, String goal_price, String title, String close_date,
@@ -90,7 +90,6 @@ public class ProductDto {
 		this.total_price = total_price;
 		this.cate_seq = cate_seq;
 	}
-	
 
 
 	public ProductDto() {

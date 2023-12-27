@@ -24,7 +24,14 @@
 		SELECT seq, cate_seq, title, maker, created_date, open_date, product_check
 		FROM product	
 	</select>
-	
+
+<!-- 	index페이지에서 작게 프로젝트 조회 -->
+	<select id="getProductMini"  resultType="ProductDto">
+		SELECT img, title, maker, TIMESTAMPDIFF(DAY, SYSDATE(), close_date+1) AS 남은날짜, total_supporters
+		FROM product
+		ORDER BY seq DESC
+		LIMIT 8;
+	</select>
 
 
 	<resultMap type="ProductDto" id="ProductDtoMap">
