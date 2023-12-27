@@ -45,7 +45,7 @@ const add_textbox = () => {
         rewardEle.children[4].value = "";  // 리워드 수량 입력란
         box.append(rewardEle);
 
-        rewardAddCount++;
+        rewardAddCount++; 
 
         // 만약 특정 횟수에 도달하면 추가 버튼을 비활성화
         if (rewardAddCount === 2) {
