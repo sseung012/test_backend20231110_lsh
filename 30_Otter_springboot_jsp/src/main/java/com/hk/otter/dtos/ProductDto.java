@@ -1,6 +1,5 @@
 package com.hk.otter.dtos;
 
-import java.util.Arrays;
 //import java.util.Date;
 import java.sql.Date;
 import java.util.List;
@@ -40,6 +39,18 @@ public class ProductDto {
 		this.cate_seq = cate_seq;
 		this.product_check = product_check;
 	}
+
+	
+// 네모 프로젝트
+	public ProductDto(String img, String maker, String title, String close_date, int total_supporters) {
+		super();
+		this.img = img;
+		this.maker = maker;
+		this.title = title;
+		this.close_date = close_date;
+		this.total_supporters = total_supporters;
+	}
+
 
 
 	public ProductDto() {
