@@ -210,7 +210,7 @@
 							</tr>
 							<br/>
 							<tr>
-							<td>${dto.close_date}</td>
+							<td>${dto.remainingdays}</td>
 							</tr>
                             </div>
 <!--                         </div> -->
