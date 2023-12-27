@@ -80,11 +80,11 @@ public class ProductController {
 
   	
   	//프로젝트 상세보기
-  	@GetMapping(value = "/productDetail/{seq}")
+  	@GetMapping(value = "/productDetail")
   	public String productDetail(@PathVariable("seq") Integer seq, Model model) {
   		ProductDto dto = productService.productDetail(seq);
   		model.addAttribute("dto",dto);
-  		return "/productDetail";
+  		return "redirect:product/productDetail?seq=\"+seq";
   	}
 }
 
