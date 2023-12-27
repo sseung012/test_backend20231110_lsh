@@ -66,14 +66,15 @@ public class ProductDto {
 
 	
 // 네모 프로젝트
-	public ProductDto(String img, String maker, String title, String close_date, int total_supporters) {
-		super();
-		this.img = img;
-		this.maker = maker;
-		this.title = title;
-		this.close_date = close_date;
-		this.total_supporters = total_supporters;
-	}
+	public ProductDto(int seq, String img, String maker, String title, String close_date, int total_supporters) {
+	super();
+	this.seq = seq;
+	this.img = img;
+	this.maker = maker;
+	this.title = title;
+	this.close_date = close_date;
+	this.total_supporters = total_supporters;
+}
 
 
 	//프로젝트 상세보기
