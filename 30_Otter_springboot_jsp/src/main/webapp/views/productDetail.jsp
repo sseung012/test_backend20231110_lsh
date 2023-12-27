@@ -214,7 +214,7 @@
 							</tr>
 							<br/>
 							<tr>
-							<td>${dto.remainingDays}</td>
+							<td>${dto.remainingDays}일 남음</td>
 							</tr>
                             </div>
 <!--                         </div> -->
