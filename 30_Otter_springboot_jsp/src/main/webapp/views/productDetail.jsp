@@ -18,8 +18,10 @@
         <link href="/resources/css/productdetail.css" rel="stylesheet" />
     </head>
     <%
-	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
-	%>
+   UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
+   ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
+   %>
+   
     <body>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -42,68 +44,68 @@
                                 <li><a class="dropdown-item" href="#!">출판</a></li>
                                 <li><a class="dropdown-item" href="#!">반려동물</a></li>
                             </ul> 
-	               </li>
-	            </ul>
-            			
-				<%
-				    if (ldto == null) {
-				%>
-				    <!-- 로그인되지 않은 경우의 버튼들 -->
-				    <form class="d-flex">
-				        &nbsp;
-				        <a class="btn btn-outline-dark" type="submit" href="/user/signin">
-				            <i class="bi-cart-fill me-1"></i>
-				            로그인/회원가입
-				        </a> 
-				        &nbsp; 
-				    </form>
-				<%
-				    } else {
-				        if ("ADMIN".equals(ldto.getRole())) {
-				%>
-				            <!-- ADMIN인 경우의 버튼들 -->
-				            <form class="d-flex">
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/user/manage">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    회원관리
-				                </a>  
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/product/productList">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    프로젝트 관리
-				                </a>
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    로그아웃
-				                </a> 
-				            </form>
-				<% 
-				        } else {
-				%>
-				            <!-- ADMIN이 아닌 경우의 버튼들 -->
-				            <form class="d-flex">
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/product/insertProductForm">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    프로젝트 만들기
-				                </a> 
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/user/myinfo">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    나의 정보
-				                </a> 
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    로그아웃
-				                </a> 
-				            </form>
-				<%
-				        }
-				    }
-				%>
+                  </li>
+               </ul>
+                     
+            <%
+                if (ldto == null) {
+            %>
+                <!-- 로그인되지 않은 경우의 버튼들 -->
+                <form class="d-flex">
+                    &nbsp;
+                    <a class="btn btn-outline-dark" type="submit" href="/user/signin">
+                        <i class="bi-cart-fill me-1"></i>
+                        로그인/회원가입
+                    </a> 
+                    &nbsp; 
+                </form>
+            <%
+                } else {
+                    if ("ADMIN".equals(ldto.getRole())) {
+            %>
+                        <!-- ADMIN인 경우의 버튼들 -->
+                        <form class="d-flex">
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/user/manage">
+                                <i class="bi-cart-fill me-1"></i>
+                                회원관리
+                            </a>  
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/product/productList">
+                                <i class="bi-cart-fill me-1"></i>
+                                프로젝트 관리
+                            </a>
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
+                                <i class="bi-cart-fill me-1"></i>
+                                로그아웃
+                            </a> 
+                        </form>
+            <% 
+                    } else {
+            %>
+                        <!-- ADMIN이 아닌 경우의 버튼들 -->
+                        <form class="d-flex">
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/product/insertProductForm">
+                                <i class="bi-cart-fill me-1"></i>
+                                프로젝트 만들기
+                            </a> 
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/user/myinfo">
+                                <i class="bi-cart-fill me-1"></i>
+                                나의 정보
+                            </a> 
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
+                                <i class="bi-cart-fill me-1"></i>
+                                로그아웃
+                            </a> 
+                        </form>
+            <%
+                    }
+                }
+            %>
 
  
          </div>
@@ -125,17 +127,21 @@
                             <!-- Post categories-->
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">카테고리 이름</a>
 <!--                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
-                        </header>
+                        </header>   
+                           
+                           
                         <!-- Preview image figure-->
-                        <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
+<!--                         <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
+                        	 <tr>
+                        	 <td>
+								<img src="../upload/${dto.img}"/>
+							</td>
+							</tr>
                         <!-- Post content-->
                         <section class="mb-5">
-                            <p class="fs-5 mb-4">Science is an enterprise that should be cherished as an activity of the free human mind. Because it transforms who we are, how we live, and it gives us an understanding of our place in the universe.</p>
-                            <p class="fs-5 mb-4">The universe is large and old, and the ingredients for life as we know it are everywhere, so there's no reason to think that Earth would be unique in that regard. Whether of not the life became intelligent is a different question, and we'll see if we find that.</p>
-                            <p class="fs-5 mb-4">If you get asteroids about a kilometer in size, those are large enough and carry enough energy into our system to disrupt transportation, communication, the food chains, and that can be a really bad day on Earth.</p>
-                            <h2 class="fw-bolder mb-4 mt-5">I have odd cosmic thoughts every day</h2>
-                            <p class="fs-5 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
-                            <p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p>
+                            <tr>
+							<td><h4>${dto.content}</h4></td>
+							</tr>
                         </section>
                     </article>
                     <!-- Comments section-->
@@ -188,8 +194,28 @@
 <!--                         <div class="card-header">Search</div> -->
                         <div class="card-body">
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+<!--                                 <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" /> -->
+<!-- 								<input class="form-control" type="text" ></input> -->
+<!--                                 <button class="btn btn-primary" id="button-search" type="button">Go!</button> -->
+							<tr>
+							<td><h2 style="font-weight:bold;">${dto.title}</h2></td>
+							</tr>
+							<br/>
+							<tr>
+							<td>${dto.maker}</td>
+							</tr>
+							<br/>
+							<tr>
+							<td>${dto.goal_price}원 목표</td>
+							</tr>
+							<br/>
+							<tr>
+							<td>${dto.total_price}원 달성</td>
+							</tr>
+							<br/>
+							<tr>
+							<td>${dto.remainingdays}</td>
+							</tr>
                             </div>
 <!--                         </div> -->
                     </div>

@@ -7721,7 +7721,7 @@ textarea.form-control-lg {
 }
 
 .p-4 {
-  padding: 1.5rem !important;
+  padding: 0.8rem !important;
 }
 
 .p-5 {
@@ -7965,6 +7965,11 @@ textarea.form-control-lg {
 }
 
 .fw-bolder {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 가로 가운데 정렬을 위한 속성 추가 */
+  text-align: center; /* 가로 가운데 정렬을 위한 속성 추가 */
   font-weight: bolder !important;
 }
 
@@ -8092,6 +8097,7 @@ textarea.form-control-lg {
 
 .text-muted {
   --bs-text-opacity: 1;
+  height:15px;
   color: #6c757d !important;
 }
 

@@ -32,18 +32,26 @@ window.onload = function() {
 </script>
 
 <script type="text/javascript">
+let rewardAddCount = 0;
+
 const add_textbox = () => {
-    const box = document.getElementById("rewardbox");
-    const addRewardForm=document.getElementsByClassName("addReward")[0];
-    const rewardEle=addRewardForm.cloneNode(true);
-    rewardEle.children[1].value="";
-    rewardEle.children[2].value="";
-    rewardEle.children[3].value="";
-    rewardEle.children[4].value="";
-    box.append(rewardEle);
-//     const newP = document.createElement('p');
-//     newP.innerHTML = "<input type='text'> <input type='button' value='삭제' onclick='remove(this)'>";
-//     box.appendChild(newP);
+    if (rewardAddCount < 2) {
+        const box = document.getElementById("rewardbox");
+        const addRewardForm = document.getElementsByClassName("addReward")[0];
+        const rewardEle = addRewardForm.cloneNode(true);
+        rewardEle.children[1].value = "";  // 리워드 제목 입력란
+        rewardEle.children[2].value = "";  // 리워드 가격 입력란
+        rewardEle.children[3].value = "";  // 리워드 설명 입력란
+        rewardEle.children[4].value = "";  // 리워드 수량 입력란
+        box.append(rewardEle);
+
+        rewardAddCount++; 
+
+        // 만약 특정 횟수에 도달하면 추가 버튼을 비활성화
+        if (rewardAddCount === 2) {
+            document.getElementById('addButton').disabled = true;
+        }
+    }
 }
 const remove = (obj) => {
     document.getElementById('rewardbox').removeChild(obj.parentNode);

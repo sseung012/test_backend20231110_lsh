@@ -13,7 +13,7 @@
 	
 <!-- 	제품 상세조회 -->
 	<select id="productDetail" parameterType="int" resultType="ProductDto">
-		SELECT seq, cate_seq, img, title, maker, goal_price, total_price, close_date, content
+		SELECT seq, cate_seq, img, title, maker, goal_price, total_price, TIMESTAMPDIFF(DAY, SYSDATE(), close_date+1) AS remainingDays, content
 		FROM product
 		WHERE seq=#{seq}	
 	</select>
@@ -29,8 +29,9 @@
 	<select id="getProductMini"  resultType="ProductDto">
 		SELECT seq, img, title, maker, TIMESTAMPDIFF(DAY, SYSDATE(), close_date+1) AS remainingDays, total_supporters
 		FROM product
+		WHERE product_check="Y"
 		ORDER BY seq DESC
-		LIMIT 8;
+		LIMIT 8
 	</select>
 
 

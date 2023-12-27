@@ -80,15 +80,13 @@ public class ProductController {
 
   	
   	//프로젝트 상세보기
-  	@GetMapping(value = "/productDetail/{seq}")
+  	@GetMapping(value = "/productDetail")
   	public String productDetail(@PathVariable("seq") Integer seq, Model model) {
-  	    System.out.println("seq: " + seq);
-  	    
-  	    // productService.productDetail 메서드를 호출할 때 seq 변수를 전달
-  	    ProductDto dto = productService.productDetail(seq);
-  	    
-  	    model.addAttribute("dto", dto); // dto 객체를 모델에 추가
-  	    return "productDetail";
+
+  		ProductDto dto = productService.productDetail(seq);
+  		model.addAttribute("dto",dto);
+  		return "redirect:product/productDetail?seq=\"+seq";
+
   	}
 }
 
