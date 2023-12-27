@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ProductView</title>
+<link href="resources/css/styles.css" rel="stylesheet" />
 </head>
 <body>
 

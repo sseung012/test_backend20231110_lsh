@@ -82,6 +82,15 @@ public class ProductController {
 
   	    return "productList"; 
   	}
+  	
+  	//프로젝트 상세보기
+  	@GetMapping(value = "/productDetail")
+  	public String productDetail(int seq, Model model) {
+  		ProductDto dto = productService.productDetail(seq);
+  		
+  		model.addAttribute("dto",productService.productDetail(seq));
+  		return "productDetail";
+  	}
 }
 
 
