@@ -16,6 +16,7 @@ public interface ProductMapper {
 	//인덱스-프로젝트 작게조회
 	public List<ProductDto> getProductMini();
 	
+	
 	// 프로젝트 상세보기
 	public ProductDto productDetail(int seq);
 
