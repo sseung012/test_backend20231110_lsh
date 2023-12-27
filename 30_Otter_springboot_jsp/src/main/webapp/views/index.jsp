@@ -35,7 +35,7 @@
                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                     <li class="nav-item dropdown">
-                       <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                       <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                <li><a class="dropdown-item" href="#!">전체</a></li>
                                 <li><hr class="dropdown-divider" /></li>
@@ -124,7 +124,8 @@
       </div>
    </header>
    
-<!-- Section-->
+   
+<!-- Section--> 
    <section class="py-5">
       <div class="container px-4 px-lg-5 mt-5">
            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -143,7 +144,7 @@
                   </div>
                   <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                           <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                           <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/product/productDetail/17">View options</a></div>
                               </div>
                         </div>
                         

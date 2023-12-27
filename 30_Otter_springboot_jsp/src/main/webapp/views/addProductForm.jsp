@@ -61,15 +61,57 @@ const remove = (obj) => {
 <body class="addProductForm">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<div class="container px-4 px-lg-5">
-    	<a class="navbar-brand" href="/">Otter</a>
-    </div>
+   <div class="container px-4 px-lg-5">
+       <a class="navbar-brand" href="/">Otter</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                   <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                    <li class="nav-item dropdown">
+                       <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+                           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                               <li><a class="dropdown-item" href="#!">전체</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#!">홈/리빙</a></li>
+                                <li><a class="dropdown-item" href="#!">패션/잡화</a></li>
+                                <li><a class="dropdown-item" href="#!">뷰티</a></li>
+                                <li><a class="dropdown-item" href="#!">푸드</a></li>
+                                <li><a class="dropdown-item" href="#!">출판</a></li>
+                                <li><a class="dropdown-item" href="#!">반려동물</a></li>
+                            </ul> 
+	               </li>
+	            </ul>
+	            
+	            <%
+				    if ("USER".equals(ldto.getRole())) {
+				%>
+					<!-- ADMIN이 아닌 경우의 버튼들 -->
+			            <form class="d-flex">
+			                &nbsp;
+			                <a class="btn btn-outline-darkk" type="submit" href="/user/myinfo">
+				                <i class="bi-cart-fill me-1"></i>
+				                나의 정보
+				            </a> 
+			                &nbsp;
+			                <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
+			                    <i class="bi-cart-fill me-1"></i>
+			                    로그아웃
+			                </a> 
+			            </form>
+				<%
+				        }
+				%>
+
+         </div>
+   </div>
 </nav>
 
 <section class="pyy-5">
         <div class="container myy-5">
             <div class="roww justify-content-center">
                 <div class="coll-lg-6">
+                <h1>펀딩 상품 등록</h1>
                     <form action="/product/insertProduct" method="post" 
                     enctype="multipart/form-data">
                     	<input type="hidden" name="id" value="${ldto.id}"/>
@@ -137,8 +179,8 @@ const remove = (obj) => {
                         </div>
                         <input type="button" value="추가" class="btn btn-outline-dark" onclick="add_textbox()" />
 <!--                             <input type="submit" value="삭제" class="btn btn-outline-dark" /> -->
-                        <br/>
-                        <input type="submit" value="등록" class="btn btn-outline-dark" />
+                        <br><br>
+                        <input type="submit" value="프로젝트 등록" class="btn btn-outline-dark" />
                     </form>
                 </div>
             </div>
