@@ -28,6 +28,9 @@ public class HomeController {
    }
    
    
+   
+   
+   
    //프로젝트 작게 네모
 //   @GetMapping(value="/indexpro")
 //   public String getProductMini(Model model, HttpServletRequest request) {
