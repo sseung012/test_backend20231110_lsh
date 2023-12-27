@@ -160,20 +160,11 @@
                      		</div>
                   		</div>
                   		<!-- Product actions-->
-
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-
-                           <div class="text-center"><a class="btn btn-outline-dark mt-auto"  
-                           href="/product/productDetail/${mlist.seq}">View options</a></div>
-
-
-
-
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" 
                            href="/product/productDetail/${mlist.seq}">View options</a></div>
-                              </div>
                         </div>
+                      </div>
                       </div>
 			</c:forEach>
 		</div>
