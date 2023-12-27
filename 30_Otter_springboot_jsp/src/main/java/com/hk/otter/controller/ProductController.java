@@ -86,6 +86,17 @@ public class ProductController {
   		model.addAttribute("dto",dto);
   		return "redirect:product/productDetail?seq=\"+seq";
   	}
+  	
+    //내프로젝트목록
+  	@GetMapping(value="/myProject")
+  	public String myProject(Model model, HttpServletRequest request) {
+  		System.out.println("프로젝트목록");
+
+  	    List<ProductDto> list = productService.myProject();
+  	    model.addAttribute("list", list);
+
+  	    return "myProject"; 
+  	}
 }
 
 

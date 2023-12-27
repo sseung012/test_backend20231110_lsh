@@ -68,6 +68,11 @@
 			                <a class="btn btn-outline-darkk" type="submit" href="/product/insertProductForm">
 			                    <i class="bi-cart-fill me-1"></i>
 			                    프로젝트 만들기
+			                </a>
+			                &nbsp;
+			                <a class="btn btn-outline-darkk" type="submit" href="/product/myProject">
+			                    <i class="bi-cart-fill me-1"></i>
+			                    내 프로젝트
 			                </a> 
 			                &nbsp;
 			                <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
