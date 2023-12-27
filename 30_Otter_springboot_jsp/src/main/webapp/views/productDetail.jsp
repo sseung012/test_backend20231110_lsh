@@ -18,8 +18,10 @@
         <link href="/resources/css/productdetail.css" rel="stylesheet" />
     </head>
     <%
-	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
-	%>
+   UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
+   ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
+   %>
+   
     <body>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -42,68 +44,68 @@
                                 <li><a class="dropdown-item" href="#!">출판</a></li>
                                 <li><a class="dropdown-item" href="#!">반려동물</a></li>
                             </ul> 
-	               </li>
-	            </ul>
-            			
-				<%
-				    if (ldto == null) {
-				%>
-				    <!-- 로그인되지 않은 경우의 버튼들 -->
-				    <form class="d-flex">
-				        &nbsp;
-				        <a class="btn btn-outline-dark" type="submit" href="/user/signin">
-				            <i class="bi-cart-fill me-1"></i>
-				            로그인/회원가입
-				        </a> 
-				        &nbsp; 
-				    </form>
-				<%
-				    } else {
-				        if ("ADMIN".equals(ldto.getRole())) {
-				%>
-				            <!-- ADMIN인 경우의 버튼들 -->
-				            <form class="d-flex">
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/user/manage">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    회원관리
-				                </a>  
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/product/productList">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    프로젝트 관리
-				                </a>
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    로그아웃
-				                </a> 
-				            </form>
-				<% 
-				        } else {
-				%>
-				            <!-- ADMIN이 아닌 경우의 버튼들 -->
-				            <form class="d-flex">
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/product/insertProductForm">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    프로젝트 만들기
-				                </a> 
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/user/myinfo">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    나의 정보
-				                </a> 
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    로그아웃
-				                </a> 
-				            </form>
-				<%
-				        }
-				    }
-				%>
+                  </li>
+               </ul>
+                     
+            <%
+                if (ldto == null) {
+            %>
+                <!-- 로그인되지 않은 경우의 버튼들 -->
+                <form class="d-flex">
+                    &nbsp;
+                    <a class="btn btn-outline-dark" type="submit" href="/user/signin">
+                        <i class="bi-cart-fill me-1"></i>
+                        로그인/회원가입
+                    </a> 
+                    &nbsp; 
+                </form>
+            <%
+                } else {
+                    if ("ADMIN".equals(ldto.getRole())) {
+            %>
+                        <!-- ADMIN인 경우의 버튼들 -->
+                        <form class="d-flex">
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/user/manage">
+                                <i class="bi-cart-fill me-1"></i>
+                                회원관리
+                            </a>  
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/product/productList">
+                                <i class="bi-cart-fill me-1"></i>
+                                프로젝트 관리
+                            </a>
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
+                                <i class="bi-cart-fill me-1"></i>
+                                로그아웃
+                            </a> 
+                        </form>
+            <% 
+                    } else {
+            %>
+                        <!-- ADMIN이 아닌 경우의 버튼들 -->
+                        <form class="d-flex">
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/product/insertProductForm">
+                                <i class="bi-cart-fill me-1"></i>
+                                프로젝트 만들기
+                            </a> 
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/user/myinfo">
+                                <i class="bi-cart-fill me-1"></i>
+                                나의 정보
+                            </a> 
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
+                                <i class="bi-cart-fill me-1"></i>
+                                로그아웃
+                            </a> 
+                        </form>
+            <%
+                    }
+                }
+            %>
 
  
          </div>
@@ -145,11 +147,41 @@
                                 <!-- Comment form-->
 <!--                                 <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form> -->
                                 <!-- Comment with nested comments-->
-                                <div class="d-flex mb-4"> 
-                        		</div>
-                       
+                                <div class="d-flex mb-4">
+                                    <!-- Parent comment-->
+<!--                                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div> -->
+<!--                                     <div class="ms-3"> -->
+<!--                                         <div class="fw-bold">Commenter Name</div> -->
+<!--                                         If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks. -->
+                                        <!-- Child comment 1-->
+<!--                                         <div class="d-flex mt-4"> -->
+<!--                                             <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div> -->
+<!--                                             <div class="ms-3"> -->
+<!--                                                 <div class="fw-bold">Commenter Name</div> -->
+<!--                                                 And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors. -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+                                        <!-- Child comment 2-->
+<!--                                         <div class="d-flex mt-4"> -->
+<!--                                             <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div> -->
+<!--                                             <div class="ms-3"> -->
+<!--                                                 <div class="fw-bold">Commenter Name</div> -->
+<!--                                                 When you put money directly to a problem, it makes a good headline. -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+                                <!-- Single comment-->
+<!--                                 <div class="d-flex"> -->
+<!--                                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div> -->
+<!--                                     <div class="ms-3"> -->
+<!--                                         <div class="fw-bold">Commenter Name</div> -->
+<!--                                         When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence. -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+                        </div>
                     </section>
-                </div>
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
@@ -158,11 +190,58 @@
 <!--                         <div class="card-header">Search</div> -->
                         <div class="card-body">
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+<!--                                 <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" /> -->
+<!-- 								<input class="form-control" type="text" ></input> -->
+<!--                                 <button class="btn btn-primary" id="button-search" type="button">Go!</button> -->
+							<tr>
+							<td><h2 style="font-weight:bold;">${dto.title}</h2></td>
+							</tr>
+							<br/>
+							<tr>
+							<td>${dto.maker}</td>
+							</tr>
+							<br/>
+							<tr>
+							<td>${dto.goal_price}원 목표</td>
+							</tr>
+							<br/>
+							<tr>
+							<td>${dto.total_price}원 달성</td>
+							</tr>
+							<br/>
+							<tr>
+							<td>${dto.close_date}</td>
+							</tr>
                             </div>
 <!--                         </div> -->
                     </div>
+                    <!-- Categories widget-->
+<!--                     <div class="card mb-4"> -->
+<!--                         <div class="card-header">Categories</div> -->
+<!--                         <div class="card-body"> -->
+<!--                             <div class="row"> -->
+<!--                                 <div class="col-sm-6"> -->
+<!--                                     <ul class="list-unstyled mb-0"> -->
+<!--                                         <li><a href="#!">Web Design</a></li> -->
+<!--                                         <li><a href="#!">HTML</a></li> -->
+<!--                                         <li><a href="#!">Freebies</a></li> -->
+<!--                                     </ul> -->
+<!--                                 </div> -->
+<!--                                 <div class="col-sm-6"> -->
+<!--                                     <ul class="list-unstyled mb-0"> -->
+<!--                                         <li><a href="#!">JavaScript</a></li> -->
+<!--                                         <li><a href="#!">CSS</a></li> -->
+<!--                                         <li><a href="#!">Tutorials</a></li> -->
+<!--                                     </ul> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                     </div> -->
+                    <!-- Side widget-->
+<!--                     <div class="card mb-4"> -->
+<!--                         <div class="card-header">Side Widget</div> -->
+<!--                         <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div> -->
+<!--                     </div> -->
                 </div>
             </div>
         </div>
