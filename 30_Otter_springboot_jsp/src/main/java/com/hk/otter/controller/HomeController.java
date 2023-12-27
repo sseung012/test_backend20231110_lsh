@@ -19,7 +19,7 @@ public class HomeController {
 
    @Autowired
    private ProductService productService;
-   @GetMapping("/index")
+   @GetMapping("/")
    public String index(Model model) {
       List<ProductDto> list = productService.getProductMini();
        model.addAttribute("mlist", list);
