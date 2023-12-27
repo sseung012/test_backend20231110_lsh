@@ -25,7 +25,42 @@ public class ProductDto {
 	private int cate_seq;
 	private String product_check;
 	
+	private int remainingDays;
+	
+
+
+	public ProductDto(int seq, String img, String maker, String title, int total_supporters, int remainingDays) {
+		super();
+		this.seq = seq;
+		this.img = img;
+		this.maker = maker;
+		this.title = title;
+		this.total_supporters = total_supporters;
+		this.remainingDays = remainingDays;
+	}
+
+
+	public int getRemainingDays() {
+		return remainingDays;
+	}
+
+
+	public void setRemainingDays(int remainingDays) {
+		this.remainingDays = remainingDays;
+	}
+
+
 	private List<RewardDto> reList;
+
+
+	public ProductDto(String img, String maker, String title, String close_date, int total_supporters) {
+		super();
+		this.img = img;
+		this.maker = maker;
+		this.title = title;
+		this.close_date = close_date;
+		this.total_supporters = total_supporters;
+	}
 
 
 	// 관리자-프로젝트 전체보기용
