@@ -213,8 +213,8 @@
 							<td>${dto.total_price}원 달성</td>
 							</tr>
 							<br/>
-							<tr>
-							<td>${dto.remainingDays}</td>
+							<tr>    
+							<td>${dto.remainingDays}일 남음</td>
 							</tr>
                             </div>
 <!--                         </div> -->
