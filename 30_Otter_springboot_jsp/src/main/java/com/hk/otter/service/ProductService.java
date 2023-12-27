@@ -32,7 +32,7 @@ public class ProductService {
 	@Autowired
 	private FileService fileService;
 	
-	
+	// 프로젝트 등록
 	@Transactional
 	public void insertProduct(InsertProductCommand insertProductCommand, 
 			MultipartRequest multipartRequest,
@@ -40,8 +40,6 @@ public class ProductService {
 		
 		ProductDto pdto = new ProductDto();
 		
-//		HttpSession session = request.getSession();
-//		session.setAttribute("pdto", pdto);
 		String img=multipartRequest.getFile("img").getOriginalFilename();
 		//productDto <---command 이동
 		pdto.setImg(img);
@@ -84,10 +82,15 @@ public class ProductService {
 			// 파일 업로드 작업은 FileService에서 업로드
 			// 업로드된 파일 정보 반환
 //			List<ProductDto> reList 
-			fileService.uploadFiles(filePath, multipartRequest);
-			
-			
+			fileService.uploadFiles(filePath, multipartRequest);		
 		}
+	}
+	
+	
+	// 프로젝트 상세조회
+	@Transactional
+	public ProductDto productDetail(Integer seq) {
+		return productMapper.productDetail(seq);
 	}
 
 	//프로젝트 조회
