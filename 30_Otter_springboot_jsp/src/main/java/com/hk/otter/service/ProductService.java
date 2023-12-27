@@ -106,6 +106,11 @@ public class ProductService {
 		return productMapper.getProductMini();
 	}
 
+	//내프로젝트 조회
+//	public List<ProductDto> myProject(int userSeq) {
+//		return productMapper.myProject(userSeq);
+//	}
+
 
 }
 

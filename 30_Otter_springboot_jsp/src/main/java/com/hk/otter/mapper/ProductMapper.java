@@ -19,7 +19,14 @@ public interface ProductMapper {
 	public List<ProductDto> getProductMini();
 	
 	// 프로젝트 상세보기
+
+	public ProductDto productDetail(int seq);
+	
+	//내 프로젝트 조회
+//	public List<ProductDto> myProject(int userSeq);
+
 	public ProductDto productDetail(Integer seq);
+
 
 
 }
