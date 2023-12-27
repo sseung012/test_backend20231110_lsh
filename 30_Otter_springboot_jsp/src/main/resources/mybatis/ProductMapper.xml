@@ -11,6 +11,13 @@
 				SYSDATE(), NULL, #{close_date}, #{content}, NULL, NULL, #{cate_seq}, 'Y')		
 	</insert>
 	
+<!-- 	제품 상세조회 -->
+	<select id="productDetail" parameterType="int" resultType="ProductDto">
+		SELECT cate_seq, img, title, maker, goal_price, total_price, close_date, content
+		FROM product
+		WHERE seq={seq}	
+	</select>
+	
 
 <!-- 	관리자-프로젝트 전체조회(승인) -->
 	<select id="getProductList"  resultType="ProductDto">
