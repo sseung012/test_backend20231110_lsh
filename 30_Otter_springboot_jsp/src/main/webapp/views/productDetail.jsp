@@ -14,7 +14,7 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="resources/css/styles1.css" rel="stylesheet" />
+        <link href="/resources/css/styles1.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Responsive navbar-->
