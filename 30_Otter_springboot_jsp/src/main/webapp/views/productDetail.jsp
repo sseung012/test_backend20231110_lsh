@@ -10,10 +10,11 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>productDetail</title>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles1.css" rel="stylesheet" />
+        <link href="resources/css/styles1.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Responsive navbar-->
