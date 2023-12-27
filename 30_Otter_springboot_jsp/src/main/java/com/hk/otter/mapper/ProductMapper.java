@@ -15,5 +15,8 @@ public interface ProductMapper {
 	public List<ProductDto> getProductList();
 
 	public List<ProductDto> getProductMini();
+	
+	// 프로젝트 상세보기
+	public ProductDto productDetail(int seq);
 
 }
