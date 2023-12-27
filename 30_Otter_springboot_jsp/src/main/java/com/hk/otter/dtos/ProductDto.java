@@ -41,6 +41,22 @@ public class ProductDto {
 		this.product_check = product_check;
 	}
 
+	//프로젝트 상세보기
+	public ProductDto(int seq, String img, String maker, String goal_price, String title, String close_date,
+			String content, int total_price, int cate_seq) {
+		super();
+		this.seq = seq;
+		this.img = img;
+		this.maker = maker;
+		this.goal_price = goal_price;
+		this.title = title;
+		this.close_date = close_date;
+		this.content = content;
+		this.total_price = total_price;
+		this.cate_seq = cate_seq;
+	}
+	
+
 
 	public ProductDto() {
 		super();

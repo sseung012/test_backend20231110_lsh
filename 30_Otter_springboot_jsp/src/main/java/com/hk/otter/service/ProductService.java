@@ -88,7 +88,8 @@ public class ProductService {
 	
 	
 	// 프로젝트 상세조회
-	public ProductDto productDetail(int seq) {
+	@Transactional
+	public ProductDto productDetail(Integer seq) {
 		return productMapper.productDetail(seq);
 	}
 
