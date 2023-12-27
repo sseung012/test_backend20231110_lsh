@@ -14,7 +14,7 @@ public interface UserMapper {
 	public int addUser(UserDto dto);
 	
 	//로그인
-	public UserDto loginUser(UserDto dto);
+	public UserDto loginUser(UserDto dto); 
 	
 	//아이디중복체크
 	public String idChk(String id);
