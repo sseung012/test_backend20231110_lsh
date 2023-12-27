@@ -134,7 +134,7 @@
 <!--                         <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
                         	 <tr>
                         	 <td>
-								<img src="../upload/${dto.img}"/>
+								<img src="/upload/${dto.img}"/>
 							</td>
 							</tr>
                         <!-- Post content-->
@@ -213,8 +213,8 @@
 							<td>${dto.total_price}원 달성</td>
 							</tr>
 							<br/>
-							<tr>
-							<td>${dto.remainingdays}</td>
+							<tr>    
+							<td>${dto.remainingDays}일 남음</td>
 							</tr>
                             </div>
 <!--                         </div> -->
@@ -249,6 +249,8 @@
                 </div>
             </div>
         </div>
+        </div>
+        
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
