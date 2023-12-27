@@ -82,14 +82,15 @@ public class ProductController {
   	//프로젝트 상세보기
   	@GetMapping(value = "/productDetail/{seq}")
   	public String productDetail(@PathVariable("seq") Integer seq, Model model) {
+
   		System.out.println("프로젝트상세보기");
   		ProductDto dto = productService.productDetail(seq);
   		
   		model.addAttribute("dto",dto);
   		return "productDetail";
+
   	}
 }
-
 
 
 
