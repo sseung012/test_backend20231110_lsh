@@ -127,7 +127,8 @@
                             <!-- Post categories-->
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">카테고리 이름</a>
 <!--                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
-                        </header>      
+                        </header>   
+                           
                         <!-- Preview image figure-->
 <!--                         <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
                         	 <tr>
