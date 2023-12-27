@@ -15,7 +15,7 @@
 	<select id="productDetail" parameterType="int" resultType="ProductDto">
 		SELECT cate_seq, img, title, maker, goal_price, total_price, close_date, content
 		FROM product
-		WHERE seq={seq}	
+		WHERE seq=#{seq}	
 	</select>
 	
 
