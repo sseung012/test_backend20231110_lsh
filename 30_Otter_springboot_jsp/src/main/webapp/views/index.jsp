@@ -145,7 +145,7 @@
                                <!-- Product name-->
                                 <h5 class="fw-bolder">${mlist.title}</h5>
                                 <!-- Product price-->
-                                   $40.00 - $80.00
+                                   $40.00 - $80.00 
                      		</div>
                   		</div>
                   		<!-- Product actions-->
