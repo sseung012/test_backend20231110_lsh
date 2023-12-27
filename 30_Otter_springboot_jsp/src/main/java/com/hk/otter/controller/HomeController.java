@@ -17,40 +17,39 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class HomeController {
 
-	@Autowired
-	private ProductService productService;
-	@GetMapping("/index")
-	public String index(Model model) {
-		List<ProductDto> list = productService.getProductMini();
-		 model.addAttribute("mlist", list);
-		 System.out.println("mlist:"+list);
-		return "index";
-	}
-	
-	
-	//프로젝트 작게 네모
-//	@GetMapping(value="/indexpro")
-//	public String getProductMini(Model model, HttpServletRequest request) {
-//  		System.out.println("프로젝트작게");
+   @Autowired
+   private ProductService productService;
+   @GetMapping("/")
+   public String index(Model model) {
+      List<ProductDto> list = productService.getProductMini();
+       model.addAttribute("mlist", list);
+       System.out.println("mlist:"+list);
+      return "index";
+   }
+   
+   
+   //프로젝트 작게 네모
+//   @GetMapping(value="/indexpro")
+//   public String getProductMini(Model model, HttpServletRequest request) {
+//        System.out.println("프로젝트작게");
 //
-//  	    List<ProductDto> mlist = productService.getProductMini();
-//  	    model.addAttribute("mlist", mlist);
+//         List<ProductDto> mlist = productService.getProductMini();
+//         model.addAttribute("mlist", mlist);
 //
-//  	    return "productMini"; 
-//  	    
-//	}
-//	//인덱스-프로젝트 작게 조회
-//  	@GetMapping(value="/index")
-//  	public String getProductMini(Model model, HttpServletRequest request) {
-//  		System.out.println("프로젝트목록");
+//         return "productMini"; 
+//         
+//   }
+//   //인덱스-프로젝트 작게 조회
+//     @GetMapping(value="/index")
+//     public String getProductMini(Model model, HttpServletRequest request) {
+//        System.out.println("프로젝트목록");
 //
-//  	    List<ProductDto> list = productService.getProductMini();
-//  	    model.addAttribute("list", list);
+//         List<ProductDto> list = productService.getProductMini();
+//         model.addAttribute("list", list);
 //
-//  	    return "productList"; 
-//  	}
+//         return "productList"; 
+//     }
 }
-
 
 
 

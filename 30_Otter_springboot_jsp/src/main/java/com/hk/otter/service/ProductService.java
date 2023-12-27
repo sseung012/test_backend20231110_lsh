@@ -23,6 +23,8 @@ import jakarta.servlet.http.HttpSession;
 @Service
 public class ProductService {
 		
+	
+	
 	@Autowired
 	private ProductMapper productMapper;
 	
@@ -98,10 +100,12 @@ public class ProductService {
 		return productMapper.getProductList();
 	}
 
+
 	//index에서 프로젝트 작게조회
 	public List<ProductDto> getProductMini() { 
 		return productMapper.getProductMini();
 	}
+
 
 }
 

@@ -143,9 +143,9 @@
                         <div class="card-body p-4">
                            <div class="text-center">
                                <!-- Product name-->
-                                <h5 class="fw-bolder">${mlist.title }</h5>
+                                <h5 class="fw-bolder">${mlist.title}</h5>
                                 <!-- Product price-->
-                                   $40.00 - $80.00
+                                   $40.00 - $80.00 
                      		</div>
                   		</div>
                   		<!-- Product actions-->
