@@ -18,8 +18,10 @@
         <link href="/resources/css/productdetail.css" rel="stylesheet" />
     </head>
     <%
-	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
-	%>
+   UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
+   ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
+   %>
+   
     <body>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -42,68 +44,68 @@
                                 <li><a class="dropdown-item" href="#!">출판</a></li>
                                 <li><a class="dropdown-item" href="#!">반려동물</a></li>
                             </ul> 
-	               </li>
-	            </ul>
-            			
-				<%
-				    if (ldto == null) {
-				%>
-				    <!-- 로그인되지 않은 경우의 버튼들 -->
-				    <form class="d-flex">
-				        &nbsp;
-				        <a class="btn btn-outline-dark" type="submit" href="/user/signin">
-				            <i class="bi-cart-fill me-1"></i>
-				            로그인/회원가입
-				        </a> 
-				        &nbsp; 
-				    </form>
-				<%
-				    } else {
-				        if ("ADMIN".equals(ldto.getRole())) {
-				%>
-				            <!-- ADMIN인 경우의 버튼들 -->
-				            <form class="d-flex">
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/user/manage">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    회원관리
-				                </a>  
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/product/productList">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    프로젝트 관리
-				                </a>
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    로그아웃
-				                </a> 
-				            </form>
-				<% 
-				        } else {
-				%>
-				            <!-- ADMIN이 아닌 경우의 버튼들 -->
-				            <form class="d-flex">
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/product/insertProductForm">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    프로젝트 만들기
-				                </a> 
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/user/myinfo">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    나의 정보
-				                </a> 
-				                &nbsp;
-				                <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
-				                    <i class="bi-cart-fill me-1"></i>
-				                    로그아웃
-				                </a> 
-				            </form>
-				<%
-				        }
-				    }
-				%>
+                  </li>
+               </ul>
+                     
+            <%
+                if (ldto == null) {
+            %>
+                <!-- 로그인되지 않은 경우의 버튼들 -->
+                <form class="d-flex">
+                    &nbsp;
+                    <a class="btn btn-outline-dark" type="submit" href="/user/signin">
+                        <i class="bi-cart-fill me-1"></i>
+                        로그인/회원가입
+                    </a> 
+                    &nbsp; 
+                </form>
+            <%
+                } else {
+                    if ("ADMIN".equals(ldto.getRole())) {
+            %>
+                        <!-- ADMIN인 경우의 버튼들 -->
+                        <form class="d-flex">
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/user/manage">
+                                <i class="bi-cart-fill me-1"></i>
+                                회원관리
+                            </a>  
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/product/productList">
+                                <i class="bi-cart-fill me-1"></i>
+                                프로젝트 관리
+                            </a>
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
+                                <i class="bi-cart-fill me-1"></i>
+                                로그아웃
+                            </a> 
+                        </form>
+            <% 
+                    } else {
+            %>
+                        <!-- ADMIN이 아닌 경우의 버튼들 -->
+                        <form class="d-flex">
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/product/insertProductForm">
+                                <i class="bi-cart-fill me-1"></i>
+                                프로젝트 만들기
+                            </a> 
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/user/myinfo">
+                                <i class="bi-cart-fill me-1"></i>
+                                나의 정보
+                            </a> 
+                            &nbsp;
+                            <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
+                                <i class="bi-cart-fill me-1"></i>
+                                로그아웃
+                            </a> 
+                        </form>
+            <%
+                    }
+                }
+            %>
 
  
          </div>
@@ -125,7 +127,7 @@
                             <!-- Post categories-->
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">카테고리 이름</a>
 <!--                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
-                        </header>
+                        </header>      
                         <!-- Preview image figure-->
                         <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
                         <!-- Post content-->
@@ -188,8 +190,28 @@
 <!--                         <div class="card-header">Search</div> -->
                         <div class="card-body">
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+<!--                                 <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" /> -->
+<!-- 								<input class="form-control" type="text" ></input> -->
+<!--                                 <button class="btn btn-primary" id="button-search" type="button">Go!</button> -->
+							<tr>
+							<td><h2 style="font-weight:bold;">${dto.title}</h2></td>
+							</tr>
+							<br/>
+							<tr>
+							<td>${dto.maker}</td>
+							</tr>
+							<br/>
+							<tr>
+							<td>${dto.goal_price}원 목표</td>
+							</tr>
+							<br/>
+							<tr>
+							<td>${dto.total_price}원 달성</td>
+							</tr>
+							<br/>
+							<tr>
+							<td>${dto.close_date}</td>
+							</tr>
                             </div>
 <!--                         </div> -->
                     </div>

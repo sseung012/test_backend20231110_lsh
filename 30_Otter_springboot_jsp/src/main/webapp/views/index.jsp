@@ -147,14 +147,21 @@
                                 <!-- 제품 제조사 -->
 		                        <p class="text-muted">${mlist.maker}</p>
 		                        <!-- 제품 종료일 -->
-		                        <p class="text-muted">남은날짜 : ${mlist.remainingDays}</p>
+		                        <c:choose>
+									<c:when test="${mlist.remainingDays lt 0}">
+								        <p class="text-muted">마감된 상품</p>
+								    </c:when>
+								    <c:otherwise>
+								        <p class="text-muted">남은날짜: ${mlist.remainingDays}</p>
+								    </c:otherwise>
+		                        </c:choose>
 		                        <!-- 제품 지지자 수 -->
 		                        <p class="text-muted">${mlist.total_supporters}명</p>
                      		</div>
                   		</div>
                   		<!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                           <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/product/productDetail/17">View options</a></div>
+                           <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/product/productDetail/17"}>View options</a></div>
                               </div>
                         </div>
                       </div>
