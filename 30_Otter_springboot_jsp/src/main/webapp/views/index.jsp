@@ -337,7 +337,7 @@
 <!--                                         <div class="bi-star-fill"></div> -->
 <!--                                         <div class="bi-star-fill"></div> -->
 <!--                                     </div> -->
-<!--                                     Product price -->
+<!--                                      Product price -->
 <!--                                     $40.00 -->
 <!--                                 </div> -->
 <!--                             </div> -->
