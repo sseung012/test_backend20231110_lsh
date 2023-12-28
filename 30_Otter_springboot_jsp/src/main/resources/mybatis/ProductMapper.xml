@@ -60,7 +60,7 @@
 	</select>
 
 
-
+ 
 	
 
 	<resultMap type="ProductDto" id="ProductDtoMap">
