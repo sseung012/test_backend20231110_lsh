@@ -25,23 +25,19 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/resources/css/productdetail.css" rel="stylesheet" />
         <script type="text/javascript">
-        function add() {
-    		hm = document.form1.amounts;// name이 amounts인 요소
-    		sell_price = document.form1.sell_price;// name이 sell_price인 요소
-    		hm.value++;// hm 값을 1 증가
-    		var sum_ = parseInt(hm.value) * sell_price.value;// hm 문자값을 정수로 변환 * sell_price	해서 금액 계산
-    		document.getElementById("my_sum").innerHTML = sum_.toLocaleString('ko-KR');// id가 my_sum인 요소를 찾아 값을 위에서 계산한 sum_ 값으로 설정, 각 나라 표시방식에 맞게 설정해줌
-    	}
-
-    	function del() {
-    		hm = document.form1.amounts;
-    		sell_price = document.form1.sell_price;
-    		if (hm.value > 1) {// hm(amounts에서 가져온 값)가 1보다 크면
-    			hm.value--;// hm 값 1 감소
-    			var sum_ = parseInt(hm.value) * sell_price.value;
-    			document.getElementById("my_sum").innerHTML = sum_.toLocaleString('ko-KR');		
-    		}
-    	}
+        function fnCalCount(type, ths){
+            var $input = $(ths).parents("td").find("input[name='stock']");
+            var tCount = Number($input.val());
+            var tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html());
+            
+            if(type=='p'){
+                if(tCount < tEqCount) $input.val(Number(tCount)+1);
+                
+            }else{
+                if(tCount >0) $input.val(Number(tCount)-1);    
+                }
+        }
+         
         </script>
     </head>
     <%
@@ -271,18 +267,21 @@
                             	<option value="reward_name">${rdto.reward_name}</option>                      	
                             </select>
     
+    						<tr>
+						    <td>수량</td>
+						    <td class="bseq_ea"></td>
+						    <td>
+						        <button type="button" class="btn btn-light" onclick="fnCalCount('m', this);">-</button>
+						        <input type="text" name="stock" value="0" readonly="readonly" style="text-align:center;"/>
+						        <button type ="button" class="btn btn-light" onclick="fnCalCount('p',this);">+</button>
+						 	</td>
+							</tr>	
                      </div>
-                     수량<input type="button" value=" - " onclick="del();">
-					
-					<input type="hidden" name="sell_price" style="width:30px;" value="${rdto.price}" >
-					<input type="text" name="amounts" value="1" size="3">
-					<input type="button" value=" + " onclick="add();">
-					<input type="hidden" name="sum" size="11" readonly>
-					<div>금액 :<span id="my_sum">
-					  <fmt:formatNumber value="${rdto.price}" pattern="#,###" /></span>원</div>	
-<%-- 					<input type="hidden" name="m_id" id="m_id" value="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}"> --%>
-                        
-                  
+                     <tr>
+                     <td>배송비 ㅣ 무료</td>
+                     </tr>
+                     
+               
                     <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
 
                         </div>
