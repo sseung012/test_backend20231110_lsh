@@ -134,6 +134,15 @@ public class ProductDto {
 	}
 
 
+	public ProductDto(int seq, String product_check, String open_date) {
+		super();
+		this.seq = seq;
+		this.product_check = product_check;
+		this.open_date = open_date;
+		
+	}
+
+
 	public int getSeq() {
 		return seq;
 	}
