@@ -299,15 +299,7 @@
                             	                  	
                             </select>
     
-    						<tr>
-						    <td>수량</td>
-						    <td class="bseq_ea"></td>
-						    <td>
-						        <button type="button" class="btn btn-light" onclick="fnCalCount('m', this);">-</button>
-						        <input type="text" name="stock" value="0" readonly="readonly" style="text-align:center;"/>
-						        <button type ="button" class="btn btn-light" onclick="fnCalCount('p',this);">+</button>
-						 	</td>
-							</tr>	
+    						
 
                     </div> 
                     <div class="top-info-quantity clearfix">
