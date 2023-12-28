@@ -256,7 +256,7 @@
 							<%
 							if (ldto != null && "ADMIN".equals(ldto.getRole())) {
 				        	%>
-							<input class="btn btn-darkk" id="approve" type="submit" value="승인" onclick="approve()" style="float:right; margin:10px;"/>
+							<input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()" style="float:right; margin:10px;"/>
 							<%} %>
 
                     </div>
