@@ -13,12 +13,10 @@ import com.hk.otter.command.InsertProductCommand;
 
 import com.hk.otter.dtos.ProductDto;
 import com.hk.otter.dtos.RewardDto;
-import com.hk.otter.dtos.UserDto;
 import com.hk.otter.mapper.ProductMapper;
 import com.hk.otter.mapper.RewardMapper;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 
 @Service
 public class ProductService {
@@ -111,6 +109,10 @@ public class ProductService {
 //		return productMapper.myProject(userSeq);
 //	}
 
+	//카테고리별조회
+	public List<ProductDto> category(String cate_seq){
+		return productMapper.category(cate_seq);
+	}
 
 }
 

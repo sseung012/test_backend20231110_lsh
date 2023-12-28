@@ -100,6 +100,18 @@ public class ProductController {
 
   	    return "myProject"; 
   	}
+  	
+  //카테고리별 프로젝트목록
+  	@GetMapping(value="/category")
+  	public String Category (Model model,String cate_seq) {
+  		System.out.println("카테고리별 프로젝트목록");
+  	    List<ProductDto> list = productService.category(cate_seq);
+  	    model.addAttribute("clist", list);
+  	    System.out.println("clist:"+list);
+
+  	    return "category";   
+  	}
+  	
 }
 
 
