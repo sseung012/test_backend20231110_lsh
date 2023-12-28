@@ -91,6 +91,13 @@
 <!-- 	    FROM product -->
 <!-- 	    WHERE user_seq = #{userSeq} -->
 	</select>
+	
+<!-- 	프로젝트 승인 -->
+	<update id="approve" parameterType="ProductDto">
+		UPDATE product
+		SET product_check='Y'
+		WHERE seq=#{seq}
+	</update>
 
 </mapper>
 

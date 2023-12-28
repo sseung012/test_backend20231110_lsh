@@ -338,8 +338,11 @@
  					<div>
 						<c:choose>
 				            <c:when test="${ldto != null && ldto.role eq 'ADMIN' && dto.product_check eq 'N' && dto != null }">
-				                <input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()" 
-				                    style="float:right; margin:10px; height:40px; width:100px;"/>
+<!-- 				                <input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()"  -->
+<!-- 				                    style="float:right; margin:10px; height:40px; width:100px;"/> -->
+								<input type="hidden" name="id" value="${dto.seq}"/>
+				            	<a class="btn btn-outline-darkk" id="approve" href="/product/approve/${dto.seq}"
+   									style="float:right; margin:10px; height:40px; width:100px; font-size:17px; font-align:center; background-color:#DFFBCF;">승인</a>
 				            </c:when>
 				            <c:when test="${ldto == null}">
 				                <!-- ldto가 null일 경우, 승인 버튼을 보이지 않게 함 -->

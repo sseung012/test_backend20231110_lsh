@@ -30,6 +30,9 @@ public interface ProductMapper {
 	
 	//카테고리별조회
 	public List<ProductDto> category(String cate_seq);
+
+	//프로젝트 승인
+	boolean approve(ProductDto dto);
 	
 
 

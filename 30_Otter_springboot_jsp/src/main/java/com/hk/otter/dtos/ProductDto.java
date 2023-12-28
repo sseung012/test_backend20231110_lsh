@@ -134,6 +134,13 @@ public class ProductDto {
 	}
 
 
+	public ProductDto(int seq, String product_check) {
+		super();
+		this.seq = seq;
+		this.product_check = product_check;
+	}
+
+
 	public int getSeq() {
 		return seq;
 	}

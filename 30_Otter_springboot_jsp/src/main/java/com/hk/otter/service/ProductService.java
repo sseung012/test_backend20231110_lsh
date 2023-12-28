@@ -120,6 +120,24 @@ public class ProductService {
 		return productMapper.category(cate_seq);
 	}
 
+
+	public boolean approve(int seq) {
+	    ProductDto dto = new ProductDto();
+	    dto.setSeq(seq);
+	    dto.setProduct_check("Y");
+
+	    // Call productMapper.approve to update the product_check in the database
+	    boolean result = productMapper.approve(dto);
+
+	    if (result) {
+	        System.out.println("승인 완료");
+	    } else {
+	        System.out.println("승인 실패");
+	    }
+
+	    return result;
+	}
+
 }
 
 

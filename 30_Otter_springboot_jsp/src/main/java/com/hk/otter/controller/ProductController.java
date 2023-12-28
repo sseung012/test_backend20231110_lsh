@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,8 +16,10 @@ import org.springframework.web.multipart.MultipartRequest;
 import com.hk.otter.command.InsertProductCommand;
 import com.hk.otter.dtos.ProductDto;
 import com.hk.otter.dtos.RewardDto;
+import com.hk.otter.dtos.UserDto;
 import com.hk.otter.service.ProductService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/product")
@@ -119,6 +123,19 @@ public class ProductController {
 
   	    return "category";   
   	}
+  	
+  	@GetMapping(value = "/approve/{seq}")
+  	public String approve(@PathVariable int seq) {
+  	   boolean isS = productService.approve(seq);
+
+  	   if (isS) {
+  	       return "redirect:/product/productList"; // 승인 성공 시 productList 페이지로 리다이렉트
+  	   } else {
+  	       System.out.println("수정 실패 메시지 또는 다른 처리를 추가하세요");
+  	       return "redirect:/productDetail"; // 승인 실패 시 productDetail 페이지로 리다이렉트
+  	   }
+  	}
+  	
   	
 }
 
