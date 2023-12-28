@@ -29,7 +29,7 @@
         <link href="/resources/css/productdetail.css" rel="stylesheet" />
         <script type="text/javascript">      
 	      
-        
+            
         </script>
     </head>
     <%
