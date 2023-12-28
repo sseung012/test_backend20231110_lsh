@@ -1,7 +1,9 @@
-<%@page import="com.hk.otter.dtos.RewardDto"%>
-<%@page import="com.hk.otter.dtos.ProductDto"%>
+<%@ page import="com.hk.otter.dtos.RewardDto"%>
+<%@ page import="com.hk.otter.dtos.ProductDto"%>
 <%@ page import="com.hk.otter.dtos.UserDto" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
 <!DOCTYPE html>
@@ -258,13 +260,18 @@
                     </div>
                     
 
-                    <!--                      리워드 선택 -->
+                    <!-- 리워드 선택 -->
                      <div class="rewardselect">
                             <select class="form-select" aria-label="Default select example" name="reward_name" id="reward_name">
                             	<option>리워드 선택하기</option>
-                            	<option value="reward_name">${rdto.reward_name}</option>   
-                            	<option value="reward_name">${rdto.reward_name}</option>
-                            	<option value="reward_name">${rdto.reward_name}</option>                      	
+                            	<c:forEach items="${rlist}" var="rlist">
+                                	<option> ${rlist.reward_name}</option>
+                                </c:forEach>
+                                
+<%--                                 <option value="reward_name">${rlist.reward_name}</option>    --%>
+<%--                             	<option value="reward_name">${rlist.reward_name}</option> --%>
+<%--                             	<option value="reward_name">${rlist.reward_name}</option>     --%>
+                            	                  	
                             </select>
     
     						<tr>
@@ -277,13 +284,15 @@
 						 	</td>
 							</tr>	
                      </div>
-                     <tr>
-                     <td>배송비 ㅣ 무료</td>
-                     </tr>
                      <br/>
                      <tr>
                      <td>총 금액</td>
                      </tr>
+                     <br/>
+                     <tr>
+                     <td>배송비 ㅣ 무료</td>
+                     </tr>
+                     
                      
 
                     <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
