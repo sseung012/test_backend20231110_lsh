@@ -284,9 +284,10 @@
                                    <option> ${rlist.reward_name}_${rlist.price}원</option>
                                 </c:forEach>
                             </select>                 
-
                     </div> 
+                    
                     <br/>
+                    
                     <div class="top-info-quantity clearfix">
                         <p class="top-info-select-title">수량</p>                        
                         <div class="spiner-form-container clearfix">
@@ -303,13 +304,8 @@
                      <tr>
                      <td>배송비 ㅣ 무료</td>
                      </tr>
-                     
-                     
-
-
-                    <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
-
-                        </div> 
+                     <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
+                    </div> 
                         
                         
 <%--                     <% --%>
