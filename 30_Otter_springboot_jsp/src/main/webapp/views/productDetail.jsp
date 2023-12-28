@@ -1,3 +1,4 @@
+<%@page import="com.hk.otter.dtos.RewardDto"%>
 <%@page import="com.hk.otter.dtos.ProductDto"%>
 <%@ page import="com.hk.otter.dtos.UserDto" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
@@ -16,10 +17,30 @@
 <!--         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/resources/css/productdetail.css" rel="stylesheet" />
+        <script type="text/javascript">
+        function add() {
+    		hm = document.form1.amounts;// name이 amounts인 요소
+    		sell_price = document.form1.sell_price;// name이 sell_price인 요소
+    		hm.value++;// hm 값을 1 증가
+    		var sum_ = parseInt(hm.value) * sell_price.value;// hm 문자값을 정수로 변환 * sell_price	해서 금액 계산
+    		document.getElementById("my_sum").innerHTML = sum_.toLocaleString('ko-KR');// id가 my_sum인 요소를 찾아 값을 위에서 계산한 sum_ 값으로 설정, 각 나라 표시방식에 맞게 설정해줌
+    	}
+
+    	function del() {
+    		hm = document.form1.amounts;
+    		sell_price = document.form1.sell_price;
+    		if (hm.value > 1) {// hm(amounts에서 가져온 값)가 1보다 크면
+    			hm.value--;// hm 값 1 감소
+    			var sum_ = parseInt(hm.value) * sell_price.value;
+    			document.getElementById("my_sum").innerHTML = sum_.toLocaleString('ko-KR');		
+    		}
+    	}
+        </script>
     </head>
     <%
    UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
    ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
+   RewardDto rdto = (RewardDto)request.getSession().getAttribute("rdto");
    %>
    
     <body>
@@ -228,15 +249,25 @@
                     
                     <!--                      리워드 선택 -->
                      <div class="rewardselect">
-                            <label for="userseqno" class="form-label">리워드 선택</label>
-                            <select name="reward_name" id="reward_name">
-                            	<option>-- 리워드 선택 --</option>
-                            	<option value="1">홈/리빙</option>   
-                            	<option value="2">패션/잡화</option>
-                            	<option value="3">뷰티</option>                      	
+                            <select class="form-select" aria-label="Default select example" name="reward_name" id="reward_name">
+                            	<option>리워드 선택하기</option>
+                            	<option value="reward_name">${rdto.reward_name}</option>   
+                            	<option value="reward_name">${rdto.reward_name}</option>
+                            	<option value="reward_name">${rdto.reward_name}</option>                      	
                             </select>
-                        </div>
-                    
+    
+                     </div>
+                     수량<input type="button" value=" - " onclick="del();">
+					
+					<input type="hidden" name="sell_price" style="width:30px;" value="${rdto.price}" >
+					<input type="text" name="amounts" value="1" size="3">
+					<input type="button" value=" + " onclick="add();">
+					<input type="hidden" name="sum" size="11" readonly>
+					<div>금액 :<span id="my_sum">
+					  <fmt:formatNumber value="${rdto.price}" pattern="#,###" /></span>원</div>	
+<%-- 					<input type="hidden" name="m_id" id="m_id" value="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}"> --%>
+                        
+                  
                     <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
                     <!-- Categories widget-->
 <!--                     <div class="card mb-4"> -->
@@ -249,7 +280,7 @@
 <!--                                         <li><a href="#!">HTML</a></li> -->
 <!--                                         <li><a href="#!">Freebies</a></li> -->
 <!--                                     </ul> -->
-<!--                                 </div> -->
+<!--                                 </div> --> 
 <!--                                 <div class="col-sm-6"> -->
 <!--                                     <ul class="list-unstyled mb-0"> -->
 <!--                                         <li><a href="#!">JavaScript</a></li> -->
