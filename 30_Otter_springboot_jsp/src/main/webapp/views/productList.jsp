@@ -130,7 +130,7 @@
 											    %>
 											</td>
 							                <td>
-							                    <a href='/product/productApprove?seq=<%= dto.getSeq() %>'>
+							                    <a href='/product/productDetail/<%= dto.getSeq() %>'>  
 							                        <span><%= dto.getTitle() %></span>
 							                    </a>
 							                </td>

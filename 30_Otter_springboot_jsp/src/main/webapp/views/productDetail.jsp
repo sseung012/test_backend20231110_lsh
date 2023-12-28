@@ -12,7 +12,14 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>productDetail</title>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js">
+// 	        function approve() {
+// 	            // 승인 버튼을 눌렀을 때 실행되어야 할 로직을 여기에 추가
+// 	            alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
+// 	            // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
+// 	        }
+        
+        </script>
         <!-- Favicon-->
 <!--         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -245,8 +252,16 @@
                      <br/>
                             </div>
 <!--                         </div> -->
+							
+							<%
+							if (ldto != null && "ADMIN".equals(ldto.getRole())) {
+				        	%>
+							<input class="btn btn-darkk" id="approve" type="submit" value="승인" onclick="approve()" style="float:right; margin:10px;"/>
+							<%} %>
+
                     </div>
                     
+
                     <!--                      리워드 선택 -->
                      <div class="rewardselect">
                             <select class="form-select" aria-label="Default select example" name="reward_name" id="reward_name">
@@ -269,6 +284,9 @@
                         
                   
                     <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
+
+                        </div>
+
                     <!-- Categories widget-->
 <!--                     <div class="card mb-4"> -->
 <!--                         <div class="card-header">Categories</div> -->
@@ -300,6 +318,8 @@
             </div>
         </div>
         </div>
+        
+        
         
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

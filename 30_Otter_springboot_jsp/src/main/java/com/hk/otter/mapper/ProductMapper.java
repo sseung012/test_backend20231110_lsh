@@ -3,7 +3,6 @@ package com.hk.otter.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import com.hk.otter.dtos.ProductDto;
 
@@ -26,6 +25,8 @@ public interface ProductMapper {
 //	public List<ProductDto> myProject(int userSeq);
 
 	public ProductDto productDetail(Integer seq);
+	
+	//카테고리별조회
 
 
 
