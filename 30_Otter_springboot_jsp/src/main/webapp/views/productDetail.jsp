@@ -1,7 +1,9 @@
-<%@page import="com.hk.otter.dtos.RewardDto"%>
-<%@page import="com.hk.otter.dtos.ProductDto"%>
+<%@ page import="com.hk.otter.dtos.RewardDto"%>
+<%@ page import="com.hk.otter.dtos.ProductDto"%>
 <%@ page import="com.hk.otter.dtos.UserDto" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -277,15 +279,28 @@
                     </div>
                     
 
+
+                    <!-- 리워드 선택 -->
+
+
                     <!--                      리워드 선택 -->
+
                      <div class="rewardselect">
                             <select class="form-select" aria-label="Default select example" name="reward_name" id="reward_name">
                             	<option>리워드 선택하기</option>
 
-                            	<option value="reward_name1">${rdto.reward_name}/${rdto.price}</option>   
-                            	<option value="reward_name2">${rdto.reward_name}/${rdto.price}</option>
-                            	<option value="reward_name3">${rdto.reward_name}/${rdto.price}</option>                      	
+                            	<c:forEach items="${rlist}" var="rlist">
+                                	<option> ${rlist.reward_name}</option>
+                                </c:forEach>
+                                
+<%--                                 <option value="reward_name">${rlist.reward_name}</option>    --%>
+<%--                             	<option value="reward_name">${rlist.reward_name}</option> --%>
+<%--                             	<option value="reward_name">${rlist.reward_name}</option>     --%>
+                            	                  	
                             </select>
+    
+    						
+
                     </div> 
                     <div class="top-info-quantity clearfix">
                         <p class="top-info-select-title">수량</p>
@@ -295,15 +310,16 @@
                         <input type="text" class="spiner-text" id="quantity" value="1">
                         <button class="spiner-plus"><i class="material-icons" id="plus">add</i></button>
                         </div>
-
                      </div>
-                     <tr>
-                     <td>배송비 ㅣ 무료</td>
-                     </tr>
                      <br/>
                      <tr>
                      <td>총 금액</td>
                      </tr>
+                     <br/>
+                     <tr>
+                     <td>배송비 ㅣ 무료</td>
+                     </tr>
+                     
                      
 
 

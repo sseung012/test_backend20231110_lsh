@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartRequest;
 
 import com.hk.otter.command.InsertProductCommand;
 import com.hk.otter.dtos.ProductDto;
+import com.hk.otter.dtos.RewardDto;
 import com.hk.otter.service.ProductService;
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -65,6 +66,8 @@ public class ProductController {
 			return "redirect:insertProductForm";
 		}
       }
+	
+	// 리워드 옵션 불러오기
 
       
     //프로젝트목록
@@ -86,10 +89,15 @@ public class ProductController {
   		System.out.println("프로젝트상세보기");
   		ProductDto dto = productService.productDetail(seq);
   		
+  		List<RewardDto> rlist = (List<RewardDto>) productService.rewardOption(seq);
+		model.addAttribute("rlist", rlist);
+ 		
   		model.addAttribute("dto",dto);
   		return "productDetail";
 
   	}
+  	
+  	
   //내프로젝트목록
   	@GetMapping(value="/myProject")
   	public String myProject(Model model, HttpServletRequest request) {

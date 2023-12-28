@@ -8,6 +8,11 @@
 		VALUES(NULL, #{reward_name}, #{price}, #{combination}, #{stock}, #{product_seq}, NULL)		
 	</insert>
 	
-	
+	<!-- 	리워드 조회 -->
+	<select id="rewardOption" parameterType="int" resultType="RewardDto">
+		SELECT seq, product_seq, reward_name, price, combination
+		FROM reward   
+		WHERE product_seq=#{product_seq}
+	</select>
 	
 </mapper>

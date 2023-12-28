@@ -92,6 +92,12 @@ public class ProductService {
 	public ProductDto productDetail(Integer seq) {
 		return productMapper.productDetail(seq);
 	}
+	
+	
+	// 리워드 불러오기
+	public List<RewardDto> rewardOption(int seq) {
+		return rewardMapper.rewardOption(seq);
+	}
 
 	//프로젝트 조회
 	public List<ProductDto> getProductList() {
