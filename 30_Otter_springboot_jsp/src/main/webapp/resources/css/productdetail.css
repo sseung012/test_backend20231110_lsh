@@ -10824,7 +10824,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-
+ 
 .btn-outline-darkk {
   --bs-btn-color: #212529;
   --bs-btn-border-color: #212529;
@@ -10840,4 +10840,5 @@ textarea.form-control-lg {
   --bs-btn-disabled-bg: transparent;
   --bs-btn-disabled-border-color: #212529;
   --bs-gradient: none;
+  font-size: 13px;
 }
