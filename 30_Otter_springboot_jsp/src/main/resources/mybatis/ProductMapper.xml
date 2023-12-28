@@ -8,7 +8,7 @@
 	 useGeneratedKeys="true" keyProperty="seq">
 		INSERT INTO product
 		VALUES(NULL, #{user_seq}, #{img}, #{maker}, #{goal_price}, #{title}, 
-				SYSDATE(), NULL, #{close_date}, #{content}, NULL, NULL, #{cate_seq}, 'Y')		
+				SYSDATE(), NULL, #{close_date}, #{content}, NULL, NULL, #{cate_seq}, 'N')		
 	</insert>
 	
 <!-- 	제품 상세조회 -->
