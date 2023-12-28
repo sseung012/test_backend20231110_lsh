@@ -55,6 +55,7 @@
 	        product
 	    WHERE
 	        product.cate_seq = #{cate_seq}
+	    ORDER BY remainingDays DESC
 
 	</select>
 
