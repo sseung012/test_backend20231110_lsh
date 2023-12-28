@@ -9,7 +9,7 @@
 		INSERT INTO product
 		VALUES(NULL, #{user_seq}, #{img}, #{maker}, #{goal_price}, #{title}, 
 				SYSDATE(), NULL, #{close_date}, #{content}, NULL, NULL, #{cate_seq}, 'N')		
-	</insert>
+	</insert> 
 	
 <!-- 	제품 상세조회 -->
 	<select id="productDetail" parameterType="int" resultType="ProductDto">
