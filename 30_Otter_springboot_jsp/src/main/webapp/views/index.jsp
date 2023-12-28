@@ -124,7 +124,7 @@
            <div class="text-center text-white">
 <!--             <h1 class="display-4 fw-bolder">Shop in style</h1> -->
 <!--                    <p class="lead fw-normal text-white-50 mb-0"></p> -->
-			<img src="./upload/잘앙돼...jpg"/>
+			<img src="./upload/잘앙돼...jpg" style="width:100px"; height="100px"/>
          </div>
       </div>
    </header>
@@ -152,7 +152,7 @@
 								        <p class="text-muted">마감된 상품</p>
 								    </c:when>
 								    <c:otherwise>
-								        <p class="text-muted">남은날짜: ${mlist.remainingDays}</p>
+								        <p class="text-muted" style="font-weight:bold;">${mlist.remainingDays}일 남음</p>
 								    </c:otherwise>
 		                        </c:choose> 
 		                        <!-- 제품 지지자 수 -->
