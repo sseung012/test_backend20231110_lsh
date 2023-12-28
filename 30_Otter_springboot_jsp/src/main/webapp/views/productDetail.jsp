@@ -309,7 +309,7 @@
 
                     <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
 
-                        </div>
+                        </div> 
                         
                         
 <%--                     <% --%>
