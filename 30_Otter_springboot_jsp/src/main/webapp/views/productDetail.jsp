@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -143,17 +144,33 @@
                     <!-- Post content-->
                     <article>
                         <!-- Post header-->
-                        <header class="mb-4">
-                            <!-- Post title-->
-<!--                             <h1 class="fw-bolder mb-1">ㅇㅇ</h1> -->
-                            <!-- Post meta content-->
-<!--                             <div class="text-muted fst-italic mb-2">Posted on January 1, 2023 by Start Bootstrap</div> -->
-                            <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">${dto.cate_seq}</a>
-<!--                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
-                        </header>   
                            
-                           
+			           	<header class="mb-4">
+					        <c:choose>
+					            <c:when test="${dto != null && dto.cate_seq eq 1}">
+					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">홈/리빙</a>
+					            </c:when>
+					            <c:when test="${dto != null && dto.cate_seq eq 2}">
+					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">패션/잡화</a>
+					            </c:when>
+					            <c:when test="${dto != null && dto.cate_seq eq 3}">
+					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">뷰티</a>
+					            </c:when>
+					            <c:when test="${dto != null && dto.cate_seq eq 4}">
+					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">푸드</a>
+					            </c:when>
+					            <c:when test="${dto != null && dto.cate_seq eq 5}">
+					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">출판</a>
+					            </c:when>
+					            <c:when test="${dto != null && dto.cate_seq eq 6}">
+					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">반려동물</a>
+					            </c:when>
+					            <c:otherwise>
+					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">알수없음</a>
+					            </c:otherwise>
+					        </c:choose>
+					    </header>
+	                           
                         <!-- Preview image figure-->
 <!--                         <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
                         	 <tr>
@@ -262,6 +279,7 @@
                      <div class="rewardselect">
                             <select class="form-select" aria-label="Default select example" name="reward_name" id="reward_name">
                             	<option>리워드 선택하기</option>
+
                             	<option value="reward_name1">${rdto.reward_name}/${rdto.price}</option>   
                             	<option value="reward_name2">${rdto.reward_name}/${rdto.price}</option>
                             	<option value="reward_name3">${rdto.reward_name}/${rdto.price}</option>                      	
@@ -275,6 +293,22 @@
                         <input type="text" class="spiner-text" id="quantity" value="1">
                         <button class="spiner-plus"><i class="material-icons" id="plus">add</i></button>
                         </div>
+=======
+                            	<option value="reward_name">${rdto.reward_name}</option>   
+                            	<option value="reward_name">${rdto.reward_name}</option>
+                            	<option value="reward_name">${rdto.reward_name}</option>                      	
+                            </select>
+    
+    						<tr>
+						    <td>수량</td>
+						    <td class="bseq_ea"></td>
+						    <td>
+						        <button type="button" class="btn btn-light" onclick="fnCalCount('m', this);">-</button>
+						        <input type="text" name="stock" value="0" readonly="readonly" style="text-align:center;"/>
+						        <button type ="button" class="btn btn-light" onclick="fnCalCount('p',this);">+</button>
+						 	</td>
+							</tr>	
+
                      </div>
                      <tr>
                      <td>배송비 ㅣ 무료</td>
@@ -284,11 +318,12 @@
                      <td>총 금액</td>
                      </tr>
                      
+
 				</div>
                     <button class="btn btn-primary btn-lg" id="button-search" type="submit">펀딩 참여하기</button>
+           			<button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
 
-                        
-
+                        </div>
                     <!-- Categories widget-->
 <!--                     <div class="card mb-4"> -->
 <!--                         <div class="card-header">Categories</div> -->
@@ -316,13 +351,11 @@
 <!--                         <div class="card-header">Side Widget</div> -->
 <!--                         <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div> -->
 <!--                     </div> -->
-                </div>
+                </div> 
             </div>
         </div>
         </div>
-        
-        
-        
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
