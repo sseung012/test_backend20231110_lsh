@@ -1,6 +1,5 @@
 package com.hk.otter.command;
 
-
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -9,7 +8,6 @@ import com.hk.otter.dtos.RewardDto;
 
 import jakarta.validation.constraints.NotBlank;
 
-        
 public class InsertProductCommand {
 	
 	private int seq;
