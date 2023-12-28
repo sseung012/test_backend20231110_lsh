@@ -39,28 +39,28 @@
 	
 	<!-- productMapper.xml -->
 
-<!-- 	<select id="Category" resultMap="ProductDtoMap" parameterType="int"> -->
-<!-- 	    SELECT -->
-<!-- 	        product.seq AS SEQ, -->
-<!-- 	        product.img AS IMG, -->
-<!-- 	        product.maker AS MAKER, -->
-<!-- 	        product.goal_price AS GOAL_PRICE, -->
-<!-- 	        product.title AS TITLE, -->
-<!-- 	        product.created_date AS CREATED_DATE, -->
-<!-- 	        product.close_date AS CLOSE_DATE, -->
-<!-- 	        product.content AS CONTENT, -->
-<!-- 	        product.cate_seq AS CATE_SEQ, -->
-<!-- 	        TIMESTAMPDIFF(DAY, SYSDATE(), product.close_date + 1) AS remainingDays, -->
-<!-- 	        product.total_supporters AS TOTAL_SUPPORTERS -->
-<!-- 	    FROM -->
-<!-- 	        product -->
-<!-- 	    WHERE -->
-<!-- 	        product.cate_seq = #{cateSeq} -->
+	<select id="category" resultType="ProductDto" parameterType="String">
+	    SELECT
+	        product.seq AS SEQ,
+	        product.img AS IMG,
+	        product.maker AS MAKER,
+	        product.goal_price AS GOAL_PRICE,
+	        product.title AS TITLE,
+	        product.created_date AS CREATED_DATE,
+	        product.close_date AS CLOSE_DATE,
+	        product.content AS CONTENT,
+	        TIMESTAMPDIFF(DAY, SYSDATE(), product.close_date + 1) AS remainingDays,
+	        product.total_supporters AS TOTAL_SUPPORTERS
+	    FROM
+	        product
+	    WHERE
+	        product.cate_seq = #{cate_seq}
+	    ORDER BY remainingDays DESC
 
-<!-- 	</select> -->
+	</select>
 
 
-
+ 
 	
 
 	<resultMap type="ProductDto" id="ProductDtoMap">

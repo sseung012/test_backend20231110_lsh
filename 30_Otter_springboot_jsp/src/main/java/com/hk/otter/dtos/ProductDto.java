@@ -9,7 +9,7 @@ public class ProductDto {
 	
 	private int seq;
 	private int user_seq;
-	
+	private int cate_seq;
 	private String img;
 	
 	private String maker;	
@@ -21,11 +21,23 @@ public class ProductDto {
 	private String content;
 	private int total_price;
 	private int total_supporters;
-	private int cate_seq;
 	private String product_check;
 	
 	private int remainingDays;
 	
+
+
+	public ProductDto(int seq, int cate_seq, String img, String maker, String title, int total_supporters,
+			int remainingDays) {
+		super();
+		this.seq = seq;
+		this.cate_seq = cate_seq;
+		this.img = img;
+		this.maker = maker;
+		this.title = title;
+		this.total_supporters = total_supporters;
+		this.remainingDays = remainingDays;
+	}
 
 
 	public ProductDto(int seq, String img, String maker, String title, int total_supporters, int remainingDays) {
@@ -142,6 +154,16 @@ public class ProductDto {
 	}
 
 
+	public int getCate_seq() {
+		return cate_seq;
+	}
+
+
+	public void setCate_seq(int cate_seq) {
+		this.cate_seq = cate_seq;
+	}
+
+
 	public String getImg() {
 		return img;
 	}
@@ -242,16 +264,6 @@ public class ProductDto {
 	}
 
 
-	public int getCate_seq() {
-		return cate_seq;
-	}
-
-
-	public void setCate_seq(int cate_seq) {
-		this.cate_seq = cate_seq;
-	}
-
-
 	public String getProduct_check() {
 		return product_check;
 	}
@@ -274,12 +286,15 @@ public class ProductDto {
 
 	@Override
 	public String toString() {
-		return "ProductDto [seq=" + seq + ", user_seq=" + user_seq + ", img=" + img + ", maker=" + maker
-				+ ", goal_price=" + goal_price + ", title=" + title + ", created_date=" + created_date + ", open_date="
-				+ open_date + ", close_date=" + close_date + ", content=" + content + ", total_price=" + total_price
-				+ ", total_supporters=" + total_supporters + ", cate_seq=" + cate_seq + ", product_check="
-				+ product_check + ", reList=" + reList + "]";
+		return "ProductDto [seq=" + seq + ", user_seq=" + user_seq + ", cate_seq=" + cate_seq + ", img=" + img
+				+ ", maker=" + maker + ", goal_price=" + goal_price + ", title=" + title + ", created_date="
+				+ created_date + ", open_date=" + open_date + ", close_date=" + close_date + ", content=" + content
+				+ ", total_price=" + total_price + ", total_supporters=" + total_supporters + ", product_check="
+				+ product_check + ", remainingDays=" + remainingDays + ", reList=" + reList + "]";
 	}
+
+
+
 
 	
 	

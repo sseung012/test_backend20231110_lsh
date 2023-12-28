@@ -25,7 +25,7 @@
 <!--         Bootstrap icons -->
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" /> -->
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="resources/css/styles.css" rel="stylesheet" />
+<link href="/resources/css/styles.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -41,14 +41,14 @@
                     <li class="nav-item dropdown">
                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                               <li><a class="dropdown-item" href="#!">전체</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">홈/리빙</a></li>
-                                <li><a class="dropdown-item" href="#!">패션/잡화</a></li>
-                                <li><a class="dropdown-item" href="#!">뷰티</a></li>
-                                <li><a class="dropdown-item" href="#!">푸드</a></li>
-                                <li><a class="dropdown-item" href="#!">출판</a></li>
-                                <li><a class="dropdown-item" href="#!">반려동물</a></li>
+                               <li><a class="dropdown-item" href="/product/category">전체</a></li>
+	                            <li><hr class="dropdown-divider" /></li>
+	                            <li><a class="dropdown-item" href="/product/category?cate_seq=1">홈/리빙</a></li>
+	                            <li><a class="dropdown-item" href="/product/category?cate_seq=2">패션/잡화</a></li>
+	                            <li><a class="dropdown-item" href="/product/category?cate_seq=3">뷰티</a></li>
+	                            <li><a class="dropdown-item" href="/product/category?cate_seq=4">푸드</a></li>
+	                            <li><a class="dropdown-item" href="/product/category?cate_seq=5">출판</a></li>
+	                            <li><a class="dropdown-item" href="/product/category?cate_seq=6">반려동물</a></li>
                             </ul> 
 	               </li>
 	            </ul>
@@ -122,9 +122,8 @@
    <header class="bg-dark py-5">
        <div class="container px-4 px-lg-5 my-5">
            <div class="text-center text-white">
-<!--             <h1 class="display-4 fw-bolder">Shop in style</h1> -->
-<!--                    <p class="lead fw-normal text-white-50 mb-0"></p> -->
-			<img src="./upload/잘앙돼...jpg" style="width:100px"; height="100px"/>
+            <h1 class="display-4 fw-bolder">Shop in style</h1>
+               <p class="lead fw-normal text-white-50 mb-0"></p>
          </div>
       </div>
    </header>
@@ -134,35 +133,35 @@
    	<section class="py-5">
       <div class="container px-4 px-lg-5 mt-5">
            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-			<c:forEach var="mlist" items="${mlist}">
+			<c:forEach  var="clist" items="${clist}">
                <div class="col mb-5">
                    <div class="card h-100">
                         <!-- Product image-->
-                        <img class="card-img-top" src="/upload/${mlist.img}" alt="..." width="200" height="220"/>
+                        <img class="card-img-top" src="/upload/${clist.img}" alt="..." width="200" height="220"/>
                         <!-- Product details-->
                         <div class="card-body p-4">
                            <div class="text-center">
                                <!-- Product name-->
-                                <h5 class="fw-bolder">${mlist.title}</h5>
+                                <h5 class="fw-bolder">${clist.title}</h5>
                                 <!-- 제품 제조사 -->
-		                        <p class="text-muted">${mlist.maker}</p>
+		                        <p class="text-muted">${clist.maker}</p>
 		                        <!-- 제품 종료일 -->
 		                        <c:choose>
-									<c:when test="${mlist.remainingDays lt 0}">
+									<c:when test="${clist.remainingDays lt 0}">
 								        <p class="text-muted">마감된 상품</p>
 								    </c:when>
 								    <c:otherwise>
-								        <p class="text-muted">남은날짜: ${mlist.remainingDays}</p>
+								        <p class="text-muted">남은날짜: ${clist.remainingDays}</p>
 								    </c:otherwise>
 		                        </c:choose> 
 		                        <!-- 제품 지지자 수 -->
-		                        <p class="text-muted">${mlist.total_supporters}명</p>
+		                        <p class="text-muted">${clist.total_supporters}명</p>
                      		</div>
                   		</div> 
                   		<!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" 
-                           href="/product/productDetail/${mlist.seq}">View options</a></div>
+                           href="/product/productDetail/${clist.seq}">View options</a></div>
                         </div>
                       </div>
                       </div>

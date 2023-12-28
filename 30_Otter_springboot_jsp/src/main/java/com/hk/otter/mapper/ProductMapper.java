@@ -29,7 +29,8 @@ public interface ProductMapper {
 	public RewardDto rewardOption(int seq);
 	
 	//카테고리별조회
-
+	public List<ProductDto> category(String cate_seq);
+	
 
 
 }
