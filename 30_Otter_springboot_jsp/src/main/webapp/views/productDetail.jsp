@@ -27,20 +27,8 @@
 <!--         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/resources/css/productdetail.css" rel="stylesheet" />
-        <script type="text/javascript">
-        function fnCalCount(type, ths){
-            var $input = $(ths).parents("td").find("input[name='stock']");
-            var tCount = Number($input.val());
-            var tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html());
-            
-            if(type=='p'){
-                if(tCount < tEqCount) $input.val(Number(tCount)+1);
-                
-            }else{
-                if(tCount >0) $input.val(Number(tCount)-1);    
-                }
-        }
-         
+        <script type="text/javascript">      
+	        	   
         </script>
     </head>
     <%
@@ -252,28 +240,28 @@
                      </c:choose>
                 <tr>
                      <td><h2 style="font-weight:bold;">${dto.title}</h2></td>
-                     </tr>
-                     <br/>
+                </tr>
+                <br/>
                      
-                     <tr>
-                        <th>창작자</th>
-                        <br/>
-                        <td>${dto.maker}</td>
-                     </tr>
-                     <br/>
+                <tr>
+                    <th>창작자</th>
+                    <br/>
+                    <td>${dto.maker}</td>
+                </tr>
+                <br/>
                      
-                     <tr>
-                     <td>${dto.goal_price}원 목표</td>
-                     </tr>
-                     <br/>
+                <tr>
+                	<td>${dto.goal_price}원 목표</td>
+                </tr>
+                <br/>
                      
-                     <tr>
-                     <td>${dto.total_price}원 달성</td>
-                     </tr>
-                     <br/>
-                            </div>
+                <tr>
+                    <td>${dto.total_price}원 달성</td>
+                </tr>
+                <br/>
+             </div>
 <!--                         </div> -->
-                    </div>
+         </div>
                        
                     <!-- 리워드 선택 -->
                      <div class="rewardselect">
@@ -288,24 +276,41 @@
                     
                     <br/>
                     
-                    <div class="top-info-quantity clearfix">
-                        <p class="top-info-select-title">수량</p>                        
-                        <div class="spiner-form-container clearfix">
-                        <button class="spiner-minus"><i class="material-icons" id="minus">-</i></button>
-                        <input type="text" class="spiner-text" id="quantity" value="1">
-                        <button class="spiner-plus"><i class="material-icons" id="plus">+</i></button>
-                        </div>
-                     </div>
+<!--                     <div class="top-info-quantity clearfix"> -->
+<%--                     	<c:forEach items="${rlist}" var="rlist"> --%>
+<%--                             <input type="hidden" name="price" value="${rlist.price}"> --%>
+<%--                        </c:forEach> --%>
+<%--                        <input type="hidden" name="sell_price" value="${rlist.price}"> --%>
+<!--                        <input type="text" name="amount" value="1" size="3" max=""> -->
+<!--                        <input type="button" value=" - " name="minus"> -->
+<!--                        <input type="button" value=" + " name="add"><br/> -->
+<!--                        <input type="text" name="total_price" size="11" readonly="readonly">원 -->
+<!--                      </div> -->
                      <br/>
                      <tr>
-                     <td>총 금액</td>
+                     	<td>총 금액</td>
                      </tr>
                      <br/>
                      <tr>
-                     <td>배송비 ㅣ 무료</td>
+                     	<td>배송비 ㅣ 무료</td>
                      </tr>
                      <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
                     </div> 
+                    <br/>
+                    <br/>
+                    
+                    <div class="mb-3">
+  						<h4><label for="exampleFormControlTextarea1" class="form-label">리워드 안내</label></h4>
+  						<label class="form-control" id="exampleFormControlTextarea1" rows="3">
+  							<c:forEach items="${rlist}" var="rlist">
+  								   <p style="font-size:20px; font-weight:bold;">${rlist.price}원</p>
+                                   <p style="font-size:20px;">${rlist.reward_name}</p>           
+                                   <p>${rlist.combination}</p>
+                                   <hr/>
+                            </c:forEach>
+  						
+  						</label>
+					</div>
                         
                         
 <%--                     <% --%>
