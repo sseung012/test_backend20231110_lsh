@@ -45,6 +45,8 @@
    UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
    ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
    RewardDto rdto = (RewardDto)request.getSession().getAttribute("rdto");
+   boolean isAdmin = ldto != null && "ADMIN".equals(ldto.getRole());
+//    boolean isProductNotApproved = dto != null && "N".equals(dto.getProduct_check());
    %>
    
     <body>
@@ -237,11 +239,15 @@
                             <div class="input-group">
 <!--                                 <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" /> -->
 <!-- 								<input class="form-control" type="text" ></input> -->
-<!--                                 <button class="btn btn-primary" id="button-search" type="button">Go!</button> -->
-					 <tr>    
-                     <td><font color="red">D-${dto.remainingDays}</font></td>
-                     </tr>
-                     
+<!--                                 <button class="btn btn-primary" id="button-search" type="button">Go!</button> -->   
+                     <c:choose>
+						<c:when test="${dto.remainingDays lt 0}">
+					        <td><font color="red">마감된 상품</font></td>
+					    </c:when>
+					    <c:otherwise>
+					        <td><font color="red">D-${dto.remainingDays}</font></td>
+					    </c:otherwise>
+                     </c:choose>
 					 <tr>
                      <td><h2 style="font-weight:bold;">${dto.title}</h2></td>
                      </tr>
@@ -266,11 +272,7 @@
                             </div>
 <!--                         </div> -->
 							
-							<%
-							if (ldto != null && "ADMIN".equals(ldto.getRole())) {
-				        	%>
-							<input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()" style="float:right; margin:10px;"/>
-							<%} %>
+							
 
                     </div>
                     
@@ -306,7 +308,29 @@
                     <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
 
                         </div>
-
+                        
+                        
+<%--                     <% --%>
+<!-- //  							if (ldto != null && "ADMIN".equals(ldto.getRole())) { -->
+<%-- 				        	%>  --%>
+<!-- 							<input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()"  -->
+<!-- 								style="float:right; margin:10px; height:40px; width:100px;"/>	 -->
+<%-- 							<% }  --%>
+<%--  					%>  --%>
+ 					<div>
+						<c:choose>
+				            <c:when test="${ldto != null && ldto.role eq 'ADMIN' && dto.product_check eq 'N' && dto != null }">
+				                <input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()" 
+				                    style="float:right; margin:10px; height:40px; width:100px;"/>
+				            </c:when>
+				            <c:when test="${ldto == null}">
+				                <!-- ldto가 null일 경우, 승인 버튼을 보이지 않게 함 -->
+				            </c:when>
+				            <c:otherwise>
+				                <!-- 승인된 프로젝트일경우 승인 버튼을 보이지 않게 함 -->
+				            </c:otherwise>
+				        </c:choose>
+ 					</div>
                     <!-- Categories widget-->
 <!--                     <div class="card mb-4"> -->
 <!--                         <div class="card-header">Categories</div> -->
@@ -344,6 +368,6 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+<!--         <script src="js/scripts.js"></script> -->
     </body>
 </html>
