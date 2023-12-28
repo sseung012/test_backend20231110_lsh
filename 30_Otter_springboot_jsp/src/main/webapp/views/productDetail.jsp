@@ -262,20 +262,19 @@
                      <div class="rewardselect">
                             <select class="form-select" aria-label="Default select example" name="reward_name" id="reward_name">
                             	<option>리워드 선택하기</option>
-                            	<option value="reward_name">${rdto.reward_name}</option>   
-                            	<option value="reward_name">${rdto.reward_name}</option>
-                            	<option value="reward_name">${rdto.reward_name}</option>                      	
+                            	<option value="reward_name1">${rdto.reward_name}/${rdto.price}</option>   
+                            	<option value="reward_name2">${rdto.reward_name}/${rdto.price}</option>
+                            	<option value="reward_name3">${rdto.reward_name}/${rdto.price}</option>                      	
                             </select>
-    
-    						<tr>
-						    <td>수량</td>
-						    <td class="bseq_ea"></td>
-						    <td>
-						        <button type="button" class="btn btn-light" onclick="fnCalCount('m', this);">-</button>
-						        <input type="text" name="stock" value="0" readonly="readonly" style="text-align:center;"/>
-						        <button type ="button" class="btn btn-light" onclick="fnCalCount('p',this);">+</button>
-						 	</td>
-							</tr>	
+                    </div> 
+                    <div class="top-info-quantity clearfix">
+                        <p class="top-info-select-title">수량</p>
+                        
+                        <div class="spiner-form-container clearfix">
+                        <button class="spiner-minus"><i class="material-icons" id="minus">remove</i></button>
+                        <input type="text" class="spiner-text" id="quantity" value="1">
+                        <button class="spiner-plus"><i class="material-icons" id="plus">add</i></button>
+                        </div>
                      </div>
                      <tr>
                      <td>배송비 ㅣ 무료</td>
@@ -285,10 +284,10 @@
                      <td>총 금액</td>
                      </tr>
                      
+				</div>
+                    <button class="btn btn-primary btn-lg" id="button-search" type="submit">펀딩 참여하기</button>
 
-                    <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
-
-                        </div>
+                        
 
                     <!-- Categories widget-->
 <!--                     <div class="card mb-4"> -->
