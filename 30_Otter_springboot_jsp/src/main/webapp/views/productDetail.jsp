@@ -336,7 +336,7 @@
 
 
 				</div>
-                    <button class="btn btn-primary btn-lg" id="button-search" type="submit">펀딩 참여하기</button>
+                    
          
                         </div>
 
