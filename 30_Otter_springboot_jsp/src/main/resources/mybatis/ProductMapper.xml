@@ -13,7 +13,7 @@
 	
 <!-- 	제품 상세조회 -->
 	<select id="productDetail" parameterType="int" resultType="ProductDto">
-		SELECT seq, cate_seq, img, title, maker, goal_price, total_price, TIMESTAMPDIFF(DAY, SYSDATE(), close_date+1) AS remainingDays, content
+		SELECT seq, cate_seq, img, title, maker, goal_price, total_price, TIMESTAMPDIFF(DAY, SYSDATE(), close_date+1) AS remainingDays, content, product_check
 		FROM product
 		WHERE seq=#{seq}	
 	</select>
@@ -23,6 +23,7 @@
 	<select id="getProductList"  resultType="ProductDto">
 		SELECT seq, cate_seq, title, maker, created_date, open_date, product_check
 		FROM product	
+		ORDER BY seq DESC
 	</select>
 
 <!-- 	index페이지에서 작게 프로젝트 조회 -->

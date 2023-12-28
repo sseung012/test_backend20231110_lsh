@@ -11,7 +11,14 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>productDetail</title>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js">
+// 	        function approve() {
+// 	            // 승인 버튼을 눌렀을 때 실행되어야 할 로직을 여기에 추가
+// 	            alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
+// 	            // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
+// 	        }
+        
+        </script>
         <!-- Favicon-->
 <!--         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -125,7 +132,7 @@
                             <!-- Post meta content-->
 <!--                             <div class="text-muted fst-italic mb-2">Posted on January 1, 2023 by Start Bootstrap</div> -->
                             <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">카테고리 이름</a>
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">${dto.cate_seq}</a>
 <!--                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
                         </header>   
                            
@@ -134,7 +141,7 @@
 <!--                         <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
                         	 <tr>
                         	 <td>
-								<img src="/upload/${dto.img}"/>
+								<img style="width:700px; height:400px;" src="/upload/${dto.img}"/>
 							</td>
 							</tr>
                         <!-- Post content-->
@@ -197,28 +204,55 @@
 <!--                                 <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" /> -->
 <!-- 								<input class="form-control" type="text" ></input> -->
 <!--                                 <button class="btn btn-primary" id="button-search" type="button">Go!</button> -->
-							<tr>
-							<td><h2 style="font-weight:bold;">${dto.title}</h2></td>
-							</tr>
-							<br/>
-							<tr>
-							<td>${dto.maker}</td>
-							</tr>
-							<br/>
-							<tr>
-							<td>${dto.goal_price}원 목표</td>
-							</tr>
-							<br/>
-							<tr>
-							<td>${dto.total_price}원 달성</td>
-							</tr>
-							<br/>
-							<tr>    
-							<td>${dto.remainingDays}일 남음</td>
-							</tr>
+					 <tr>    
+                     <td><font color="red">D-${dto.remainingDays}</font></td>
+                     </tr>
+                     
+					 <tr>
+                     <td><h2 style="font-weight:bold;">${dto.title}</h2></td>
+                     </tr>
+                     <br/>
+                     
+                     <tr>
+                     	<th>창작자</th>
+                     	<br/>
+                     	<td>${dto.maker}</td>
+                     </tr>
+                     <br/>
+                     
+                     <tr>
+                     <td>${dto.goal_price}원 목표</td>
+                     </tr>
+                     <br/>
+                     
+                     <tr>
+                     <td>${dto.total_price}원 달성</td>
+                     </tr>
+                     <br/>
                             </div>
 <!--                         </div> -->
+							
+							<%
+							if (ldto != null && "ADMIN".equals(ldto.getRole())) {
+				        	%>
+							<input class="btn btn-darkk" id="approve" type="submit" value="승인" onclick="approve()" style="float:right; margin:10px;"/>
+							<%} %>
+
                     </div>
+                    
+
+                    <!--                      리워드 선택 -->
+                     <div class="rewardselect">
+                            <label for="userseqno" class="form-label">리워드 선택</label>
+                            <select name="reward_name" id="reward_name">
+                            	<option>-- 리워드 선택 --</option>
+                            	<option value="1">홈/리빙</option>   
+                            	<option value="2">패션/잡화</option>
+                            	<option value="3">뷰티</option>                      	
+                            </select>
+                        </div>
+                    
+                    <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
                     <!-- Categories widget-->
 <!--                     <div class="card mb-4"> -->
 <!--                         <div class="card-header">Categories</div> -->
@@ -250,6 +284,8 @@
             </div>
         </div>
         </div>
+        
+        
         
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
