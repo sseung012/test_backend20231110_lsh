@@ -35,6 +35,7 @@
 		LIMIT 8
 	</select>
 
+ 
 	
 	<!-- productMapper.xml -->
 
@@ -55,7 +56,10 @@
 <!-- 	        product -->
 <!-- 	    WHERE -->
 <!-- 	        product.cate_seq = #{cateSeq} -->
+
 <!-- 	</select> -->
+
+
 
 	
 
