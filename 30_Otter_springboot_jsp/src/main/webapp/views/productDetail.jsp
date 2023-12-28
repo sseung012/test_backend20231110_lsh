@@ -6,6 +6,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,7 +21,7 @@
 // 	            alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
 // 	            // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
 // 	        }
-        
+           
         </script>
         <!-- Favicon-->
 <!--         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
@@ -46,6 +47,8 @@
    UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
    ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
    RewardDto rdto = (RewardDto)request.getSession().getAttribute("rdto");
+   boolean isAdmin = ldto != null && "ADMIN".equals(ldto.getRole());
+//    boolean isProductNotApproved = dto != null && "N".equals(dto.getProduct_check());
    %>
    
     <body>
@@ -145,17 +148,33 @@
                     <!-- Post content-->
                     <article>
                         <!-- Post header-->
-                        <header class="mb-4">
-                            <!-- Post title-->
-<!--                             <h1 class="fw-bolder mb-1">ㅇㅇ</h1> -->
-                            <!-- Post meta content-->
-<!--                             <div class="text-muted fst-italic mb-2">Posted on January 1, 2023 by Start Bootstrap</div> -->
-                            <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">${dto.cate_seq}</a>
-<!--                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
-                        </header>   
                            
-                           
+			           	<header class="mb-4">
+					        <c:choose>
+					            <c:when test="${dto != null && dto.cate_seq eq 1}">
+					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">홈/리빙</a>
+					            </c:when>
+					            <c:when test="${dto != null && dto.cate_seq eq 2}">
+					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">패션/잡화</a>
+					            </c:when>
+					            <c:when test="${dto != null && dto.cate_seq eq 3}">
+					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">뷰티</a>
+					            </c:when>
+					            <c:when test="${dto != null && dto.cate_seq eq 4}">
+					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">푸드</a>
+					            </c:when>
+					            <c:when test="${dto != null && dto.cate_seq eq 5}">
+					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">출판</a>
+					            </c:when>
+					            <c:when test="${dto != null && dto.cate_seq eq 6}">
+					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">반려동물</a>
+					            </c:when>
+					            <c:otherwise>
+					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">알수없음</a>
+					            </c:otherwise>
+					        </c:choose>
+					    </header>
+	                           
                         <!-- Preview image figure-->
 <!--                         <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
                         	 <tr>
@@ -222,11 +241,15 @@
                             <div class="input-group">
 <!--                                 <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" /> -->
 <!-- 								<input class="form-control" type="text" ></input> -->
-<!--                                 <button class="btn btn-primary" id="button-search" type="button">Go!</button> -->
-					 <tr>    
-                     <td><font color="red">D-${dto.remainingDays}</font></td>
-                     </tr>
-                     
+<!--                                 <button class="btn btn-primary" id="button-search" type="button">Go!</button> -->   
+                     <c:choose>
+						<c:when test="${dto.remainingDays lt 0}">
+					        <td><font color="red">마감된 상품</font></td>
+					    </c:when>
+					    <c:otherwise>
+					        <td><font color="red">D-${dto.remainingDays}</font></td>
+					    </c:otherwise>
+                     </c:choose>
 					 <tr>
                      <td><h2 style="font-weight:bold;">${dto.title}</h2></td>
                      </tr>
@@ -251,19 +274,21 @@
                             </div>
 <!--                         </div> -->
 							
-							<%
-							if (ldto != null && "ADMIN".equals(ldto.getRole())) {
-				        	%>
-							<input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()" style="float:right; margin:10px;"/>
-							<%} %>
+							
 
                     </div>
                     
 
+
                     <!-- 리워드 선택 -->
+
+
+                    <!--                      리워드 선택 -->
+
                      <div class="rewardselect">
                             <select class="form-select" aria-label="Default select example" name="reward_name" id="reward_name">
                             	<option>리워드 선택하기</option>
+
                             	<c:forEach items="${rlist}" var="rlist">
                                 	<option> ${rlist.reward_name}</option>
                                 </c:forEach>
@@ -283,6 +308,16 @@
 						        <button type ="button" class="btn btn-light" onclick="fnCalCount('p',this);">+</button>
 						 	</td>
 							</tr>	
+
+                    </div> 
+                    <div class="top-info-quantity clearfix">
+                        <p class="top-info-select-title">수량</p>
+                        
+                        <div class="spiner-form-container clearfix">
+                        <button class="spiner-minus"><i class="material-icons" id="minus">remove</i></button>
+                        <input type="text" class="spiner-text" id="quantity" value="1">
+                        <button class="spiner-plus"><i class="material-icons" id="plus">add</i></button>
+                        </div>
                      </div>
                      <br/>
                      <tr>
@@ -295,8 +330,38 @@
                      
                      
 
+
                     <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
 
+                        </div>
+                        
+                        
+<%--                     <% --%>
+<!-- //  							if (ldto != null && "ADMIN".equals(ldto.getRole())) { -->
+<%-- 				        	%>  --%>
+<!-- 							<input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()"  -->
+<!-- 								style="float:right; margin:10px; height:40px; width:100px;"/>	 -->
+<%-- 							<% }  --%>
+<%--  					%>  --%>
+ 					<div>
+						<c:choose>
+				            <c:when test="${ldto != null && ldto.role eq 'ADMIN' && dto.product_check eq 'N' && dto != null }">
+				                <input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()" 
+				                    style="float:right; margin:10px; height:40px; width:100px;"/>
+				            </c:when>
+				            <c:when test="${ldto == null}">
+				                <!-- ldto가 null일 경우, 승인 버튼을 보이지 않게 함 -->
+				            </c:when>
+				            <c:otherwise>
+				                <!-- 승인된 프로젝트일경우 승인 버튼을 보이지 않게 함 -->
+				            </c:otherwise>
+				        </c:choose>
+ 					</div>
+
+
+				</div>
+                    
+         
                         </div>
 
                     <!-- Categories widget-->
@@ -326,16 +391,14 @@
 <!--                         <div class="card-header">Side Widget</div> -->
 <!--                         <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div> -->
 <!--                     </div> -->
-                </div>
+                </div> 
             </div>
         </div>
         </div>
-        
-        
-        
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+<!--         <script src="js/scripts.js"></script> -->
     </body>
 </html>

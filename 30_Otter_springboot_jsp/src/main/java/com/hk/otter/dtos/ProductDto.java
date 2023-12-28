@@ -79,7 +79,7 @@ public class ProductDto {
 
 	//프로젝트 상세보기
 	public ProductDto(int seq, String img, String maker, String goal_price, String title, String close_date,
-			String content, int total_price, int cate_seq) {
+			String content, int total_price, int cate_seq, String product_check) {
 		super();
 		this.seq = seq;
 		this.img = img;
@@ -90,6 +90,7 @@ public class ProductDto {
 		this.content = content;
 		this.total_price = total_price;
 		this.cate_seq = cate_seq;
+		this.product_check = product_check;
 	}
 
 
