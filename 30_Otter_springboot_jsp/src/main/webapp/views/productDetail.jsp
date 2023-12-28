@@ -16,11 +16,11 @@
         <meta name="author" content="" />
         <title>productDetail</title>
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js">
-// 	        function approve() {
-// 	            // 승인 버튼을 눌렀을 때 실행되어야 할 로직을 여기에 추가
-// 	            alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
-// 	            // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
-// 	        }
+//            function approve() {
+//                // 승인 버튼을 눌렀을 때 실행되어야 할 로직을 여기에 추가
+//                alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
+//                // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
+//            }
            
         </script>
         <!-- Favicon-->
@@ -149,44 +149,44 @@
                     <article>
                         <!-- Post header-->
                            
-			           	<header class="mb-4">
-					        <c:choose>
-					            <c:when test="${dto != null && dto.cate_seq eq 1}">
-					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">홈/리빙</a>
-					            </c:when>
-					            <c:when test="${dto != null && dto.cate_seq eq 2}">
-					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">패션/잡화</a>
-					            </c:when>
-					            <c:when test="${dto != null && dto.cate_seq eq 3}">
-					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">뷰티</a>
-					            </c:when>
-					            <c:when test="${dto != null && dto.cate_seq eq 4}">
-					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">푸드</a>
-					            </c:when>
-					            <c:when test="${dto != null && dto.cate_seq eq 5}">
-					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">출판</a>
-					            </c:when>
-					            <c:when test="${dto != null && dto.cate_seq eq 6}">
-					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">반려동물</a>
-					            </c:when>
-					            <c:otherwise>
-					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">알수없음</a>
-					            </c:otherwise>
-					        </c:choose>
-					    </header>
-	                           
+                       <header class="mb-4">
+                       <c:choose>
+                           <c:when test="${dto != null && dto.cate_seq eq 1}">
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">홈/리빙</a>
+                           </c:when>
+                           <c:when test="${dto != null && dto.cate_seq eq 2}">
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">패션/잡화</a>
+                           </c:when>
+                           <c:when test="${dto != null && dto.cate_seq eq 3}">
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">뷰티</a>
+                           </c:when>
+                           <c:when test="${dto != null && dto.cate_seq eq 4}">
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">푸드</a>
+                           </c:when>
+                           <c:when test="${dto != null && dto.cate_seq eq 5}">
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">출판</a>
+                           </c:when>
+                           <c:when test="${dto != null && dto.cate_seq eq 6}">
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">반려동물</a>
+                           </c:when>
+                           <c:otherwise>
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">알수없음</a>
+                           </c:otherwise>
+                       </c:choose>
+                   </header>
+                              
                         <!-- Preview image figure-->
 <!--                         <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
-                        	 <tr>
-                        	 <td>
-								<img style="width:700px; height:400px;" src="/upload/${dto.img}"/>
-							</td>
-							</tr>
+                            <tr>
+                            <td>
+                        <img style="width:700px; height:400px;" src="/upload/${dto.img}"/>
+                     </td>
+                     </tr>
                         <!-- Post content-->
                         <section class="mb-5">
                             <tr>
-							<td><h4>${dto.content}</h4></td>
-							</tr>
+                     <td><h4>${dto.content}</h4></td>
+                     </tr>
                         </section>
                     </article>
                     <!-- Comments section-->
@@ -240,25 +240,25 @@
                         <div class="card-body">
                             <div class="input-group">
 <!--                                 <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" /> -->
-<!-- 								<input class="form-control" type="text" ></input> -->
+<!--                         <input class="form-control" type="text" ></input> -->
 <!--                                 <button class="btn btn-primary" id="button-search" type="button">Go!</button> -->   
                      <c:choose>
-						<c:when test="${dto.remainingDays lt 0}">
-					        <td><font color="red">마감된 상품</font></td>
-					    </c:when>
-					    <c:otherwise>
-					        <td><font color="red">D-${dto.remainingDays}</font></td>
-					    </c:otherwise>
+                  <c:when test="${dto.remainingDays lt 0}">
+                       <td><font color="red">마감된 상품</font></td>
+                   </c:when>
+                   <c:otherwise>
+                       <td><font color="red">D-${dto.remainingDays}</font></td>
+                   </c:otherwise>
                      </c:choose>
-					 <tr>
+                <tr>
                      <td><h2 style="font-weight:bold;">${dto.title}</h2></td>
                      </tr>
                      <br/>
                      
                      <tr>
-                     	<th>창작자</th>
-                     	<br/>
-                     	<td>${dto.maker}</td>
+                        <th>창작자</th>
+                        <br/>
+                        <td>${dto.maker}</td>
                      </tr>
                      <br/>
                      
@@ -273,42 +273,26 @@
                      <br/>
                             </div>
 <!--                         </div> -->
-							
-							
-
                     </div>
-                    
-
-
+  
                     <!-- 리워드 선택 -->
-
-
-                    <!--                      리워드 선택 -->
-
                      <div class="rewardselect">
                             <select class="form-select" aria-label="Default select example" name="reward_name" id="reward_name">
-                            	<option>리워드 선택하기</option>
+                               <option>리워드 선택하기</option>
 
-                            	<c:forEach items="${rlist}" var="rlist">
-                                	<option> ${rlist.reward_name}</option>
+                               <c:forEach items="${rlist}" var="rlist">
+                                   <option> ${rlist.reward_name}_${rlist.price}원</option>
                                 </c:forEach>
-                                
-<%--                                 <option value="reward_name">${rlist.reward_name}</option>    --%>
-<%--                             	<option value="reward_name">${rlist.reward_name}</option> --%>
-<%--                             	<option value="reward_name">${rlist.reward_name}</option>     --%>
-                            	                  	
-                            </select>
-    
-    						
+                            </select>                 
 
                     </div> 
+                    <br/>
                     <div class="top-info-quantity clearfix">
-                        <p class="top-info-select-title">수량</p>
-                        
+                        <p class="top-info-select-title">수량</p>                        
                         <div class="spiner-form-container clearfix">
-                        <button class="spiner-minus"><i class="material-icons" id="minus">remove</i></button>
+                        <button class="spiner-minus"><i class="material-icons" id="minus">-</i></button>
                         <input type="text" class="spiner-text" id="quantity" value="1">
-                        <button class="spiner-plus"><i class="material-icons" id="plus">add</i></button>
+                        <button class="spiner-plus"><i class="material-icons" id="plus">+</i></button>
                         </div>
                      </div>
                      <br/>
@@ -329,29 +313,29 @@
                         
                         
 <%--                     <% --%>
-<!-- //  							if (ldto != null && "ADMIN".equals(ldto.getRole())) { -->
-<%-- 				        	%>  --%>
-<!-- 							<input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()"  -->
-<!-- 								style="float:right; margin:10px; height:40px; width:100px;"/>	 -->
-<%-- 							<% }  --%>
-<%--  					%>  --%>
- 					<div>
-						<c:choose>
-				            <c:when test="${ldto != null && ldto.role eq 'ADMIN' && dto.product_check eq 'N' && dto != null }">
-				                <input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()" 
-				                    style="float:right; margin:10px; height:40px; width:100px;"/>
-				            </c:when>
-				            <c:when test="${ldto == null}">
-				                <!-- ldto가 null일 경우, 승인 버튼을 보이지 않게 함 -->
-				            </c:when>
-				            <c:otherwise>
-				                <!-- 승인된 프로젝트일경우 승인 버튼을 보이지 않게 함 -->
-				            </c:otherwise>
-				        </c:choose>
- 					</div>
+<!-- //                       if (ldto != null && "ADMIN".equals(ldto.getRole())) { -->
+<%--                        %>  --%>
+<!--                      <input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()"  -->
+<!--                         style="float:right; margin:10px; height:40px; width:100px;"/>    -->
+<%--                      <% }  --%>
+<%--                 %>  --%>
+                <div>
+                  <c:choose>
+                        <c:when test="${ldto != null && ldto.role eq 'ADMIN' && dto.product_check eq 'N' && dto != null }">
+                            <input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()" 
+                                style="float:right; margin:10px; height:40px; width:100px;"/>
+                        </c:when>
+                        <c:when test="${ldto == null}">
+                            <!-- ldto가 null일 경우, 승인 버튼을 보이지 않게 함 -->
+                        </c:when>
+                        <c:otherwise>
+                            <!-- 승인된 프로젝트일경우 승인 버튼을 보이지 않게 함 -->
+                        </c:otherwise>
+                    </c:choose>
+                </div>
 
 
-				</div>
+            </div>
                     
          
                         </div>
