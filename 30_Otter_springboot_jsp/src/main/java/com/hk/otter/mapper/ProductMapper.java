@@ -27,11 +27,6 @@ public interface ProductMapper {
 	public ProductDto productDetail(Integer seq);
 	
 	//카테고리별조회
-//	public interface ProductDto {
-//
-//	    List<ProductDto> Category(int cateSeq);
-//
-//	}
 
 
 
