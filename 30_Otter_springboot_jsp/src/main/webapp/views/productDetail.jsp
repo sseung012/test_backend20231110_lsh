@@ -293,21 +293,6 @@
                         <input type="text" class="spiner-text" id="quantity" value="1">
                         <button class="spiner-plus"><i class="material-icons" id="plus">add</i></button>
                         </div>
-=======
-                            	<option value="reward_name">${rdto.reward_name}</option>   
-                            	<option value="reward_name">${rdto.reward_name}</option>
-                            	<option value="reward_name">${rdto.reward_name}</option>                      	
-                            </select>
-    
-    						<tr>
-						    <td>수량</td>
-						    <td class="bseq_ea"></td>
-						    <td>
-						        <button type="button" class="btn btn-light" onclick="fnCalCount('m', this);">-</button>
-						        <input type="text" name="stock" value="0" readonly="readonly" style="text-align:center;"/>
-						        <button type ="button" class="btn btn-light" onclick="fnCalCount('p',this);">+</button>
-						 	</td>
-							</tr>	
 
                      </div>
                      <tr>
@@ -321,8 +306,7 @@
 
 				</div>
                     <button class="btn btn-primary btn-lg" id="button-search" type="submit">펀딩 참여하기</button>
-           			<button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
-
+         
                         </div>
                     <!-- Categories widget-->
 <!--                     <div class="card mb-4"> -->
