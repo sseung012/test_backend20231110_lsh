@@ -224,7 +224,7 @@
 <!--                                         When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence. -->
 <!--                                     </div> -->
 <!--                                 </div> -->
-<!--                             </div> -->
+<!--                             </div> -->    
                         </div>
                     </section>
                 </div>
@@ -297,8 +297,12 @@
                      <tr>
                      <td>배송비 ㅣ 무료</td>
                      </tr>
+                     <br/>
+                     <tr>
+                     <td>총 금액</td>
+                     </tr>
                      
-               
+
                     <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
 
                         </div>
