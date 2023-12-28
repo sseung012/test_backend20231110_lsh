@@ -231,7 +231,7 @@
                             <label for="userseqno" class="form-label">리워드 선택</label>
                             <select name="reward_name" id="reward_name">
                             	<option>-- 리워드 선택 --</option>
-                            	<option value="1">홈/리빙</option>
+                            	<option value="1">홈/리빙</option>   
                             	<option value="2">패션/잡화</option>
                             	<option value="3">뷰티</option>                      	
                             </select>
