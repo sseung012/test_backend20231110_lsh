@@ -15,22 +15,41 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>productDetail</title>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js">
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type="text/javascript">
 //            function approve() {
 //                // 승인 버튼을 눌렀을 때 실행되어야 할 로직을 여기에 추가
 //                alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
 //                // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
 //            }
+
+
 			
 			 $(document).ready(function(){
         		// $("#description").val().replace()
         		
-        		calculateTotalPrice();
+//         		calculateTotalPrice();
         		
         		<!-- count 값이 변경될때마다 호출 -->
-        		$("#count").change(function(){
-        			calculateTotalPrice();
-        		});
+//         		$("#count").change(function(){
+//         			calculateTotalPrice();
+//         		});
+				$("#reward_name").change(function(){
+// 					alert($("#reward_name option:selected").text());	
+					var seq=$("#reward_name").val();
+// 					alert($("#test > ."+seq).text());
+					if($("#test > ."+seq).text() == ""){
+						var optionSelTxt=$("#reward_name option:selected").text();
+						var countEle=
+							'<div class="'+seq+'">'+optionSelTxt+'</div>'
+							+'<input type="number" id="count" name="count" class="form-control"' 
+	                    	+'placeholder="수량" value="1" style=" max-width: 5rem"/>';
+	                   $("#test").append(countEle); 							
+					}else{
+						alert("이미 추가했어요");
+					}
+				});
+				
         	});
 
 			<!-- 총 상품 금액 계산 -->
@@ -47,8 +66,8 @@
 // 		            return;
 // 		        }
 		
-		        var totalPrice = price*count;
-		        $("#totalPrice").html(totalPrice + '원');
+		        var total_price = price*count;
+		        $("#total_price").html(totalPrice + '원');
 		    }
 
            
@@ -298,14 +317,15 @@
                                <option>리워드 선택하기</option>
 
                                <c:forEach items="${rlist}" var="rlist">
-                                   <option> ${rlist.reward_name}_${rlist.price}원</option>
+                                   <option value="${rlist.seq}"> ${rlist.reward_name}_${rlist.price}원</option>
                                 </c:forEach>
                             </select>                 
                     </div> 
                     <br/>
                     <th>수량</th>
-                    <input type="number" id="count" name="count" class="form-control" 
-                    	placeholder="수량" value="1" style=" max-width: 5rem"/>
+                    <div id="test"></div>
+<!--                     <input type="number" id="count" name="count" class="form-control"  -->
+<!--                     	placeholder="수량" value="1" style=" max-width: 5rem"/> -->
                    
                     
 <!--                     <div class="top-info-quantity clearfix"> -->
@@ -317,7 +337,7 @@
 <!--                        <input type="button" value=" - " name="minus"> -->
 <!--                        <input type="button" value=" + " name="add"><br/> -->
 <!--                        <input type="text" name="total_price" size="11" readonly="readonly">원 -->
-<!--                      </div> -->
+<!--                      </div> --> 
                      <br/>
                      <tr>
                      	<th>총 금액</th>
