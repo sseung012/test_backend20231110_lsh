@@ -103,7 +103,7 @@ public class ProductService {
 		return rewardMapper.rewardOption(seq);
 	}
 
-	//프로젝트 조회
+	//관리자 - 프로젝트 조회
 	public List<ProductDto> getProductList() {
 		return productMapper.getProductList();
 	}
@@ -115,9 +115,9 @@ public class ProductService {
 	}
 
 	//내프로젝트 조회
-//	public List<ProductDto> myProject(int userSeq) {
-//		return productMapper.myProject(userSeq);
-//	}
+	public List<ProductDto> myProject(int userSeq) {
+		return productMapper.myProject(userSeq);
+	}
 
 	//카테고리별조회
 	public List<ProductDto> category(String cate_seq){

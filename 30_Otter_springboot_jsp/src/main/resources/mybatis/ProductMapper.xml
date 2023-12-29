@@ -88,9 +88,9 @@
    
 <!--    마이페이지-내 프로젝트 조회 -->
    <select id="myProject"  resultType="ProductDto">
-<!-- 		SELECT seq, cate_seq, title, maker, created_date, open_date, product_check -->
-<!-- 	    FROM product -->
-<!-- 	    WHERE user_seq = #{userSeq} -->
+		SELECT seq, user_seq, cate_seq, title, maker, created_date, open_date, close_date, total_price, total_supporters, product_check, TIMESTAMPDIFF(DAY, SYSDATE(), close_date+1) AS remainingDays
+		FROM product
+		WHERE user_seq = #{userSeq}
 	</select>
 	
 <!-- 	프로젝트 승인 -->
