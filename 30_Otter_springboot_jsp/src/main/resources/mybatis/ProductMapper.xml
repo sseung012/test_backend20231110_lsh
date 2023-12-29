@@ -85,7 +85,6 @@
       <result property="stock" column="STOCK"/>
    </resultMap>
    
-   
 <!--    마이페이지-내 프로젝트 조회 -->
    <select id="myProject"  resultType="ProductDto">
 <!-- 		SELECT seq, cate_seq, title, maker, created_date, open_date, product_check -->
