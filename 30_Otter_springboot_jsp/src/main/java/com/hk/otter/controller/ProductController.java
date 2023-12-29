@@ -81,10 +81,7 @@ public class ProductController {
 			return "redirect:insertProductForm";
 		}
       }
-	
-	// 리워드 옵션 불러오기
-
-      
+ 
     //프로젝트목록
   	@GetMapping(value="/productList")
   	public String getProductList(Model model, HttpServletRequest request) {
@@ -159,6 +156,8 @@ public class ProductController {
   	       return "redirect:/productDetail"; // 승인 실패 시 productDetail 페이지로 리다이렉트
   	   }
   	}
+  	
+  	// 리워드 수량/금액
   	
   	
 }

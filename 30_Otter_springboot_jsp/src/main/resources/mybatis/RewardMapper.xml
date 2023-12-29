@@ -15,4 +15,5 @@
 		WHERE product_seq=#{product_seq}
 	</select>
 	
+	
 </mapper>
