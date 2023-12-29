@@ -247,13 +247,14 @@
                 <tr>
                     <th>창작자</th>
                     <br/>
-                    <td>${dto.maker}</td>
+                    <td><strong>${dto.maker}</strong></td>
                 </tr>
                 <br/>
                      
                 <tr>
                 	<td>${dto.goal_price}원 목표</td>
                 </tr>
+                <br/>
                 <br/>
                      
                 <tr>
