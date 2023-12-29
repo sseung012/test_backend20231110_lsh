@@ -337,8 +337,7 @@
                             </select>                  
                      </div> 
 
-                            </select>                 
-                    </div> 
+                           
                     <br/>
                     <th>수량</th>
                     <input type="number" id="count" name="count" class="form-control" 
@@ -366,7 +365,7 @@
                      <tr>
                      	<td>배송비 ㅣ 무료</td>
                      </tr>
-
+					</div> 
 <!-- </div>                -->
                      <br/>
                      <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
