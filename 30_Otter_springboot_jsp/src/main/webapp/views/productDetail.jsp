@@ -21,16 +21,14 @@
 //                alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
 //                // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
 //            }
+
            
         </script>
         <!-- Favicon-->
 <!--         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/resources/css/productdetail.css" rel="stylesheet" />
-        <script type="text/javascript">      
-	      
-            
-        </script>
+        
     </head>
     <%
    UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
@@ -275,6 +273,8 @@
                                 </c:forEach>
                             </select>                 
                     </div> 
+                    
+                    
                     
                     <br/>
                     
