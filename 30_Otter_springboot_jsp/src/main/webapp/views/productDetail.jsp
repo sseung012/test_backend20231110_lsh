@@ -8,14 +8,20 @@
 <%response.setContentType("text/html; charset=UTF-8"); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="en">     
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>productDetail</title>
-        <script type="text/javascript">
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js">
+//            function approve() {
+//                // 승인 버튼을 눌렀을 때 실행되어야 할 로직을 여기에 추가
+//                alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
+//                // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
+//            }
+			
 			 $(document).ready(function(){
         		// $("#description").val().replace()
         		
@@ -45,20 +51,13 @@
 		        $("#totalPrice").html(totalPrice + '원');
 		    }
 
-
-            $("#description").val().replace()
-
-            calculateTotalPrice();
-
-            <!-- count 값이 변경될때마다 호출 -->
-            $("#count").change(function(){
-                calculateTotalPrice();
-            });
-        });
-
-        
+           
         </script>
+        <!-- Favicon-->
+<!--         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
+        <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/resources/css/productdetail.css" rel="stylesheet" />
+        
     </head>
     <%
    UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
@@ -206,7 +205,48 @@
                      </tr>
                         </section>
                     </article>
-
+                    <!-- Comments section-->
+                    <section class="mb-5">
+<!--                         <div class="card bg-light"> -->
+<!--                             <div class="card-body"> -->
+                                <!-- Comment form-->
+<!--                                 <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form> -->
+                                <!-- Comment with nested comments-->
+                                <div class="d-flex mb-4">
+                                    <!-- Parent comment-->
+<!--                                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div> -->
+<!--                                     <div class="ms-3"> -->
+<!--                                         <div class="fw-bold">Commenter Name</div> -->
+<!--                                         If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks. -->
+                                        <!-- Child comment 1-->
+<!--                                         <div class="d-flex mt-4"> -->
+<!--                                             <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div> -->
+<!--                                             <div class="ms-3"> -->
+<!--                                                 <div class="fw-bold">Commenter Name</div> -->
+<!--                                                 And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors. -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+                                        <!-- Child comment 2-->
+<!--                                         <div class="d-flex mt-4"> -->
+<!--                                             <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div> -->
+<!--                                             <div class="ms-3"> -->
+<!--                                                 <div class="fw-bold">Commenter Name</div> -->
+<!--                                                 When you put money directly to a problem, it makes a good headline. -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+                                <!-- Single comment-->
+<!--                                 <div class="d-flex"> -->
+<!--                                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div> -->
+<!--                                     <div class="ms-3"> -->
+<!--                                         <div class="fw-bold">Commenter Name</div> -->
+<!--                                         When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence. -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->    
+                        </div>
+                    </section>
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
@@ -260,20 +300,26 @@
                                <c:forEach items="${rlist}" var="rlist">
                                    <option> ${rlist.reward_name}_${rlist.price}원</option>
                                 </c:forEach>
-
-                                
-                            </select>                  
-                     </div> 
-
-                           
+                            </select>                 
+                    </div> 
                     <br/>
                     <th>수량</th>
                     <input type="number" id="count" name="count" class="form-control" 
                     	placeholder="수량" value="1" style=" max-width: 5rem"/>
-
+                   
+                    
+<!--                     <div class="top-info-quantity clearfix"> -->
+<%--                     	<c:forEach items="${rlist}" var="rlist"> --%>
+<%--                             <input type="hidden" name="price" value="${rlist.price}"> --%>
+<%--                        </c:forEach> --%>
+<%--                        <input type="hidden" name="sell_price" value="${rlist.price}"> --%>
+<!--                        <input type="text" name="amount" value="1" size="3" max=""> -->
+<!--                        <input type="button" value=" - " name="minus"> -->
+<!--                        <input type="button" value=" + " name="add"><br/> -->
+<!--                        <input type="text" name="total_price" size="11" readonly="readonly">원 -->
+<!--                      </div> -->
                      <br/>
-                     
-					<tr>
+                     <tr>
                      	<th>총 금액</th>
                      	<input name="total_price" id="total_price" class="form-control" />
                      </tr>
@@ -281,12 +327,8 @@
                      <tr>
                      	<td>배송비 ㅣ 무료</td>
                      </tr>
-                     
                      <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
-					</div> 
-
-                     <br/>
-                     
+                    </div> 
                     <br/>
                     <br/>
                     
@@ -302,8 +344,8 @@
   						
   						</label>
 					</div>
-                    </div> 
-
+                        
+                       
  					<div>
 						<c:choose>
 				            <c:when test="${ldto != null && ldto.role eq 'ADMIN' && dto.product_check eq 'N' && dto != null }">
@@ -325,7 +367,41 @@
 
 				</div>
 
+
+         
                         </div>
+
+                    <!-- Categories widget-->
+<!--                     <div class="card mb-4"> -->
+<!--                         <div class="card-header">Categories</div> -->
+<!--                         <div class="card-body"> -->
+<!--                             <div class="row"> -->
+<!--                                 <div class="col-sm-6"> -->
+<!--                                     <ul class="list-unstyled mb-0"> -->
+<!--                                         <li><a href="#!">Web Design</a></li> -->
+<!--                                         <li><a href="#!">HTML</a></li> -->
+<!--                                         <li><a href="#!">Freebies</a></li> -->
+<!--                                     </ul> -->
+<!--                                 </div> --> 
+<!--                                 <div class="col-sm-6"> -->
+<!--                                     <ul class="list-unstyled mb-0"> -->
+<!--                                         <li><a href="#!">JavaScript</a></li> -->
+<!--                                         <li><a href="#!">CSS</a></li> -->
+<!--                                         <li><a href="#!">Tutorials</a></li> -->
+<!--                                     </ul> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                     </div> -->
+                    <!-- Side widget-->
+<!--                     <div class="card mb-4"> -->
+<!--                         <div class="card-header">Side Widget</div> -->
+<!--                         <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div> -->
+<!--                     </div> -->
+                </div> 
+            </div>
+        </div>
+        </div>
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
