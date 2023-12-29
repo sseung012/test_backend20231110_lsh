@@ -84,7 +84,7 @@ public class ProductController {
  
     //프로젝트목록
   	@GetMapping(value="/productList")
-  	public String getProductList(Model model, HttpServletRequest request) {
+  	public String getProductList(Model model, HttpServletRequest request) { 
   		System.out.println("프로젝트목록");
 
   	    List<ProductDto> list = productService.getProductList();
