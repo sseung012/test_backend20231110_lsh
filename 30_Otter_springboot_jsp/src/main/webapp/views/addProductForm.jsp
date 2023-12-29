@@ -184,7 +184,7 @@ const remove = (obj) => {
 	                            <input type="text" name="combination" class="form-control" placeholder="리워드 설명"/>&nbsp;
 	                            <input type="number" name="stock" class="form-control" placeholder="리워드 수량"/>
                         	</div>
-                        </div>
+                        </div>   
                         <input type="button" value="추가" class="btn btn-outline-dark" onclick="add_textbox()" />
 <!--                             <input type="submit" value="삭제" class="btn btn-outline-dark" /> -->
                         <br><br>
