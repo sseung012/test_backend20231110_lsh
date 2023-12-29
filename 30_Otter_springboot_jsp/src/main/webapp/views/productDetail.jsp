@@ -20,9 +20,38 @@
 //                // 승인 버튼을 눌렀을 때 실행되어야 할 로직을 여기에 추가
 //                alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
 //                // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
-//            }
+//            } 
+        </script>
+        <script type="text/javascript">
+        $(document).ready(function(){
 
-           
+            $("#description").val().replace()
+
+            calculateTotalPrice();
+
+            <!-- count 값이 변경될때마다 호출 -->
+            $("#count").change(function(){
+                calculateTotalPrice();
+            });
+        });
+
+        <!-- 총 상품 금액 계산 -->
+        function calculateTotalPrice(){
+
+            var quantity = $("#stockQuantity").val()*1;
+            var count = $("#count").val();
+            var price = $("#price").val();
+
+
+            <!-- 재고 부족 -->
+            if (quantity < count) {
+                alert("샹품 재고가 부족합니다. 재고:" + quantity + "개")
+                return;
+            }
+
+            var totalPrice = price*count;
+            $("#totalPrice").html(totalPrice + '원');
+        }
         </script>
         <!-- Favicon-->
 <!--         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
@@ -271,25 +300,12 @@
                                <c:forEach items="${rlist}" var="rlist">
                                    <option> ${rlist.reward_name}_${rlist.price}원</option>
                                 </c:forEach>
-                            </select>                 
-                    </div> 
-                    
-                    
-                   
-                    <br/>
-                    
-<!--                     <div class="top-info-quantity clearfix"> -->
-<%--                     	<c:forEach items="${rlist}" var="rlist"> --%>
-<%--                             <input type="hidden" name="price" value="${rlist.price}"> --%>
-<%--                        </c:forEach> --%>
-<%--                        <input type="hidden" name="sell_price" value="${rlist.price}"> --%>
-<!--                        <input type="text" name="amount" value="1" size="3" max=""> -->
-<!--                        <input type="button" value=" - " name="minus"> -->
-<!--                        <input type="button" value=" + " name="add"><br/> -->
-<!--                        <input type="text" name="total_price" size="11" readonly="readonly">원 -->
-<!--                      </div> -->
+                                
+                            </select>                  
+                     </div> 
                      <br/>
-                     <tr>
+                     
+					<tr>
                      	<th>총 금액</th>
                      	<td>
                         </td>
@@ -298,6 +314,9 @@
                      <tr>
                      	<td>배송비 ㅣ 무료</td>
                      </tr>
+
+<!-- </div>                -->
+                     <br/>
                      <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
                     </div> 
                     <br/>
@@ -315,7 +334,9 @@
   						
   						</label>
 					</div>
-                        
+
+					
+                    
                        
  					<div>
 						<c:choose>

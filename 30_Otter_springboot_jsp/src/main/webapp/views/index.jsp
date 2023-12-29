@@ -125,7 +125,7 @@
 <!--             <h1 class="display-4 fw-bolder">Shop in style</h1> -->
 <!--                    <p class="lead fw-normal text-white-50 mb-0"></p> -->
 
-			<img src="./upload/각지에서시련투척.jpg" style="width:200px"; height="200px"/>
+			<img src="./upload/너덜너덜.jpg" style="width:200px"; height="200px"/>
 
          </div>
       </div>
