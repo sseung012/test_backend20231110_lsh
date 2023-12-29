@@ -180,7 +180,7 @@ const remove = (obj) => {
                         	<div class="addReward">
 	                            <label for="userseqno" class="form-label">리워드</label>
 	                            <input type="text" name="reward_name" class="form-control" placeholder="리워드 제목" />&nbsp;
-	                            <input type="text" name="price" class="form-control" placeholder="리워드 가격"/>&nbsp;
+	                            <input type="text" name="price" class="form-control" placeholder="리워드 가격(숫자만 입력해주세요)"/>&nbsp;
 	                            <input type="text" name="combination" class="form-control" placeholder="리워드 설명"/>&nbsp;
 	                            <input type="number" name="stock" class="form-control" placeholder="리워드 수량"/>
                         	</div>
