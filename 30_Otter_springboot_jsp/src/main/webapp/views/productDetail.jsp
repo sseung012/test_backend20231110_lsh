@@ -21,6 +21,35 @@
 //                alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
 //                // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
 //            }
+			
+			 $(document).ready(function(){
+        		// $("#description").val().replace()
+        		
+        		calculateTotalPrice();
+        		
+        		<!-- count 값이 변경될때마다 호출 -->
+        		$("#count").change(function(){
+        			calculateTotalPrice();
+        		});
+        	});
+
+			<!-- 총 상품 금액 계산 -->
+		    function calculateTotalPrice(){
+		
+// 		        var quantity = $("#stockQuantity").val()*1;
+		        var count = $("#count").val();
+		        var price = $("#price").val();
+		
+		
+		        <!-- 재고 부족 -->
+// 		        if (quantity < count) {
+// 		            alert("샹품 재고가 부족합니다. 재고:" + quantity + "개")
+// 		            return;
+// 		        }
+		
+		        var totalPrice = price*count;
+		        $("#totalPrice").html(totalPrice + '원');
+		    }
 
            
         </script>
@@ -273,10 +302,11 @@
                                 </c:forEach>
                             </select>                 
                     </div> 
-                    
-                    
-                   
                     <br/>
+                    <th>수량</th>
+                    <input type="number" id="count" name="count" class="form-control" 
+                    	placeholder="수량" value="1" style=" max-width: 5rem"/>
+                   
                     
 <!--                     <div class="top-info-quantity clearfix"> -->
 <%--                     	<c:forEach items="${rlist}" var="rlist"> --%>
@@ -291,8 +321,7 @@
                      <br/>
                      <tr>
                      	<th>총 금액</th>
-                     	<td>
-                        </td>
+                     	<input name="total_price" id="total_price" class="form-control" />
                      </tr>
                      <br/>
                      <tr>
