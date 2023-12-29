@@ -8,6 +8,7 @@
 <%@ page import="org.springframework.web.bind.annotation.ModelAttribute" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +28,10 @@
 <%
  	List<ProductDto> list=(List<ProductDto>)request.getAttribute("list");
 %>
+<%
+	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
+	ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
+%>
 
 </head>
 
@@ -44,23 +49,30 @@
                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
 	               </li>
 	            </ul>
-            	<form class="dd-flex">
-					&nbsp;
-					<a class="btn btn-outline-darkk" type="submit" href="/user/manage" >
-						<i class="bi-cart-fill me-1"></i>
-						회원관리
-					</a>  
-					&nbsp;
-					<a class="btn btn-outline-darkk" type="submit" href="/product/productList">
-						<i class="bi-cart-fill me-1"></i>
-						프로젝트 관리
-					</a>
-					&nbsp;
-					<a class="btn btn-outline-darkk" type="submit" href="/user/logout">
-						<i class="bi-cart-fill me-1"></i>
-						로그아웃
-					</a> 
-				</form>
+            	<%
+				    if ("USER".equals(ldto.getRole())) {
+				%>
+					<!-- ADMIN이 아닌 경우의 버튼들 -->
+			            <form class="d-flex">
+			                &nbsp;
+			                <a class="btn btn-outline-darkk" type="submit" href="/product/insertProductForm">
+			                    <i class="bi-cart-fill me-1"></i>
+			                    프로젝트 만들기
+			                </a>
+			                &nbsp;
+			                <a class="btn btn-outline-darkk" type="submit" href="/product/myProject">
+			                    <i class="bi-cart-fill me-1"></i>
+			                    나의정보
+			                </a> 
+			                &nbsp;
+			                <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
+			                    <i class="bi-cart-fill me-1"></i>
+			                    로그아웃
+			                </a> 
+			            </form>
+				<%
+				        }
+				%>
          </div>
    </div>
 </nav>
@@ -73,93 +85,77 @@
          <div class="rowww justify-content-center">
             <div class="coll-lg-6">
             	<div class="contents">
-			        <h1>내 프로젝트</h1>
+			        <h1>프로젝트 목록</h1>
 			        <br />
 			        <div id="getProductList">
-			        <input type="hidden" name="id" value="${ldto.seq}"/>
 			            <table class="table2">
-			                <tr>
-			                    <th>글번호</th>
-			                    <th>카테고리</th>
-			                    <th>제목</th>
-			                    <th>회사명</th>
-			                    <th>검토요청일</th>
-			                    <th>승인일</th>
-			                    <th>승인상태</th>
-			                </tr>
-							<%
-							    if (list == null || list.isEmpty()) {
-							%>
-							    <tr>
-							        <td colspan="8">-- 가입된 회원이 없습니다. --</td>
-							    </tr>
-							<%
-							    } else {
-							        for (ProductDto dto : list) {
-							%>
-							            <tr>
-							                <td><%= dto.getSeq()%></td>
-							                <td>
-											    <% 
-											        int categorySeq = dto.getCate_seq();
-											        String categoryName = "";
-											
-											        switch (categorySeq) {
-											            case 1:
-											                categoryName = "홈/리빙";
-											                break;
-											            case 2:
-											                categoryName = "패션/잡화";
-											                break;
-											            case 3:
-											                categoryName = "뷰티";
-											                break;
-											            case 4:
-											                categoryName = "푸드";
-											                break;
-											            case 5:
-											                categoryName = "출판";
-											                break;
-											            case 6:
-											                categoryName = "반려동물";
-											                break;
-											            default:
-											                categoryName = "알 수 없음";
-											                break;
-											        }
-											
-											        out.print(categoryName);
-											    %>
-											</td>
-							                <td>
-							                    <a href='/product/productApprove?seq=<%= dto.getSeq() %>'>
-							                        <span><%= dto.getTitle() %></span>
-							                    </a>
-							                </td>
-							                <td><%= dto.getMaker()%></td>
-							                <td>
-											    <% 
-											        String createdDateStr = "";
-											        Date createdDate = dto.getCreated_date();
-											
-											        if (createdDate != null) {
-											            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-											            createdDateStr = dateFormat.format(createdDate);
-											        }
-											
-											        out.print(createdDateStr);
-											    %>
-											</td>
-							                <td><%= dto.getOpen_date()%></td>
-							                <td style="<%= (dto.getProduct_check().equals("N") ? "color: red;" : "") %>">
-							                	<%= (dto.getProduct_check().equals("Y") ? "승인완료" : "승인대기")%>
-							                </td>
-							            </tr>
-							<%
-							        }
-							    }
-							%>
-			            </table>
+						    <tr>
+						        <th>글번호</th>
+						        <th>카테고리</th>
+						        <th>제목</th>
+						        <th>회사명</th>
+						        <th>승인요청일</th>
+						        <th>승인일</th>
+						        <th>마감일</th>
+						        <th>승인상태</th>
+						        <th>남은날짜</th>
+						    </tr>
+	
+						    <c:choose>
+							    <c:when test="${ldto != null && !empty list}">
+							        <c:forEach var="pdto" items="${list}">
+							            <c:if test="${pdto.user_seq eq ldto.seq}">
+							                <tr>
+							                    <td>${pdto.seq}</td>
+							                    <td>
+							                        <c:set var="categoryName">
+							                            <c:choose>
+							                                <c:when test="${pdto.cate_seq eq 1}">홈/리빙</c:when>
+							                                <c:when test="${pdto.cate_seq eq 2}">패션/잡화</c:when>
+							                                <c:when test="${pdto.cate_seq eq 3}">뷰티</c:when>
+							                                <c:when test="${pdto.cate_seq eq 4}">푸드</c:when>
+							                                <c:when test="${pdto.cate_seq eq 5}">출판</c:when>
+							                                <c:when test="${pdto.cate_seq eq 6}">반려동물</c:when>
+							                                <c:otherwise>알 수 없음</c:otherwise>
+							                            </c:choose>
+							                        </c:set>
+							                        ${categoryName}
+							                    </td>
+							                    <td>
+							                        <a href='/product/productDetail/${pdto.seq}'>
+							                            <span>${pdto.title}</span>
+							                        </a>
+							                    </td>
+							                    <td>${pdto.maker}</td>
+							                    <td>
+													${pdto.created_date}
+							                    </td>
+							                    <td>
+							                    	${pdto.open_date}
+							                    </td>
+							                    <td>${pdto.close_date}</td>
+							                    <td style="<c:if test='${pdto.product_check eq "N"}'>color: red;</c:if>">
+							                        ${pdto.product_check eq "Y" ? "승인완료" : "승인대기"}
+							                    </td>
+							                    <c:choose>
+													<c:when test="${pdto.remainingDays lt 0}">
+												        <td>마감</td>
+												    </c:when>
+												    <c:otherwise>
+												        <td>${pdto.remainingDays}</td>
+												    </c:otherwise>
+						                        </c:choose> 
+							                </tr>
+							            </c:if>
+							        </c:forEach>
+							    </c:when>
+							    <c:otherwise>
+							        <tr>
+							            <td colspan="8">-- 로그인 오류 또는 프로젝트 없음 --</td>
+							        </tr>
+							    </c:otherwise>
+							</c:choose>
+						</table>
 			        </div>
 			    </div>
 			</div>
