@@ -140,6 +140,10 @@ public class ProductController {
   	    List<ProductDto> list = productService.category(cate_seq);
   	    model.addAttribute("clist", list);
   	    System.out.println("clist:"+list);
+  	    
+//  	    if(cate_seq==null) {
+//  	    	list=productService.category(cate_seq);
+//  	    }
 
   	    return "category";   
   	}

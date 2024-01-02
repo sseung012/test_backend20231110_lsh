@@ -119,6 +119,7 @@ public class ProductService {
 		return productMapper.myProject(userSeq);
 	}
 
+	
 	//카테고리별조회
 	public List<ProductDto> category(String cate_seq){
 		return productMapper.category(cate_seq);
