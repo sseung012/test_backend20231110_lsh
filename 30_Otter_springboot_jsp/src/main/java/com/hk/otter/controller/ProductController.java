@@ -127,7 +127,8 @@ public class ProductController {
 		int userSeq=ldto.getSeq();
   		
   	    List<ProductDto> list = productService.myProject(userSeq);
-  	    model.addAttribute("list", list);
+  	    model.addAttribute("mylist", list);
+  	    System.out.println("mylist:"+list);
 
 
   	    return "myProject"; 

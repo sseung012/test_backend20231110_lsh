@@ -128,7 +128,23 @@ public class ProductDto {
 		this.remainingDays = remainingDays;
 	}
 
+//	public ProductDto(int seq, String product_check, String open_date) {
+//		super();
+//		this.seq = seq;
+//		this.product_check = product_check;
+//		this.open_date = open_date;
+//		
+//	}
 
+	
+	public ProductDto(int user_seq, String img, String product_check) {
+		super();
+		this.user_seq = user_seq;
+		this.img = img;
+		this.product_check = product_check;
+	}
+
+	
 	public ProductDto(int seq, int user_seq, String img, String maker, String goal_price, String title,
 			Date created_date, String open_date, String close_date, String content, int total_price,
 			int total_supporters, int cate_seq, String product_check, List<RewardDto> reList) {
@@ -151,13 +167,6 @@ public class ProductDto {
 	}
 
 
-	public ProductDto(int seq, String product_check, String open_date) {
-		super();
-		this.seq = seq;
-		this.product_check = product_check;
-		this.open_date = open_date;
-		
-	}
 
 
 	public int getSeq() {

@@ -118,7 +118,7 @@ public class ProductService {
 	public List<ProductDto> myProject(int userSeq) {
 		return productMapper.myProject(userSeq);
 	}
-
+	
 	
 	//카테고리별조회
 	public List<ProductDto> category(String cate_seq){
