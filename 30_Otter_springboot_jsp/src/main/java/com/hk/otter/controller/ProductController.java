@@ -1,10 +1,14 @@
 package com.hk.otter.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,8 +18,11 @@ import org.springframework.web.multipart.MultipartRequest;
 import com.hk.otter.command.InsertProductCommand;
 import com.hk.otter.dtos.ProductDto;
 import com.hk.otter.dtos.RewardDto;
+import com.hk.otter.dtos.UserDto;
 import com.hk.otter.service.ProductService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/product")
@@ -57,6 +64,14 @@ public class ProductController {
             			  , Model model, HttpServletRequest request)throws Exception { 
 		System.out.println(insertProductCommand);
          try {
+        	// 'yyyy-MM-dd' 형식의 문자열을 LocalDate로 변환
+            LocalDate closeDate = LocalDate.parse(insertProductCommand.getClose_date());
+             
+            // 'yyyymmdd' 형식으로 변환
+            String formattedCloseDate = closeDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+             
+            // InsertProductCommand에 'yyyymmdd' 형식으로 변환한 날짜를 다시 설정
+            insertProductCommand.setClose_date(formattedCloseDate);
 			productService.insertProduct(insertProductCommand, multipartRequest, request);
 			System.out.println("프로젝트 만들기 성공");			
 			return "redirect:/";
@@ -66,13 +81,10 @@ public class ProductController {
 			return "redirect:insertProductForm";
 		}
       }
-	
-	// 리워드 옵션 불러오기
-
-      
+ 
     //프로젝트목록
   	@GetMapping(value="/productList")
-  	public String getProductList(Model model, HttpServletRequest request) {
+  	public String getProductList(Model model, HttpServletRequest request) { 
   		System.out.println("프로젝트목록");
 
   	    List<ProductDto> list = productService.getProductList();
@@ -100,11 +112,23 @@ public class ProductController {
   	
   //내프로젝트목록
   	@GetMapping(value="/myProject")
-  	public String myProject(Model model, HttpServletRequest request) {
-//  		System.out.println("프로젝트목록");
-//
-//  	    List<ProductDto> list = productService.myProject();
-//  	    model.addAttribute("list", list);
+  	public String myProject(ProductDto dto, Model model, HttpServletRequest request) {
+  		System.out.println("프로젝트목록");
+
+		HttpSession session = request.getSession();
+		UserDto ldto = (UserDto)session.getAttribute("ldto");
+		request.setAttribute("dto", ldto);
+		
+		// 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리다이렉트
+		if (ldto == null) {
+			return "redirect:/user/signin";
+		}
+		
+		int userSeq=ldto.getSeq();
+  		
+  	    List<ProductDto> list = productService.myProject(userSeq);
+  	    model.addAttribute("list", list);
+
 
   	    return "myProject"; 
   	}
@@ -119,6 +143,22 @@ public class ProductController {
 
   	    return "category";   
   	}
+  	
+  	//승인하기
+  	@GetMapping(value = "/approve/{seq}")
+  	public String approve(@PathVariable int seq) {
+  	   boolean isS = productService.approve(seq);
+
+  	   if (isS) {
+  	       return "redirect:/product/productList"; // 승인 성공 시 productList 페이지로 리다이렉트
+  	   } else {
+  	       System.out.println("수정 실패 메시지 또는 다른 처리를 추가하세요");
+  	       return "redirect:/productDetail"; // 승인 실패 시 productDetail 페이지로 리다이렉트
+  	   }
+  	}
+  	
+  	// 리워드 수량/금액
+  	
   	
 }
 

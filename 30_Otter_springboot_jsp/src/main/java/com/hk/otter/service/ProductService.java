@@ -1,7 +1,11 @@
 package com.hk.otter.service;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,7 +103,7 @@ public class ProductService {
 		return rewardMapper.rewardOption(seq);
 	}
 
-	//프로젝트 조회
+	//관리자 - 프로젝트 조회
 	public List<ProductDto> getProductList() {
 		return productMapper.getProductList();
 	}
@@ -111,13 +115,40 @@ public class ProductService {
 	}
 
 	//내프로젝트 조회
-//	public List<ProductDto> myProject(int userSeq) {
-//		return productMapper.myProject(userSeq);
-//	}
+	public List<ProductDto> myProject(int userSeq) {
+		return productMapper.myProject(userSeq);
+	}
 
 	//카테고리별조회
 	public List<ProductDto> category(String cate_seq){
 		return productMapper.category(cate_seq);
+	}
+
+
+	//승인처리하기
+	public boolean approve(int seq) {
+	    ProductDto dto = new ProductDto();
+	    dto.setSeq(seq);
+	    dto.setProduct_check("Y");
+
+	    // Set open_date to the current date and time
+	    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+	    Date date = new Date(timestamp.getTime());
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+	    String formattedDate = dateFormat.format(date);
+	    dto.setOpen_date(formattedDate);
+
+
+	    // Call productMapper.approve to update the product_check and open_date in the database
+	    boolean result = productMapper.approve(dto);
+
+	    if (result) {
+	        System.out.println("승인 완료");
+	    } else {
+	        System.out.println("승인 실패");
+	    }
+
+	    return result;
 	}
 
 }

@@ -15,33 +15,68 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>productDetail</title>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js">
-// 	        function approve() {
-// 	            // 승인 버튼을 눌렀을 때 실행되어야 할 로직을 여기에 추가
-// 	            alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
-// 	            // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
-// 	        }
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type="text/javascript">
+//            function approve() {
+//                // 승인 버튼을 눌렀을 때 실행되어야 할 로직을 여기에 추가
+//                alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
+//                // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
+//            }
+
+
+			
+			 $(document).ready(function(){
+        		// $("#description").val().replace()
+        		
+//         		calculateTotalPrice();
+        		
+        		<!-- count 값이 변경될때마다 호출 -->
+//         		$("#count").change(function(){
+//         			calculateTotalPrice();
+//         		});
+				$("#reward_name").change(function(){
+// 					alert($("#reward_name option:selected").text());	
+					var seq=$("#reward_name").val();
+// 					alert($("#test > ."+seq).text());
+					if($("#test > ."+seq).text() == ""){
+						var optionSelTxt=$("#reward_name option:selected").text();
+						var countEle=
+							'<div class="'+seq+'">'+optionSelTxt+'</div>'
+							+'<input type="number" id="count" name="count" class="form-control"' 
+	                    	+'placeholder="수량" value="1" style=" max-width: 5rem"/>';
+	                   $("#test").append(countEle); 							
+					}else{
+						alert("이미 추가했어요");
+					}
+				});
+				
+        	});
+
+			<!-- 총 상품 금액 계산 -->
+		    function calculateTotalPrice(){
+		
+// 		        var quantity = $("#stockQuantity").val()*1;
+		        var count = $("#count").val();
+		        var price = $("#price").val();
+		
+		
+		        <!-- 재고 부족 -->
+// 		        if (quantity < count) {
+// 		            alert("샹품 재고가 부족합니다. 재고:" + quantity + "개")
+// 		            return;
+// 		        }
+		
+		        var total_price = price*count;
+		        $("#total_price").html(totalPrice + '원');
+		    }
+
            
         </script>
         <!-- Favicon-->
 <!--         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/resources/css/productdetail.css" rel="stylesheet" />
-        <script type="text/javascript">
-        function fnCalCount(type, ths){
-            var $input = $(ths).parents("td").find("input[name='stock']");
-            var tCount = Number($input.val());
-            var tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html());
-            
-            if(type=='p'){
-                if(tCount < tEqCount) $input.val(Number(tCount)+1);
-                
-            }else{
-                if(tCount >0) $input.val(Number(tCount)-1);    
-                }
-        }
-         
-        </script>
+        
     </head>
     <%
    UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
@@ -149,44 +184,44 @@
                     <article>
                         <!-- Post header-->
                            
-			           	<header class="mb-4">
-					        <c:choose>
-					            <c:when test="${dto != null && dto.cate_seq eq 1}">
-					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">홈/리빙</a>
-					            </c:when>
-					            <c:when test="${dto != null && dto.cate_seq eq 2}">
-					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">패션/잡화</a>
-					            </c:when>
-					            <c:when test="${dto != null && dto.cate_seq eq 3}">
-					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">뷰티</a>
-					            </c:when>
-					            <c:when test="${dto != null && dto.cate_seq eq 4}">
-					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">푸드</a>
-					            </c:when>
-					            <c:when test="${dto != null && dto.cate_seq eq 5}">
-					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">출판</a>
-					            </c:when>
-					            <c:when test="${dto != null && dto.cate_seq eq 6}">
-					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">반려동물</a>
-					            </c:when>
-					            <c:otherwise>
-					                <a class="badge bg-secondary text-decoration-none link-light" href="#!">알수없음</a>
-					            </c:otherwise>
-					        </c:choose>
-					    </header>
-	                           
+                       <header class="mb-4">
+                       <c:choose>
+                           <c:when test="${dto != null && dto.cate_seq eq 1}">
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">홈/리빙</a>
+                           </c:when>
+                           <c:when test="${dto != null && dto.cate_seq eq 2}">
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">패션/잡화</a>
+                           </c:when>
+                           <c:when test="${dto != null && dto.cate_seq eq 3}">
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">뷰티</a>
+                           </c:when>
+                           <c:when test="${dto != null && dto.cate_seq eq 4}">
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">푸드</a>
+                           </c:when>
+                           <c:when test="${dto != null && dto.cate_seq eq 5}">
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">출판</a>
+                           </c:when>
+                           <c:when test="${dto != null && dto.cate_seq eq 6}">
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">반려동물</a>
+                           </c:when>
+                           <c:otherwise>
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">알수없음</a>
+                           </c:otherwise>
+                       </c:choose>
+                   </header>
+                              
                         <!-- Preview image figure-->
 <!--                         <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
-                        	 <tr>
-                        	 <td>
-								<img style="width:700px; height:400px;" src="/upload/${dto.img}"/>
-							</td>
-							</tr>
+                            <tr>
+                            <td>
+                        <img style="width:700px; height:400px;" src="/upload/${dto.img}"/>
+                     </td>
+                     </tr>
                         <!-- Post content-->
                         <section class="mb-5">
                             <tr>
-							<td><h4>${dto.content}</h4></td>
-							</tr>
+                     <td><h4>${dto.content}</h4></td>
+                     </tr>
                         </section>
                     </article>
                     <!-- Comments section-->
@@ -240,106 +275,105 @@
                         <div class="card-body">
                             <div class="input-group">
 <!--                                 <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" /> -->
-<!-- 								<input class="form-control" type="text" ></input> -->
+<!--                         <input class="form-control" type="text" ></input> -->
 <!--                                 <button class="btn btn-primary" id="button-search" type="button">Go!</button> -->   
                      <c:choose>
-						<c:when test="${dto.remainingDays lt 0}">
-					        <td><font color="red">마감된 상품</font></td>
-					    </c:when>
-					    <c:otherwise>
-					        <td><font color="red">D-${dto.remainingDays}</font></td>
-					    </c:otherwise>
+                  <c:when test="${dto.remainingDays lt 0}">
+                       <td><font color="red">마감된 상품</font></td>
+                   </c:when>
+                   <c:otherwise>
+                       <td><font color="red">D-${dto.remainingDays}</font></td>
+                   </c:otherwise>
                      </c:choose>
-					 <tr>
+                <tr>
                      <td><h2 style="font-weight:bold;">${dto.title}</h2></td>
-                     </tr>
-                     <br/>
+                </tr>
+                <br/>
                      
-                     <tr>
-                     	<th>창작자</th>
-                     	<br/>
-                     	<td>${dto.maker}</td>
-                     </tr>
-                     <br/>
+                <tr>
+                    <th>창작자</th>
+                    <br/>
+                    <td><strong>${dto.maker}</strong></td>
+                </tr>
+                <br/>
                      
-                     <tr>
-                     <td>${dto.goal_price}원 목표</td>
-                     </tr>
-                     <br/>
+                <tr>
+                	<td>${dto.goal_price}원 목표</td>
+                </tr>
+                <br/>
+                <br/>
                      
-                     <tr>
-                     <td>${dto.total_price}원 달성</td>
-                     </tr>
-                     <br/>
-                            </div>
+                <tr>
+                    <td>${dto.total_price}원 달성</td>
+                </tr>
+                <br/>
+             </div>
 <!--                         </div> -->
-							
-							
-
-                    </div>
-                    
-
-
+         </div>
+                       
                     <!-- 리워드 선택 -->
-
-
-                    <!--                      리워드 선택 -->
-
                      <div class="rewardselect">
                             <select class="form-select" aria-label="Default select example" name="reward_name" id="reward_name">
-                            	<option>리워드 선택하기</option>
+                               <option>리워드 선택하기</option>
 
-                            	<c:forEach items="${rlist}" var="rlist">
-                                	<option> ${rlist.reward_name}</option>
+                               <c:forEach items="${rlist}" var="rlist">
+                                   <option value="${rlist.seq}"> ${rlist.reward_name}_${rlist.price}원</option>
                                 </c:forEach>
-                                
-<%--                                 <option value="reward_name">${rlist.reward_name}</option>    --%>
-<%--                             	<option value="reward_name">${rlist.reward_name}</option> --%>
-<%--                             	<option value="reward_name">${rlist.reward_name}</option>     --%>
-                            	                  	
-                            </select>
-    
-    						
-
+                            </select>                 
                     </div> 
-                    <div class="top-info-quantity clearfix">
-                        <p class="top-info-select-title">수량</p>
-                        
-                        <div class="spiner-form-container clearfix">
-                        <button class="spiner-minus"><i class="material-icons" id="minus">remove</i></button>
-                        <input type="text" class="spiner-text" id="quantity" value="1">
-                        <button class="spiner-plus"><i class="material-icons" id="plus">add</i></button>
-                        </div>
-                     </div>
+                    <br/>
+                    <th>수량</th>
+                    <div id="test"></div>
+<!--                     <input type="number" id="count" name="count" class="form-control"  -->
+<!--                     	placeholder="수량" value="1" style=" max-width: 5rem"/> -->
+                   
+                    
+<!--                     <div class="top-info-quantity clearfix"> -->
+<%--                     	<c:forEach items="${rlist}" var="rlist"> --%>
+<%--                             <input type="hidden" name="price" value="${rlist.price}"> --%>
+<%--                        </c:forEach> --%>
+<%--                        <input type="hidden" name="sell_price" value="${rlist.price}"> --%>
+<!--                        <input type="text" name="amount" value="1" size="3" max=""> -->
+<!--                        <input type="button" value=" - " name="minus"> -->
+<!--                        <input type="button" value=" + " name="add"><br/> -->
+<!--                        <input type="text" name="total_price" size="11" readonly="readonly">원 -->
+<!--                      </div> --> 
                      <br/>
                      <tr>
-                     <td>총 금액</td>
+                     	<th>총 금액</th>
+                     	<input name="total_price" id="total_price" class="form-control" />
                      </tr>
                      <br/>
                      <tr>
-                     <td>배송비 ㅣ 무료</td>
+                     	<td>배송비 ㅣ 무료</td>
                      </tr>
-                     
-                     
-
-
-                    <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
-
-                        </div>
+                     <button class="btn btn-primary" id="button-search" type="submit">펀딩 참여하기</button>
+                    </div> 
+                    <br/>
+                    <br/>
+                    
+                    <div class="mb-3">
+  						<h4><label for="exampleFormControlTextarea1" class="form-label">리워드 안내</label></h4>
+  						<label class="form-control" id="exampleFormControlTextarea1" rows="3">
+  							<c:forEach items="${rlist}" var="rlist">
+  								   <p style="font-size:20px; font-weight:bold;">${rlist.price}원</p>
+                                   <p style="font-size:20px;">${rlist.reward_name}</p>           
+                                   <p>${rlist.combination}</p>
+                                   <hr/>
+                            </c:forEach>
+  						
+  						</label>
+					</div>
                         
-                        
-<%--                     <% --%>
-<!-- //  							if (ldto != null && "ADMIN".equals(ldto.getRole())) { -->
-<%-- 				        	%>  --%>
-<!-- 							<input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()"  -->
-<!-- 								style="float:right; margin:10px; height:40px; width:100px;"/>	 -->
-<%-- 							<% }  --%>
-<%--  					%>  --%>
+                       
  					<div>
 						<c:choose>
 				            <c:when test="${ldto != null && ldto.role eq 'ADMIN' && dto.product_check eq 'N' && dto != null }">
-				                <input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()" 
-				                    style="float:right; margin:10px; height:40px; width:100px;"/>
+<!-- 				                <input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()"  -->
+<!-- 				                    style="float:right; margin:10px; height:40px; width:100px;"/> -->
+								<input type="hidden" name="id" value="${dto.seq}"/>
+				            	<a class="btn btn-outline-darkk" id="approve" href="/product/approve/${dto.seq}"
+   									style="float:right; margin:10px; height:40px; width:100px; font-size:17px; font-align:center; background-color:#DCFAFD;">승인</a>
 				            </c:when>
 				            <c:when test="${ldto == null}">
 				                <!-- ldto가 null일 경우, 승인 버튼을 보이지 않게 함 -->
@@ -352,7 +386,8 @@
 
 
 				</div>
-                    
+
+
          
                         </div>
 

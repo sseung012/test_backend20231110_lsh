@@ -85,12 +85,20 @@
       <result property="stock" column="STOCK"/>
    </resultMap>
    
+   
 <!--    마이페이지-내 프로젝트 조회 -->
    <select id="myProject"  resultType="ProductDto">
-<!-- 		SELECT seq, cate_seq, title, maker, created_date, open_date, product_check -->
-<!-- 	    FROM product -->
-<!-- 	    WHERE user_seq = #{userSeq} -->
+		SELECT seq, user_seq, cate_seq, title, maker, created_date, open_date, close_date, total_price, total_supporters, product_check, TIMESTAMPDIFF(DAY, SYSDATE(), close_date+1) AS remainingDays
+		FROM product
+		WHERE user_seq = #{userSeq}
 	</select>
+	
+<!-- 	프로젝트 승인 -->
+	<update id="approve" parameterType="ProductDto">
+		UPDATE product
+		SET product_check='Y', open_date=DATE_FORMAT(NOW(), '%Y%m%d')
+		WHERE seq=#{seq};
+	</update>
 
 </mapper>
 

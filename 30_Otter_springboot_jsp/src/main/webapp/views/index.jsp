@@ -117,7 +117,7 @@
          </div>
    </div>
 </nav>
-        
+               
 <!-- Header-->
    <header class="bg-dark py-5">
        <div class="container px-4 px-lg-5 my-5">
@@ -126,7 +126,6 @@
                    <p class="lead fw-normal text-white-50 mb-0">
                    펀딩은 크라우드 펀딩의 줄임말로, 온라인 플랫폼을 통해 불특정 다수에게 자금을 확보하는 방식입니다. 선주문 후생산 방식으로, 목표한 금액 달성 후 제품이 제작돼요. 
                    </p>
-
          </div>
       </div>
    </header>

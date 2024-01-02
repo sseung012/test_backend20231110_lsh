@@ -21,15 +21,18 @@ public interface ProductMapper {
 	
 	// 프로젝트 상세보기	
 	public ProductDto productDetail(Integer seq);
-	
-	//내 프로젝트 조회
-//	public List<ProductDto> myProject(int userSeq);
 
 	// 리워드 옵션 불러오기
 	public RewardDto rewardOption(int seq);
 	
 	//카테고리별조회
 	public List<ProductDto> category(String cate_seq);
+
+	//프로젝트 승인
+	boolean approve(ProductDto dto);
+
+	//내프로젝트 조회(리스트로)
+	public List<ProductDto> myProject(int userSeq);
 	
 
 
