@@ -299,13 +299,15 @@
                 <br/>
                      
                 <tr>
-                	<td>${dto.goal_price}원 목표</td>
+                	<th>목표금액</th>
+                	<td><strong>${dto.goal_price}원</strong></td>
                 </tr>
-                <br/>
                 <br/>
                      
                 <tr>
-                    <td>${dto.total_price}원 달성</td>
+                	<th>모인금액</th>
+                	<br/>
+                    <td><strong>${dto.total_price}원</strong></td>
                 </tr>
                 <br/>
              </div>
