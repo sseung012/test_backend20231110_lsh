@@ -23,7 +23,7 @@
 //                // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
 //            }
 
-
+			var total_price=0;
 			
 			 $(document).ready(function(){
         		// $("#description").val().replace()
@@ -50,39 +50,68 @@
 					if($("#test > ."+seq).text() == ""){
 						
 						var optionSelTxt=$("#reward_name option:selected").text();
-						var optionPrice=$("#reward_name option:selected").text().split("_");
+						var optionP=$("#reward_name option:selected").text().split("_");
+						var optionPP = parseInt(optionP[1].replace("원", ""))
 // 						console.log(optionPrice[0]);
-						
-// 						int total = 0;
-// 						for (var i = 0; i < $("#count").length; i++) {
-// 							var total = parseInt(optionPrice[1].replace("원", " ").text()) * count;
-// 						}
-
+				
 
 						var countEle=
-							'<div class="'+seq+'">'+optionSelTxt+'</div>'
-							+'<input type="number" id="count" name="count" class="form-class"' 
-	                    	+'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
+							'<div class="cc">'
+							+'<div class="'+seq+'">'+optionSelTxt+'</div>'
+							+'<input type="number" name="count" class="form-class"' 
+	                    	+'placeholder="수량" value="1" style="max-width: 5rem" min="0"/>'
 // 	                    	+'<input type="text" id="per" name="per" class="form-control"/>'
-	                    	+'<div class="'+seq+'">'+ parseInt(optionPrice[1].replace("원", " ")) +'</div>';
-	                   $("#test").append(countEle); 							
+	                    	+'<div>'+optionPP+'</div>'
+	                    	+'<button>X</button>'
+	                    	+'</div>';
+	                   $("#test").append(countEle); 	
+	                   total_price+=optionPP;
+	                   $("#total_price").val(total_price);
 					}else{
 						alert("이미 추가했어요");
 					}
 				});
+        		
+				<!-- 상품 금액 계산 -->
+				$("#test").on("click","input[name=count]",function(){
+					var inputCount=$(this);//input 엘리먼트
+					
+					var optionPP2=inputCount.prev("div").text().split("_")[1].replace("원","");
+					var count=$(this).val();//수량
+					
+					var optionPPDiv=$(this).next("div");
+					optionPPDiv.text(optionPP2*count);
+					var sum=0;
+					$(".cc").each(function(){
+						sum+=parseInt($(this).find("div").eq(1).text());
+					});
+					total_price=sum;
+					$("#total_price").val(total_price);
+				});
 				
+// 				버튼을 눌렀을 때 지워지고(remove) prev() 이용해서 값을 구하고 그걸 총금액에서 빼고 저장
+// 				$("total_price").on("click","input[name=total_price]", function(){
+// 					var total = $(this).remove();
+					
+// 					var totalP = total.prev("").;
+// 					total_prive -= totalP;
+
+
+// 				});
+				
+				
+// 				$("input[name=count]").click(function(){
+// 					var inputCount=$(this);//input 엘리먼트
+					
+// 					var optionPP2=inputCount.prev("div").text().split("_")[1].replace("원","");
+// 					var count=$(this).val();//수량
+					
+// 					var optionPPDiv=$(this).next("div");
+// 					optionPPDiv.text(optionPP2*count);
+					
+// 				});				
 				
         	});
-
-			<!-- 총 상품 금액 계산 -->
-// 		    function calculateTotalPrice(){
-		
-// 		        var count = $("#count").val();
-// 		        var price = $("#price").val();
-		
-// 		        var total_price = price*count;
-// 		        $("#total_price").html(totalPrice + '원');
-// 		    }
 
            
         </script>
@@ -347,7 +376,9 @@
                      	<th>총 금액</th>
                      	<input name="total_price" id="total_price" class="form-control" />
                      </tr>
+                     
                      <br/>
+                     
                      <tr>
                      	<td>배송비 ㅣ 무료</td>
                      </tr>
