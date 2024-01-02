@@ -58,6 +58,7 @@
 // 							var total = parseInt(optionPrice[1].replace("원", " ").text()) * count;
 // 						}
 
+
 						var countEle=
 							'<div class="'+seq+'">'+optionSelTxt+'</div>'
 							+'<input type="number" id="count" name="count" class="form-class"' 
