@@ -32,43 +32,57 @@
         		
         		<!-- count 값이 변경될때마다 호출 -->
 //         		$("#count").change(function(){
-//         			calculateTotalPrice();
-//         		});
-				$("#reward_name").change(function(){
+//         			calculateTotalPrice();//         		
+// 				});
+
+// 				$(".count").on('keyup', function(e){
+// 					var amount = (10000 * $(".count").val());
+// 					alert(amount);
+// 				});
+
+
+
+
+        		$("#reward_name").change(function(){
 // 					alert($("#reward_name option:selected").text());	
 					var seq=$("#reward_name").val();
 // 					alert($("#test > ."+seq).text());
 					if($("#test > ."+seq).text() == ""){
+						
 						var optionSelTxt=$("#reward_name option:selected").text();
+						var optionPrice=$("#reward_name option:selected").text().split("_");
+// 						console.log(optionPrice[0]);
+						
+// 						int total = 0;
+// 						for (var i = 0; i < $("#count").length; i++) {
+// 							var total = parseInt(optionPrice[1].replace("원", " ").text()) * count;
+// 						}
+
+
 						var countEle=
 							'<div class="'+seq+'">'+optionSelTxt+'</div>'
-							+'<input type="number" id="count" name="count" class="form-control"' 
-	                    	+'placeholder="수량" value="1" style=" max-width: 5rem"/>';
+							+'<input type="number" id="count" name="count" class="form-class"' 
+	                    	+'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
+// 	                    	+'<input type="text" id="per" name="per" class="form-control"/>'
+	                    	+'<div class="'+seq+'">'+ parseInt(optionPrice[1].replace("원", " ")) +'</div>';
 	                   $("#test").append(countEle); 							
 					}else{
 						alert("이미 추가했어요");
 					}
 				});
 				
+				
         	});
 
 			<!-- 총 상품 금액 계산 -->
-		    function calculateTotalPrice(){
+// 		    function calculateTotalPrice(){
 		
-// 		        var quantity = $("#stockQuantity").val()*1;
-		        var count = $("#count").val();
-		        var price = $("#price").val();
+// 		        var count = $("#count").val();
+// 		        var price = $("#price").val();
 		
-		
-		        <!-- 재고 부족 -->
-// 		        if (quantity < count) {
-// 		            alert("샹품 재고가 부족합니다. 재고:" + quantity + "개")
-// 		            return;
-// 		        }
-		
-		        var total_price = price*count;
-		        $("#total_price").html(totalPrice + '원');
-		    }
+// 		        var total_price = price*count;
+// 		        $("#total_price").html(totalPrice + '원');
+// 		    }
 
            
         </script>
@@ -325,22 +339,9 @@
                             </select>                 
                     </div> 
                     <br/>
-                    <th>수량</th>
+<!--                     <th>수량</th> -->
                     <div id="test"></div>
-<!--                     <input type="number" id="count" name="count" class="form-control"  -->
-<!--                     	placeholder="수량" value="1" style=" max-width: 5rem"/> -->
-                   
                     
-<!--                     <div class="top-info-quantity clearfix"> -->
-<%--                     	<c:forEach items="${rlist}" var="rlist"> --%>
-<%--                             <input type="hidden" name="price" value="${rlist.price}"> --%>
-<%--                        </c:forEach> --%>
-<%--                        <input type="hidden" name="sell_price" value="${rlist.price}"> --%>
-<!--                        <input type="text" name="amount" value="1" size="3" max=""> -->
-<!--                        <input type="button" value=" - " name="minus"> -->
-<!--                        <input type="button" value=" + " name="add"><br/> -->
-<!--                        <input type="text" name="total_price" size="11" readonly="readonly">원 -->
-<!--                      </div> --> 
                      <br/>
                      <tr>
                      	<th>총 금액</th>
@@ -432,3 +433,7 @@
         <script src="js/scripts.js"></script>
     </body>
 </html>
+
+
+
+
