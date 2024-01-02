@@ -49,6 +49,7 @@
 	                            <li><a class="dropdown-item" href="/product/category?cate_seq=4">푸드</a></li>
 	                            <li><a class="dropdown-item" href="/product/category?cate_seq=5">출판</a></li>
 	                            <li><a class="dropdown-item" href="/product/category?cate_seq=6">반려동물</a></li>
+	                            <li><a class="dropdown-item" href="/product/category?cate_seq=7">기타</a></li>
                             </ul> 
 	               </li>
 	            </ul>
