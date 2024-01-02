@@ -122,14 +122,6 @@
 <!-- Header-->
    <header class="bg-dark py-5">
        <div class="container px-4 px-lg-5 my-5">
-<<<<<<< HEAD
-           <div class="text-center text-white">
-<!--             <h1 class="display-4 fw-bolder">Shop in style</h1> -->
-<!--                    <p class="lead fw-normal text-white-50 mb-0"></p> -->
-
-			<img src="./upload/Yuri.jpg" style="width:200px"; height="200px"/>
-
-
            <div class="text-center text-white">
             <h1 class="display-4 fw-bolder">Shop in style</h1>
                    <p class="lead fw-normal text-white-50 mb-0">
