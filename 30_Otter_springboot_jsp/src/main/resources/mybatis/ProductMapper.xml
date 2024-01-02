@@ -53,8 +53,11 @@
 	        product.total_supporters AS TOTAL_SUPPORTERS
 	    FROM
 	        product
-	    WHERE
-	        product.cate_seq = #{cate_seq}
+	    <where>
+		    <if test="cate_seq!=null">
+		    	 product.cate_seq = #{cate_seq}
+		    </if>    	    
+	    </where>
 	    ORDER BY remainingDays DESC
 
 	</select>
