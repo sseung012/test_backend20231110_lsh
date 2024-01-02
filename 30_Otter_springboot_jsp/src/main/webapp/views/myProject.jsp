@@ -146,7 +146,7 @@
                       </c:choose>
 			</c:forEach>
 		</div>
-	</div>
+	</div> 
 </section>
 
 <!-- <div> -->
