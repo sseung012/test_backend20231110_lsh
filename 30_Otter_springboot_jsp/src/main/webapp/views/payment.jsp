@@ -68,7 +68,7 @@ function execution_daum_address(){
                     if(extraAddr !== ''){
                         extraAddr = ' (' + extraAddr + ')';
                     }
-                 	// 추가해야할 코드
+                 	// 추가해야할 코드    
                     // 주소변수 문자열과 참고항목 문자열 합치기
                       addr += extraAddr;
                 
