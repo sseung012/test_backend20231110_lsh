@@ -209,13 +209,14 @@ function findAddr(){
 						<div class="payment">
 							<div class="address_name">배송지 입력</div>
 							<input id="address1_input" style="width:200px;" readonly="readonly"> <a class="btn btn-primary" onclick="findAddr()">주소 찾기</a><br>
-							<input id="address2_input" style="width:500px;" readonly="readonly">
+							<input id="address2_input"style="width:500px;" readonly="readonly">
 							<br>
 							<input id="address3_input" style="width:500px;">
 					
 						
 						
 						</div>
+						<br/>
                         <div class="payment">
                             <label for="phone" class="form-label">전화번호</label>
                             <input type="text" name="phone" class="form-control" value="${ldto.phone}" />

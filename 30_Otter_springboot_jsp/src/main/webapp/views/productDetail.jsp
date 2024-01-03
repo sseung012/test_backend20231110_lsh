@@ -50,12 +50,14 @@
 	                   total_price+=optionPP;
 	                   $("#total_price").val(total_price);
 					} else {
+						// 기능 실행 X
 						alert("이미 추가한 리워드입니다!");
 					}
 				});
         		
 				<!-- 상품 금액 계산 -->
 // 				이벤트 핸들러 함수 사용
+
 				$("#test").on("click","input[name=count]",function(){
 					var inputCount=$(this); // input 엘리먼트
 					
@@ -74,6 +76,7 @@
 				});
 				
 // 				버튼을 눌렀을 때 지워지고(remove()활용) prev() 이용해서 값을 구하고 그걸 총금액에서 빼기
+// 				기능 실행 X
 				$("#test").off("click", ".remove", function(){
 					var total = $(this).parent();
 			        var optionPP2 = total.find("div").eq(1).text().split("_")[1].replace("원", "");
