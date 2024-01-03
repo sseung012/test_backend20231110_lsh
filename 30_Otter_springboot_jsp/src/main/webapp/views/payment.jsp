@@ -193,28 +193,14 @@ function findAddr(){
                         <div class="payment">
                             <label for="title" class="form-label">선택한 리워드</label>
                             <input type="text" name="select_reward" class="form-control" value="${rdto.reward_name}" />
-                        </div>&nbsp;
-<!--                         <div class="payment"> -->
-<!--                             <label for="created_date" class="form-label">배송지 입력</label> -->
-<!--                             <input type="text" name="delivery_address" id="delivery_address" class="form-control" style="width:200px;" placeholder="우편번호" /> -->
-                    
-<!--                             <button type="submit" value="address_search" class="btn btn-primary" style="float:right;">주소찾기</button> -->
-                            
-<!--                             <input type="text" name="delivery_address" id="delivery_address" class="form-control" placeholder="주소" /> -->
-<!--                             &nbsp; -->
-<!--                             <input type="text" name="delivery_address" id="delivery_address" class="form-control" placeholder="상세주소" /> -->
-							
-<!--                         </div>&nbsp; -->    
+                        </div>&nbsp;         
 
 						<div class="payment">      
 							<div class="address_name">배송지 입력</div>
-							<input id="address1_input" style="width:200px;" readonly="readonly"> <a class="btn btn-primary" onclick="findAddr()">주소 찾기</a><br>
-							<input id="address2_input"style="width:500px;" readonly="readonly">
+							<input id="address1_input" style="width:200px;" readonly="readonly" placeholder="우편번호"> <a class="btn btn-primary" onclick="findAddr()">주소 찾기</a><br>
+							<input id="address2_input" style="width:500px;" readonly="readonly" placeholder="주소">
 							<br>
-							<input id="address3_input" style="width:500px;">
-					
-						
-						
+							<input id="address3_input" style="width:500px;" placeholder="상세주소">
 						</div>
 						<br/>
                         <div class="payment">

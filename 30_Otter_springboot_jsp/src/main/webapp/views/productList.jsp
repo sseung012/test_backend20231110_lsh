@@ -68,14 +68,14 @@
 
 
 <section class="pyyy-5">
-      <div class="container myyy-5">
-         <div class="rowww justify-content-center">
+      <div class="container mmyy-5">
+         <div class="rowww justify-content-center"> 
             <div class="coll-lg-6">
             	<div class="contents">
 			        <h1>프로젝트 목록</h1>
 			        <br />
 			        <div id="getProductList">
-			            <table class="table2">
+			            <table class="table2" style="width:1200px;">
 			                <tr>
 			                    <th>글번호</th>
 			                    <th>카테고리</th>
@@ -141,7 +141,7 @@
 											        Date createdDate = dto.getCreated_date();
 											
 											        if (createdDate != null) {
-											            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+											            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 											            createdDateStr = dateFormat.format(createdDate);
 											        }
 											
