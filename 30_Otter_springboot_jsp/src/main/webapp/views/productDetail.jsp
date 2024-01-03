@@ -26,22 +26,6 @@
 			var total_price=0;
 			
 			 $(document).ready(function(){
-        		// $("#description").val().replace()
-        		
-//         		calculateTotalPrice();
-        		
-        		<!-- count 값이 변경될때마다 호출 -->
-//         		$("#count").change(function(){
-//         			calculateTotalPrice();//         		
-// 				});
-
-// 				$(".count").on('keyup', function(e){
-// 					var amount = (10000 * $(".count").val());
-// 					alert(amount);
-// 				});
-
-
-
 
         		$("#reward_name").change(function(){
 // 					alert($("#reward_name option:selected").text());	
@@ -54,30 +38,29 @@
 						var optionPP = parseInt(optionP[1].replace("원", ""))
 // 						console.log(optionPrice[0]);
 				
-
 						var countEle=
 							'<div class="cc">'
 							+'<div class="'+seq+'">'+optionSelTxt+'</div>'
 							+'<input type="number" name="count" class="form-class"' 
-	                    	+'placeholder="수량" value="1" style="max-width: 5rem" min="0"/>'
-// 	                    	+'<input type="text" id="per" name="per" class="form-control"/>'
+	                    	+'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
 	                    	+'<div>'+optionPP+'</div>'
-	                    	+'<button>X</button>'
+	                    	+'<button id="remove">X</button>'
 	                    	+'</div>';
 	                   $("#test").append(countEle); 	
 	                   total_price+=optionPP;
 	                   $("#total_price").val(total_price);
-					}else{
-						alert("이미 추가했어요");
+					} else {
+						alert("이미 추가한 리워드입니다!");
 					}
 				});
         		
 				<!-- 상품 금액 계산 -->
+// 				이벤트 핸들러 함수 사용
 				$("#test").on("click","input[name=count]",function(){
-					var inputCount=$(this);//input 엘리먼트
+					var inputCount=$(this); // input 엘리먼트
 					
 					var optionPP2=inputCount.prev("div").text().split("_")[1].replace("원","");
-					var count=$(this).val();//수량
+					var count=$(this).val(); // 수량
 					
 					var optionPPDiv=$(this).next("div");
 					optionPPDiv.text(optionPP2*count);
@@ -87,29 +70,28 @@
 					});
 					total_price=sum;
 					$("#total_price").val(total_price);
+					
 				});
 				
-// 				버튼을 눌렀을 때 지워지고(remove) prev() 이용해서 값을 구하고 그걸 총금액에서 빼고 저장
-// 				$("total_price").on("click","input[name=total_price]", function(){
-// 					var total = $(this).remove();
+// 				버튼을 눌렀을 때 지워지고(remove()활용) prev() 이용해서 값을 구하고 그걸 총금액에서 빼기
+				$("#remove").off("click", function(){
+					var total=$(this);
 					
-// 					var totalP = total.prev("").;
-// 					total_prive -= totalP;
-
-
-// 				});
-				
-				
-// 				$("input[name=count]").click(function(){
-// 					var inputCount=$(this);//input 엘리먼트
+					var optionPP2=total.prev("div").text().split("_")[1].replace("원","");
+					var count=$(this).val(); // 수량
 					
-// 					var optionPP2=inputCount.prev("div").text().split("_")[1].replace("원","");
-// 					var count=$(this).val();//수량
+					var optionPPDiv=$(this).next("div");
+					optionPPDiv.text(optionPP2*count);
+									
+					var sum=0;
+					$(".cc").each(function(){
+						$(".cc").remove(); // 리워드 삭제
+						sum-=parseInt($(this).find("div").eq(1).text()); 
+					});
 					
-// 					var optionPPDiv=$(this).next("div");
-// 					optionPPDiv.text(optionPP2*count);
-					
-// 				});				
+					total_price=sum;
+					$("#total_price").val(total_price);
+				});			
 				
         	});
 
@@ -270,44 +252,7 @@
                     </article>
                     <!-- Comments section-->
                     <section class="mb-5">
-<!--                         <div class="card bg-light"> -->
-<!--                             <div class="card-body"> -->
-                                <!-- Comment form-->
-<!--                                 <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form> -->
-                                <!-- Comment with nested comments-->
                                 <div class="d-flex mb-4">
-                                    <!-- Parent comment-->
-<!--                                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div> -->
-<!--                                     <div class="ms-3"> -->
-<!--                                         <div class="fw-bold">Commenter Name</div> -->
-<!--                                         If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks. -->
-                                        <!-- Child comment 1-->
-<!--                                         <div class="d-flex mt-4"> -->
-<!--                                             <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div> -->
-<!--                                             <div class="ms-3"> -->
-<!--                                                 <div class="fw-bold">Commenter Name</div> -->
-<!--                                                 And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors. -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-                                        <!-- Child comment 2-->
-<!--                                         <div class="d-flex mt-4"> -->
-<!--                                             <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div> -->
-<!--                                             <div class="ms-3"> -->
-<!--                                                 <div class="fw-bold">Commenter Name</div> -->
-<!--                                                 When you put money directly to a problem, it makes a good headline. -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-                                <!-- Single comment-->
-<!--                                 <div class="d-flex"> -->
-<!--                                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div> -->
-<!--                                     <div class="ms-3"> -->
-<!--                                         <div class="fw-bold">Commenter Name</div> -->
-<!--                                         When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence. -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                             </div> -->    
                         </div>
                     </section>
                 </div>
@@ -318,9 +263,6 @@
 <!--                         <div class="card-header">Search</div> -->
                         <div class="card-body">
                             <div class="input-group">
-<!--                                 <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" /> -->
-<!--                         <input class="form-control" type="text" ></input> -->
-<!--                                 <button class="btn btn-primary" id="button-search" type="button">Go!</button> -->   
                      <c:choose>
                   <c:when test="${dto.remainingDays lt 0}">
                        <td><font color="red">마감된 상품</font></td>
@@ -425,34 +367,6 @@
 
          
                         </div>
-
-                    <!-- Categories widget-->
-<!--                     <div class="card mb-4"> -->
-<!--                         <div class="card-header">Categories</div> -->
-<!--                         <div class="card-body"> -->
-<!--                             <div class="row"> -->
-<!--                                 <div class="col-sm-6"> -->
-<!--                                     <ul class="list-unstyled mb-0"> -->
-<!--                                         <li><a href="#!">Web Design</a></li> -->
-<!--                                         <li><a href="#!">HTML</a></li> -->
-<!--                                         <li><a href="#!">Freebies</a></li> -->
-<!--                                     </ul> -->
-<!--                                 </div> --> 
-<!--                                 <div class="col-sm-6"> -->
-<!--                                     <ul class="list-unstyled mb-0"> -->
-<!--                                         <li><a href="#!">JavaScript</a></li> -->
-<!--                                         <li><a href="#!">CSS</a></li> -->
-<!--                                         <li><a href="#!">Tutorials</a></li> -->
-<!--                                     </ul> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                     </div> -->
-                    <!-- Side widget-->
-<!--                     <div class="card mb-4"> -->
-<!--                         <div class="card-header">Side Widget</div> -->
-<!--                         <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div> -->
-<!--                     </div> -->
                 </div> 
             </div>
         </div>
