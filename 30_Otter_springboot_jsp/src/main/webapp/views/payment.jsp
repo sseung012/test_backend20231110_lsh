@@ -204,7 +204,7 @@ function findAddr(){
 <!--                             &nbsp; -->
 <!--                             <input type="text" name="delivery_address" id="delivery_address" class="form-control" placeholder="상세주소" /> -->
 							
-<!--                         </div>&nbsp; -->
+<!--                         </div>&nbsp; -->    
 
 						<div class="payment">
 							<div class="address_name">배송지 입력</div>
