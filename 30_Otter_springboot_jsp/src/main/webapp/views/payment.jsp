@@ -206,7 +206,7 @@ function findAddr(){
 							
 <!--                         </div>&nbsp; -->    
 
-						<div class="payment">
+						<div class="payment">      
 							<div class="address_name">배송지 입력</div>
 							<input id="address1_input" style="width:200px;" readonly="readonly"> <a class="btn btn-primary" onclick="findAddr()">주소 찾기</a><br>
 							<input id="address2_input"style="width:500px;" readonly="readonly">
