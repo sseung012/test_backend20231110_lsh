@@ -44,7 +44,7 @@
 							+'<input type="number" name="count" class="form-class"' 
 	                    	+'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
 	                    	+'<div>'+optionPP+'</div>'
-	                    	+'<button id="remove">X</button>'
+	                    	+'<button class="remove">X</button>'
 	                    	+'</div>';
 	                   $("#test").append(countEle); 	
 	                   total_price+=optionPP;
@@ -74,23 +74,16 @@
 				});
 				
 // 				버튼을 눌렀을 때 지워지고(remove()활용) prev() 이용해서 값을 구하고 그걸 총금액에서 빼기
-				$("#remove").off("click", function(){
-					var total=$(this);
-					
-					var optionPP2=total.prev("div").text().split("_")[1].replace("원","");
-					var count=$(this).val(); // 수량
-					
-					var optionPPDiv=$(this).next("div");
-					optionPPDiv.text(optionPP2*count);
-									
-					var sum=0;
-					$(".cc").each(function(){
-						$(".cc").remove(); // 리워드 삭제
-						sum-=parseInt($(this).find("div").eq(1).text()); 
-					});
-					
-					total_price=sum;
-					$("#total_price").val(total_price);
+				$("#test").off("click", ".remove", function(){
+					var total = $(this).parent();
+			        var optionPP2 = total.find("div").eq(1).text().split("_")[1].replace("원", "");
+			        var count = total.find("input[name=count]").val(); // 수량
+			        var optionPPDiv = total.find("div").eq(2);
+			        var totalPriceToRemove = optionPP2 * count;
+
+			        total.remove(); // 리워드 삭제
+			        total_price -= totalPriceToRemove;
+			        $("#total_price").val(total_price);
 				});			
 				
         	});
