@@ -26,7 +26,12 @@
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/styles.css" rel="stylesheet" />
-   	
+<style>
+    .form-control[readonly] {
+        background-color: #f8f9fa; /* Use your preferred background color */
+        border: 1px solid #ced4da; /* Use your preferred border color */
+    }
+</style>
 <script type="text/javascript">
 
 const button = document.getElementById("payment-button");
@@ -188,11 +193,11 @@ function findAddr(){
                                   
                         <div class="payment">
                             <label for="username" class="form-label" style="font-weight:bold; font-size:18px;">주문자</label>
-                            <input type="text" name="username" class="form-control1" value="${ldto.username}" readonly="readonly" />
+                            <input type="text" name="username" class="form-control" value="${ldto.username}" readonly="readonly" />
                         </div>&nbsp;
                         <div class="payment">
                             <label for="title" class="form-label" style="font-weight:bold; font-size:18px;">주문상품</label>
-                            <input type="text" name="title" class="form-control1" value="${param.title}" readonly="readonly"/>
+                            <input type="text" name="title" class="form-control" value="${param.title}" readonly="readonly"/>
                         </div>&nbsp;     
 <!--                         <div class="payment"> -->
 <!--                             <label for="reward_name" class="form-label">선택한 리워드</label> -->
@@ -202,7 +207,7 @@ function findAddr(){
 						<div class="payment">
 						    <label for="reward_name" class="form-label" style="font-weight:bold; font-size:18px;">선택한 리워드</label>
 						    <c:forEach var="i" begin="0" end="${fn:length(reward_name) - 1}">
-						        <input type="text" name="reward_name" class="form-control1" readonly="readonly"
+						        <input type="text" name="reward_name" class="form-control" readonly="readonly"
 						               value="${reward_name[i]} ${count[i]}개" />
 						    </c:forEach>
 						</div><br/> 
@@ -221,13 +226,13 @@ function findAddr(){
                         </div>&nbsp;
                         <div class="payment" id="payment">
                             <label for="payment_amount" class="form-label" style="font-weight:bold; font-size:18px;">결제금액</label>
-                            <input type="text" name="payment_amount" class="form-control1" value="${param.total_price}" readonly="readonly"/>
+                            <input type="text" name="payment_amount" class="form-control" value="${param.total_price}" readonly="readonly"/>
 								 						
                         </div>&nbsp;
                         
                         <div class="payment">
                             <label for="order_date" class="form-label" style="font-weight:bold; font-size:18px;">주문날짜</label>
-                            <input type="date" name="order_date" id="order_date" class="form-control1" readonly="readonly"/>
+                            <input type="date" name="order_date" id="order_date" class="form-control" readonly="readonly"/>
 							
                         </div>&nbsp;
                         

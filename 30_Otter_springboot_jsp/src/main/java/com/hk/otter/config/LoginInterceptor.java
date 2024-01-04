@@ -16,7 +16,7 @@ public class LoginInterceptor implements AsyncHandlerInterceptor {
 			HttpSession session = request.getSession();
 			if(session.getAttribute("ldto") == null) {
 				System.out.println("로그인 상태가 아닙니다!");
-				response.sendRedirect("/user/signin_form");
+				response.sendRedirect("/user/signin");
 				
 				return false; // false를 작성해야 컨트롤러로 진입을 막을 수 있음
 			}

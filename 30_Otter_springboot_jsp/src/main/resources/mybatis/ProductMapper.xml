@@ -102,9 +102,9 @@
 
 <!--  	 마이페이지-내 프로젝트 조회 -->
 	<select id="myProject"  resultType="ProductDto">
-		SELECT img, title, product_check
+		SELECT seq, user_seq, img, title, product_check
 		FROM (
-			SELECT ROW_NUMBER() OVER(PARTITION BY product_check ORDER BY product.seq DESC) rn,product_check, img, maker, title
+			SELECT ROW_NUMBER() OVER(PARTITION BY product_check ORDER BY product.seq DESC) rn, seq, user_seq,product_check, img, maker, title
 			FROM product
 			) a
 		WHERE rn BETWEEN 1 AND 4
