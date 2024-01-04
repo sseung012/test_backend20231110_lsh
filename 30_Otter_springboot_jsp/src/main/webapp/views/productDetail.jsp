@@ -27,8 +27,6 @@
 		
 			function funding() {
 				document.querySelectorAll(".pp")[0].submit();
-				
-
 			}
 
 			var total_price=0;
@@ -248,7 +246,7 @@
                                <a class="badge bg-secondary text-decoration-none link-light" href="#!">반려동물</a>
                            </c:when>
                            <c:otherwise>
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">알수없음</a>
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!"> 기타</a>
                            </c:otherwise>
                        </c:choose>
                    </header>
@@ -280,14 +278,14 @@
 <!--                         <div class="card-header">Search</div> -->
                         <div class="card-body">
                             <div class="input-group">
-                     <c:choose>
-                  <c:when test="${dto.remainingDays lt 0}">
-                       <td><font color="red">마감된 상품</font></td>
-                   </c:when>
-                   <c:otherwise>
-                       <td><font color="red">D-${dto.remainingDays}</font></td>
-                   </c:otherwise>
-                     </c:choose>
+			                     <c:choose>
+				                  <c:when test="${dto.remainingDays lt 0}">
+				                       <td><font color="red">마감된 상품</font></td>
+				                   </c:when>
+				                   <c:otherwise>
+				                       <td><font color="red">D-${dto.remainingDays}</font></td>
+				                   </c:otherwise>
+			                     </c:choose>
                 <tr>
                      <td><h2 style="font-weight:bold;">${dto.title}</h2></td>
                 </tr>
@@ -318,6 +316,7 @@
                        
                     <!-- 리워드 선택 -->
 <!--                     <form id="paymentForm" action="/banking/payment" method="post"> -->
+                     <form action="/banking/payment" method="post" class="pp"> 
                      <div class="rewardselect">
                             <select class="form-select" aria-label="Default select example" name="reward_name" id="reward_name">
                                <option>리워드 선택하기</option>
@@ -330,7 +329,7 @@
                     <br/>
 <!--                     <th>수량</th> -->
 <!-- 					<form action="/product/" method="post"> -->
-					<form action="/banking/payment" method="post" class="pp"> 
+					
                     <div id="test">
                     	                     	                   
                     </div>
@@ -397,9 +396,7 @@
          
                         </div>
                 </div> 
-            </div>
-        </div>
-        </div>
+           
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

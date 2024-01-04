@@ -175,6 +175,7 @@ const remove = (obj) => {
                             	<option value="4">푸드</option>
                             	<option value="5">출판</option>
                             	<option value="6">반려동물</option>
+                            	<option value="7">기타</option>
                             </select>
                         </div>&nbsp;
                         <div  id="rewardbox">
