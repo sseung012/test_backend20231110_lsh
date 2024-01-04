@@ -9,9 +9,11 @@
 <html> 
 <head>
 <%
-	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
-	ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
-	RewardDto rdto = (RewardDto)request.getSession().getAttribute("rdto");
+   UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
+   ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
+   RewardDto rdto = (RewardDto)request.getSession().getAttribute("rdto");
+   boolean isAdmin = ldto != null && "ADMIN".equals(ldto.getRole());
+//    boolean isProductNotApproved = dto != null && "N".equals(dto.getProduct_check());
 %>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
