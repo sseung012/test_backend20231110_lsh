@@ -29,7 +29,7 @@ public class FundingController {
 	
 	//펀딩 상품 결제
   	@PostMapping(value = "/payment")
-  	public String productDetail(String[] count, ) {
+  	public String productDetail(String[] count) {
 
 //  		System.out.println("펀딩상품보기");
 //  		UserDto ldto = userService.(seq);
