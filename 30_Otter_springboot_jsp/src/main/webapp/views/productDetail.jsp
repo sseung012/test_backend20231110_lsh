@@ -24,89 +24,93 @@
 //            }
 
 			function funding() {
-				document.querySelectorAll(".pp")[0].submit();
-				
-				
+			    document.querySelectorAll(".pp")[0].submit();
 			}
 
-			var total_price=0;
-			
-			 $(document).ready(function(){
 
-        		$("#reward_name").change(function(){
-// 					alert($("#reward_name option:selected").text());	
-					var seq=$("#reward_name").val();
-// 					alert($("#test > ."+seq).text());
-					if($("#test ."+seq).text() == ""){
-						
-						var optionSelTxt=$("#reward_name option:selected").text();
-						var optionP=$("#reward_name option:selected").text().split("_");
-						var optionPP = parseInt(optionP[1].replace("원", ""))
-// 						console.log(optionPrice[0]);
-				
-						var countEle=
-							'<div class="cc">'
-							+'<div class="'+seq+'">'+optionSelTxt+'</div>'
-							+'<input type="number" name="count" class="form-class"' 
-	                    	+'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
-	                    	+'<div>'+optionPP+'</div>'
-	                    	+'<button class="remove">X</button>'
-	                    	+'</div>';
-	                   $("#test").append(countEle); 	
-	                   total_price+=optionPP;
-	                   $("#total_price").val(total_price);
-					} else {
-						// 기능 실행 X
-						alert("이미 추가한 리워드입니다!");
-					}
-				});
-        		
-				<!-- 중간, 최종 상품 금액 계산 -->
-// 				이벤트 핸들러 함수 사용
+         
 
-				$("#test").on("click","input[name=count]",function(){
-					
-					var inputCount=$(this); // input 엘리먼트
-					
-					var optionPP2=inputCount.prev("div").text().split("_")[1].replace("원",""); // 40000원 -> 40000으로 출력
-					var count=$(this).val(); // 수량
-					
-					var optionPPDiv=$(this).next("div");
-					optionPPDiv.text(optionPP2*count);
-					var sum=0;
-					$(".cc").each(function(){
-						sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
-					});
-					total_price=sum;
-					$("#total_price").val(total_price); // 총 금액에 쓰임
-					
-				});
-				
-// 				버튼을 눌렀을 때 지워지고(remove()활용) prev() 이용해서 값을 구하고 그걸 총금액에서 빼기
-// 				기능 실행 X
-				$("#test").on("click", ".remove", function(){
-					var removebtn =$(this); // input 엘리먼트
-					
-// 					removebtn.parent().remove();
-					
-					//var rrr = removebtn.prev("div").text();
-					
-					var optionPP2=removebtn.prev("div").text();
-					var count=$(this).val(); // 수량
-					
-// 					var optionPPDiv=$(this).next("div");
-// 					optionPPDiv.text(optionPP2*count);
-// 					var sum=0;
-// 					$(".cc").each(function(){
-// 						sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
-// 					});
-// 					total_price-=sum;
-					removebtn.parent().remove();
-					total_price = total_price-optionPP2
-					$("#total_price").val(total_price); // 총 금액에 쓰임
-				});			
-				
-        	});
+         var total_price=0;
+         
+          $(document).ready(function(){
+
+              $("#reward_name").change(function(){
+//                alert($("#reward_name option:selected").text());   
+               var seq=$("#reward_name").val();
+//                alert($("#test > ."+seq).text());
+               if($("#test ."+seq).text() == ""){
+                  
+                  var optionSelTxt=$("#reward_name option:selected").text();
+                  var optionP=$("#reward_name option:selected").text().split("_");
+                  var optionPP = parseInt(optionP[1].replace("원", ""))
+//                   console.log(optionPrice[0]);
+            
+
+                  var countEle=
+                	  '<div class="cc">'
+                	    + '<div class="' + seq + '">' + optionSelTxt + '</div>'
+                	    + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
+                	    + '<input type="number" name="count" class="form-class"'
+                	    + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
+                	    + '<div>' + optionPP + '</div>'
+                	    + '<button class="remove">X</button>'
+                	    + '</div>';
+                	    
+                	  $("#test").append(countEle);    
+                      total_price+=optionPP;
+                      $("#total_price").val(total_price);
+               } else {
+                  // 기능 실행 X
+                  alert("이미 추가한 리워드입니다!");
+               }
+            });
+              
+            <!-- 중간, 최종 상품 금액 계산 -->
+//             이벤트 핸들러 함수 사용
+
+            $("#test").on("click","input[name=count]",function(){
+               
+               var inputCount=$(this); // input 엘리먼트
+               
+               var optionPP2=inputCount.prev("div").text().split("_")[1].replace("원",""); // 40000원 -> 40000으로 출력
+               var count=$(this).val(); // 수량
+               
+               var optionPPDiv=$(this).next("div");
+               optionPPDiv.text(optionPP2*count);
+               var sum=0;
+               $(".cc").each(function(){
+                  sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
+               });
+               total_price=sum;
+               $("#total_price").val(total_price); // 총 금액에 쓰임
+               
+            });
+            
+//             버튼을 눌렀을 때 지워지고(remove()활용) prev() 이용해서 값을 구하고 그걸 총금액에서 빼기
+//             기능 실행 X
+            $("#test").on("click", ".remove", function(){
+               var removebtn =$(this); // input 엘리먼트
+               
+//                removebtn.parent().remove();
+               
+               //var rrr = removebtn.prev("div").text();
+               
+               var optionPP2=removebtn.prev("div").text();
+               var count=$(this).val(); // 수량
+               
+//                var optionPPDiv=$(this).next("div");
+//                optionPPDiv.text(optionPP2*count);
+//                var sum=0;
+//                $(".cc").each(function(){
+//                   sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
+//                });
+//                total_price-=sum;
+               removebtn.parent().remove();
+               total_price = total_price-optionPP2
+               $("#total_price").val(total_price); // 총 금액에 쓰임
+            });         
+            
+           });
 
            
         </script>
@@ -127,28 +131,28 @@
     <body>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  		 <div class="container px-4 px-lg-5">
-		       <a class="navbar-brand" href="/">Otter</a>
-		        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-		         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		               <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-		                   <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
-		<!--                     <li class="nav-item"><a class="nav-link" href="#!">About</a></li> -->
-		                    <li class="nav-item dropdown">
-		                       <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
-		                           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-			                            <li><a class="dropdown-item" href="/product/category">전체</a></li>
-			                            <li><hr class="dropdown-divider" /></li>
-			                            <li><a class="dropdown-item" href="/product/category?cate_seq=1">홈/리빙</a></li>
-			                            <li><a class="dropdown-item" href="/product/category?cate_seq=2">패션/잡화</a></li>
-			                            <li><a class="dropdown-item" href="/product/category?cate_seq=3">뷰티</a></li>
-			                            <li><a class="dropdown-item" href="/product/category?cate_seq=4">푸드</a></li>
-			                            <li><a class="dropdown-item" href="/product/category?cate_seq=5">출판</a></li>
-			                            <li><a class="dropdown-item" href="/product/category?cate_seq=6">반려동물</a></li>
-			                            <li><a class="dropdown-item" href="/product/category?cate_seq=7">기타</a></li>
-		                            </ul> 
-			               </li>
-			            </ul>
+         <div class="container px-4 px-lg-5">
+             <a class="navbar-brand" href="/">Otter</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+      <!--                     <li class="nav-item"><a class="nav-link" href="#!">About</a></li> -->
+                          <li class="nav-item dropdown">
+                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                     <li><a class="dropdown-item" href="/product/category">전체</a></li>
+                                     <li><hr class="dropdown-divider" /></li>
+                                     <li><a class="dropdown-item" href="/product/category?cate_seq=1">홈/리빙</a></li>
+                                     <li><a class="dropdown-item" href="/product/category?cate_seq=2">패션/잡화</a></li>
+                                     <li><a class="dropdown-item" href="/product/category?cate_seq=3">뷰티</a></li>
+                                     <li><a class="dropdown-item" href="/product/category?cate_seq=4">푸드</a></li>
+                                     <li><a class="dropdown-item" href="/product/category?cate_seq=5">출판</a></li>
+                                     <li><a class="dropdown-item" href="/product/category?cate_seq=6">반려동물</a></li>
+                                     <li><a class="dropdown-item" href="/product/category?cate_seq=7">기타</a></li>
+                                  </ul> 
+                        </li>
+                     </ul>
                      
             <%
                 if (ldto == null) {
@@ -244,7 +248,7 @@
                                <a class="badge bg-secondary text-decoration-none link-light" href="#!">반려동물</a>
                            </c:when>
                            <c:otherwise>
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">알수없음</a>
+                               <a class="badge bg-secondary text-decoration-none link-light" href="#!"> 기타</a>
                            </c:otherwise>
                        </c:choose>
                    </header>
@@ -276,14 +280,14 @@
 <!--                         <div class="card-header">Search</div> -->
                         <div class="card-body">
                             <div class="input-group">
-                     <c:choose>
-                  <c:when test="${dto.remainingDays lt 0}">
-                       <td><font color="red">마감된 상품</font></td>
-                   </c:when>
-                   <c:otherwise>
-                       <td><font color="red">D-${dto.remainingDays}</font></td>
-                   </c:otherwise>
-                     </c:choose>
+                              <c:choose>
+                              <c:when test="${dto.remainingDays lt 0}">
+                                   <td><font color="red">마감된 상품</font></td>
+                               </c:when>
+                               <c:otherwise>
+                                   <td><font color="red">D-${dto.remainingDays}</font></td>
+                               </c:otherwise>
+                              </c:choose>
                 <tr>
                      <td><h2 style="font-weight:bold;">${dto.title}</h2></td>
                 </tr>
@@ -297,14 +301,14 @@
                 <br/>
                      
                 <tr>
-                	<th>목표금액</th>
-                	<td><strong>${dto.goal_price}원</strong></td>
+                   <th>목표금액</th>
+                   <td><strong>${dto.goal_price}원</strong></td>
                 </tr>
                 <br/>
                      
                 <tr>
-                	<th>모인금액</th>
-                	<br/>
+                   <th>모인금액</th>
+                   <br/>
                     <td><strong>${dto.total_price}원</strong></td>
                 </tr>
                 <br/>
@@ -314,6 +318,7 @@
                        
                     <!-- 리워드 선택 -->
                      <div class="rewardselect">
+                     <input type="hidden" id="selectedRewardsInput" name="selectedRewards" />
                             <select class="form-select" aria-label="Default select example" name="reward_name" id="reward_name">
                                <option>리워드 선택하기</option>
 
@@ -324,23 +329,25 @@
                     </div> 
                     <br/>
 <!--                     <th>수량</th> -->
-<!-- 					<form action="/product/" method="post"> -->
-					<form action="/banking/payment" method="post" class="pp"> 
+<!--                <form action="/product/" method="post"> -->
+               <form action="/banking/payment" method="post" class="pp"> 
+               		<input type="hidden" name="title" value="${dto.title}"/>
+               		
                     <div id="test">
-                    	                     	                   
+                                                                  
                     </div>
                     
                      <br/>
                      <tr>
-                     	<th>총 금액</th>
-                     	<input name="total_price" id="total_price" class="form-control" />
+                        <th>총 금액</th>
+                        <input name="total_price" id="total_price" class="form-control" />
                      </tr>
                      
                      <br/>
                      </form>
                      
                      <tr>
-                     	<td>배송비 ㅣ 무료</td>
+                        <td>배송비 ㅣ 무료</td>
                      </tr>
                      <a class="btn btn-primary" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>
                     
@@ -350,47 +357,45 @@
                     <br/>
                     
                     <div class="mb-3">
-  						<h4><label for="exampleFormControlTextarea1" class="form-label">리워드 안내</label></h4>
-  						<label class="form-control" id="exampleFormControlTextarea1" rows="3">
-  							<c:forEach items="${rlist}" var="rlist">
-  								   <p style="font-size:20px; font-weight:bold;">${rlist.price}원</p>
+                    <h4><label for="exampleFormControlTextarea1" class="form-label">리워드 안내</label></h4>
+                    <label class="form-control" id="exampleFormControlTextarea1" rows="3">
+                       <c:forEach items="${rlist}" var="rlist">
+                             <p style="font-size:20px; font-weight:bold;">${rlist.price}원</p>
                                    <p style="font-size:20px;">${rlist.reward_name}</p>           
                                    <p>${rlist.combination}</p>
                                    <hr/>
                             </c:forEach>
-  						
-  						</label>
-					</div>
-                        
+                    
+                    </label>
+               </div>
+                         
                        
- 					<div>
-						<c:choose>
-				            <c:when test="${ldto != null && ldto.role eq 'ADMIN' && dto.product_check eq 'N' && dto != null }">
-<!-- 				                <input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()"  -->
-<!-- 				                    style="float:right; margin:10px; height:40px; width:100px;"/> -->
-								<input type="hidden" name="id" value="${dto.seq}"/>
-				            	<a class="btn btn-outline-darkk" id="approve" href="/product/approve/${dto.seq}"
-   									style="float:right; margin:10px; height:40px; width:100px; font-size:17px; font-align:center; background-color:#DCFAFD;">승인</a>
-				            </c:when>
-				            <c:when test="${ldto == null}">
-				                <!-- ldto가 null일 경우, 승인 버튼을 보이지 않게 함 -->
-				            </c:when>
-				            <c:otherwise>
-				                <!-- 승인된 프로젝트일경우 승인 버튼을 보이지 않게 함 -->
-				            </c:otherwise>
-				        </c:choose>
- 					</div>
+                <div>
+                  <c:choose>
+                        <c:when test="${ldto != null && ldto.role eq 'ADMIN' && dto.product_check eq 'N' && dto != null }">
+<!--                             <input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()"  -->
+<!--                                 style="float:right; margin:10px; height:40px; width:100px;"/> -->
+                        <input type="hidden" name="id" value="${dto.seq}"/>
+                           <a class="btn btn-outline-darkk" id="approve" href="/product/approve/${dto.seq}"
+                              style="float:right; margin:10px; height:40px; width:100px; font-size:17px; font-align:center; background-color:#DCFAFD;">승인</a>
+                        </c:when>
+                        <c:when test="${ldto == null}">
+                            <!-- ldto가 null일 경우, 승인 버튼을 보이지 않게 함 -->
+                        </c:when>
+                        <c:otherwise>
+                            <!-- 승인된 프로젝트일경우 승인 버튼을 보이지 않게 함 -->
+                        </c:otherwise>
+                    </c:choose>
+                </div>
 
 
-				</div>
+            </div>
 
 
          
                         </div>
                 </div> 
-            </div>
-        </div>
-        </div>
+           
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -398,7 +403,6 @@
         <script src="js/scripts.js"></script>
     </body>
 </html>
-
 
 
 
