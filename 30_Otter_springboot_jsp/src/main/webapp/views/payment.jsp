@@ -134,12 +134,13 @@ function findAddr(){
                         </div>&nbsp;
                         <div class="payment">
                             <label for="title" class="form-label">주문상품</label>
-                            <input type="text" name="title" class="form-control" value="${dto.title}" />
+                            <input type="text" name="title" class="form-control" value="${param.title}" />
                         </div>&nbsp;     
                         <div class="payment">
                             <label for="reward_name" class="form-label">선택한 리워드</label>
-                            <input type="text" name="reward_name" class="form-control" value="${rdto.reward_name}" />
-                        </div>&nbsp;         
+                            <input type="text" name="reward_name" class="form-control" value="${reward_name[0]}" />
+                            <input type="text" name="count" class="form-control" value="${count[0]}" />
+                        </div>&nbsp;
 
 						<div class="payment">      
 							<div class="address_name">배송지 입력</div>
@@ -155,7 +156,7 @@ function findAddr(){
                         </div>&nbsp;
                         <div class="payment" id="payment">
                             <label for="payment_amount" class="form-label">결제금액</label>
-                            <input type="text" name="payment_amount" class="form-control" />
+                            <input type="text" name="payment_amount" class="form-control" value="${param.total_price}"/>
 								 						
                         </div>&nbsp;
                         
