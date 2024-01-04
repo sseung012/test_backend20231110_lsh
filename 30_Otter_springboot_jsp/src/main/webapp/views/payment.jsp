@@ -16,6 +16,7 @@
 //    boolean isProductNotApproved = dto != null && "N".equals(dto.getProduct_check());
 %>
 <meta charset="utf-8" />
+ <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
@@ -26,6 +27,62 @@
 <link href="/resources/css/styles.css" rel="stylesheet" />
    	
 <script type="text/javascript">
+
+const button = document.getElementById("payment-button");
+const coupon = document.getElementById("coupon-box");
+const generateRandomString = () => window.btoa(Math.random()).slice(0, 20);
+let currentURL = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname.split('/')[1];
+var amount = 40000;
+
+// ------  결제위젯 초기화 ------
+// @docs https://docs.tosspayments.com/reference/widget-sdk#sdk-설치-및-초기화
+// TODO: clientKey는 개발자센터의 결제위젯 연동 키 > 클라이언트 키로 바꾸세요. 
+// TODO: customerKey는 구매자와 1:1 관계로 무작위한 고유값을 생성하세요. 
+const clientKey = "test_ck_ALnQvDd2VJz6wRev0vgwVMj7X41m"; 
+const customerKey = generateRandomString();                 
+const paymentWidget = PaymentWidget(clientKey, customerKey); // 회원 결제
+// const paymentWidget = PaymentWidget(clientKey, PaymentWidget.ANONYMOUS); // 비회원 결제
+
+// ------  결제 UI 렌더링 ------
+// @docs https://docs.tosspayments.com/reference/widget-sdk#renderpaymentmethods선택자-결제-금액-옵션
+paymentMethodWidget = paymentWidget.renderPaymentMethods(
+  "#payment-method",
+  { value: amount },
+  { variantKey: "DEFAULT" }
+);
+// ------  이용약관 UI 렌더링 ------
+// @docs https://docs.tosspayments.com/reference/widget-sdk#renderagreement선택자-옵션
+paymentWidget.renderAgreement(
+  "#agreement",
+  { variantKey: "AGREEMENT" }
+);
+
+// ------  결제 금액 업데이트 ------
+// @docs https://docs.tosspayments.com/reference/widget-sdk#updateamount결제-금액
+coupon.addEventListener("change", function () {
+  if (coupon.checked) {
+    paymentMethodWidget.updateAmount(amount - 5000);
+  } else {
+    paymentMethodWidget.updateAmount(amount);
+  }
+});
+
+// ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
+// @docs https://docs.tosspayments.com/reference/widget-sdk#requestpayment결제-정보
+button.addEventListener("click", function () {
+  paymentWidget.requestPayment({
+    orderId: generateRandomString(),
+    orderName: "지구를 지키는 업사이클 여권&명함 지갑",
+    successUrl: currentURL + "/success.jsp",
+    failUrl: currentURL + "/fail.jsp",
+    customerEmail: "tree@naver.com",
+    customerName: "김나무",
+    customerMobilePhone: "01033334444"
+  });
+});
+
+	 
+	  
 //현재 날짜 나타내기
 window.onload = function() {
    today = new Date();
@@ -166,8 +223,16 @@ function findAddr(){
                         </div>&nbsp;
                         
                         <br><br>
-                        <input type="submit" value="결제하기" class="btn btn-primary" />
-                        
+<!--                         <input type="submit" value="결제하기" class="btn btn-primary" /> -->
+                       
+<!-- 								<div class="title">결제 방법</div> -->
+								<div id="payment-method"></div>
+								<div id="agreement"></div>
+								
+								<!-- 결제 버튼 -->
+								<button id="payment-button" class="btn btn-primary">결제하기</button>
+										
+				
                     </form>
                 </div>
             </div>
