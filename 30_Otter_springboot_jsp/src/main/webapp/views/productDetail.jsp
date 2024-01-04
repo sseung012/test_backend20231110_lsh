@@ -23,6 +23,12 @@
 //                // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
 //            }
 
+			function funding() {
+				document.querySelectorAll(".pp")[0].submit();
+				
+				
+			}
+
 			var total_price=0;
 			
 			 $(document).ready(function(){
@@ -31,7 +37,7 @@
 // 					alert($("#reward_name option:selected").text());	
 					var seq=$("#reward_name").val();
 // 					alert($("#test > ."+seq).text());
-					if($("#test > ."+seq).text() == ""){
+					if($("#test ."+seq).text() == ""){
 						
 						var optionSelTxt=$("#reward_name option:selected").text();
 						var optionP=$("#reward_name option:selected").text().split("_");
@@ -55,38 +61,49 @@
 					}
 				});
         		
-				<!-- 상품 금액 계산 -->
+				<!-- 중간, 최종 상품 금액 계산 -->
 // 				이벤트 핸들러 함수 사용
 
 				$("#test").on("click","input[name=count]",function(){
+					
 					var inputCount=$(this); // input 엘리먼트
 					
-					var optionPP2=inputCount.prev("div").text().split("_")[1].replace("원","");
+					var optionPP2=inputCount.prev("div").text().split("_")[1].replace("원",""); // 40000원 -> 40000으로 출력
 					var count=$(this).val(); // 수량
 					
 					var optionPPDiv=$(this).next("div");
 					optionPPDiv.text(optionPP2*count);
 					var sum=0;
 					$(".cc").each(function(){
-						sum+=parseInt($(this).find("div").eq(1).text());
+						sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
 					});
 					total_price=sum;
-					$("#total_price").val(total_price);
+					$("#total_price").val(total_price); // 총 금액에 쓰임
 					
 				});
 				
 // 				버튼을 눌렀을 때 지워지고(remove()활용) prev() 이용해서 값을 구하고 그걸 총금액에서 빼기
 // 				기능 실행 X
-				$("#test").off("click", ".remove", function(){
-					var total = $(this).parent();
-			        var optionPP2 = total.find("div").eq(1).text().split("_")[1].replace("원", "");
-			        var count = total.find("input[name=count]").val(); // 수량
-			        var optionPPDiv = total.find("div").eq(2);
-			        var totalPriceToRemove = optionPP2 * count;
-
-			        total.remove(); // 리워드 삭제
-			        total_price -= totalPriceToRemove;
-			        $("#total_price").val(total_price);
+				$("#test").on("click", ".remove", function(){
+					var removebtn =$(this); // input 엘리먼트
+					
+// 					removebtn.parent().remove();
+					
+					//var rrr = removebtn.prev("div").text();
+					
+					var optionPP2=removebtn.prev("div").text();
+					var count=$(this).val(); // 수량
+					
+// 					var optionPPDiv=$(this).next("div");
+// 					optionPPDiv.text(optionPP2*count);
+// 					var sum=0;
+// 					$(".cc").each(function(){
+// 						sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
+// 					});
+// 					total_price-=sum;
+					removebtn.parent().remove();
+					total_price = total_price-optionPP2
+					$("#total_price").val(total_price); // 총 금액에 쓰임
 				});			
 				
         	});
@@ -307,7 +324,11 @@
                     </div> 
                     <br/>
 <!--                     <th>수량</th> -->
-                    <div id="test"></div>
+<!-- 					<form action="/product/" method="post"> -->
+					<form action="/banking/payment" method="post" class="pp"> 
+                    <div id="test">
+                    	                     	                   
+                    </div>
                     
                      <br/>
                      <tr>
@@ -316,11 +337,14 @@
                      </tr>
                      
                      <br/>
+                     </form>
                      
                      <tr>
                      	<td>배송비 ㅣ 무료</td>
                      </tr>
-                     <a class="btn btn-primary" id="button-search" type="submit" href="/banking/payment">펀딩 참여하기</a>
+                     <a class="btn btn-primary" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>
+                    
+                    
                     </div> 
                     <br/>
                     <br/>
