@@ -28,6 +28,7 @@ public class FundingController {
 	private UserService userService;
 	
 	//펀딩 상품 결제
+
   	@PostMapping(value = "/payment")
   	public String productDetail(String[] count) {
 
