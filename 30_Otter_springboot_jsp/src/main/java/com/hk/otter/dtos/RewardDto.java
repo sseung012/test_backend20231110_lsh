@@ -9,7 +9,16 @@ public class RewardDto {
 	private int stock;
 	private int product_seq;
 	private int sold_stock;
+	private int total_price;
 	
+	public int getTotal_price() {
+		return total_price;
+	}
+
+	public void setTotal_price(int total_price) {
+		this.total_price = total_price;
+	}
+
 	public RewardDto() {
 		super();
 	}
@@ -23,7 +32,17 @@ public class RewardDto {
 		this.product_seq = product_seq;
 	}
 
-
+	
+	//리워드 선택한거 불러오기
+	public RewardDto(int seq, String reward_name, int price, int stock, int total_price) {
+		super();
+		this.seq = seq;
+		this.reward_name = reward_name;
+		this.price = price;
+		this.stock = stock;
+		this.total_price = total_price;
+	}
+	
 	public RewardDto(int seq, String reward_name, int price, String combination, int stock, int product_seq,
 			int sold_stock) {
 		super();
@@ -35,6 +54,7 @@ public class RewardDto {
 		this.product_seq = product_seq;
 		this.sold_stock = sold_stock;
 	}
+
 
 	public int getSeq() {
 		return seq;

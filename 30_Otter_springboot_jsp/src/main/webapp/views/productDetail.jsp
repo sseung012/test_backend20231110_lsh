@@ -22,7 +22,46 @@
 //                alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
 //                // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
 //            }
+// 		function submitFunding() {
+// 		    var selectedRewardSeq = $("#reward_name").val();
+// 		    var selectedRewardName = $("#reward_name option:selected").text();
+// 		    var selectedRewardPrice = selectedRewardName.split('_')[1].replace("원", "");
+// 		    var quantity = $(".cc input[name=count]").val();
+// 		    var total_price = $("#total_price").val();  // total_price 값을 가져옴
+		
+// 		    var data = {
+// 		        seq: selectedRewardSeq,
+// 		        reward_name: selectedRewardName,
+// 		        price: selectedRewardPrice,
+// 		        stock: quantity,
+// 		        total_price: total_price  // total_price를 data에 추가
+// 		    };
+		
+// 		    $.ajax({
+// 		        type: "POST",
+// 		        url: "/payment",
+// 		        contentType: "application/json",
+// 		        data: JSON.stringify(data),
+// 		        success: function(response) {
+// 		            console.log("서버 응답: ", response);
+// 		            // 성공한 경우 추가로직을 여기에 추가
+// 		            window.location.href = "banking/payment";
+// 		        },
+// 		        error: function(error) {
+// 		            console.error("서버 통신 실패: ", error);
+		            
+// 		            console.log("readyState:", error.readyState);
+// 		            console.log("status:", error.status);
+// 		            console.log("statusText:", error.statusText);
+// 		            console.log("responseText:", error.responseText);
+// 		        }
+// 		    });
+// 		}
 
+		
+		
+		
+		
 			var total_price=0;
 			
 			 $(document).ready(function(){
@@ -293,6 +332,7 @@
          </div>
                        
                     <!-- 리워드 선택 -->
+<!--                     <form id="paymentForm" action="/banking/payment" method="post"> -->
                      <div class="rewardselect">
                             <select class="form-select" aria-label="Default select example" name="reward_name" id="reward_name">
                                <option>리워드 선택하기</option>
@@ -317,8 +357,10 @@
                      <tr>
                      	<td>배송비 ㅣ 무료</td>
                      </tr>
-                     <a class="btn btn-primary" id="button-search" type="submit" href="/banking/payment">펀딩 참여하기</a>
+<!--                      <a class="btn btn-primary" id="button-search" type="submit" href="/banking/payment">펀딩 참여하기</a> -->
+                     <button class="btn btn-primary" type="button" onclick="submitFunding()">펀딩 참여하기</button>
                     </div> 
+<!--                     </form> -->
                     <br/>
                     <br/>
                     
