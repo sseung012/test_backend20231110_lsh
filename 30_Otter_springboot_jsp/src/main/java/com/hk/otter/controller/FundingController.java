@@ -79,23 +79,4 @@ public class FundingController {
 	}
 
 
-	
-	
-	
-	//펀딩 상품 결제
-
-//  	@PostMapping(value = "/payment")
-//  	public String productDetail(String[] stock_count) {
-//
-////  		System.out.println("펀딩상품보기");
-////  		UserDto ldto = userService.(seq);
-//  		
-////  		List<RewardDto> rlist = (List<RewardDto>) userService.rewardOption(seq);
-////		model.addAttribute("rlist", rlist);
-// 		
-////  		model.addAttribute("dto",ldto);
-//  		return "payment";
-
-
-//			}
 }
