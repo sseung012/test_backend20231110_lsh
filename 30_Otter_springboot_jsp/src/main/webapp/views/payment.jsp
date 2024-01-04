@@ -5,6 +5,7 @@
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html> 
 <head>
@@ -186,21 +187,28 @@ function findAddr(){
                         </div>&nbsp;
                                   
                         <div class="payment">
-                            <label for="username" class="form-label">주문자</label>
-                            <input type="text" name="username" class="form-control" value="${ldto.username}" />
+                            <label for="username" class="form-label" style="font-weight:bold; font-size:18px;">주문자</label>
+                            <input type="text" name="username" class="form-control1" value="${ldto.username}" readonly="readonly" />
                         </div>&nbsp;
                         <div class="payment">
-                            <label for="title" class="form-label">주문상품</label>
-                            <input type="text" name="title" class="form-control" value="${param.title}" />
+                            <label for="title" class="form-label" style="font-weight:bold; font-size:18px;">주문상품</label>
+                            <input type="text" name="title" class="form-control1" value="${param.title}" readonly="readonly"/>
                         </div>&nbsp;     
-                        <div class="payment">
-                            <label for="reward_name" class="form-label">선택한 리워드</label>
-                            <input type="text" name="reward_name" class="form-control" value="${reward_name[0]}" />
-                            <input type="text" name="count" class="form-control" value="${count[0]}" />
-                        </div>&nbsp;
+<!--                         <div class="payment"> -->
+<!--                             <label for="reward_name" class="form-label">선택한 리워드</label> -->
+<%--                             <input type="text" name="reward_name" class="form-control" value="${reward_name[0]} ${count[0]}개" /> --%>
+<!--                         </div>&nbsp; -->
+
+						<div class="payment">
+						    <label for="reward_name" class="form-label" style="font-weight:bold; font-size:18px;">선택한 리워드</label>
+						    <c:forEach var="i" begin="0" end="${fn:length(reward_name) - 1}">
+						        <input type="text" name="reward_name" class="form-control1" readonly="readonly"
+						               value="${reward_name[i]} ${count[i]}개" />
+						    </c:forEach>
+						</div><br/>
 
 						<div class="payment">      
-							<div class="address_name">배송지 입력</div>
+							<div class="address_name" style="font-weight:bold; font-size:18px;">배송지 입력</div>
 							<input id="address1_input" style="width:200px;" readonly="readonly" placeholder="우편번호"> <a class="btn btn-primary" onclick="findAddr()">주소 찾기</a><br>
 							<input id="address2_input" style="width:500px;" readonly="readonly" placeholder="주소">
 							<br>
@@ -208,18 +216,18 @@ function findAddr(){
 						</div>
 						<br/>
                         <div class="payment">
-                            <label for="phone" class="form-label">전화번호</label>
-                            <input type="text" name="phone" class="form-control" value="${ldto.phone}" />
+                            <label for="phone" class="form-label" style="font-weight:bold; font-size:18px;">전화번호</label>
+                            <input type="text" name="phone" class="form-control" value="${ldto.phone}"/>
                         </div>&nbsp;
                         <div class="payment" id="payment">
-                            <label for="payment_amount" class="form-label">결제금액</label>
-                            <input type="text" name="payment_amount" class="form-control" value="${param.total_price}"/>
+                            <label for="payment_amount" class="form-label" style="font-weight:bold; font-size:18px;">결제금액</label>
+                            <input type="text" name="payment_amount" class="form-control1" value="${param.total_price}" readonly="readonly"/>
 								 						
                         </div>&nbsp;
                         
                         <div class="payment">
-                            <label for="order_date" class="form-label">주문날짜</label>
-                            <input type="date" name="order_date" id="order_date" class="form-control" />
+                            <label for="order_date" class="form-label" style="font-weight:bold; font-size:18px;">주문날짜</label>
+                            <input type="date" name="order_date" id="order_date" class="form-control1" readonly="readonly"/>
 							
                         </div>&nbsp;
                         
