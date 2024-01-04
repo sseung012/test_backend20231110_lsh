@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hk.otter.dtos.ProductDto;
@@ -28,8 +27,9 @@ public class FundingController {
 	private UserService userService;
 	
 	//펀딩 상품 결제
-  	@PostMapping(value = "/payment")
-  	public String productDetail(String[] count, ) {
+  	@GetMapping(value = "/payment")
+//  	@GetMapping(value = "/payment/{seq}")
+  	public String productDetail() {
 
 //  		System.out.println("펀딩상품보기");
 //  		UserDto ldto = userService.(seq);
