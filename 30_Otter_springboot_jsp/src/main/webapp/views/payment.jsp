@@ -205,7 +205,7 @@ function findAddr(){
 						        <input type="text" name="reward_name" class="form-control1" readonly="readonly"
 						               value="${reward_name[i]} ${count[i]}개" />
 						    </c:forEach>
-						</div><br/>
+						</div><br/> 
 
 						<div class="payment">      
 							<div class="address_name" style="font-weight:bold; font-size:18px;">배송지 입력</div>
