@@ -112,7 +112,7 @@
                       </div>
                       </c:when>
                   </c:choose>
-			</c:forEach>
+			</c:forEach> 
 		</div>
 	</div>
 <!-- </section> -->
