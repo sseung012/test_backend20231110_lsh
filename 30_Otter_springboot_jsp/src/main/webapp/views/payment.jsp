@@ -59,13 +59,13 @@ paymentWidget.renderAgreement(
 
 // ------  결제 금액 업데이트 ------
 // @docs https://docs.tosspayments.com/reference/widget-sdk#updateamount결제-금액
-coupon.addEventListener("change", function () {
-  if (coupon.checked) {
-    paymentMethodWidget.updateAmount(amount - 5000);
-  } else {
-    paymentMethodWidget.updateAmount(amount);
-  }
-});
+// coupon.addEventListener("change", function () {
+//   if (coupon.checked) {
+//     paymentMethodWidget.updateAmount(amount - 5000);
+//   } else {
+//     paymentMethodWidget.updateAmount(amount);
+//   }
+// });
 
 // ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
 // @docs https://docs.tosspayments.com/reference/widget-sdk#requestpayment결제-정보
