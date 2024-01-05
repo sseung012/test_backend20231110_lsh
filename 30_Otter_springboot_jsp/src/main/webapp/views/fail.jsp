@@ -10,7 +10,7 @@
 	  const messageElement = document.getElementById("message");
 	
 	  codeElement.textContent = "에러코드: " + urlParams.get("code");
-	  messageElement.textContent = "실패사유 : " + urlParams.get("message");
+	  messageElement.textContent = "실패사유 : " + urlParams.get("message"); 
 	</script>  
 
   <body>
