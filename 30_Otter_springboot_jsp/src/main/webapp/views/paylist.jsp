@@ -108,7 +108,7 @@ response.setContentType("text/html; charset=UTF-8");
 			                    <th>주문날짜</th>
 			                </tr>
 								<%
-							    if (list == null || list.isEmpty()) {
+							    if (list == null || list.isEmpty()) { 
 							%>
 							    <tr>
 							        <td colspan="8">-- 참여한 펀딩이 없습니다. --</td>
