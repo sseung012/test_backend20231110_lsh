@@ -110,5 +110,16 @@ public class FundingController {
 		return "orderDetail";
 	}
 
+	@GetMapping("/success")
+    public String success(@RequestParam("orderId") String orderId,
+                          @RequestParam("paymentKey") String paymentKey,
+                          @RequestParam("amount") String amount) {
+        System.out.println("ORDER_ID:" + orderId);
+        System.out.println("PAYMENT_KEY:" + paymentKey);
+        System.out.println("AMOUNT:" + amount);
 
+        return "success";
+    }
+	
+	
 }
