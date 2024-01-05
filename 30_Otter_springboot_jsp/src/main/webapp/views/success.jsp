@@ -25,6 +25,12 @@
 	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link href="/resources/css/styles.css" rel="stylesheet" />
+	<style>
+		.complete {
+  		text-align : center;
+  		padding : 100px 0; 		
+  		}	
+	</style>
   </head>
   <body>
   <!-- Navigation-->
@@ -87,11 +93,19 @@
          </div>
    </div>
 </nav>
+	<br/>
+	<div class='complete'>
     <h2>펀딩이 완료되었습니다. 감사합니다 :)</h2>
     <br/>
-    <p id="orderId"></p>
-    <p id="paymentKey"></p>
-    <p id="amount"></p>
+    <p style="font-weight:bold;" id="orderId"></p>
+    <br/>
+    <p>해당 펀딩 상품의 주문, 배송정보는 이메일과</p>
+    <p>카카오톡 또는 SMS로 안내 드리겠습니다.</p>
+<!--     <p id="paymentKey"></p> -->
+	<br/>
+	<p style="font-weight:bold;">총 결제금액</p>
+    <p style="font-weight:bold;" id="amount"></p>
+    </div>
 
     <script>
       // 쿼리 파라미터 값이 결제 요청할 때 보낸 데이터와 동일한지 반드시 확인하세요.
@@ -134,7 +148,7 @@
       const amountElement = document.getElementById("amount");
       
       orderIdElement.textContent = "주문번호: " + orderId;
-      amountElement.textContent = "결제 금액: " + amount;
+      amountElement.textContent = amount + "원";
       paymentKeyElement.textContent = "paymentKey: " + paymentKey;
       
     </script>

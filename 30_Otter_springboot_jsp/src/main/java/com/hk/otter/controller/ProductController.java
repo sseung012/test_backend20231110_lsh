@@ -110,7 +110,7 @@ public class ProductController {
   	}
   	
   	
-  //내프로젝트목록
+  // 내프로젝트목록
   	@GetMapping(value="/myProject")
   	public String myProject(ProductDto dto, Model model, HttpServletRequest request) {
   		System.out.println("프로젝트목록");
