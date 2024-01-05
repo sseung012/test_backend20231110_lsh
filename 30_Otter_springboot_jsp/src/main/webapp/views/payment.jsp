@@ -48,7 +48,7 @@ tossPayments.requestPayment('카드', { // 결제수단 파라미터 (카드, �
   amount: 100, // 결제 금액
   orderId: '7_XR8395y-HtJQb7Wb55L', // 주문 ID(주문 ID는 상점에서 직접 만들어주세요.)
   orderName: '테스트 결제', // 주문명
-  customerName: '김나무', // 구매자 이름    
+  customerName: '김나무', // 구매자 이름         
   successUrl: 'https://docs.tosspayments.com/guides/payment/test-success', // 결제 성공 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
   failUrl: 'https://docs.tosspayments.com/guides/payment/test-fail', // 결제 실패 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
 })
