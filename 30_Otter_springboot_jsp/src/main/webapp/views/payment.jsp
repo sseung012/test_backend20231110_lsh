@@ -125,6 +125,7 @@ function findAddr(){
 <!-- 주소록 API를 사용하기 위해 join.jsp에 외부 스크립트 파일을 연결하는 코드 -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
+
 </head>
 <body>
 <!-- Navigation-->
@@ -232,7 +233,14 @@ function findAddr(){
                         
                         <div class="payment">
                             <label for="order_date" class="form-label" style="font-weight:bold; font-size:18px;">주문날짜</label>
-                            <input type="date" name="order_date" id="order_date" class="form-control" readonly="readonly"/>
+                            <div id="order_date">
+							    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+							    <script>
+							        const formattedDate = moment().format('YYYY-MM-DD');
+							        document.getElementById("order_date").innerHTML = formattedDate;
+							    </script>
+							</div>
+<!--                             <input type="date" name="order_date" id="order_date" class="form-control"/> -->
 							
                         </div>&nbsp;
                         
