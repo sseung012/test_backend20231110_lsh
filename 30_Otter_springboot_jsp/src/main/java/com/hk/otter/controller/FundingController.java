@@ -132,5 +132,11 @@ public class FundingController {
         return "success";
     }
 	
+	@GetMapping("/fail")
+    public String fail() {
+
+
+        return "fail";
+    }
 	
 }
