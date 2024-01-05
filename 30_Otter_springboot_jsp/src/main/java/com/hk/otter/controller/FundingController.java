@@ -63,6 +63,7 @@ public class FundingController {
 		return  "payment" ;
 	}
 
+	//주문목록 리스트로 보기
 	@GetMapping(value = "/paylist")
 	public String paylist(Model model, HttpServletRequest request) {
 		System.out.println("사용자-참여한 펀딩 목록");
@@ -83,6 +84,30 @@ public class FundingController {
   	    System.out.println("list:"+list);
 
 		return  "paylist" ;
+	}
+	
+	//결제내역 상세보기
+	@GetMapping("/orderDetail/{seq}")
+	public String orderDetail(@PathVariable("seq") Integer seq, OrderDto odto, Model model, HttpServletRequest request) {
+		System.out.println("결제내역 상세보기");
+		HttpSession session = request.getSession();
+		OrderDto dto = (OrderDto)session.getAttribute("dto");
+		request.setAttribute("dto", dto);
+
+		UserDto ldto = (UserDto)session.getAttribute("ldto");
+		request.setAttribute("dto", ldto);
+		
+		// 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리다이렉트
+		if (ldto == null) {
+			return "redirect:/user/signin";
+		}
+		
+//		int seq=dto.getSeq();
+
+		odto=orderService.orderDetail(seq);
+		model.addAttribute("odto", odto);
+		
+		return "orderDetail";
 	}
 
 

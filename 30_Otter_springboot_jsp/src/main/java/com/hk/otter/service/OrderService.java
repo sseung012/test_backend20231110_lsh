@@ -21,4 +21,8 @@ public class OrderService {
 		return orderMapper.paylist(userID);
 	}
 
+	public OrderDto orderDetail(int seq) {
+		return orderMapper.orderDetail(seq);
+	}
+
 }

@@ -11,4 +11,6 @@ public interface OrderMapper {
 	//내가 펀딩참여한 프로젝트 표로 보여주기
 	public List<OrderDto> paylist(String userID);
 
+	public OrderDto orderDetail(int seq);
+
 }

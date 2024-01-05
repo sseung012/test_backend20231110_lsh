@@ -119,13 +119,13 @@ response.setContentType("text/html; charset=UTF-8");
 							%>
 							            <tr>
 							                <td>
-							                    <a href='/banking/payment/<%= odto.getSeq() %>'>  
+							                    <a href='/banking/orderDetail/<%= odto.getSeq() %>'>  
 							                        <span><%= odto.getTitle() %></span>
 							                    </a>
 							                </td>
 							                <td><%= odto.getSelect_reward() %></td>
 							                <td><%= odto.getSelect_amount() %></td>
-							                <td><%= odto.getTotal_price() %></td> 
+							                <td><%= odto.getTotal_price() %>원</td> 
 							                <td><%= odto.getOrder_date() %></td>
 							            </tr>
 							<%
