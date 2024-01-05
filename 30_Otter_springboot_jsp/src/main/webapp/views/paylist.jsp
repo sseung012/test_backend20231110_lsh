@@ -121,7 +121,7 @@
 <!-- 							                </td> -->
 <%-- 							                <td><%= pdto.select_reward() %></td> --%>
 <%-- 							                <td><%= pdto.select_amount() %></td> --%>
-<%-- 							                <td><%= pdto.total_price() %></td> --%>
+<%-- 							                <td><%= pdto.total_price() %></td> --%> 
 <%-- 							                <td><%= pdto.order_date() %></td> --%>
 <!-- 							            </tr> -->
 							<%
