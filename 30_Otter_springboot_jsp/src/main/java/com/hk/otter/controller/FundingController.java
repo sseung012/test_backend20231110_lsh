@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hk.otter.dtos.OrderDto;
 import com.hk.otter.dtos.ProductDto;
 import com.hk.otter.dtos.RewardDto;
 import com.hk.otter.dtos.UserDto;
@@ -62,8 +63,8 @@ public class FundingController {
 	@GetMapping(value = "/paylist")
 	public String productDetail(Model model, HttpServletRequest request) {
 			
-//		List<ProductDto> list = OrderService.paylist();
-//  	    model.addAttribute("list", list);
+		List<OrderDto> list = OrderService.paylist();
+  	    model.addAttribute("list", list);
 
 		return  "paylist" ;
 	}
