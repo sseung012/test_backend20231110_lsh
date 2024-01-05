@@ -1,6 +1,6 @@
 package com.hk.otter.dtos;
 
-public class PayDto {
+public class OrderDto {
 
 	public int seq;
 	public String user_id;
@@ -16,7 +16,7 @@ public class PayDto {
 	
 	@Override
 	public String toString() {
-		return "PayDto [seq=" + seq + ", user_id=" + user_id + ", name=" + name + ", title=" + title
+		return "OrderDto [seq=" + seq + ", user_id=" + user_id + ", name=" + name + ", title=" + title
 				+ ", select_reward=" + select_reward + ", select_amount=" + select_amount + ", address=" + address
 				+ ", phone=" + phone + ", total_price=" + total_price + ", reward_seq=" + reward_seq + ", order_date="
 				+ order_date + "]";
@@ -87,7 +87,7 @@ public class PayDto {
 	public void setOrder_date(String order_date) {
 		this.order_date = order_date;
 	}
-	public PayDto(int seq, String user_id, String name, String title, String select_reward, int select_amount,
+	public OrderDto(int seq, String user_id, String name, String title, String select_reward, int select_amount,
 			String address, String phone, float total_price, int reward_seq, String order_date) {
 		super();
 		this.seq = seq;
@@ -102,7 +102,7 @@ public class PayDto {
 		this.reward_seq = reward_seq;
 		this.order_date = order_date;
 	}
-	public PayDto() {
+	public OrderDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

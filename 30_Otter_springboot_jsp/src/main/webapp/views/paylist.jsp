@@ -1,11 +1,15 @@
-<%@page import="com.hk.otter.dtos.PayDto"%>
+<%@page import="com.hk.otter.dtos.OrderDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%request.setCharacterEncoding("utf-8"); %>
-<%response.setContentType("text/html; charset=UTF-8"); %>
+<%
+request.setCharacterEncoding("utf-8");
+%>
+<%
+response.setContentType("text/html; charset=UTF-8");
+%>
 <%@ page import="com.hk.otter.dtos.ProductDto" %>
 <%@ page import="com.hk.otter.dtos.UserDto" %>
-<%@ page import="com.hk.otter.dtos.PayDto" %>
+<%@ page import="com.hk.otter.dtos.OrderDto" %>
 <%@ page import="org.springframework.web.bind.annotation.RequestParam" %>
 <%@ page import="org.springframework.web.bind.annotation.ModelAttribute" %>
 <%@ page import="java.text.SimpleDateFormat" %>
@@ -15,12 +19,12 @@
 <html>
 <head>
 <%
- 	List<ProductDto> list=(List<ProductDto>)request.getAttribute("list");
+List<ProductDto> list=(List<ProductDto>)request.getAttribute("list");
 %>
 <%
 	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
 	ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
-	PayDto pdto = (PayDto)request.getSession().getAttribute("pdto");
+	OrderDto odto = (OrderDto)request.getSession().getAttribute("odto");
 %>
 
 <title>Otter</title>
@@ -94,7 +98,7 @@
             	<div class="contents">
 			        <h1>참여한 펀딩</h1>
 			        <br />
-			        <div id="getProductList">
+			        <div id="paylist">
 			            <table class="table2" style="width:1200px;">
 			                <tr>
 			                    <th>제목</th>
@@ -111,18 +115,18 @@
 <!-- 							    </tr> -->
 							<%
 // 							    } else {
-// 							        for (PayDto pdto : list) {
+// 							        for (OrderDto odto : list) {
 							%>
 <!-- 							            <tr> -->
 <!-- 							                <td> -->
-<%-- 							                    <a href='/banking/payment/<%= pdto.getSeq() %>'>   --%>
-<%-- 							                        <span><%= pdto.getTitle() %></span> --%>
+<%-- 							                    <a href='/banking/payment/<%= odto.getSeq() %>'>   --%>
+<%-- 							                        <span><%= odto.getTitle() %></span> --%>
 <!-- 							                    </a> -->
 <!-- 							                </td> -->
-<%-- 							                <td><%= pdto.select_reward() %></td> --%>
-<%-- 							                <td><%= pdto.select_amount() %></td> --%>
-<%-- 							                <td><%= pdto.total_price() %></td> --%> 
-<%-- 							                <td><%= pdto.order_date() %></td> --%>
+<%-- 							                <td><%= odto.select_reward() %></td> --%>
+<%-- 							                <td><%= odto.select_amount() %></td> --%>
+<%-- 							                <td><%= odto.total_price() %></td> --%> 
+<%-- 							                <td><%= odto.order_date() %></td> --%>
 <!-- 							            </tr> -->
 							<%
 // 							        }
