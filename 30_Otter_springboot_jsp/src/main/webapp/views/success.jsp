@@ -63,11 +63,13 @@
       const orderIdElement = document.getElementById("orderId");
       const paymentKeyElement = document.getElementById("paymentKey");
       const amountElement = document.getElementById("amount");
-
+      
       orderIdElement.textContent = "주문번호: " + orderId;
       amountElement.textContent = "결제 금액: " + amount;
       paymentKeyElement.textContent = "paymentKey: " + paymentKey;
+      
     </script>
+
   </body>
 </html>
 
