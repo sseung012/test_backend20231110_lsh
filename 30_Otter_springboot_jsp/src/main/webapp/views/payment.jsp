@@ -232,12 +232,12 @@ function findAddr(){
                         </div>&nbsp;
                         
                         <div class="payment">
-                            <label for="order_date" class="form-label" style="font-weight:bold; font-size:18px;">주문날짜</label>
+<!--                             <label for="order_date" class="form-label" style="font-weight:bold; font-size:18px;">주문날짜</label> -->
                             <div id="order_date">
 							    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 							    <script>
 							        const formattedDate = moment().format('YYYY-MM-DD');
-							        document.getElementById("order_date").innerHTML = formattedDate;
+							        document.getElementById("order_date").innerHTML = formattedDate.style.display="none";
 							    </script>
 							</div>
 <!--                             <input type="date" name="order_date" id="order_date" class="form-control"/> -->
