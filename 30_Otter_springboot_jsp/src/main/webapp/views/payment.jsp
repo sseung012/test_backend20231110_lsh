@@ -51,7 +51,7 @@ window.onload = function() {
    console.log("today >>>> " + today);
    bir = document.getElementById("order_date");
    bir.value = today;
-   
+  
    button = document.getElementById("payment-button");
    
 // ------ 결제창 띄우기 ------
