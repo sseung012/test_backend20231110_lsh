@@ -19,12 +19,12 @@ response.setContentType("text/html; charset=UTF-8");
 <html>
 <head>
 <%
-List<ProductDto> list=(List<ProductDto>)request.getAttribute("list");
+	List<OrderDto> list=(List<OrderDto>)request.getAttribute("list");
 %>
 <%
 	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
 	ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
-	OrderDto odto = (OrderDto)request.getSession().getAttribute("odto");
+// 	OrderDto odto = (OrderDto)request.getSession().getAttribute("odto");
 %>
 
 <title>Otter</title>
@@ -108,29 +108,29 @@ List<ProductDto> list=(List<ProductDto>)request.getAttribute("list");
 			                    <th>주문날짜</th>
 			                </tr>
 								<%
-// 							    if (list == null || list.isEmpty()) {
+							    if (list == null || list.isEmpty()) { 
 							%>
-<!-- 							    <tr> -->
-<!-- 							        <td colspan="8">-- 가입된 회원이 없습니다. --</td> -->
-<!-- 							    </tr> -->
+							    <tr>
+							        <td colspan="8">-- 참여한 펀딩이 없습니다. --</td>
+							    </tr>
 							<%
-// 							    } else {
-// 							        for (OrderDto odto : list) {
+							    } else {
+							        for (OrderDto odto : list) {
 							%>
-<!-- 							            <tr> -->
-<!-- 							                <td> -->
-<%-- 							                    <a href='/banking/payment/<%= odto.getSeq() %>'>   --%>
-<%-- 							                        <span><%= odto.getTitle() %></span> --%>
-<!-- 							                    </a> -->
-<!-- 							                </td> -->
-<%-- 							                <td><%= odto.select_reward() %></td> --%>
-<%-- 							                <td><%= odto.select_amount() %></td> --%>
-<%-- 							                <td><%= odto.total_price() %></td> --%> 
-<%-- 							                <td><%= odto.order_date() %></td> --%>
-<!-- 							            </tr> -->
+							            <tr>
+							                <td>
+							                    <a href='/banking/orderDetail/<%= odto.getSeq() %>'>  
+							                        <span><%= odto.getTitle() %></span>
+							                    </a>
+							                </td>
+							                <td><%= odto.getSelect_reward() %></td>
+							                <td><%= odto.getSelect_amount() %></td>
+							                <td><%= odto.getTotal_price() %>원</td> 
+							                <td><%= odto.getOrder_date() %></td>
+							            </tr>
 							<%
-// 							        }
-// 							    }
+							        }
+							    }
 							%>
 
 			            </table>

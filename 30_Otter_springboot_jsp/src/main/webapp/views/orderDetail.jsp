@@ -1,37 +1,44 @@
-<%@page import="java.util.List"%>
+<%@page import="com.hk.otter.dtos.OrderDto"%>
+<%@ page import="com.hk.otter.dtos.RewardDto"%>
+<%@page import="com.hk.otter.dtos.ProductDto"%>
+<%@page import="com.hk.otter.dtos.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
-<%@ page import="com.hk.otter.dtos.ProductDto" %>
-<%@ page import="com.hk.otter.dtos.UserDto" %>
-<%@ page import="org.springframework.web.bind.annotation.RequestParam" %>
-<%@ page import="org.springframework.web.bind.annotation.ModelAttribute" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <%
- 	List<ProductDto> list=(List<ProductDto>)request.getAttribute("list");
+   UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
+   ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
+   OrderDto odto = (OrderDto)request.getSession().getAttribute("odto");
 %>
-<%
-	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
-	ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
-%>
-
+<meta charset="utf-8" />
+ <script src="https://js.tosspayments.com/v1/payment-widget"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
 <title>Otter</title>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!--         Bootstrap icons -->
-<!--         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" /> -->
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/styles.css" rel="stylesheet" />
+<style>
+   th {
+   		font-size:18px;
+   }
+</style>
+<script type="text/javascript">
+
+</script>
+<!-- 주소록 API를 사용하기 위해 join.jsp에 외부 스크립트 파일을 연결하는 코드 -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 
 </head>
-
-<body>
+<body >
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
    <div class="container px-4 px-lg-5">
@@ -56,7 +63,9 @@
                             </ul> 
 	               </li>
 	            </ul>
-            	<%
+            
+			
+				<%
 				    if ("USER".equals(ldto.getRole())) {
 				%>
 					<!-- ADMIN이 아닌 경우의 버튼들 -->
@@ -69,7 +78,12 @@
 			                &nbsp;
 			                <a class="btn btn-outline-darkk" type="submit" href="/product/myProject">
 			                    <i class="bi-cart-fill me-1"></i>
-			                    나의정보
+			                    내 프로젝트
+			                </a> 
+			                &nbsp;
+			                <a class="btn btn-outline-darkk" type="submit" href="/banking/paylist">
+			                    <i class="bi-cart-fill me-1"></i>
+			                    결제내역
 			                </a> 
 			                &nbsp;
 			                <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
@@ -80,12 +94,84 @@
 				<%
 				        }
 				%>
+
+ 
          </div>
    </div>
 </nav>
-
-<p>주문완료!</p>
-
+       
+<section class="pyy-5">
+      <div class="container mmmy-5" style="width:800px; height:700px;">
+         <div class="roww justify-content-center">
+            <div class="coll-lg-6">
+            	<div class="contents">
+					<h1>결제 내역</h1><br/>
+					<div id="orderDetail">
+						<form>
+							<input type="hidden" name="id" value="${odto.seq}"/>
+							<table class="table1">
+								<tr>
+									<th>아이디</th>
+									<td>
+										<input type="text" name="id" value="${odto.user_id}" readonly="readonly" class="form-control1"/>
+									</td>
+								</tr>
+								<tr>
+								    <th>이름</th>
+								    <td>
+								    	<input type="text" name="username" value="${odto.name}" readonly="readonly" class="form-control1"/>
+								    </td>
+								</tr>
+								<tr>
+								    <th>제목</th>
+								    <td>
+								        <input type="text" name="phone" value="${odto.title}" class="form-control1"/>
+								    </td>
+								</tr>
+								<tr>
+								    <th>선택한 리워드</th>
+								    <td>
+								        <input type="email" name="useremail" value="${odto.select_reward}" class="form-control1"/>
+								    </td>
+								</tr>
+								<tr>
+									<th>총 개수</th>
+									<td>
+										<input type="text" name="role" value="${odto.select_amount}" readonly="readonly" class="form-control1"/>
+									</td>
+								</tr>
+								<tr>
+									<th>총 금액</th>
+									<td>
+										<input type="text" name="delflag" value="${odto.total_price}" readonly="readonly" class="form-control1"/>
+									</td>
+								</tr>
+								<tr>
+									<th>주문 날짜</th>
+									<td>
+										<input type="text" name="delflag" value="${odto.order_date}" readonly="readonly" class="form-control1"/>
+									</td>
+								</tr>
+								<tr>
+									<th>주소</th>
+									<td>
+										<input type="text" name="delflag" value="${odto.address}" readonly="readonly" class="form-control1"/>
+									</td>
+								</tr>
+								<tr>
+									<th>전화번호</th>
+									<td>
+										<input type="text" name="delflag" value="${odto.phone}" readonly="readonly" class="form-control1"/>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+            </div>
+         </div>
+      </div>
+   </section>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->

@@ -46,6 +46,9 @@ public class FundingController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private OrderService orderService;
+	
 
 	@PostMapping(value = "/payment")
 	public String productDetail( Model model, HttpSession session,String[] reward_name,String[] count,String total_price ) {
@@ -60,13 +63,51 @@ public class FundingController {
 		return  "payment" ;
 	}
 
+	//주문목록 리스트로 보기
 	@GetMapping(value = "/paylist")
-	public String productDetail(Model model, HttpServletRequest request) {
-			
-		List<OrderDto> list = OrderService.paylist();
+	public String paylist(Model model, HttpServletRequest request) {
+		System.out.println("사용자-참여한 펀딩 목록");
+
+		HttpSession session = request.getSession();
+		UserDto ldto = (UserDto)session.getAttribute("ldto");
+		request.setAttribute("dto", ldto);
+		
+		// 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리다이렉트
+		if (ldto == null) {
+			return "redirect:/user/signin";
+		}
+		
+		String userID=ldto.getId();
+  		
+  	    List<OrderDto> list = orderService.paylist(userID);
   	    model.addAttribute("list", list);
+  	    System.out.println("list:"+list);
 
 		return  "paylist" ;
+	}
+	
+	//결제내역 상세보기
+	@GetMapping("/orderDetail/{seq}")
+	public String orderDetail(@PathVariable("seq") Integer seq, OrderDto odto, Model model, HttpServletRequest request) {
+		System.out.println("결제내역 상세보기");
+		HttpSession session = request.getSession();
+		OrderDto dto = (OrderDto)session.getAttribute("dto");
+		request.setAttribute("dto", dto);
+
+		UserDto ldto = (UserDto)session.getAttribute("ldto");
+		request.setAttribute("dto", ldto);
+		
+		// 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리다이렉트
+		if (ldto == null) {
+			return "redirect:/user/signin";
+		}
+		
+//		int seq=dto.getSeq();
+
+		odto=orderService.orderDetail(seq);
+		model.addAttribute("odto", odto);
+		
+		return "orderDetail";
 	}
 
 

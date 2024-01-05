@@ -39,10 +39,6 @@ var button ;
 var clientKey = 'test_ck_ALnQvDd2VJz6wRev0vgwVMj7X41m'
 var tossPayments = TossPayments(clientKey)
 
-
-
-	 
-	  
 //현재 날짜 나타내기
 window.onload = function() {
    today = new Date();
@@ -54,18 +50,21 @@ window.onload = function() {
   
    button = document.getElementById("payment-button");
    
+   payment_amount = document.getElementsByName("payment_amount");
+   payment_title = document.getElementsByName("title");
+
 // ------ 결제창 띄우기 ------
    button.addEventListener("click", function () {
    tossPayments.requestPayment('카드', { // 결제수단 파라미터 (카드, 계좌이체, 가상계좌, 휴대폰 등)
      // 결제 정보 파라미터
      // 더 많은 결제 정보 파라미터는 결제창 Javascript SDK에서 확인하세요.
      // https://docs.tosspayments.com/reference/js-sdk
-     amount: 100, // 결제 금액
+     amount: ${param.total_price}, // 결제 금액
      orderId: '7_XR8395y-HtJQb7Wb55L', // 주문 ID(주문 ID는 상점에서 직접 만들어주세요.)
-     orderName: '테스트 결제', // 주문명
-     customerName: '김나무', // 구매자 이름         
+     orderName: '당신에게 위로를 드립니다, 행운의 머그잔과 커피잔', // 주문명
+     customerName: '김나무',          
      successUrl: 'https://docs.tosspayments.com/guides/payment/test-success', // 결제 성공 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
-     failUrl: 'https://docs.tosspayments.com/guides/payment/test-fail', // 결제 실패 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
+     failUrl: 'https://docs.tosspayments.com/guides/payment/test-fail' // 결제 실패 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
    })
    // ------결제창을 띄울 수 없는 에러 처리 ------
    // 메서드 실행에 실패해서 reject 된 에러를 처리하는 블록입니다.
@@ -228,8 +227,7 @@ function findAddr(){
                         </div>&nbsp;
                         
                         <br><br>
-<!--                         <input type="submit" value="결제하기" class="btn btn-primary" /> -->
-                       
+        
 								<div id="payment-method"></div>
 								<div id="agreement"></div>
 								
