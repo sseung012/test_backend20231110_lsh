@@ -87,7 +87,7 @@ window.onload = function() {
      orderId: '7_XR8395y-HtJ765', // 주문 ID(주문 ID는 상점에서 직접 만들어주세요.)
      orderName: '${param.title}', // 주문명
      customerName: '${ldto.username}', // 주문자명     
-     successUrl: 'http://localhost:8087/success?${ORDER_ID}${PAYMENT_KEY}${AMOUNT}', // 결제 성공 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
+     successUrl: 'http://localhost:8087/banking/success?${ORDER_ID}${PAYMENT_KEY}${AMOUNT}', // 결제 성공 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
      failUrl: 'https://docs.tosspayments.com/guides/payment/test-fail' // 결제 실패 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
    })
    // ------결제창을 띄울 수 없는 에러 처리 ------

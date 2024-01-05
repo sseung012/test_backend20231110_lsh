@@ -1,11 +1,15 @@
 package com.hk.otter.controller;
 
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -113,10 +117,17 @@ public class FundingController {
 	@GetMapping("/success")
     public String success(@RequestParam("orderId") String orderId,
                           @RequestParam("paymentKey") String paymentKey,
-                          @RequestParam("amount") String amount) {
-        System.out.println("ORDER_ID:" + orderId);
-        System.out.println("PAYMENT_KEY:" + paymentKey);
-        System.out.println("AMOUNT:" + amount);
+                          @RequestParam("amount") String amount, Model model) {
+						
+				//클라이언트로 전달하기 위한 model 저장
+				model.addAttribute("orderId", orderId);
+				model.addAttribute("paymentKey", paymentKey);
+				model.addAttribute("amount", amount);
+				
+				// 콘솔에 찍히는지 확인
+		        System.out.println("ORDER_ID:" + orderId);
+		        System.out.println("PAYMENT_KEY:" + paymentKey);
+		        System.out.println("AMOUNT:" + amount);
 
         return "success";
     }
