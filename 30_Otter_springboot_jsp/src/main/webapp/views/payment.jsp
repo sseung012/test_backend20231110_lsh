@@ -47,76 +47,6 @@ window.onload = function() {
    console.log("today >>>> " + today);
    bir = document.getElementById("order_date");
    bir.value = today;
-  
-   button = document.getElementById("payment-button");
-   
-   payment_amount = document.getElementsByName("payment_amount");
-   payment_title = document.getElementsByName("title");
-
-// ------ 결제창 띄우기 ------
-   button.addEventListener("click", function () {
-   tossPayments.requestPayment('카드', { // 결제수단 파라미터 (카드, 계좌이체, 가상계좌, 휴대폰 등)
-     // 결제 정보 파라미터
-     // 더 많은 결제 정보 파라미터는 결제창 Javascript SDK에서 확인하세요.
-     // https://docs.tosspayments.com/reference/js-sdk
-     amount: ${param.total_price}, // 결제 금액
-     orderId: '7_XR8395y-HtJQb7Wb55L', // 주문 ID(주문 ID는 상점에서 직접 만들어주세요.)
-     orderName: '당신에게 위로를 드립니다, 행운의 머그잔과 커피잔', // 주문명
-     customerName: '김나무',          
-     successUrl: 'https://docs.tosspayments.com/guides/payment/test-success', // 결제 성공 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
-     failUrl: 'https://docs.tosspayments.com/guides/payment/test-fail' // 결제 실패 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
-   })
-   // ------결제창을 띄울 수 없는 에러 처리 ------
-   // 메서드 실행에 실패해서 reject 된 에러를 처리하는 블록입니다.
-   // 결제창에서 발생할 수 있는 에러를 확인하세요.    
-   // https://docs.tosspayments.com/reference/error-codes#결제창공통-sdk-에러
-   .catch(function (error) {   
-   	
-     if (error.code === 'USER_CANCEL') {
-       // 결제 고객이 결제창을 닫았을 때 에러 처리
-     } else if (error.code === 'INVALID_CARD_COMPANY') {
-       // 유효하지 않은 카드 코드에 대한 에러 처리
-     }
-   });
-   });
-}
-
-function findAddr(){
-	new daum.Postcode({
-        oncomplete: function(data) {
-        	
-        	console.log(data);
-        	
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-            var roadAddr = data.roadAddress; // 도로명 주소 변수
-            var jibunAddr = data.jibunAddress; // 지번 주소 변수
-            // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('address1_input').value = data.zonecode;
-            if(roadAddr !== ''){
-                document.getElementById("address2_input").value = roadAddr;
-            } 
-            else if(jibunAddr !== ''){
-                document.getElementById("address2_input").value = jibunAddr;
-            }
-        }
-    }).open();
-}
-
-// ------ 클라이언트 키로 객체 초기화 ------
-var button ;
-var clientKey = 'test_ck_ALnQvDd2VJz6wRev0vgwVMj7X41m'
-var tossPayments = TossPayments(clientKey)
-
-//현재 날짜 나타내기
-window.onload = function() {
-   today = new Date();
-   console.log("today.toISOString() >>>" + today.toISOString());
-   today = today.toISOString().slice(0, 10);
-   console.log("today >>>> " + today);
-   bir = document.getElementById("order_date");
-   bir.value = today;
    
    button = document.getElementById("payment-button");
    
@@ -131,7 +61,7 @@ window.onload = function() {
      // 더 많은 결제 정보 파라미터는 결제창 Javascript SDK에서 확인하세요.
      // https://docs.tosspayments.com/reference/js-sdk
      amount: ${param.total_price}, // 결제 금액
-     orderId: '7_XR8395y-HtJ765', // 주문 ID(주문 ID는 상점에서 직접 만들어주세요.)
+     orderId: '7_XR8395y-H54509', // 주문 ID(주문 ID는 상점에서 직접 만들어주세요.)
      orderName: '${param.title}', // 주문명
      customerName: '${ldto.username}', // 주문자명     
      successUrl: 'http://localhost:8087/banking/success?${ORDER_ID}${PAYMENT_KEY}${AMOUNT}', // 결제 성공 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
