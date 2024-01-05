@@ -17,9 +17,13 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
+    <!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+	<!-- Core theme CSS (includes Bootstrap)-->
+	<link href="/resources/css/styles.css" rel="stylesheet" />
   </head>
   <body>
-    <h2>결제 성공</h2>
+    <h1>펀딩이 완료되었습니다. 감사합니다 :)</h1>
     <p id="orderId"></p>
     <p id="paymentKey"></p>
     <p id="amount"></p>
