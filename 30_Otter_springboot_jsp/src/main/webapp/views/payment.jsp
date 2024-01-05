@@ -34,6 +34,7 @@
 </style>
 <script type="text/javascript">
 
+
 // ------ 클라이언트 키로 객체 초기화 ------
 var button ;
 var clientKey = 'test_ck_ALnQvDd2VJz6wRev0vgwVMj7X41m'
@@ -104,6 +105,7 @@ function findAddr(){
     }).open();
 }
 
+
 // ------ 클라이언트 키로 객체 초기화 ------
 var button ;
 var clientKey = 'test_ck_ALnQvDd2VJz6wRev0vgwVMj7X41m'
@@ -131,7 +133,7 @@ window.onload = function() {
      // 더 많은 결제 정보 파라미터는 결제창 Javascript SDK에서 확인하세요.
      // https://docs.tosspayments.com/reference/js-sdk
      amount: ${param.total_price}, // 결제 금액
-     orderId: '7_XR8395y-HtJ765', // 주문 ID(주문 ID는 상점에서 직접 만들어주세요.)
+     orderId: '7_XR8395y-H54509', // 주문 ID(주문 ID는 상점에서 직접 만들어주세요.)
      orderName: '${param.title}', // 주문명
      customerName: '${ldto.username}', // 주문자명     
      successUrl: 'http://localhost:8087/banking/success?${ORDER_ID}${PAYMENT_KEY}${AMOUNT}', // 결제 성공 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
