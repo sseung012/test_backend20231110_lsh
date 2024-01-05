@@ -34,57 +34,35 @@
 </style>
 <script type="text/javascript">
 
-const button = document.getElementById("payment-button");
-const coupon = document.getElementById("coupon-box");
-const generateRandomString = () => window.btoa(Math.random()).slice(0, 20);
-let currentURL = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname.split('/')[1];
-var amount = 40000;
+// ------ 클라이언트 키로 객체 초기화 ------
+const button = document.getElementById("payment-button")
+var clientKey = 'test_ck_ALnQvDd2VJz6wRev0vgwVMj7X41m'
+var tossPayments = TossPayments(clientKey)
 
-// ------  결제위젯 초기화 ------
-// @docs https://docs.tosspayments.com/reference/widget-sdk#sdk-설치-및-초기화
-// TODO: clientKey는 개발자센터의 결제위젯 연동 키 > 클라이언트 키로 바꾸세요. 
-// TODO: customerKey는 구매자와 1:1 관계로 무작위한 고유값을 생성하세요. 
-const clientKey = "test_ck_ALnQvDd2VJz6wRev0vgwVMj7X41m"; 
-const customerKey = generateRandomString();                 
-const paymentWidget = PaymentWidget(clientKey, customerKey); // 회원 결제
-// const paymentWidget = PaymentWidget(clientKey, PaymentWidget.ANONYMOUS); // 비회원 결제
-
-// ------  결제 UI 렌더링 ------
-// @docs https://docs.tosspayments.com/reference/widget-sdk#renderpaymentmethods선택자-결제-금액-옵션
-paymentMethodWidget = paymentWidget.renderPaymentMethods(
-  "#payment-method",
-  { value: amount },
-  { variantKey: "DEFAULT" }
-);
-// ------  이용약관 UI 렌더링 ------
-// @docs https://docs.tosspayments.com/reference/widget-sdk#renderagreement선택자-옵션
-paymentWidget.renderAgreement(
-  "#agreement",
-  { variantKey: "AGREEMENT" }
-);
-
-// ------  결제 금액 업데이트 ------
-// @docs https://docs.tosspayments.com/reference/widget-sdk#updateamount결제-금액
-// coupon.addEventListener("change", function () {
-//   if (coupon.checked) {
-//     paymentMethodWidget.updateAmount(amount - 5000);
-//   } else {
-//     paymentMethodWidget.updateAmount(amount);
-//   }
-// });
-
-// ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
-// @docs https://docs.tosspayments.com/reference/widget-sdk#requestpayment결제-정보
+// ------ 결제창 띄우기 ------
 button.addEventListener("click", function () {
-  paymentWidget.requestPayment({
-    orderId: generateRandomString(),
-    orderName: "지구를 지키는 업사이클 여권&명함 지갑",
-    successUrl: currentURL + "/success.jsp",
-    failUrl: currentURL + "/fail.jsp",
-    customerEmail: "tree@naver.com",
-    customerName: "김나무",
-    customerMobilePhone: "01033334444"
-  });
+tossPayments.requestPayment('카드', { // 결제수단 파라미터 (카드, 계좌이체, 가상계좌, 휴대폰 등)
+  // 결제 정보 파라미터
+  // 더 많은 결제 정보 파라미터는 결제창 Javascript SDK에서 확인하세요.
+  // https://docs.tosspayments.com/reference/js-sdk
+  amount: 100, // 결제 금액
+  orderId: '7_XR8395y-HtJQb7Wb55L', // 주문 ID(주문 ID는 상점에서 직접 만들어주세요.)
+  orderName: '테스트 결제', // 주문명
+  customerName: '김나무', // 구매자 이름
+  successUrl: 'https://docs.tosspayments.com/guides/payment/test-success', // 결제 성공 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
+  failUrl: 'https://docs.tosspayments.com/guides/payment/test-fail', // 결제 실패 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
+})
+// ------결제창을 띄울 수 없는 에러 처리 ------
+// 메서드 실행에 실패해서 reject 된 에러를 처리하는 블록입니다.
+// 결제창에서 발생할 수 있는 에러를 확인하세요. 
+// https://docs.tosspayments.com/reference/error-codes#결제창공통-sdk-에러
+.catch(function (error) {
+  if (error.code === 'USER_CANCEL') {
+    // 결제 고객이 결제창을 닫았을 때 에러 처리
+  } else if (error.code === 'INVALID_CARD_COMPANY') {
+    // 유효하지 않은 카드 코드에 대한 에러 처리
+  }
+});
 });
 
 	 
@@ -239,13 +217,10 @@ function findAddr(){
                         <br><br>
 <!--                         <input type="submit" value="결제하기" class="btn btn-primary" /> -->
                        
-<!-- 								<div class="title">결제 방법</div> -->
 								<div id="payment-method"></div>
 								<div id="agreement"></div>
 								
-								<!-- 결제 버튼 -->
 								<button id="payment-button" class="btn btn-primary">결제하기</button>
-										
 				
                     </form>
                 </div>
