@@ -15,7 +15,7 @@
    RewardDto rdto = (RewardDto)request.getSession().getAttribute("rdto");
    boolean isAdmin = ldto != null && "ADMIN".equals(ldto.getRole());
 //    boolean isProductNotApproved = dto != null && "N".equals(dto.getProduct_check());
-%>
+%>   
 <meta charset="utf-8" />
  <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
