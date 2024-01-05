@@ -28,8 +28,10 @@ import com.hk.otter.dtos.ProductDto;
 import com.hk.otter.dtos.RewardDto;
 import com.hk.otter.dtos.UserDto;
 import com.hk.otter.feignMapper.OpenBankingFeign;
+import com.hk.otter.service.OrderService;
 import com.hk.otter.service.UserService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 
@@ -55,6 +57,15 @@ public class FundingController {
 		model.addAttribute("count", count);
 
 		return  "payment" ;
+	}
+
+	@GetMapping(value = "/paylist")
+	public String productDetail(Model model, HttpServletRequest request) {
+			
+//		List<ProductDto> list = OrderService.paylist();
+//  	    model.addAttribute("list", list);
+
+		return  "paylist" ;
 	}
 
 
