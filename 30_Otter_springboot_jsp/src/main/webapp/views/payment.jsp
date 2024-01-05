@@ -57,6 +57,7 @@ tossPayments.requestPayment('카드', { // 결제수단 파라미터 (카드, �
 // 결제창에서 발생할 수 있는 에러를 확인하세요.    
 // https://docs.tosspayments.com/reference/error-codes#결제창공통-sdk-에러
 .catch(function (error) {   
+	
   if (error.code === 'USER_CANCEL') {
     // 결제 고객이 결제창을 닫았을 때 에러 처리
   } else if (error.code === 'INVALID_CARD_COMPANY') {
