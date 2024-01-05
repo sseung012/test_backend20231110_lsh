@@ -57,5 +57,13 @@ public class FundingController {
 		return  "payment" ;
 	}
 
+	@GetMapping(value = "/paylist")
+	public String productDetail() {
+			
+
+
+		return  "paylist" ;
+	}
+
 
 }

@@ -1,19 +1,28 @@
+<%@page import="com.hk.otter.dtos.PayDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
+<%@ page import="com.hk.otter.dtos.ProductDto" %>
 <%@ page import="com.hk.otter.dtos.UserDto" %>
-<%-- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
+<%@ page import="com.hk.otter.dtos.PayDto" %>
+<%@ page import="org.springframework.web.bind.annotation.RequestParam" %>
+<%@ page import="org.springframework.web.bind.annotation.ModelAttribute" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <%
-	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
+ 	List<ProductDto> list=(List<ProductDto>)request.getAttribute("list");
 %>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
+<%
+	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
+	ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
+	PayDto pdto = (PayDto)request.getSession().getAttribute("pdto");
+%>
+
 <title>Otter</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- Favicon-->
@@ -22,18 +31,10 @@
 <!--         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" /> -->
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/styles.css" rel="stylesheet" />
-<script type="text/javascript">
-    function delUser() {
-        var isConfirmed = confirm("회원 탈퇴하시겠습니까?");
-        if (isConfirmed) {
-            location.href="/user/delUser";
-        }
-    }
 
-</script>
 </head>
 
-<body >
+<body>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
    <div class="container px-4 px-lg-5">
@@ -58,9 +59,7 @@
                             </ul> 
 	               </li>
 	            </ul>
-            
-			
-				<%
+            	<%
 				    if ("USER".equals(ldto.getRole())) {
 				%>
 					<!-- ADMIN이 아닌 경우의 버튼들 -->
@@ -73,12 +72,7 @@
 			                &nbsp;
 			                <a class="btn btn-outline-darkk" type="submit" href="/product/myProject">
 			                    <i class="bi-cart-fill me-1"></i>
-			                    내 프로젝트
-			                </a> 
-			                &nbsp;
-			                <a class="btn btn-outline-darkk" type="submit" href="/banking/paylist">
-			                    <i class="bi-cart-fill me-1"></i>
-			                    결제내역
+			                    나의정보
 			                </a> 
 			                &nbsp;
 			                <a class="btn btn-outline-darkk" type="submit" href="/user/logout">
@@ -89,75 +83,59 @@
 				<%
 				        }
 				%>
-
- 
          </div>
    </div>
 </nav>
-       
-<section class="pyy-5">
-      <div class="container myy-5">
-         <div class="roww justify-content-center">
+
+<section class="pyyy-5">
+      <div class="container mmyy-5">
+         <div class="rowww justify-content-center"> 
             <div class="coll-lg-6">
             	<div class="contents">
-					<h1>나의 정보</h1>
-					<div id="myinfo">
-						<form action="/user/updateUser" method="post">
-							<input type="hidden" name="id" value="${ldto.id}"/>
-							<table class="table1">
-								<tr>
-									<th>아이디</th>
-									<td>
-										<input type="text" name="id" value="${dto.id}" readonly="readonly" class="form-control1"/>
-									</td>
-								</tr>
-								<tr>
-								    <th>이름</th>
-								    <td>
-								    	<input type="text" name="username" value="${dto.username}" readonly="readonly" class="form-control1"/>
-								    </td>
-								</tr>
-								<tr>
-								    <th>연락처</th>
-								    <td>
-								        <input type="text" name="phone" value="${dto.phone}" class="form-control"/>
-								    </td>
-								</tr>
-								<tr>
-								    <th>이메일</th>
-								    <td>
-								        <input type="email" name="useremail" value="${dto.useremail}" class="form-control"/>
-								    </td>
-								</tr>
-								<tr>
-									<th>등급</th>
-									<td>
-										<input type="text" name="role" value="${dto.role}" readonly="readonly" class="form-control1"/>
-									</td>
-								</tr>
-								<tr>
-									<th>탈퇴여부</th>
-									<td>
-										<input type="text" name="delflag" value="${dto.delflag}" readonly="readonly" class="form-control1"/>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2">
-										<input type="button" value="탈퇴" onclick="delUser()" class="btn btn-outline-darkk" style="float:right; margin-left:5px;" />
-										<input type="submit" value="수정" class="btn btn-outline-darkk" style="float:right;"/>
-									</td>
-								</tr> 
-							</table>
-						</form>
-					</div>
-				</div>
-            </div>
-         </div>
-      </div>
-   </section>
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="resources/js/scripts.js"></script>
+			        <h1>참여한 펀딩</h1>
+			        <br />
+			        <div id="getProductList">
+			            <table class="table2" style="width:1200px;">
+			                <tr>
+			                    <th>제목</th>
+			                    <th>선택한 리워드</th>
+			                    <th>총 개수</th>
+			                    <th>총 결제금액</th>
+			                    <th>주문날짜</th>
+			                </tr>
+								<%
+// 							    if (list == null || list.isEmpty()) {
+							%>
+<!-- 							    <tr> -->
+<!-- 							        <td colspan="8">-- 가입된 회원이 없습니다. --</td> -->
+<!-- 							    </tr> -->
+							<%
+// 							    } else {
+// 							        for (PayDto pdto : list) {
+							%>
+<!-- 							            <tr> -->
+<!-- 							                <td> -->
+<%-- 							                    <a href='/banking/payment/<%= pdto.getSeq() %>'>   --%>
+<%-- 							                        <span><%= pdto.getTitle() %></span> --%>
+<!-- 							                    </a> -->
+<!-- 							                </td> -->
+<%-- 							                <td><%= pdto.select_reward() %></td> --%>
+<%-- 							                <td><%= pdto.select_amount() %></td> --%>
+<%-- 							                <td><%= pdto.total_price() %></td> --%>
+<%-- 							                <td><%= pdto.order_date() %></td> --%>
+<!-- 							            </tr> -->
+							<%
+// 							        }
+// 							    }
+							%>
+
+			            </table>
+			        </div>
+			    </div>
+			</div>
+		</div>
+</div>
+</section>
+
 </body>
 </html>
