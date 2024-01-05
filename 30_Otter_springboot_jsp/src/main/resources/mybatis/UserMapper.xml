@@ -3,63 +3,47 @@
 
 <mapper namespace="com.hk.otter.mapper.UserMapper">
 
-	<insert id="addUser" parameterType="UserDto">
-		INSERT INTO USER
-		VALUES(NULL,#{id},#{userpassword},#{username},#{phone},#{useremail},#{useraccesstoken},#{userrefreshtoken},#{userseqno},'USER','N')
-	</insert>
-	
-	<select id="loginUser" parameterType="UserDto" resultType="UserDto">
-	   	SELECT seq,id, USERNAME,USERPASSWORD, phone, USEREMAIL, ROLE, delflag
-		FROM USER 
-		WHERE ID=#{id} AND USERPASSWORD=#{userpassword} and delflag="N"
-	</select>
-	
-	<select id="idChk" parameterType="String" resultType="String">
-		SELECT ID FROM USER WHERE ID=#{id}
-	</select>
-	
-<!-- 	나의정보조회 -->
-	<select id="UserInfo" parameterType="String" resultType="userDto">
-	    SELECT  id, USERNAME, phone, USEREMAIL, ROLE, delflag
-	    FROM USER 
-	    WHERE ID=#{id}
-	</select>
-	
+   <insert id="addUser" parameterType="UserDto">
+      INSERT INTO USER
+      VALUES(NULL,#{id},#{userpassword},#{username},#{phone},#{useremail},#{useraccesstoken},#{userrefreshtoken},#{userseqno},'USER','N')
+   </insert>
+   
+   <select id="loginUser" parameterType="UserDto" resultType="UserDto">
+         SELECT seq,id, USERNAME,USERPASSWORD, phone, USEREMAIL, ROLE, delflag
+      FROM USER 
+      WHERE ID=#{id} AND USERPASSWORD=#{userpassword} and delflag="N"
+   </select>
+   
+   <select id="idChk" parameterType="String" resultType="String">
+      SELECT ID FROM USER WHERE ID=#{id}
+   </select>
+   
+<!--    나의정보조회 -->
+   <select id="UserInfo" parameterType="String" resultType="userDto">
+       SELECT  id, USERNAME, phone, USEREMAIL, ROLE, delflag
+       FROM USER 
+       WHERE ID=#{id}
+   </select>
+   
         
 <!--  나의정보 수정 -->
-	<update id="updateUser" parameterType="UserDto">
-		UPDATE user
-		SET phone=#{phone}, USEREMAIL=#{useremail}
-		WHERE id=#{id}
-	</update>	
-	
-<!-- 	회원탈퇴 -->
-	<update id="delUser" parameterType="String">
-		UPDATE user
-		SET delflag = "Y"
-		WHERE id=#{id}
-	</update>
+   <update id="updateUser" parameterType="UserDto">
+      UPDATE user
+      SET phone=#{phone}, USEREMAIL=#{useremail}
+      WHERE id=#{id}
+   </update>   
+   
+<!--    회원탈퇴 -->
+   <update id="delUser" parameterType="String">
+      UPDATE user
+      SET delflag = "Y"
+      WHERE id=#{id}
+   </update>
 
-	<!-- 회원목록 전체조회 -->
-	<select id="getUserList"  resultType="userDto">
-		SELECT seq, id, USERNAME, phone, USEREMAIL, ROLE, delflag
-		FROM USER	
-	</select>
+   <!-- 회원목록 전체조회 -->
+   <select id="getUserList"  resultType="userDto">
+      SELECT seq, id, USERNAME, phone, USEREMAIL, ROLE, delflag
+      FROM USER   
+   </select>
 
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
