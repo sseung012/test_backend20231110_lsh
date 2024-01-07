@@ -134,7 +134,7 @@ function findAddr(){
                         </div>&nbsp;
                         <div class="payment">
                             <label for="title" class="form-label">주문상품</label>
-                            <input type="text" name="title" class="form-control" value="${dto.title}" />
+                            <input type="text" name="title" class="form-control" value="${rdto.title}" />
                         </div>&nbsp;     
                         <div class="payment">
                             <label for="reward_name" class="form-label">선택한 리워드</label>
