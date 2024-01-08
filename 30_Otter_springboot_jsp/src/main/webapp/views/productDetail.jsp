@@ -86,12 +86,12 @@
                removebtn.parent().remove();
                total_price = total_price-optionPP2
                $("#total_price").val(total_price); // 총 금액에 쓰임
-            });         
-            
+            }); 
+
            });            
            
-        </script>
-        <!-- Favicon-->
+        </script> 
+        <!-- Favicon-->   
 <!--         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/resources/css/productdetail.css" rel="stylesheet" />
