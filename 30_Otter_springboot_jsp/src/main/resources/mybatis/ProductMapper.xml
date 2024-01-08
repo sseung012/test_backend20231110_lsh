@@ -106,6 +106,7 @@
       FROM (
          SELECT ROW_NUMBER() OVER(PARTITION BY product_check ORDER BY product.seq DESC) rn, seq, user_seq,product_check, img, maker, title
          FROM product
+         WHERE user_seq=#{user_seq}
          ) a
       WHERE rn BETWEEN 1 AND 4
 
