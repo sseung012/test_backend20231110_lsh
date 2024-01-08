@@ -150,7 +150,7 @@
 		                        <p class="text-muted">${mlist.maker}</p>
 		                        <!-- 제품 종료일 -->
 		                        <c:choose>
-									<c:when test="${mlist.remainingDays lt 0}">
+									<c:when test="${mlist.remainingDays le 0}">
 								        <p class="text-muted">마감된 상품</p>
 								    </c:when>
 								    <c:otherwise>

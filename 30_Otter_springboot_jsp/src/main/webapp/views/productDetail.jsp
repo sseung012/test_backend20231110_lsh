@@ -349,7 +349,15 @@
                      <tr>
                         <td>배송비 ㅣ 무료</td>
                      </tr>
-                     <a class="btn btn-primary" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>
+ 
+                     <c:choose>
+                     	<c:when test="${dto.remainingDays le 0}">
+                        	<td><strong><font color="red">펀딩 마감</font></strong></td>
+                        </c:when>
+                        <c:otherwise>
+                     		<a class="btn btn-primary" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
+                        </c:otherwise>
+                     </c:choose>
                     
                     
                     </div> 
