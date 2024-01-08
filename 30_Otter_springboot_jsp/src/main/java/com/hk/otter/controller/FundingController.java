@@ -18,19 +18,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
-
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-   
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hk.otter.dtos.OrderDto;
-import com.hk.otter.dtos.ProductDto;
-import com.hk.otter.dtos.RewardDto;
 import com.hk.otter.dtos.UserDto;
 import com.hk.otter.feignMapper.OpenBankingFeign;
 import com.hk.otter.service.OrderService;
@@ -44,7 +34,7 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/banking")
 public class FundingController {
 	
-	@Autowired
+	@Autowired 
 	private OpenBankingFeign openBankingFeign;
 	
 	@Autowired
@@ -52,7 +42,7 @@ public class FundingController {
 	
 	@Autowired
 	private OrderService orderService;
-	
+	//결제
 
 	@PostMapping(value = "/payment")
 	public String productDetail( Model model, HttpSession session,String[] reward_name,String[] count,String total_price ) {
@@ -87,9 +77,9 @@ public class FundingController {
   	    model.addAttribute("list", list);
   	    System.out.println("list:"+list);
 
-		return  "paylist" ;
+		return  "paylist";
 	}
-	
+
 	//결제내역 상세보기
 	@GetMapping("/orderDetail/{seq}")
 	public String orderDetail(@PathVariable("seq") Integer seq, OrderDto odto, Model model, HttpServletRequest request) {
@@ -138,5 +128,5 @@ public class FundingController {
 
         return "fail";
     }
-	
+
 }

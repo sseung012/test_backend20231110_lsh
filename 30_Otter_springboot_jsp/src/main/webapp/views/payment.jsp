@@ -189,8 +189,13 @@ window.onload = function() {
                             <input type="text" name="username" class="form-control" value="${ldto.username}" readonly="readonly" />
                         </div>&nbsp;
                         <div class="payment">
+<<<<<<< HEAD
+                            <label for="title" class="form-label">주문상품</label>
+                            <input type="text" name="title" class="form-control" value="${rdto.title}" />
+=======
                             <label for="title" class="form-label" style="font-weight:bold; font-size:18px;">주문상품</label>
                             <input type="text" name="title" class="form-control" value="${param.title}" readonly="readonly"/>
+>>>>>>> branch 'main' of https://github.com/sseung012/test_backend20231110_lsh.git
                         </div>&nbsp;     
 <!--                         <div class="payment"> -->
 <!--                             <label for="reward_name" class="form-label">선택한 리워드</label> -->

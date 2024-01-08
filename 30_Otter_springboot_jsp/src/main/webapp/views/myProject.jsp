@@ -67,7 +67,7 @@
 			                    프로젝트 만들기
 			                </a>
 			                &nbsp;
-			                <a class="btn btn-outline-darkk" type="submit" href="/product/myProject">
+			                <a class="btn btn-outline-darkk" type="submit" href="/user/myinfo">
 			                    <i class="bi-cart-fill me-1"></i>
 			                    나의정보
 			                </a> 
