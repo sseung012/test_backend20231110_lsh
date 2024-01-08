@@ -148,14 +148,14 @@
 		                        <p class="text-muted">${clist.maker}</p>
 <!-- 		                    제품 종료일 -->
 		                        <c:choose>
-									<c:when test="${clist.remainingDays lt 0}">
+									<c:when test="${clist.remainingDays le 0}">
 								        <p class="text-muted">마감된 상품</p>
 								    </c:when>
 								    <c:otherwise>
-								        <p class="text-muted">남은날짜: ${clist.remainingDays}</p>
+								        <p class="text-muted">${clist.remainingDays}일 남음</p>
 								    </c:otherwise>
 		                        </c:choose> 
-<!-- 		                    제품 지지자 수 -->
+<!-- 		                    제품 지지자 수 -->     
 		                        <p class="text-muted">${clist.total_supporters}명</p>
                      		</div>
                   		</div> 

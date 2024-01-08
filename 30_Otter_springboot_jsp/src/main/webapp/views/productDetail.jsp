@@ -14,49 +14,42 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>productDetail</title>
+        <title>productDetail</title>    
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
         <script type="text/javascript">
-//            function approve() {
-//                // 승인 버튼을 눌렀을 때 실행되어야 할 로직을 여기에 추가
-//                alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
-//                // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
-//            }
-
-			function funding() {
-			    document.querySelectorAll(".pp")[0].submit();
-			}
-
-
+   
+         function funding() {
+             document.querySelectorAll(".pp")[0].submit();
+         }
          
-
          var total_price=0;
          
-          $(document).ready(function(){
+         $(document).ready(function(){
 
-              $("#reward_name").change(function(){
-//                alert($("#reward_name option:selected").text());   
-               var seq=$("#reward_name").val();
-//                alert($("#test > ."+seq).text());
-               if($("#test ."+seq).text() == ""){
-                  
-                  var optionSelTxt=$("#reward_name option:selected").text();
-                  var optionP=$("#reward_name option:selected").text().split("_");
-                  var optionPP = parseInt(optionP[1].replace("원", ""))
-//                   console.log(optionPrice[0]);
-            
-
+             $("#reward_name").change(function(){
+//               alert($("#reward_name option:selected").text());   
+              var seq=$("#reward_name").val();
+//               alert($("#test > ."+seq).text());
+              if($("#test ."+seq).text() == ""){
+                 
+                 var optionSelTxt=$("#reward_name option:selected").text();
+                 var optionP=$("#reward_name option:selected").text().split("_");
+                 var optionPP = parseInt(optionP[1].replace("원", ""))
+//                  console.log(optionPrice[0]);
+           
+             
                   var countEle=
-                	  '<div class="cc">'
-                	    + '<div class="' + seq + '">' + optionSelTxt + '</div>'
-                	    + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
-                	    + '<input type="number" name="count" class="form-class"'
-                	    + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
-                	    + '<div>' + optionPP + '</div>'
-                	    + '<button class="remove">X</button>'
-                	    + '</div>';
-                	    
-                	  $("#test").append(countEle);    
+                     '<div class="cc">'
+                       + '<div class="' + seq + '">' + optionSelTxt + '</div>'
+                       + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
+                       + '<input type="number" name="count" class="form-class"'
+                       + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
+                       + '<div>' + optionPP + '</div>'
+                       + '<button class="remove">X</button>'
+// 					   + '<button id="remove" class="btn-close" aria-label="Close"></button>'
+                       + '</div>';
+                       
+                     $("#test").append(countEle);    
                       total_price+=optionPP;
                       $("#total_price").val(total_price);
                } else {
@@ -77,7 +70,7 @@
                
                var optionPPDiv=$(this).next("div");
                optionPPDiv.text(optionPP2*count);
-               var sum=0;
+               var sum=0;   
                $(".cc").each(function(){
                   sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
                });
@@ -85,7 +78,8 @@
                $("#total_price").val(total_price); // 총 금액에 쓰임
                
             });
-            
+
+               
 //             버튼을 눌렀을 때 지워지고(remove()활용) prev() 이용해서 값을 구하고 그걸 총금액에서 빼기
 //             기능 실행 X
             $("#test").on("click", ".remove", function(){
@@ -110,8 +104,7 @@
                $("#total_price").val(total_price); // 총 금액에 쓰임
             });         
             
-           });
-
+           });            
            
         </script>
         <!-- Favicon-->
@@ -331,10 +324,10 @@
 <!--                     <th>수량</th> -->
 <!--                <form action="/product/" method="post"> -->
                <form action="/banking/payment" method="post" class="pp"> 
-               		<input type="hidden" name="title" value="${dto.title}"/>
-               		
+                     <input type="hidden" name="title" value="${dto.title}"/>
+                     
                     <div id="test">
-                                                                  
+                    
                     </div>
                     
                      <br/>
@@ -349,9 +342,17 @@
                      <tr>
                         <td>배송비 ㅣ 무료</td>
                      </tr>
-                     <a class="btn btn-primary" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>
-                    
-                    
+
+
+ 
+                     <c:choose>
+                     	<c:when test="${dto.remainingDays le 0}">
+                        	<td><strong><font color="red">펀딩이 마감되었습니다!</font></strong></td>
+                        </c:when>
+                        <c:otherwise>
+                     		<a class="btn btn-primary" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
+                        </c:otherwise>
+                     </c:choose>                
                     </div> 
                     <br/>
                     <br/>
@@ -403,6 +404,5 @@
         <script src="js/scripts.js"></script>
     </body>
 </html>
-
 
 
