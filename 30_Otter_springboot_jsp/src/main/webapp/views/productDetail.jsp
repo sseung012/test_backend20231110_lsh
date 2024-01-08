@@ -14,10 +14,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>productDetail</title>
+        <title>productDetail</title>    
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
         <script type="text/javascript">
-//            function approve() {
+//            function approve() {    
 //                // 승인 버튼을 눌렀을 때 실행되어야 할 로직을 여기에 추가
 //                alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
 //                // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
@@ -54,6 +54,7 @@
                        + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
                        + '<div>' + optionPP + '</div>'
                        + '<button class="remove">X</button>'
+// 					   + '<button id="remove" class="btn-close" aria-label="Close"></button>'
                        + '</div>';
                        
                      $("#test").append(countEle);    
@@ -333,9 +334,7 @@
                <form action="/banking/payment" method="post" class="pp"> 
                      <input type="hidden" name="title" value="${dto.title}"/>
                      
-                    <div id="test">
-                                                                  
-                    </div>
+                    <div id="test"></div>
                     
                      <br/>
                      <tr>
