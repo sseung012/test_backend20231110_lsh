@@ -79,7 +79,7 @@
                
             });
 
-            
+               
 //             버튼을 눌렀을 때 지워지고(remove()활용) prev() 이용해서 값을 구하고 그걸 총금액에서 빼기
 //             기능 실행 X
             $("#test").on("click", ".remove", function(){
