@@ -26,7 +26,7 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/banking")
 public class FundingController {
 	
-	@Autowired
+	@Autowired 
 	private OpenBankingFeign openBankingFeign;
 	
 	@Autowired
