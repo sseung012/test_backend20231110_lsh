@@ -25,4 +25,9 @@ public class OrderService {
 		return orderMapper.orderDetail(seq);
 	}
 
+	public boolean orderSuccess(OrderDto dto) {
+		int count=orderMapper.orderSuccess(dto);
+		return count>0?true:false;
+	}
+
 }
