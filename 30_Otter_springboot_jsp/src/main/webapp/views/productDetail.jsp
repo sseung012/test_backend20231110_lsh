@@ -54,6 +54,7 @@
                        + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
                        + '<div>' + optionPP + '</div>'
                        + '<button class="remove">X</button>'
+// 					   + '<button id="remove" class="btn-close" aria-label="Close"></button>'
                        + '</div>';
                        
                      $("#test").append(countEle);    
@@ -333,9 +334,7 @@
                <form action="/banking/payment" method="post" class="pp"> 
                      <input type="hidden" name="title" value="${dto.title}"/>
                      
-                    <div id="test">
-                                                                  
-                    </div>
+                    <div id="test"></div>
                     
                      <br/>
                      <tr>
