@@ -78,7 +78,7 @@
                
                var optionPPDiv=$(this).next("div");
                optionPPDiv.text(optionPP2*count);
-               var sum=0;
+               var sum=0;   
                $(".cc").each(function(){
                   sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
                });
