@@ -1,7 +1,7 @@
 <%@ page import="com.hk.otter.dtos.RewardDto"%>
 <%@ page import="com.hk.otter.dtos.ProductDto"%>
 <%@ page import="com.hk.otter.dtos.UserDto" %>
- 
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%request.setCharacterEncoding("utf-8"); %>
@@ -37,79 +37,73 @@
                  var optionPP = parseInt(optionP[1].replace("원", ""))
 //                  console.log(optionPrice[0]);
            
-
-                 var countEle=
-                    '<div class="cc">'
-                      + '<div class="' + seq + '">' + optionSelTxt + '</div>'
-                      + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
-                      + '<input type="number" name="count" class="form-class"'
-                      + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
-                      + '<div>' + optionPP + '</div>'
-                      + '<button class="remove">X</button>'
-                      + '</div>';
-                      
-                    $("#test").append(countEle);    
-                     total_price+=optionPP;
-                     $("#total_price").val(total_price);
-              } else {
-                 // 기능 실행 X
-                 alert("이미 추가한 리워드입니다!");
-              }
-           });
              
-           <!-- 중간, 최종 상품 금액 계산 -->
-//            이벤트 핸들러 함수 사용
+                  var countEle=
+                     '<div class="cc">'
+                       + '<div class="' + seq + '">' + optionSelTxt + '</div>'
+                       + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
+                       + '<input type="number" name="count" class="form-class"'
+                       + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
+                       + '<div>' + optionPP + '</div>'
+                       + '<button class="remove">X</button>'
+// 					   + '<button id="remove" class="btn-close" aria-label="Close"></button>'
+                       + '</div>';
+                       
+                     $("#test").append(countEle);    
+                      total_price+=optionPP;
+                      $("#total_price").val(total_price);
+               } else {
+                  // 기능 실행 X
+                  alert("이미 추가한 리워드입니다!");
+               }
+            });
+              
+            <!-- 중간, 최종 상품 금액 계산 -->
+//             이벤트 핸들러 함수 사용
 
-           $("#test").on("click","input[name=count]",function(){
-              
-              var inputCount=$(this); // input 엘리먼트
-              
-              var optionPP2=inputCount.prev("div").text().split("_")[1].replace("원",""); // 40000원 -> 40000으로 출력
-              var count=$(this).val(); // 수량
-              
-              var optionPPDiv=$(this).next("div");
-              optionPPDiv.text(optionPP2*count);
-              var sum=0;
-              $(".cc").each(function(){
-                 sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
-              });
-              total_price=sum;
-              $("#total_price").val(total_price); // 총 금액에 쓰임
-              
-           });
-           
-//            버튼을 눌렀을 때 지워지고(remove()활용) prev() 이용해서 값을 구하고 그걸 총금액에서 빼기
-//            기능 실행 X
-           $("#test").on("click", ".remove", function(){
-              var removebtn =$(this); // input 엘리먼트
-              
-//               removebtn.parent().remove();
-              
-              //var rrr = removebtn.prev("div").text();
-              
-              var optionPP2=removebtn.prev("div").text();
-              var count=$(this).val(); // 수량
-              
-//               var optionPPDiv=$(this).next("div");
-//               optionPPDiv.text(optionPP2*count);
-//               var sum=0;
-//               $(".cc").each(function(){
-//                  sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
-//               });
-//               total_price-=sum;
-              removebtn.parent().remove();
-              total_price = total_price-optionPP2
-              $("#total_price").val(total_price); // 총 금액에 쓰임
-           });         
-           
-          });
-
-
-
-         
-
-         
-
+            $("#test").on("click","input[name=count]",function(){
+               
+               var inputCount=$(this); // input 엘리먼트
+               
+               var optionPP2=inputCount.prev("div").text().split("_")[1].replace("원",""); // 40000원 -> 40000으로 출력
+               var count=$(this).val(); // 수량
+               
+               var optionPPDiv=$(this).next("div");
+               optionPPDiv.text(optionPP2*count);
+               var sum=0;   
+               $(".cc").each(function(){
+                  sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
+               });
+               total_price=sum;
+               $("#total_price").val(total_price); // 총 금액에 쓰임
+               
+            });
+            
+//             버튼을 눌렀을 때 지워지고(remove()활용) prev() 이용해서 값을 구하고 그걸 총금액에서 빼기
+//             기능 실행 X
+            $("#test").on("click", ".remove", function(){
+               var removebtn =$(this); // input 엘리먼트
+               
+//                removebtn.parent().remove();
+               
+               //var rrr = removebtn.prev("div").text();
+               
+               var optionPP2=removebtn.prev("div").text();
+               var count=$(this).val(); // 수량
+               
+//                var optionPPDiv=$(this).next("div");
+//                optionPPDiv.text(optionPP2*count);
+//                var sum=0;
+//                $(".cc").each(function(){
+//                   sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
+//                });
+//                total_price-=sum;
+               removebtn.parent().remove();
+               total_price = total_price-optionPP2
+               $("#total_price").val(total_price); // 총 금액에 쓰임
+            });         
+            
+           });            
            
         </script>
         <!-- Favicon-->
@@ -348,6 +342,7 @@
                         <td>배송비 ㅣ 무료</td>
                      </tr>
 
+
  
                      <c:choose>
                      	<c:when test="${dto.remainingDays le 0}">
@@ -356,8 +351,7 @@
                         <c:otherwise>
                      		<a class="btn btn-primary" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
                         </c:otherwise>
-                     </c:choose>
-                  
+                     </c:choose>                
                     </div> 
                     <br/>
                     <br/>
@@ -409,3 +403,5 @@
         <script src="js/scripts.js"></script>
     </body>
 </html>
+
+
