@@ -17,7 +17,7 @@
         <title>productDetail</title>    
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
         <script type="text/javascript">
-//            function approve() {
+//            function approve() {    
 //                // 승인 버튼을 눌렀을 때 실행되어야 할 로직을 여기에 추가
 //                alert('프로젝트를 승인합니다.'); // 예시로 경고창을 띄우는 코드
 //                // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
