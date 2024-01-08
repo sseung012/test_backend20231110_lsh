@@ -3,7 +3,7 @@
 
 
 <mapper namespace="com.hk.otter.mapper.OrderMapper">
-   
+
 <!--    펀딩한 프로젝트 목록 보기 -->
    <select id="paylist"  resultType="OrderDto">
       SELECT user_id, seq, title, select_reward, select_amount, total_price, order_date
@@ -18,5 +18,12 @@
       FROM orders
       WHERE seq=#{seq}
    </select>
+	
+	<insert id="orderSuccess" parameterType="OrderDto">
+      	INSERT INTO orders
+		VALUES(NULL, #{user_id}, #{name}, #{title}, #{select_reward}, null, #{address},
+		#{phone}, #{total_price}, null, SYSDATE(), #{orderId}, #{paymentKey}); 
+   </insert> 
+
 
 </mapper>

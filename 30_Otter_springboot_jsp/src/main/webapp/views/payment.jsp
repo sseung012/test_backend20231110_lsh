@@ -46,7 +46,7 @@ function findAddr(){
             var roadAddr = data.roadAddress; // 도로명 주소 변수
             var jibunAddr = data.jibunAddress; // 지번 주소 변수
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('address1_input').value = data.zonecode;
+            document.getElementById('address').value = data.zonecode;
             if(roadAddr !== ''){
                 document.getElementById("address2_input").value = roadAddr;
             } 
@@ -174,9 +174,9 @@ window.onload = function() {
             <div class="roww justify-content-center">
                 <div class="coll-lg-6">
                 <h1>펀딩 상품 결제</h1>
-                    <form action="/banking/payment" method="post" 
+                    <form action="/banking/success" method="post" 
                     enctype="multipart/form-data">
-                    	<input type="hidden" name="id" value="${ldto.id}"/>
+                    	<input type="hidden" name="user_id" value="${ldto.id}"/>
                     	<div class="addProduct">                          
 <!--                             <input type="hidden" name="seq"/> -->
                         </div>&nbsp;                        
@@ -186,7 +186,7 @@ window.onload = function() {
                                   
                         <div class="payment">
                             <label for="username" class="form-label" style="font-weight:bold; font-size:18px;">주문자</label>
-                            <input type="text" name="username" class="form-control" value="${ldto.username}" readonly="readonly" />
+                            <input type="text" name="name" class="form-control" value="${ldto.username}" readonly="readonly" />
                         </div>&nbsp;
                         <div class="payment">
 
@@ -200,7 +200,7 @@ window.onload = function() {
 <!--                         </div>&nbsp; -->
 
 						<div class="payment">
-						    <label for="reward_name" class="form-label" style="font-weight:bold; font-size:18px;">선택한 리워드</label>
+						    <label for="select_reward" class="form-label" style="font-weight:bold; font-size:18px;">선택한 리워드</label>
 						    <c:forEach var="i" begin="0" end="${fn:length(reward_name) - 1}">
 						        <input type="text" name="reward_name" class="form-control" readonly="readonly"
 						               value="${reward_name[i]} ${count[i]}개" />
@@ -209,7 +209,7 @@ window.onload = function() {
 
 						<div class="payment">      
 							<div class="address_name" style="font-weight:bold; font-size:18px;">배송지 입력</div>
-							<input id="address1_input" style="width:200px;" readonly="readonly" placeholder="우편번호"> <a class="btn btn-primary" onclick="findAddr()">주소 찾기</a><br>
+							<input id="address" style="width:200px;" readonly="readonly" placeholder="우편번호"> <a class="btn btn-primary" onclick="findAddr()">주소 찾기</a><br>
 							<input id="address2_input" style="width:500px;" readonly="readonly" placeholder="주소">
 							<br>
 							<input id="address3_input" style="width:500px;" placeholder="상세주소">
@@ -221,7 +221,7 @@ window.onload = function() {
                         </div>&nbsp;
                         <div class="payment" id="payment">
                             <label for="payment_amount" class="form-label" style="font-weight:bold; font-size:18px;">결제금액</label>
-                            <input type="text" name="payment_amount" class="form-control" value="${param.total_price}" readonly="readonly"/>
+                            <input type="text" name="total_price" class="form-control" value="${param.total_price}" readonly="readonly"/>
 								 						
                         </div>&nbsp;
                         
