@@ -91,9 +91,9 @@ response.setContentType("text/html; charset=UTF-8");
    </div>
 </nav>
 
-<section class="pyyy-5">
-      <div class="container mmyy-5">
-         <div class="rowww justify-content-center"> 
+<section class="pyy-5">
+      <div class="container myy-51">
+         <div class="roww justify-content-center">
             <div class="coll-lg-6">
             	<div class="contents">
 			        <h1>참여한 펀딩</h1>
@@ -140,6 +140,9 @@ response.setContentType("text/html; charset=UTF-8");
 		</div>
 </div>
 </section>
-
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="resources/js/scripts.js"></script>
 </body>
 </html>
