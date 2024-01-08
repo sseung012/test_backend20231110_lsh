@@ -1,7 +1,7 @@
 <%@ page import="com.hk.otter.dtos.RewardDto"%>
 <%@ page import="com.hk.otter.dtos.ProductDto"%>
 <%@ page import="com.hk.otter.dtos.UserDto" %>
- 
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%request.setCharacterEncoding("utf-8"); %>
@@ -349,17 +349,9 @@
                      <tr>
                         <td>배송비 ㅣ 무료</td>
                      </tr>
-
- 
-                     <c:choose>
-                     	<c:when test="${dto.remainingDays le 0}">
-                        	<td><strong><font color="red">펀딩 마감</font></strong></td>
-                        </c:when>
-                        <c:otherwise>
-                     		<a class="btn btn-primary" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
-                        </c:otherwise>
-                     </c:choose>
-                  
+                     <a class="btn btn-primary" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>
+                    
+                    
                     </div> 
                     <br/>
                     <br/>
@@ -411,3 +403,5 @@
         <script src="js/scripts.js"></script>
     </body>
 </html>
+
+
