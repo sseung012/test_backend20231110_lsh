@@ -133,7 +133,7 @@
 		        removebtn.parent().remove();
 		        updateTotalPrice();
 		    });
-		
+		      
 		    function updateTotalPrice() {
 		        var sum = 0;
 		        $(".cc").each(function() {
