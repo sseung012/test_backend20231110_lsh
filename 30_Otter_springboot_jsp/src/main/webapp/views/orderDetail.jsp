@@ -1,38 +1,43 @@
-<%@page import="java.util.List"%>
+<%@page import="com.hk.otter.dtos.OrderDto"%>
+<%@ page import="com.hk.otter.dtos.RewardDto"%>
+<%@page import="com.hk.otter.dtos.ProductDto"%>
+<%@page import="com.hk.otter.dtos.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
-<%@ page import="com.hk.otter.dtos.UserDto" %>
-<%-- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <%
-	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
+   UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
+   ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
+   OrderDto odto = (OrderDto)request.getSession().getAttribute("odto");
 %>
-<meta charset="UTF-8"/>
+<meta charset="utf-8" />
+ <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Otter</title>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!--         Bootstrap icons -->
-<!--         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" /> -->
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/styles.css" rel="stylesheet" />
+<style>
+   th {
+   		font-size:18px;
+   }
+</style>
 <script type="text/javascript">
-    function delUser() {
-        var isConfirmed = confirm("회원 탈퇴하시겠습니까?");
-        if (isConfirmed) {
-            location.href="/user/delUser";
-        }
-    }
 
 </script>
-</head>
+<!-- 주소록 API를 사용하기 위해 join.jsp에 외부 스크립트 파일을 연결하는 코드 -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
+
+</head>
 <body >
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -96,57 +101,69 @@
 </nav>
        
 <section class="pyy-5">
-      <div class="container myy-5">
+      <div class="container mmmy-5" style="width:800px; height:700px;">
          <div class="roww justify-content-center">
             <div class="coll-lg-6">
             	<div class="contents">
-					<h1>나의 정보</h1>
-					<div id="myinfo">
-						<form action="/user/updateUser" method="post">
-							<input type="hidden" name="id" value="${ldto.id}"/>
+					<h1>결제 내역</h1><br/>
+					<div id="orderDetail">
+						<form>
+							<input type="hidden" name="id" value="${odto.seq}"/>
 							<table class="table1">
 								<tr>
 									<th>아이디</th>
 									<td>
-										<input type="text" name="id" value="${dto.id}" readonly="readonly" class="form-control1"/>
+										<input type="text" name="id" value="${odto.user_id}" readonly="readonly" class="form-control1"/>
 									</td>
 								</tr>
 								<tr>
 								    <th>이름</th>
 								    <td>
-								    	<input type="text" name="username" value="${dto.username}" readonly="readonly" class="form-control1"/>
+								    	<input type="text" name="username" value="${odto.name}" readonly="readonly" class="form-control1"/>
 								    </td>
 								</tr>
 								<tr>
-								    <th>연락처</th>
+								    <th>제목</th>
 								    <td>
-								        <input type="text" name="phone" value="${dto.phone}" class="form-control"/>
+								        <input type="text" name="phone" value="${odto.title}" class="form-control1"/>
 								    </td>
 								</tr>
 								<tr>
-								    <th>이메일</th>
+								    <th>선택한 리워드</th>
 								    <td>
-								        <input type="email" name="useremail" value="${dto.useremail}" class="form-control"/>
+								        <input type="email" name="useremail" value="${odto.select_reward}" class="form-control1"/>
 								    </td>
 								</tr>
 								<tr>
-									<th>등급</th>
+									<th>총 개수</th>
 									<td>
-										<input type="text" name="role" value="${dto.role}" readonly="readonly" class="form-control1"/>
+										<input type="text" name="role" value="${odto.select_amount}" readonly="readonly" class="form-control1"/>
 									</td>
 								</tr>
 								<tr>
-									<th>탈퇴여부</th>
+									<th>총 금액</th>
 									<td>
-										<input type="text" name="delflag" value="${dto.delflag}" readonly="readonly" class="form-control1"/>
+										<input type="text" name="delflag" value="${odto.total_price}" readonly="readonly" class="form-control1"/>
 									</td>
 								</tr>
 								<tr>
-									<td colspan="2">
-										<input type="button" value="탈퇴" onclick="delUser()" class="btn btn-outline-darkk" style="float:right; margin-left:5px;" />
-										<input type="submit" value="수정" class="btn btn-outline-darkk" style="float:right;"/>
+									<th>주문 날짜</th>
+									<td>
+										<input type="text" name="delflag" value="${odto.order_date}" readonly="readonly" class="form-control1"/>
 									</td>
-								</tr> 
+								</tr>
+								<tr>
+									<th>주소</th>
+									<td>
+										<input type="text" name="delflag" value="${odto.address}" readonly="readonly" class="form-control1"/>
+									</td>
+								</tr>
+								<tr>
+									<th>전화번호</th>
+									<td>
+										<input type="text" name="delflag" value="${odto.phone}" readonly="readonly" class="form-control1"/>
+									</td>
+								</tr>
 							</table>
 						</form>
 					</div>
