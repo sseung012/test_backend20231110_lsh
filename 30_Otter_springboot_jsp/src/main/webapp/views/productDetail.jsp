@@ -23,10 +23,12 @@
 //                // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
 //            }
 
+         function funding() {
+             document.querySelectorAll(".pp")[0].submit();
+         }
 
-		function funding() {
-			 document.querySelectorAll(".pp")[0].submit();
-		}
+
+         
 
          var total_price=0;
          
@@ -43,58 +45,18 @@
                   var optionPP = parseInt(optionP[1].replace("원", ""))
 //                   console.log(optionPrice[0]);
             
+
                   var countEle=
                      '<div class="cc">'
-                     +'<div class="'+seq+'">'+optionSelTxt+'</div>'
-                     +'<input type="number" name="count" class="form-class"' 
-                          +'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
-                          +'<div>'+optionPP+'</div>'
-                          +'<button class="remove">X</button>'
-                          +'</div>';
-                      $("#test").append(countEle);    
-                      total_price+=optionPP;
-                      $("#total_price").val(total_price);
-               } else {
-                  // 기능 실행 X
-                  alert("이미 추가한 리워드입니다!");
-               }
-            });
-              
-            <!-- 중간, 최종 상품 금액 계산 -->
-//             이벤트 핸들러 함수 사용
-=======
-         
->>>>>>> branch 'main' of https://github.com/sseung012/test_backend20231110_lsh.git
-
-<<<<<<< HEAD
-=======
-         var total_price=0;
-         
-          $(document).ready(function(){
-
-              $("#reward_name").change(function(){
-//                alert($("#reward_name option:selected").text());   
-               var seq=$("#reward_name").val();
-//                alert($("#test > ."+seq).text());
-               if($("#test ."+seq).text() == ""){
-                  
-                  var optionSelTxt=$("#reward_name option:selected").text();
-                  var optionP=$("#reward_name option:selected").text().split("_");
-                  var optionPP = parseInt(optionP[1].replace("원", ""))
-//                   console.log(optionPrice[0]);
-            
-
-                  var countEle=
-                	  '<div class="cc">'
-                	    + '<div class="' + seq + '">' + optionSelTxt + '</div>'
-                	    + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
-                	    + '<input type="number" name="count" class="form-class"'
-                	    + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
-                	    + '<div>' + optionPP + '</div>'
-                	    + '<button class="remove">X</button>'
-                	    + '</div>';
-                	    
-                	  $("#test").append(countEle);    
+                       + '<div class="' + seq + '">' + optionSelTxt + '</div>'
+                       + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
+                       + '<input type="number" name="count" class="form-class"'
+                       + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
+                       + '<div>' + optionPP + '</div>'
+                       + '<button class="remove">X</button>'
+                       + '</div>';
+                       
+                     $("#test").append(countEle);    
                       total_price+=optionPP;
                       $("#total_price").val(total_price);
                } else {
@@ -106,7 +68,6 @@
             <!-- 중간, 최종 상품 금액 계산 -->
 //             이벤트 핸들러 함수 사용
 
->>>>>>> branch 'main' of https://github.com/sseung012/test_backend20231110_lsh.git
             $("#test").on("click","input[name=count]",function(){
                
                var inputCount=$(this); // input 엘리먼트
@@ -370,11 +331,8 @@
 <!--                     <th>수량</th> -->
 <!--                <form action="/product/" method="post"> -->
                <form action="/banking/payment" method="post" class="pp"> 
-<<<<<<< HEAD
-=======
-               		<input type="hidden" name="title" value="${dto.title}"/>
-               		
->>>>>>> branch 'main' of https://github.com/sseung012/test_backend20231110_lsh.git
+                     <input type="hidden" name="title" value="${dto.title}"/>
+                     
                     <div id="test">
                                                                   
                     </div>
@@ -391,9 +349,17 @@
                      <tr>
                         <td>배송비 ㅣ 무료</td>
                      </tr>
-                     <a class="btn btn-primary" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>
-                    
-                    
+
+ 
+                     <c:choose>
+                     	<c:when test="${dto.remainingDays le 0}">
+                        	<td><strong><font color="red">펀딩 마감</font></strong></td>
+                        </c:when>
+                        <c:otherwise>
+                     		<a class="btn btn-primary" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
+                        </c:otherwise>
+                     </c:choose>
+                  
                     </div> 
                     <br/>
                     <br/>
@@ -410,11 +376,7 @@
                     
                     </label>
                </div>
-<<<<<<< HEAD
-                        
-=======
                          
->>>>>>> branch 'main' of https://github.com/sseung012/test_backend20231110_lsh.git
                        
                 <div>
                   <c:choose>
@@ -449,6 +411,3 @@
         <script src="js/scripts.js"></script>
     </body>
 </html>
-
-
-
