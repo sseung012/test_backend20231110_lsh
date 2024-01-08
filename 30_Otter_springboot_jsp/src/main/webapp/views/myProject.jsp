@@ -144,11 +144,6 @@
                       </div>
                       </div>
                       </c:when>
-	               <c:otherwise>
-	               <div class="col mb-5">
-		                <p class="text-muted" style="font-weight:bold; color: red !important;">검토 중인 프로젝트가 없습니다.</p>
-					</div>
-                    </c:otherwise>
                  </c:choose>
 			</c:forEach>
 		</div>
