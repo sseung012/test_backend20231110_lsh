@@ -2,6 +2,7 @@ package com.hk.otter.controller;
 
 
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
@@ -15,7 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,6 +38,7 @@ import com.hk.otter.service.OrderService;
 import com.hk.otter.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 
@@ -115,21 +117,32 @@ public class FundingController {
 	}
 
 	@GetMapping("/success")
-    public String success(@RequestParam("orderId") String orderId,
+    public String success(OrderDto orderDto,
+    					  @RequestParam("orderId") String orderId,
                           @RequestParam("paymentKey") String paymentKey,
-                          @RequestParam("amount") String amount, Model model) {
-						
-				//클라이언트로 전달하기 위한 model 저장
-				model.addAttribute("orderId", orderId);
-				model.addAttribute("paymentKey", paymentKey);
-				model.addAttribute("amount", amount);
-				
-				// 콘솔에 찍히는지 확인
-		        System.out.println("ORDER_ID:" + orderId);
-		        System.out.println("PAYMENT_KEY:" + paymentKey);
-		        System.out.println("AMOUNT:" + amount);
+                          @RequestParam("user_id") String user_id,
+                          Model model, HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("success 컨트롤러 시작");
 
-        return "success";
+	    // 클라이언트로 전달하기 위한 model 저장
+	    model.addAttribute("orderId", orderId);
+	    model.addAttribute("paymentKey", paymentKey);
+
+	    // 콘솔에 찍히는지 확인
+	    System.out.println("ORDER_ID:" + orderId);
+	    System.out.println("PAYMENT_KEY:" + paymentKey);
+
+	    orderDto.setUser_id(user_id); 
+	    orderDto.setOrderId(orderId);
+	    orderDto.setPaymentKey(paymentKey);
+
+	    request.getSession().setAttribute("dto", orderDto);
+	    System.out.println(orderDto);
+	    orderService.orderSuccess(orderDto);
+
+	    System.out.println("dto : " + orderDto);
+
+	    return "success";
     }
 	
 	@GetMapping("/fail")

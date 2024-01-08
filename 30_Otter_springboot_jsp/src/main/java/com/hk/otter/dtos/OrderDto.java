@@ -10,16 +10,40 @@ public class OrderDto {
 	public int select_amount;
 	public String address;
 	public String phone; 
-	public float total_price;
+	public String total_price;
 	public int reward_seq;
 	public String order_date;
+	public String orderId;
+	public String paymentKey;
 	
+	public OrderDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public OrderDto(int seq, String user_id, String name, String title, String select_reward, int select_amount,
+			String address, String phone, String total_price, int reward_seq, String order_date, String orderId,
+			String paymentKey) {
+		super();
+		this.seq = seq;
+		this.user_id = user_id;
+		this.name = name;
+		this.title = title;
+		this.select_reward = select_reward;
+		this.select_amount = select_amount;
+		this.address = address;
+		this.phone = phone;
+		this.total_price = total_price;
+		this.reward_seq = reward_seq;
+		this.order_date = order_date;
+		this.orderId = orderId;
+		this.paymentKey = paymentKey;
+	}
 	@Override
 	public String toString() {
 		return "OrderDto [seq=" + seq + ", user_id=" + user_id + ", name=" + name + ", title=" + title
 				+ ", select_reward=" + select_reward + ", select_amount=" + select_amount + ", address=" + address
 				+ ", phone=" + phone + ", total_price=" + total_price + ", reward_seq=" + reward_seq + ", order_date="
-				+ order_date + "]";
+				+ order_date + ", orderId=" + orderId + ", paymentKey=" + paymentKey + "]";
 	}
 	public int getSeq() {
 		return seq;
@@ -69,10 +93,10 @@ public class OrderDto {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public float getTotal_price() {
+	public String getTotal_price() {
 		return total_price;
 	}
-	public void setTotal_price(float total_price) {
+	public void setTotal_price(String total_price) {
 		this.total_price = total_price;
 	}
 	public int getReward_seq() {
@@ -87,23 +111,17 @@ public class OrderDto {
 	public void setOrder_date(String order_date) {
 		this.order_date = order_date;
 	}
-	public OrderDto(int seq, String user_id, String name, String title, String select_reward, int select_amount,
-			String address, String phone, float total_price, int reward_seq, String order_date) {
-		super();
-		this.seq = seq;
-		this.user_id = user_id;
-		this.name = name;
-		this.title = title;
-		this.select_reward = select_reward;
-		this.select_amount = select_amount;
-		this.address = address;
-		this.phone = phone;
-		this.total_price = total_price;
-		this.reward_seq = reward_seq;
-		this.order_date = order_date;
+	public String getOrderId() {
+		return orderId;
 	}
-	public OrderDto() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
 	}
+	public String getPaymentKey() {
+		return paymentKey;
+	}
+	public void setPaymentKey(String paymentKey) {
+		this.paymentKey = paymentKey;
+	}
+	
 }

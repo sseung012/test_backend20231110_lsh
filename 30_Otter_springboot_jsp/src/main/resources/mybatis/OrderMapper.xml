@@ -18,6 +18,12 @@
 		FROM orders
 		WHERE seq=#{seq}
 	</select>
+	
+	<insert id="orderSuccess" parameterType="OrderDto">
+      	INSERT INTO orders
+		VALUES(NULL, #{user_id}, #{name}, #{title}, #{select_reward}, null, #{address},
+		#{phone}, #{total_price}, null, SYSDATE(), #{orderId}, #{paymentKey}); 
+   </insert> 
 
 </mapper>
 
