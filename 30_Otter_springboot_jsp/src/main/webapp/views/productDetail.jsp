@@ -23,9 +23,9 @@
 //                // 실제로 서버로 승인 요청을 보내거나 다른 로직을 수행해야 합니다.
 //            }
 
-			function funding() {
-			    document.querySelectorAll(".pp")[0].submit();
-			}
+         function funding() {
+             document.querySelectorAll(".pp")[0].submit();
+         }
 
 
          
@@ -47,16 +47,16 @@
             
 
                   var countEle=
-                	  '<div class="cc">'
-                	    + '<div class="' + seq + '">' + optionSelTxt + '</div>'
-                	    + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
-                	    + '<input type="number" name="count" class="form-class"'
-                	    + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
-                	    + '<div>' + optionPP + '</div>'
-                	    + '<button class="remove">X</button>'
-                	    + '</div>';
-                	    
-                	  $("#test").append(countEle);    
+                     '<div class="cc">'
+                       + '<div class="' + seq + '">' + optionSelTxt + '</div>'
+                       + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
+                       + '<input type="number" name="count" class="form-class"'
+                       + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
+                       + '<div>' + optionPP + '</div>'
+                       + '<button class="remove">X</button>'
+                       + '</div>';
+                       
+                     $("#test").append(countEle);    
                       total_price+=optionPP;
                       $("#total_price").val(total_price);
                } else {
@@ -331,8 +331,8 @@
 <!--                     <th>수량</th> -->
 <!--                <form action="/product/" method="post"> -->
                <form action="/banking/payment" method="post" class="pp"> 
-               		<input type="hidden" name="title" value="${dto.title}"/>
-               		
+                     <input type="hidden" name="title" value="${dto.title}"/>
+                     
                     <div id="test">
                                                                   
                     </div>
@@ -349,6 +349,7 @@
                      <tr>
                         <td>배송비 ㅣ 무료</td>
                      </tr>
+
  
                      <c:choose>
                      	<c:when test="${dto.remainingDays le 0}">
@@ -358,8 +359,7 @@
                      		<a class="btn btn-primary" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
                         </c:otherwise>
                      </c:choose>
-                    
-                    
+                  
                     </div> 
                     <br/>
                     <br/>
@@ -411,6 +411,3 @@
         <script src="js/scripts.js"></script>
     </body>
 </html>
-
-
-
