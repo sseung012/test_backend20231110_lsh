@@ -155,7 +155,7 @@
 								        <p class="text-muted">남은날짜: ${clist.remainingDays}</p>
 								    </c:otherwise>
 		                        </c:choose> 
-<!-- 		                    제품 지지자 수 -->
+<!-- 		                    제품 지지자 수 -->     
 		                        <p class="text-muted">${clist.total_supporters}명</p>
                      		</div>
                   		</div> 
