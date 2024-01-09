@@ -5,6 +5,8 @@ import java.io.BufferedReader;
 import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +22,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartRequest;
+
+import com.hk.otter.command.InsertProductCommand;
+import com.hk.otter.command.OrderCommand;
 import com.hk.otter.dtos.OrderDto;
 import com.hk.otter.dtos.UserDto;
 import com.hk.otter.feignMapper.OpenBankingFeign;
@@ -35,108 +42,130 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/banking")
 public class FundingController {
-	
-	@Autowired 
-	private OpenBankingFeign openBankingFeign;
-	
-	@Autowired
-	private UserService userService;
-	
-	@Autowired
-	private OrderService orderService;
-	//결제
+   
+   @Autowired 
+   private OpenBankingFeign openBankingFeign;
+   
+   @Autowired
+   private UserService userService;
+   
+   @Autowired
+   private OrderService orderService;
+   //결제
 
-	@PostMapping(value = "/payment")
-	public String productDetail( Model model, HttpSession session,String[] reward_name,String[] count,String total_price ) {
-			
-//		System.out.println(Arrays.toString(reward_name)+"\n"
-//				          +Arrays.toString(count)+"\n"
-//				          +total_price);
-	
-		model.addAttribute("reward_name", reward_name);
-		model.addAttribute("count", count);
+   @PostMapping(value = "/payment")
+   public String productDetail( Model model, HttpSession session,String[] reward_name,String[] count,String total_price ) {
+         
+//      System.out.println(Arrays.toString(reward_name)+"\n"
+//                      +Arrays.toString(count)+"\n"
+//                      +total_price);
+   
+      model.addAttribute("reward_name", reward_name);
+      model.addAttribute("count", count);
 
-		return  "payment" ;
-	}
+      return  "payment" ;
+   }
 
-	//주문목록 리스트로 보기
-	@GetMapping(value = "/paylist")
-	public String paylist(Model model, HttpServletRequest request) {
-		System.out.println("사용자-참여한 펀딩 목록");
+   //주문목록 리스트로 보기
+   @GetMapping(value = "/paylist")
+   public String paylist(Model model, HttpServletRequest request) {
+      System.out.println("사용자-참여한 펀딩 목록");
 
-		HttpSession session = request.getSession();
-		UserDto ldto = (UserDto)session.getAttribute("ldto");
-		request.setAttribute("dto", ldto);
-		
-		// 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리다이렉트
-		if (ldto == null) {
-			return "redirect:/user/signin";
-		}
-		
-		String userID=ldto.getId();
-  		
-  	    List<OrderDto> list = orderService.paylist(userID);
-  	    model.addAttribute("list", list);
-  	    System.out.println("list:"+list);
+      HttpSession session = request.getSession();
+      UserDto ldto = (UserDto)session.getAttribute("ldto");
+      request.setAttribute("dto", ldto);
+      
+      // 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리다이렉트
+      if (ldto == null) {
+         return "redirect:/user/signin";
+      }
+      
+      String userID=ldto.getId();
+        
+         List<OrderDto> list = orderService.paylist(userID);
+         model.addAttribute("list", list);
+         System.out.println("list:"+list);
 
-		return  "paylist";
-	}
+      return  "paylist";
+   }
 
-	//결제내역 상세보기
-	@GetMapping("/orderDetail/{seq}")
-	public String orderDetail(@PathVariable("seq") Integer seq, OrderDto odto, Model model, HttpServletRequest request) {
-		System.out.println("결제내역 상세보기");
-		HttpSession session = request.getSession();
-		OrderDto dto = (OrderDto)session.getAttribute("dto");
-		request.setAttribute("dto", dto);
+   //결제내역 상세보기
+   @GetMapping("/orderDetail/{seq}")
+   public String orderDetail(@PathVariable("seq") Integer seq, OrderDto odto, Model model, HttpServletRequest request) {
+      System.out.println("결제내역 상세보기");
+      HttpSession session = request.getSession();
+      OrderDto dto = (OrderDto)session.getAttribute("dto");
+      request.setAttribute("dto", dto);
 
-		UserDto ldto = (UserDto)session.getAttribute("ldto");
-		request.setAttribute("dto", ldto);
-		
-		// 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리다이렉트
-		if (ldto == null) {
-			return "redirect:/user/signin";
-		}
-		
-//		int seq=dto.getSeq();
+      UserDto ldto = (UserDto)session.getAttribute("ldto");
+      request.setAttribute("dto", ldto);
+      
+      // 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리다이렉트
+      if (ldto == null) {
+         return "redirect:/user/signin";
+      }
+      
+//      int seq=dto.getSeq();
 
-		odto=orderService.orderDetail(seq);
-		model.addAttribute("odto", odto);
-		
-		return "orderDetail";
-	}
+      odto=orderService.orderDetail(seq);
+      model.addAttribute("odto", odto);
+      
+      return "orderDetail";
+   }
 
-	@GetMapping("/success")
-    public String success(String orderId, String amount, String paymentKey, Model model) {
-		
+   @GetMapping("/success")
+    public String OrderSuccess(OrderCommand orderCommand,
+            @RequestParam("orderId") String orderId,
+            @RequestParam("paymentKey") String paymentKey ) {
+      
+      System.out.println("success" );
+   
+        return "success";
 
-	    // 클라이언트로 전달하기 위한 model 저장
-	    model.addAttribute("orderId", orderId);
-	    model.addAttribute("amount", amount);
-	    model.addAttribute("paymentKey", paymentKey);
-
-	    // 콘솔에 찍히는지 확인
-	    System.out.println("ORDER_ID:" + orderId);
-	    System.out.println("AMOUNT:" + amount);
-	    System.out.println("PAYMENT_KEY:" + paymentKey);
-
-//	    orderDto.setOrderId(orderId);
-//	    orderDto.setPaymentKey(paymentKey);
-//
-//	    request.getSession().setAttribute("dto", orderDto);
-//	    System.out.println(orderDto);
-//	    orderService.orderSuccess(orderDto);
-//
-//	    System.out.println("dto : " + orderDto);
-
-	    return "success";
     }
-	
-	@GetMapping("/fail")
-    public String fail() {
+   
+   //결제내역DB저장
+   @PostMapping("/orderSave")
+    public String orderSave(OrderCommand orderCommand, Model model) {
+      
+      System.out.println("User ID: " + orderCommand.getUser_id());
+        System.out.println("User_name: " + orderCommand.getUser_name());
+        System.out.println("Title: " + orderCommand.getTitle());
+        System.out.println("Selected Reward: " + orderCommand.getSelect_reward());
+        System.out.println("Selected Amount: " + orderCommand.getSelect_amount());
+        System.out.println("Address: " + orderCommand.getAddress());
+        System.out.println("Phone: " + orderCommand.getPhone());
+        System.out.println("Total Price: " + orderCommand.getTotal_price());
+        System.out.println("Reward Seq: " + orderCommand.getReward_seq());
 
+        // 여기서 주문 정보를 DB에 저장하는 코드를 추가하면 됩니다.
+         orderService.saveOrder(orderCommand); 
 
-        return "fail";
+        // 예시: 저장 성공 메시지를 모델에 추가
+        model.addAttribute("saveSuccess", true);
+   
+        return "redirect:/";
+
     }
+
+   
+   @GetMapping("/confirm")
+    public String confirm(@RequestParam("orderId") String orderId,
+                     @RequestParam("paymentKey") String paymentKey, Model model ) {
+      
+      System.out.println("confirm");
+      
+      // 클라이언트로 전달하기 위한 model 저장
+       model.addAttribute("orderId", orderId);
+       model.addAttribute("paymentKey", paymentKey);
+
+       // 콘솔에 찍히는지 확인
+       System.out.println("ORDER_ID:" + orderId);
+       System.out.println("PAYMENT_KEY:" + paymentKey);
+      
+        return "paylist";
+
+    }
+   
 
 }

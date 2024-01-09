@@ -15,4 +15,6 @@ public interface OrderMapper {
 
 	public int orderSuccess(OrderDto dto);
 
+	public void saveOrder(OrderDto odto);
+
 }
