@@ -207,7 +207,7 @@ window.onload = function() {
 						    </c:forEach>
 						</div><br/> 
 
-						<div class="payment">      
+						<div class="payment">         
 							<div class="address_name" style="font-weight:bold; font-size:18px;">배송지 입력</div>
 							<input id="address1" style="width:200px;" readonly="readonly" placeholder="우편번호"> <a class="btn btn-primary" onclick="findAddr()">주소 찾기</a><br>
 							<input id="address2" style="width:500px;" readonly="readonly" placeholder="주소">
