@@ -24,7 +24,7 @@ public class OrderDto {
 			String address, String phone, String total_price, int reward_seq, String order_date, String orderId,
 			String paymentKey) {
 		super();
-		this.seq = seq;
+		this.seq = seq;  
 		this.user_id = user_id;
 		this.name = name;
 		this.title = title;
