@@ -37,15 +37,26 @@
                  var optionPP = parseInt(optionP[1].replace("원", ""))
            
              
-                  var countEle=
-                     '<div class="cc">'
-                       + '<div class="' + seq + '">' + optionSelTxt + '</div>'
-                       + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
-                       + '<input type="number" name="count" class="form-class"'
-                       + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
-                       + '<div>' + optionPP + '</div>'
-                       + '<button class="remove">X</button>'
-                       + '</div>';
+//                   var countEle=
+//                      '<div class="cc">'
+//                        + '<div class="' + seq + '">' + optionSelTxt + '</div>'
+//                        + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
+//                        + '<input type="number" name="count" class="form-class"'
+//                        + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
+//                        + '<div>' + optionPP + '원</div>'
+//                        + '<button id="remove" class="btn-close" aria-label="Close"></button>'
+//                        + '</div>';
+
+					var countEle =
+					    '<div class="cc">'
+						+ '<button style="float: right;" id="remove" class="btn-close" aria-label="Close"></button>'
+					    + '<div class="' + seq + '">' + optionSelTxt + '</div>'
+					    + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
+					    + '<input type="number" name="count" class="form-class"'
+					    + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
+					    + '<div style="float: right;">' + optionPP  + '원</div>'
+					    + '</div>';
+
                        
                      $("#test").append(countEle);    
                       total_price+=optionPP;
@@ -64,6 +75,7 @@
                
                var inputCount=$(this); // input 엘리먼트
                
+               // 앞의 앞에 있는 'div'태그를 가져오는 거라 prevAll() 사용함!
                var optionPP2=inputCount.prevAll("div").eq(0).text().split("_")[1].replace("원",""); 
                var count=$(this).val(); // 수량
                
@@ -71,15 +83,15 @@
                optionPPDiv.text(optionPP2*count);
                var sum=0;   
                $(".cc").each(function(){
-                  sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
+                  sum+=parseInt($(this).find("div").eq(1).text()); 
                });
                total_price=sum;
-               $("#total_price").val(total_price); // 총 금액에 쓰임
+               $("#total_price").val(total_price); 
                
             });
         
 //             버튼을 눌렀을 때 지워지고(remove()활용) prev() 이용해서 값을 구하고 그걸 총금액에서 빼기
-            $("#test").on("click", ".remove", function(){
+            $("#test").on("click", "#remove", function(){
                var removebtn =$(this); // input 엘리먼트
                
                var optionPP2=removebtn.prev("div").text();
@@ -315,7 +327,7 @@
                      <input type="hidden" name="title" value="${dto.title}"/>
                      
                     <div id="test">
-                    
+                    	
                     </div>
                     
                      <br/>
