@@ -24,130 +24,79 @@
          
          var total_price=0;
          
-//          $(document).ready(function(){
+         $(document).ready(function(){
 
-//              $("#reward_name").change(function(){
-// //               alert($("#reward_name option:selected").text());   
-//               var seq=$("#reward_name").val();
-// //               alert($("#test > ."+seq).text());
-//               if($("#test ."+seq).text() == ""){
+             $("#reward_name").change(function(){
+//               alert($("#reward_name option:selected").text());   
+              var seq=$("#reward_name").val();
+//               alert($("#test > ."+seq).text());
+              if($("#test ."+seq).text() == ""){
                  
-//                  var optionSelTxt=$("#reward_name option:selected").text();
-//                  var optionP=$("#reward_name option:selected").text().split("_");
-//                  var optionPP = parseInt(optionP[1].replace("원", ""))
-// //                  console.log(optionPrice[0]);
+                 var optionSelTxt=$("#reward_name option:selected").text();
+                 var optionP=$("#reward_name option:selected").text().split("_");
+                 var optionPP = parseInt(optionP[1].replace("원", ""))
+//                  console.log(optionPrice[0]);
            
              
-//                   var countEle=
-//                      '<div class="cc">'
-//                        + '<div class="' + seq + '">' + optionSelTxt + '</div>'
-//                        + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
-//                        + '<input type="number" name="count" class="form-class"'
-//                        + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
-//                        + '<div>' + optionPP + '</div>'
-//                        + '<button class="remove">X</button>'
-// // 					   + '<button id="remove" class="btn-close" aria-label="Close"></button>'
-//                        + '</div>';
+                  var countEle=
+                     '<div class="cc">'
+                       + '<div class="' + seq + '">' + optionSelTxt + '</div>'
+                       + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
+                       + '<input type="number" name="count" class="form-class"'
+                       + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
+                       + '<div>' + optionPP + '</div>'
+                       + '<button class="remove">X</button>'
+// 					   + '<button id="remove" class="btn-close" aria-label="Close"></button>'
+                       + '</div>';
                        
-//                      $("#test").append(countEle);    
-//                       total_price+=optionPP;
-//                       $("#total_price").val(total_price);
-//                } else {
-//                   // 기능 실행 X
-//                   alert("이미 추가한 리워드입니다!");
-//                }
-//             });
+                     $("#test").append(countEle);    
+                      total_price+=optionPP;
+                      $("#total_price").val(total_price);
+               } else {
+                  // 기능 실행 X
+                  alert("이미 추가한 리워드입니다!");
+               }
+            });
               
-//             <!-- 중간, 최종 상품 금액 계산 -->
-// //             이벤트 핸들러 함수 사용
+            <!-- 중간, 최종 상품 금액 계산 -->
+//             이벤트 핸들러 함수 사용
 
-//             $("#test").on("click","input[name=count]",function(){
+            $("#test").on("click","input[name=count]",function(){
                
-//                var inputCount=$(this); // input 엘리먼트
+               var inputCount=$(this); // input 엘리먼트
                
-//                var optionPP2=inputCount.prev("div").text().split("_")[1].replace("원",""); // 40000원 -> 40000으로 출력
-//                var count=$(this).val(); // 수량
+               var optionPP2=inputCount.prev("div").text().split("_")[1].replace("원",""); // 40000원 -> 40000으로 출력
+               var count=$(this).val(); // 수량
                
-//                var optionPPDiv=$(this).next("div");
-//                optionPPDiv.text(optionPP2*count);
-//                var sum=0;   
-//                $(".cc").each(function(){
-//                   sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
-//                });
-//                total_price=sum;
-//                $("#total_price").val(total_price); // 총 금액에 쓰임
+               var optionPPDiv=$(this).next("div");
+               optionPPDiv.text(optionPP2*count);
+               var sum=0;   
+               $(".cc").each(function(){
+                  sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
+               });
+               total_price=sum;
+               $("#total_price").val(total_price); // 총 금액에 쓰임
                
-//             });
+            });
 
 
 
                
-// //             버튼을 눌렀을 때 지워지고(remove()활용) prev() 이용해서 값을 구하고 그걸 총금액에서 빼기
-// //             기능 실행 X
-//             $("#test").on("click", ".remove", function(){
-//                var removebtn =$(this); // input 엘리먼트
+//             버튼을 눌렀을 때 지워지고(remove()활용) prev() 이용해서 값을 구하고 그걸 총금액에서 빼기
+//             기능 실행 X
+            $("#test").on("click", ".remove", function(){
+               var removebtn =$(this); // input 엘리먼트
                
-//                var optionPP2=removebtn.prev("div").text();
-//                var count=$(this).val(); // 수량
+               var optionPP2=removebtn.prev("div").text();
+               var count=$(this).val(); // 수량
               
-//                removebtn.parent().remove();
-//                total_price = total_price-optionPP2
-//                $("#total_price").val(total_price); // 총 금액에 쓰임
-//             });         
+               removebtn.parent().remove();
+               total_price = total_price-optionPP2
+               $("#total_price").val(total_price); // 총 금액에 쓰임
+            });         
             
-//            });            
+           });            
 
-		$(document).ready(function() {
-
-		    $("#reward_name").change(function() {
-		        var seq = $("#reward_name").val();
-		
-		        if ($("#test ." + seq).length === 0) {
-		            var optionSelTxt = $("#reward_name option:selected").text();
-		            var optionP = $("#reward_name option:selected").text().split("_");
-		            var optionPP = parseInt(optionP[1].replace("원", ""));
-		
-		            var countEle =
-		                '<div class="cc">'
-		                + '<div class="' + seq + '">' + optionSelTxt + '</div>'
-		                + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
-		                + '<input type="number" name="count" class="form-class"'
-		                + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
-		                + '<div class="price">' + optionPP + '</div>'
-		                + '<button class="remove">X</button>'
-		                + '</div>';
-		
-		            $("#test").append(countEle);
-		            updateTotalPrice();
-		        } else {
-		            alert("이미 추가한 리워드입니다!");
-		        }
-		    });
-		
-		    $("#test").on("input", "input[name=count]", function() {
-		        updateTotalPrice();
-		    });
-		
-		    $("#test").on("click", ".remove", function() {
-		        var removebtn = $(this);
-		        removebtn.parent().remove();
-		        updateTotalPrice();
-		    });
-		      
-		    function updateTotalPrice() {
-		        var sum = 0;
-		        $(".cc").each(function() {
-		            var count = parseInt($(this).find("input[name=count]").val()) || 1;
-		            var optionPP = parseInt($(this).find(".price").text()) || 0;
-		            $(this).find(".price").text(optionPP); // Ensure the displayed price is updated
-		            sum += count * optionPP;
-		        });
-		
-		        total_price = sum;
-		        $("#total_price").val(total_price);
-		    }
-		
-		});
         </script>
         <!-- Favicon-->
 <!--         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
