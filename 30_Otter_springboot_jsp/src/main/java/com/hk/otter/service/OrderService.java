@@ -26,8 +26,8 @@ public class OrderService {
 	private OrderMapper orderMapper;
 	
 	@Transactional
-	public List<OrderDto> paylist(String userID) {
-		return orderMapper.paylist(userID);
+	public List<OrderDto> paylist(String user_id) {
+		return orderMapper.paylist(user_id);
 	}
 
 	public OrderDto orderDetail(int seq) {

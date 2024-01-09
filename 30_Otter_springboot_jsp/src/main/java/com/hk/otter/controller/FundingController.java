@@ -42,93 +42,93 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/banking")
 public class FundingController {
-	
-	@Autowired 
-	private OpenBankingFeign openBankingFeign;
-	
-	@Autowired
-	private UserService userService;
-	
-	@Autowired
-	private OrderService orderService;
-	//결제
+   
+   @Autowired 
+   private OpenBankingFeign openBankingFeign;
+   
+   @Autowired
+   private UserService userService;
+   
+   @Autowired
+   private OrderService orderService;
+   //결제
 
-	@PostMapping(value = "/payment")
-	public String productDetail( Model model, HttpSession session,String[] reward_name,String[] count,String total_price ) {
-			
-//		System.out.println(Arrays.toString(reward_name)+"\n"
-//				          +Arrays.toString(count)+"\n"
-//				          +total_price);
-	
-		model.addAttribute("reward_name", reward_name);
-		model.addAttribute("count", count);
+   @PostMapping(value = "/payment")
+   public String productDetail( Model model, HttpSession session,String[] reward_name,String[] count,String total_price ) {
+         
+//      System.out.println(Arrays.toString(reward_name)+"\n"
+//                      +Arrays.toString(count)+"\n"
+//                      +total_price);
+   
+      model.addAttribute("reward_name", reward_name);
+      model.addAttribute("count", count);
 
-		return  "payment" ;
-	}
+      return  "payment" ;
+   }
 
-	//주문목록 리스트로 보기
-	@GetMapping(value = "/paylist")
-	public String paylist(Model model, HttpServletRequest request) {
-		System.out.println("사용자-참여한 펀딩 목록");
+   //주문목록 리스트로 보기
+   @GetMapping(value = "/paylist")
+   public String paylist(Model model, HttpServletRequest request) {
+      System.out.println("사용자-참여한 펀딩 목록");
 
-		HttpSession session = request.getSession();
-		UserDto ldto = (UserDto)session.getAttribute("ldto");
-		request.setAttribute("dto", ldto);
-		
-		// 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리다이렉트
-		if (ldto == null) {
-			return "redirect:/user/signin";
-		}
-		
-		String userID=ldto.getId();
-  		
-  	    List<OrderDto> list = orderService.paylist(userID);
-  	    model.addAttribute("list", list);
-  	    System.out.println("list:"+list);
+      HttpSession session = request.getSession();
+      UserDto ldto = (UserDto)session.getAttribute("ldto");
+      request.setAttribute("dto", ldto);
+      
+      // 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리다이렉트
+      if (ldto == null) {
+         return "redirect:/user/signin";
+      }
+      
+      String userID=ldto.getId();
+        
+         List<OrderDto> list = orderService.paylist(userID);
+         model.addAttribute("list", list);
+         System.out.println("list:"+list);
 
-		return  "paylist";
-	}
+      return  "paylist";
+   }
 
-	//결제내역 상세보기
-	@GetMapping("/orderDetail/{seq}")
-	public String orderDetail(@PathVariable("seq") Integer seq, OrderDto odto, Model model, HttpServletRequest request) {
-		System.out.println("결제내역 상세보기");
-		HttpSession session = request.getSession();
-		OrderDto dto = (OrderDto)session.getAttribute("dto");
-		request.setAttribute("dto", dto);
+   //결제내역 상세보기
+   @GetMapping("/orderDetail/{seq}")
+   public String orderDetail(@PathVariable("seq") Integer seq, OrderDto odto, Model model, HttpServletRequest request) {
+      System.out.println("결제내역 상세보기");
+      HttpSession session = request.getSession();
+      OrderDto dto = (OrderDto)session.getAttribute("dto");
+      request.setAttribute("dto", dto);
 
-		UserDto ldto = (UserDto)session.getAttribute("ldto");
-		request.setAttribute("dto", ldto);
-		
-		// 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리다이렉트
-		if (ldto == null) {
-			return "redirect:/user/signin";
-		}
-		
-//		int seq=dto.getSeq();
+      UserDto ldto = (UserDto)session.getAttribute("ldto");
+      request.setAttribute("dto", ldto);
+      
+      // 사용자가 로그인되어 있지 않은 경우 로그인 페이지로 리다이렉트
+      if (ldto == null) {
+         return "redirect:/user/signin";
+      }
+      
+//      int seq=dto.getSeq();
 
-		odto=orderService.orderDetail(seq);
-		model.addAttribute("odto", odto);
-		
-		return "orderDetail";
-	}
+      odto=orderService.orderDetail(seq);
+      model.addAttribute("odto", odto);
+      
+      return "orderDetail";
+   }
 
-	@GetMapping("/success")
+   @GetMapping("/success")
     public String OrderSuccess(OrderCommand orderCommand,
             @RequestParam("orderId") String orderId,
             @RequestParam("paymentKey") String paymentKey ) {
-		
-		System.out.println("success" );
-	
+      
+      System.out.println("success" );
+   
         return "success";
 
     }
-	
-	//결제내역DB저장
-	@PostMapping("/orderSave")
+   
+   //결제내역DB저장
+   @PostMapping("/orderSave")
     public String orderSave(OrderCommand orderCommand, Model model) {
-		
-		System.out.println("User ID: " + orderCommand.getUser_id());
+      
+      System.out.println("User ID: " + orderCommand.getUser_id());
         System.out.println("User_name: " + orderCommand.getUser_name());
         System.out.println("Title: " + orderCommand.getTitle());
         System.out.println("Selected Reward: " + orderCommand.getSelect_reward());
@@ -143,29 +143,29 @@ public class FundingController {
 
         // 예시: 저장 성공 메시지를 모델에 추가
         model.addAttribute("saveSuccess", true);
-	
+   
         return "redirect:/";
 
     }
 
-	
-	@GetMapping("/confirm")
+   
+   @GetMapping("/confirm")
     public String confirm(@RequestParam("orderId") String orderId,
-    					  @RequestParam("paymentKey") String paymentKey, Model model ) {
-		
-		System.out.println("confirm");
-		
-		// 클라이언트로 전달하기 위한 model 저장
-	    model.addAttribute("orderId", orderId);
-	    model.addAttribute("paymentKey", paymentKey);
+                     @RequestParam("paymentKey") String paymentKey, Model model ) {
+      
+      System.out.println("confirm");
+      
+      // 클라이언트로 전달하기 위한 model 저장
+       model.addAttribute("orderId", orderId);
+       model.addAttribute("paymentKey", paymentKey);
 
-	    // 콘솔에 찍히는지 확인
-	    System.out.println("ORDER_ID:" + orderId);
-	    System.out.println("PAYMENT_KEY:" + paymentKey);
-		
+       // 콘솔에 찍히는지 확인
+       System.out.println("ORDER_ID:" + orderId);
+       System.out.println("PAYMENT_KEY:" + paymentKey);
+      
         return "paylist";
 
     }
-	
+   
 
 }

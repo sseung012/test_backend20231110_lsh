@@ -19,6 +19,13 @@
       WHERE seq=#{seq}
    </select>
 	
+
+<!-- 	<insert id="orderSuccess" parameterType="OrderDto"> -->
+<!--       	INSERT INTO orders -->
+<!-- 		VALUES(NULL, #{user_id}, #{user_name}, #{title}, #{select_reward}, null, #{address}, -->
+<!-- 		#{phone}, #{total_price}, null, SYSDATE(), #{orderId}, #{paymentKey});  -->
+<!--    </insert>  -->
+
 <!-- 	결제내역 저장 -->
 	<insert id="orderSuccess" parameterType="OrderDto">
       	INSERT INTO orders
