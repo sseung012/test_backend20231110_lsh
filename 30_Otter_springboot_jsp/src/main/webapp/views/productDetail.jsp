@@ -35,27 +35,16 @@
                  var optionSelTxt=$("#reward_name option:selected").text();
                  var optionP=$("#reward_name option:selected").text().split("_");
                  var optionPP = parseInt(optionP[1].replace("원", ""))
-           
-             
-//                   var countEle=
-//                      '<div class="cc">'
-//                        + '<div class="' + seq + '">' + optionSelTxt + '</div>'
-//                        + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
-//                        + '<input type="number" name="count" class="form-class"'
-//                        + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
-//                        + '<div>' + optionPP + '원</div>'
-//                        + '<button id="remove" class="btn-close" aria-label="Close"></button>'
-//                        + '</div>';
-
-					var countEle =
-					    '<div class="cc">'
-						+ '<button style="float: right;" id="remove" class="btn-close" aria-label="Close"></button>'
-					    + '<div class="' + seq + '">' + optionSelTxt + '</div>'
-					    + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
-					    + '<input type="number" name="count" class="form-class"'
-					    + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
-					    + '<div style="float: right;">' + optionPP  + '원</div>'
-					    + '</div>';
+                        
+                  var countEle=
+                       '<div class="cc">'
+                         + '<div class="' + seq + '">' + optionSelTxt + '</div>'
+                         + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
+                         + '<input type="number" name="count" class="form-class"'
+                         + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
+                         + '<div style="float: right; ">' + optionPP + '</div>' 
+                         + '<button class="remove" style="border:none; background-color:white;"><img src="/upload/x.png" alt="" width="25px" height="30px"></button>'
+                         + '</div>';
 
                        
                      $("#test").append(countEle);    
@@ -91,7 +80,7 @@
             });
         
 //             버튼을 눌렀을 때 지워지고(remove()활용) prev() 이용해서 값을 구하고 그걸 총금액에서 빼기
-            $("#test").on("click", "#remove", function(){
+            $("#test").on("click", ".remove", function(){
                var removebtn =$(this); // input 엘리먼트
                
                var optionPP2=removebtn.prev("div").text();
