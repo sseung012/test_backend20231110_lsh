@@ -64,7 +64,7 @@
                
                var inputCount=$(this); // input 엘리먼트
                
-               var optionPP2=inputCount.prev("div").text().split("_")[1].replace("원",""); // 40000원 -> 40000으로 출력
+               var optionPP2=inputCount.prevAll("div").eq(0).text().split("_")[1].replace("원",""); 
                var count=$(this).val(); // 수량
                
                var optionPPDiv=$(this).next("div");
