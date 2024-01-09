@@ -134,13 +134,15 @@
         	        $(".cc").each(function() {
         	            var count = parseInt($(this).find("input[name=count]").val()) || 1;
         	            var optionPP = parseInt($(this).find(".price").text()) || 0;
-        	            $(this).find(".price").text(optionPP); // Ensure the displayed price is updated
-        	            sum += count * optionPP;
+        	            var totalPrice = count * optionPP;
+        	            $(this).find(".price").text(totalPrice);
+        	            sum += totalPrice;
         	        });
 
         	        total_price = sum;
         	        $("#total_price").val(total_price);
         	    }
+
 
         	});         
 
