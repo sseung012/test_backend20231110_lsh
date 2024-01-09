@@ -107,30 +107,27 @@ public class FundingController {
 	}
 
 	@GetMapping("/success")
-    public String success(OrderDto orderDto,
-    					  @RequestParam("orderId") String orderId,
-                          @RequestParam("paymentKey") String paymentKey,
-                          @RequestParam("user_id") String user_id,
-                          Model model, HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("success 컨트롤러 시작");
+    public String success(String orderId, String amount, String paymentKey, Model model) {
+		
 
 	    // 클라이언트로 전달하기 위한 model 저장
 	    model.addAttribute("orderId", orderId);
+	    model.addAttribute("amount", amount);
 	    model.addAttribute("paymentKey", paymentKey);
 
 	    // 콘솔에 찍히는지 확인
 	    System.out.println("ORDER_ID:" + orderId);
+	    System.out.println("AMOUNT:" + amount);
 	    System.out.println("PAYMENT_KEY:" + paymentKey);
 
-	    orderDto.setUser_id(user_id); 
-	    orderDto.setOrderId(orderId);
-	    orderDto.setPaymentKey(paymentKey);
-
-	    request.getSession().setAttribute("dto", orderDto);
-	    System.out.println(orderDto);
-	    orderService.orderSuccess(orderDto);
-
-	    System.out.println("dto : " + orderDto);
+//	    orderDto.setOrderId(orderId);
+//	    orderDto.setPaymentKey(paymentKey);
+//
+//	    request.getSession().setAttribute("dto", orderDto);
+//	    System.out.println(orderDto);
+//	    orderService.orderSuccess(orderDto);
+//
+//	    System.out.println("dto : " + orderDto);
 
 	    return "success";
     }
