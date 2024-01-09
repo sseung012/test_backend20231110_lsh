@@ -5,6 +5,8 @@ import java.io.BufferedReader;
 import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +22,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartRequest;
+
+import com.hk.otter.command.InsertProductCommand;
+import com.hk.otter.command.OrderCommand;
 import com.hk.otter.dtos.OrderDto;
 import com.hk.otter.dtos.UserDto;
 import com.hk.otter.feignMapper.OpenBankingFeign;
@@ -107,39 +114,58 @@ public class FundingController {
 	}
 
 	@GetMapping("/success")
-    public String success(OrderDto orderDto,
-    					  @RequestParam("orderId") String orderId,
-                          @RequestParam("paymentKey") String paymentKey,
-                          @RequestParam("user_id") String user_id,
-                          Model model, HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("success 컨트롤러 시작");
+    public String OrderSuccess(OrderCommand orderCommand,
+            @RequestParam("orderId") String orderId,
+            @RequestParam("paymentKey") String paymentKey ) {
+		
+		System.out.println("success" );
+	
+        return "success";
 
-	    // 클라이언트로 전달하기 위한 model 저장
+    }
+	
+	//결제내역DB저장
+	@PostMapping("/orderSave")
+    public String orderSave(OrderCommand orderCommand, Model model) {
+		
+		System.out.println("User ID: " + orderCommand.getUser_id());
+        System.out.println("User_name: " + orderCommand.getUser_name());
+        System.out.println("Title: " + orderCommand.getTitle());
+        System.out.println("Selected Reward: " + orderCommand.getSelect_reward());
+        System.out.println("Selected Amount: " + orderCommand.getSelect_amount());
+        System.out.println("Address: " + orderCommand.getAddress());
+        System.out.println("Phone: " + orderCommand.getPhone());
+        System.out.println("Total Price: " + orderCommand.getTotal_price());
+        System.out.println("Reward Seq: " + orderCommand.getReward_seq());
+
+        // 여기서 주문 정보를 DB에 저장하는 코드를 추가하면 됩니다.
+         orderService.saveOrder(orderCommand); 
+
+        // 예시: 저장 성공 메시지를 모델에 추가
+        model.addAttribute("saveSuccess", true);
+	
+        return "redirect:/";
+
+    }
+
+	
+	@GetMapping("/confirm")
+    public String confirm(@RequestParam("orderId") String orderId,
+    					  @RequestParam("paymentKey") String paymentKey, Model model ) {
+		
+		System.out.println("confirm");
+		
+		// 클라이언트로 전달하기 위한 model 저장
 	    model.addAttribute("orderId", orderId);
 	    model.addAttribute("paymentKey", paymentKey);
 
 	    // 콘솔에 찍히는지 확인
 	    System.out.println("ORDER_ID:" + orderId);
 	    System.out.println("PAYMENT_KEY:" + paymentKey);
+		
+        return "paylist";
 
-	    orderDto.setUser_id(user_id); 
-	    orderDto.setOrderId(orderId);
-	    orderDto.setPaymentKey(paymentKey);
-
-	    request.getSession().setAttribute("dto", orderDto);
-	    System.out.println(orderDto);
-	    orderService.orderSuccess(orderDto);
-
-	    System.out.println("dto : " + orderDto);
-
-	    return "success";
     }
 	
-	@GetMapping("/fail")
-    public String fail() {
-
-
-        return "fail";
-    }
 
 }

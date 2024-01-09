@@ -94,18 +94,23 @@
    </div>
 </nav>
 	<br/>
-	<div class='complete'>
-    <h2>펀딩이 완료되었습니다. 감사합니다 :)</h2>
-    <br/>
-    <p style="font-weight:bold;" id="orderId"></p>
-    <br/>
-    <p>해당 펀딩 상품의 주문, 배송정보는 이메일과</p>
-    <p>카카오톡 또는 SMS로 안내 드리겠습니다.</p>
-<!--     <p id="paymentKey"></p> -->
-	<br/>
-	<p style="font-weight:bold;">총 결제금액</p>
-    <p style="font-weight:bold;" id="amount"></p>
-    </div>
+	<form action="/confirm" method="post">
+	<input type="hidden" name="orderId" value="${ORDER_ID}"/>
+	<input type="hidden" name="paymentKey" value="${PAYMENT_KEY}"/>
+		<div class='complete'>
+	    <h2>펀딩이 완료되었습니다. 감사합니다 :)</h2>
+	    <br/>
+	    <p style="font-weight:bold;" id="orderId"></p>
+	    <br/>
+	    <p>해당 펀딩 상품의 주문, 배송정보는 이메일과</p>
+	    <p>카카오톡 또는 SMS로 안내 드리겠습니다.</p>
+	<!--     <p id="paymentKey"></p> -->
+		<br/>
+		<p style="font-weight:bold;">총 결제금액</p>
+	    <p style="font-weight:bold;" id="amount"></p>
+    		<button type="button" id="confirm" class="btn btn-primary">결제완료</button>
+    	</div>
+    </form>
 
     <script>
       // 쿼리 파라미터 값이 결제 요청할 때 보낸 데이터와 동일한지 반드시 확인하세요.
@@ -143,6 +148,8 @@
       }
       confirm();
 
+		
+	  
       const orderIdElement = document.getElementById("orderId");
       const paymentKeyElement = document.getElementById("paymentKey");
       const amountElement = document.getElementById("amount");
