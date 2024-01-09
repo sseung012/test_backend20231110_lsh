@@ -13,6 +13,14 @@ public class OrderDto {
 	public int total_price;
 	public int reward_seq;
 	public String order_date;
+	public String getOrder_date() {
+		return order_date;
+	}
+	public void setOrder_date(String order_date) {
+		this.order_date = order_date;
+	}
+	public String orderId;
+	public String paymentKey;
 	
 	
 	public OrderDto(int seq, String user_id, String user_name, String title, String select_reward, int select_amount,
@@ -34,6 +42,7 @@ public class OrderDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	//결제정보 db저장
     public OrderDto(String user_id, String user_name, String title, String select_reward,
             String address, String phone, int total_price, int reward_seq) {
@@ -47,6 +56,26 @@ public class OrderDto {
         this.total_price = total_price;
         this.reward_seq = reward_seq;
     }
+
+	public OrderDto(int seq, String user_id, String user_name, String title, String select_reward, int select_amount,
+			String address, String phone, int total_price, int reward_seq, String order_date, String orderId,
+			String paymentKey) {
+		super();
+		this.seq = seq;  
+		this.user_id = user_id;
+		this.user_name = user_name;
+		this.title = title;
+		this.select_reward = select_reward;
+		this.select_amount = select_amount;
+		this.address = address;
+		this.phone = phone;
+		this.total_price = total_price;
+		this.reward_seq = reward_seq;
+		this.order_date = order_date;
+		this.orderId = orderId;
+		this.paymentKey = paymentKey;
+	}
+
 	@Override
 	public String toString() {
 		return "OrderDto [seq=" + seq + ", user_id=" + user_id + ", user_name=" + user_name + ", title=" + title
