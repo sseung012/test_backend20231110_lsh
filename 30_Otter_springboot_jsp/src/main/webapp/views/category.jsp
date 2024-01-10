@@ -236,7 +236,7 @@
 <!-- 		                    제품 지지자 수 -->     
 		                        <p class="text-muted">${clist.total_supporters}명</p>
                      		</div>
-                  		</div> 
+                  		</div>        
 <!--                   	Product actions -->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" 
@@ -244,7 +244,7 @@
                         </div>
                       </div>
                       </div>
-			</c:forEach>
+			</c:forEach>  
 		</div>
 	</div>
 </section>
