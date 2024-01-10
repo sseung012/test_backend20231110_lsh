@@ -136,7 +136,7 @@
 								</tr>
 								<tr>
 <%-- 										<input type="text" name="role" value="${odto.select_amount}" readonly="readonly" class="form-control1"/> --%>
-										<input type="hidden" name="id" value="${odto.seq}"/>
+										<input type="hidden" name="id" value="${odto.select_amount}"/>
 									
 								</tr>
 								<tr>
