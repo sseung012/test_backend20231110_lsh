@@ -46,12 +46,12 @@ function findAddr(){
             var roadAddr = data.roadAddress; // 도로명 주소 변수
             var jibunAddr = data.jibunAddress; // 지번 주소 변수
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('address1_input').value = data.zonecode;
+            document.getElementById('address1').value = data.zonecode;
             if(roadAddr !== ''){
-                document.getElementById("address2_input").value = roadAddr;
+                document.getElementById("address2").value = roadAddr;
             } 
             else if(jibunAddr !== ''){
-                document.getElementById("address2_input").value = jibunAddr;
+                document.getElementById("address2").value = jibunAddr;
             }
         }
     }).open();

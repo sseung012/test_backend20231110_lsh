@@ -40,17 +40,16 @@ public class OrderService {
         // 주문 정보를 데이터베이스에 저장하거나, 상태를 업데이트하거나 등등...
 
 		OrderDto odto=new OrderDto();
+		odto.setSeq(orderCommand.getSeq());
 		odto.setUser_id(orderCommand.getUser_id());
 		odto.setUser_name(orderCommand.getUser_name());
 		odto.setTitle(orderCommand.getTitle());
 		odto.setSelect_reward(orderCommand.getSelect_reward());
 		odto.setSelect_amount(orderCommand.getSelect_amount());
-		odto.setAddress1(orderCommand.getAddress1());
-		odto.setAddress2(orderCommand.getAddress2());
-		odto.setAddress3(orderCommand.getAddress3());
+		odto.setAddress(orderCommand.getAddress());
 		odto.setPhone(orderCommand.getPhone());
 		odto.setTotal_price(orderCommand.getTotal_price());
-
+		odto.setReward_seq(orderCommand.getReward_seq());
 		
         try {
         	orderMapper.orderSuccess(odto);
@@ -71,9 +70,7 @@ public class OrderService {
 		odto.setTitle(orderCommand.getTitle());
 		odto.setSelect_reward(orderCommand.getSelect_reward());
 		odto.setSelect_amount(orderCommand.getSelect_amount());
-		odto.setAddress1(orderCommand.getAddress1());
-		odto.setAddress2(orderCommand.getAddress2());
-		odto.setAddress3(orderCommand.getAddress3());
+		odto.setAddress(orderCommand.getAddress());
 		odto.setPhone(orderCommand.getPhone());
 		odto.setTotal_price(orderCommand.getTotal_price());
 		odto.setReward_seq(orderCommand.getReward_seq());
