@@ -155,15 +155,15 @@ window.onload = function() {
                 <br/>
                 <br/>
                 <br/>
-				    <h1>주문 내역 확인</h1>
+				    <h1 align="center">주문 내역 확인</h1>
 				    <form action="/banking/payment2" method="get">
-				    <div>
+				    <div align="center">
 				        <!-- Display session values or any content you want -->
 				        <p>주문자 아이디: ${sessionScope.user_id}</p>
 				        <p>주문자: ${sessionScope.user_name}</p>
 				        <p>결제금액: ${sessionScope.total_price}원</p>
 				        <p>주문상품: ${sessionScope.title}</p>
-<%-- 				        <p>Address: ${sessionScope.address}</p> --%>
+<%-- 				        <p>주소: ${sessionScope.address}</p> --%>
 				        <p>전화번호: ${sessionScope.phone}</p>
 						
 						<br/>
@@ -171,14 +171,17 @@ window.onload = function() {
 				        <h2>선택한 리워드</h2>
 				        <ul>
 				            <c:forEach var="i" begin="0" end="${fn:length(sessionScope.select_reward) - 1}">
-				                <li>${sessionScope.select_reward[i]}</li>
+				                <p align="center">${sessionScope.select_reward[i]}</p>
 				            </c:forEach>
 				        </ul>
 				        <input type="hidden" name="payment_amount" value="${sessionScope.total_price}">
                         <input type="hidden" name="title" value="${sessionScope.title}">
 				    </div>
+
 				    <br/>
-				    <button type="button" id="paypay" class="btn btn-primary">결제하기</button>
+					<div style="display: flex; justify-content: center;">
+				    <button align="center" type="button" id="paypay" class="btn btn-primary">결제하기</button>
+				    </div>
 				    </form>
 				</div>
             </div>
