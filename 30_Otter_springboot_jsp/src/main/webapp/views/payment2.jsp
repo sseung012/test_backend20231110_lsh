@@ -106,7 +106,7 @@ window.onload = function() {
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                   <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+<!--                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li> -->
 <!--                     <li class="nav-item"><a class="nav-link" href="#!">About</a></li> -->
                     <li class="nav-item dropdown">
                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
@@ -152,19 +152,23 @@ window.onload = function() {
         <div class="container myy-5">
             <div class="roww justify-content-center">
                 <div class="coll-lg-6">
-				    <h1>Payment Confirmation</h1>
+                <br/>
+                <br/>
+                <br/>
+				    <h1>주문 내역 확인</h1>
 				    <form action="/banking/payment2" method="get">
 				    <div>
 				        <!-- Display session values or any content you want -->
-				        <p>User ID: ${sessionScope.user_id}</p>
-				        <p>User Name: ${sessionScope.user_name}</p>
-				        <p>Total Price: ${sessionScope.total_price}</p>
-				        <p>Title: ${sessionScope.title}</p>
-				        <p>Address: ${sessionScope.address}</p>
-				        <p>Phone: ${sessionScope.phone}</p>
-				
-				        <!-- Example for displaying rewards using forEach -->
-				        <h2>Selected Rewards</h2>
+				        <p>주문자 아이디: ${sessionScope.user_id}</p>
+				        <p>주문자: ${sessionScope.user_name}</p>
+				        <p>결제금액: ${sessionScope.total_price}원</p>
+				        <p>주문상품: ${sessionScope.title}</p>
+<%-- 				        <p>Address: ${sessionScope.address}</p> --%>
+				        <p>전화번호: ${sessionScope.phone}</p>
+						
+						<br/>
+						
+				        <h2>선택한 리워드</h2>
 				        <ul>
 				            <c:forEach var="i" begin="0" end="${fn:length(sessionScope.select_reward) - 1}">
 				                <li>${sessionScope.select_reward[i]}</li>
@@ -173,6 +177,7 @@ window.onload = function() {
 				        <input type="hidden" name="payment_amount" value="${sessionScope.total_price}">
                         <input type="hidden" name="title" value="${sessionScope.title}">
 				    </div>
+				    <br/>
 				    <button type="button" id="paypay" class="btn btn-primary">결제하기</button>
 				    </form>
 				</div>
