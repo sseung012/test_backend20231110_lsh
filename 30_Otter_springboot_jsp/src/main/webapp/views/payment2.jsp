@@ -167,7 +167,7 @@ window.onload = function() {
 				        <p>전화번호: ${sessionScope.phone}</p>
 						    
 						<br/>
-						
+						   
 				        <h2>선택한 리워드</h2>
 				        <ul>
 				            <c:forEach var="i" begin="0" end="${fn:length(sessionScope.select_reward) - 1}">
