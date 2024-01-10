@@ -119,7 +119,7 @@
 								<tr>
 								    <th>이름</th>
 								    <td>
-								    	<input type="text" name="username" value="${odto.name}" readonly="readonly" class="form-control1"/>
+								    	<input type="text" name="username" value="${odto.user_name}" readonly="readonly" class="form-control1"/>
 								    </td>
 								</tr>
 								<tr>

@@ -14,7 +14,7 @@
    
 <!--    결제내역 상세보기 -->
    <select id="orderDetail" parameterType="int" resultType="OrderDto">
-       SELECT seq ,user_id, NAME, title,  select_reward, select_amount, total_price, order_date,address ,phone
+       SELECT seq, user_id, user_name, title,  select_reward, select_amount, total_price, order_date, address, phone
       FROM orders
       WHERE seq=#{seq}
    </select>
