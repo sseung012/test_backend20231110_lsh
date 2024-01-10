@@ -255,8 +255,8 @@
 	</div>
 </section>
 
-<footer class="py-5 bg-dark">
-   <div class="container"><p class="m-0 text-center text-white">Otter &copy; Your Website 2023</p></div>
+<footer class="py-5 bg-light">
+   <div class="container"><p class="m-0 text-center text-black">Otter &copy; Your Website 2023</p></div>
 </footer>
 
 <!-- Bootstrap core JS-->
