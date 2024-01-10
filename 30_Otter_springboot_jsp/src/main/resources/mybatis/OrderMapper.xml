@@ -4,6 +4,15 @@
 
 <mapper namespace="com.hk.otter.mapper.OrderMapper">
 
+	<insert id="orderSuccess" parameterType="OrderDto">
+      	INSERT INTO ORDERS
+		VALUES(NULL, #{user_id}, #{user_name}, #{title}, #{select_reward},NULL,#{address},#{phone}, #{total_price}, NULL, SYSDATE(), #{orderId}, #{paymentKey})
+   </insert> 
+   <select id="orderSuccessok" parameterType="OrderDto" resultType="OrderDto">
+      SELECT seq ,user_id, user_name, title,  select_reward, select_amount, total_price, order_date,address ,phone ,orderId, paymentKey
+      FROM orders
+      WHERE user_id=#{user_id}
+   </select>
 <!--    펀딩한 프로젝트 목록 보기 -->
    <select id="paylist"  resultType="OrderDto">
       SELECT user_id, seq, title, select_reward, select_amount, total_price, order_date
@@ -14,16 +23,10 @@
    
 <!--    결제내역 상세보기 -->
    <select id="orderDetail" parameterType="int" resultType="OrderDto">
-       SELECT seq ,user_id, NAME, title,  select_reward, select_amount, total_price, order_date,address ,phone
+      SELECT seq ,user_id, user_name, title,  select_reward, select_amount, total_price, order_date,address ,phone
       FROM orders
       WHERE seq=#{seq}
    </select>
 	
-	<insert id="orderSuccess" parameterType="OrderDto">
-      	INSERT INTO orders
-		VALUES(NULL, #{user_id}, #{name}, #{title}, #{select_reward}, null, #{address},
-		#{phone}, #{total_price}, null, SYSDATE(), #{orderId}, #{paymentKey}); 
-   </insert> 
-
 
 </mapper>

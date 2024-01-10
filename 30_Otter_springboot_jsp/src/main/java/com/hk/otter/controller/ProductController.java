@@ -34,7 +34,7 @@ public class ProductController {
 	@GetMapping(value = "/insertProductForm")
       public String insertProductForm(Model model, InsertProductCommand insertProductCommand) {
          // logger.info("프로젝트만들기폼이동");
-//         System.out.println(insertProductCommand);
+         System.out.println(insertProductCommand);
          
          // addCalBoardfForm 페이지에서 유효값 처리를 위해 
          // insertCalCommand 받고 있기 때문에 보내줘야 해!

@@ -1,3 +1,6 @@
+<%@page import="com.hk.otter.dtos.OrderDto"%>
+<%@page import="com.hk.otter.dtos.RewardDto"%>
+<%@page import="com.hk.otter.dtos.ProductDto"%>
 <%@page import="com.hk.otter.dtos.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -13,14 +16,24 @@
 <%@ page import="java.io.InputStreamReader" %>
 <%@ page import="java.io.Reader" %>
 <%@ page import="java.net.URLEncoder" %>
+<%request.setCharacterEncoding("utf-8"); %>
+<%response.setContentType("text/html; charset=UTF-8"); %>
 
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <%
 	UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
+    ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
+    RewardDto rdto = (RewardDto)request.getSession().getAttribute("rdto");
+    OrderDto odto = (OrderDto)request.getSession().getAttribute("odto");
+    boolean isAdmin = ldto != null && "ADMIN".equals(ldto.getRole());
 	%>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>Otter</title>
     <!-- Favicon-->
 	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 	<!-- Core theme CSS (includes Bootstrap)-->
@@ -31,6 +44,9 @@
   		padding : 100px 0; 		
   		}	
 	</style>
+	<!-- 주소록 API를 사용하기 위해 join.jsp에 외부 스크립트 파일을 연결하는 코드 -->
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
   </head>
   <body>
   <!-- Navigation-->
@@ -94,6 +110,7 @@
    </div>
 </nav>
 	<br/>
+	<form action="/banking/success" method="Post" enctype="multipart/form-data">
 	<div class='complete'>
     <h2>펀딩이 완료되었습니다. 감사합니다 :)</h2>
     <br/>
@@ -103,6 +120,9 @@
     <p>카카오톡 또는 SMS로 안내 드리겠습니다.</p>
 <!--     <p id="paymentKey"></p> -->
 	<br/>
+	<p style="font-weight:bold;" id="seq">${ldto.seq}</p>
+	<p style="font-weight:bold;" id="user_id">${ldto.id}</p>
+	<p style="font-weight:bold;" id="user_name">${ldto.username}</p>
 	<p style="font-weight:bold;">총 결제금액</p>
     <p style="font-weight:bold;" id="amount"></p>
     </div>
@@ -122,8 +142,8 @@
           amount: amount,
         };
 
-        const response = await fetch("/confirm", {
-          method: "POST",
+        const response = await fetch("/success", {
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
@@ -151,9 +171,11 @@
       amountElement.textContent = amount + "원";
       paymentKeyElement.textContent = "paymentKey: " + paymentKey;
       
+      
     </script>
+    </form>
 
-  </body>
+</body>
 </html>
 
 

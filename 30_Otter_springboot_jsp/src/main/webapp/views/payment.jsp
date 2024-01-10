@@ -1,3 +1,4 @@
+<%@page import="com.hk.otter.dtos.OrderDto"%>
 <%@ page import="com.hk.otter.dtos.RewardDto"%>
 <%@page import="com.hk.otter.dtos.ProductDto"%>
 <%@page import="com.hk.otter.dtos.UserDto"%>
@@ -13,6 +14,7 @@
    UserDto ldto = (UserDto)request.getSession().getAttribute("ldto");
    ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
    RewardDto rdto = (RewardDto)request.getSession().getAttribute("rdto");
+   OrderDto odto = (OrderDto)request.getSession().getAttribute("odto");
    boolean isAdmin = ldto != null && "ADMIN".equals(ldto.getRole());
 //    boolean isProductNotApproved = dto != null && "N".equals(dto.getProduct_check());
 %>   
@@ -113,8 +115,12 @@ window.onload = function() {
 }
 
 
+
 </script>
 <!-- 주소록 API를 사용하기 위해 join.jsp에 외부 스크립트 파일을 연결하는 코드 -->
+<link rel="stylesheet" href="./bulma.min.css">
+
+<script src="https://js.tosspayments.com/v1"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 
@@ -174,19 +180,19 @@ window.onload = function() {
             <div class="roww justify-content-center">
                 <div class="coll-lg-6">
                 <h1>펀딩 상품 결제</h1>
-                    <form action="/banking/success" method="post" 
+                    <form action="/banking/success" method="GET" 
                     enctype="multipart/form-data">
-                    	<input type="hidden" name="user_id" value="${ldto.id}"/>
-                    	<div class="addProduct">                          
-<!--                             <input type="hidden" name="seq"/> -->
-                        </div>&nbsp;                        
                         <div class="payment">                     
                             <input type="hidden" name="user_seq" value="${ldto.seq}" />
                         </div>&nbsp;
+                    	<input type="hidden" name="user_id" value="${ldto.id}"/>
+<!--                     	<div class="addProduct">                           -->
+<!--                             <input type="hidden" name="seq"/> -->
+<!--                         </div>&nbsp;                         -->
                                   
                         <div class="payment">
-                            <label for="username" class="form-label" style="font-weight:bold; font-size:18px;">주문자</label>
-                            <input type="text" name="name" class="form-control" value="${ldto.username}" readonly="readonly" />
+                            <label for="user_name" class="form-label" style="font-weight:bold; font-size:18px;">주문자</label>
+                            <input type="text" name="user_name" class="form-control" value="${ldto.username}" readonly="readonly" />
                         </div>&nbsp;
                         <div class="payment">
 
@@ -206,7 +212,12 @@ window.onload = function() {
 						               value="${reward_name[i]} ${count[i]}개" />
 						    </c:forEach>
 						</div><br/> 
+<!-- 						<div class="payment"> -->
 
+<!--                             <label for="select_amount" class="form-label" style="font-weight:bold; font-size:18px;">주문수량</label> -->
+<%--                             <input type="text" name="title" class="form-control" value="${odto.select_amount}" readonly="readonly"/> --%>
+
+<!--                         </div>&nbsp;   -->
 						<div class="payment">      
 							<div class="address_name" style="font-weight:bold; font-size:18px;">배송지 입력</div>
 							<input id="address" style="width:200px;" readonly="readonly" placeholder="우편번호"> <a class="btn btn-primary" onclick="findAddr()">주소 찾기</a><br>
@@ -220,7 +231,7 @@ window.onload = function() {
                             <input type="text" name="phone" class="form-control" value="${ldto.phone}"/>
                         </div>&nbsp;
                         <div class="payment" id="payment">
-                            <label for="payment_amount" class="form-label" style="font-weight:bold; font-size:18px;">결제금액</label>
+                            <label for="total_price" class="form-label" style="font-weight:bold; font-size:18px;">결제금액</label>
                             <input type="text" name="total_price" class="form-control" value="${param.total_price}" readonly="readonly"/>
 								 						
                         </div>&nbsp;
