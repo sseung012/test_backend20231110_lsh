@@ -103,7 +103,6 @@ response.setContentType("text/html; charset=UTF-8");
 			                <tr>
 			                    <th>제목</th>
 			                    <th>선택한 리워드</th>
-			                    <th>총 개수</th>
 			                    <th>총 결제금액</th>
 			                    <th>주문날짜</th>
 			                </tr>
@@ -124,7 +123,6 @@ response.setContentType("text/html; charset=UTF-8");
 							                    </a>
 							                </td>
 							                <td><%= odto.getSelect_reward() %></td>
-							                <td><%= odto.getSelect_amount() %></td>
 							                <td><%= odto.getTotal_price() %>원</td> 
 							                <td><%= odto.getOrder_date() %></td>
 							            </tr>
