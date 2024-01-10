@@ -22,6 +22,8 @@
              document.querySelectorAll(".pp")[0].submit();
          }
          
+        
+         
          var total_price=0;
 
          $(document).ready(function() {
@@ -300,7 +302,7 @@
                        
                     <!-- 리워드 선택 -->
                      <div class="rewardselect">
-                     <input type="hidden" id="selectedRewardsInput" name="selectedRewards" />
+                     <input type="hidden" id="selectedRewardsInput" name="selectedRewards"/>
                             <select class="form-select" aria-label="Default select example" name="reward_name" id="reward_name">
                                <option>리워드 선택하기</option>
 
@@ -332,16 +334,15 @@
                         <td>배송비 ㅣ 무료</td>
                      </tr>
 
-
- 
-                     <c:choose>
+					 <c:choose>
                      	<c:when test="${dto.remainingDays le 0}">
                         	<td><strong><font color="red">펀딩이 마감되었습니다!</font></strong></td>
                         </c:when>
                         <c:otherwise>
                      		<a class="btn btn-primary" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
                         </c:otherwise>
-                     </c:choose>                
+                     </c:choose>  
+                                
                     </div> 
                     <br/>
                     <br/>
@@ -366,8 +367,8 @@
 <!--                             <input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()"  -->
 <!--                                 style="float:right; margin:10px; height:40px; width:100px;"/> -->
                         <input type="hidden" name="id" value="${dto.seq}"/>
-                           <a class="btn btn-outline-darkk" id="approve" href="/product/approve/${dto.seq}"
-                              style="float:right; margin:10px; height:40px; width:100px; font-size:17px; font-align:center; background-color:#DCFAFD;">승인</a>
+                           <a class="btn btn-primary" id="approve" href="/product/approve/${dto.seq}"
+                              style="float:right; margin:10px; height:40px; width:100px; font-size:17px; font-align:center;">승인</a>
                         </c:when>
                         <c:when test="${ldto == null}">
                             <!-- ldto가 null일 경우, 승인 버튼을 보이지 않게 함 -->
