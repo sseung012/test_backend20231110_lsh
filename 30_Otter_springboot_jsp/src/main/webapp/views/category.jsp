@@ -175,9 +175,10 @@
 
 		<div id="slider-container">
 		  <div id="image-slider">
+		    <div class="slide"><img src="../upload/광고배너5.png" alt="이미지 5"></div>
+		    <div class="slide"><img src="../upload/광고배너6.png" alt="이미지 6"></div>
+		    <div class="slide"><img src="../upload/광고배너7.png" alt="이미지 7"></div>
 		    <div class="slide"><img src="../upload/광고배너1.png" alt="이미지 1"></div>
-		    <div class="slide"><img src="../upload/광고배너2.png" alt="이미지 2"></div>
-		    <div class="slide"><img src="../upload/광고배너3.png" alt="이미지 3"></div>
 		    <!-- 필요에 따라 이미지를 추가하세요 -->
 		  </div>
 		  <button class="slider-btn" id="prevBtn" onclick="prevSlide()">‹</button>
