@@ -32,24 +32,24 @@
 <link href="resources/css/styles.css" rel="stylesheet" />
 <style>
     #slider-container {
-      width: 1518px;
+      width: 1519px;
       margin: auto;
       overflow: hidden;
     }
 
     #image-slider {   
-      width: 1518px; /* 이미지 개수에 따라 조절하세요 */
+      width: 1519px; /* 이미지 개수에 따라 조절하세요 */
       display: flex;
       transition: transform 0.8s ease-in-out;
     }
 
     .slide {
-      width: 1518px;
+      width: 1519px;
       flex: 0 0 auto;
     }
 
     img {
-      width: 1518px;
+      width: 1519px;
       height: 300px;
     }
 
