@@ -207,7 +207,7 @@
   // 자동 슬라이드 추가
   setInterval(nextSlide, 5000); // 5초마다 다음 슬라이드로 이동
 </script>
-   
+
 <!-- Section-->
    	<section class="py-4">
       <div class="container px-3 px-lg-4 mt-5">
@@ -427,8 +427,8 @@
 
 <!--     </form> -->
 <!-- Footer-->
-<footer class="py-5 bg-dark">
-   <div class="container"><p class="m-0 text-center text-white">Otter &copy; Your Website 2023</p></div>
+<footer class="py-5 bg-light">
+   <div class="container"><p class="m-0 text-center text-black">Otter &copy; Your Website 2023</p></div>
 </footer>
 
 <!-- Bootstrap core JS-->
