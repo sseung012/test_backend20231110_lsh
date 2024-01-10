@@ -211,31 +211,6 @@
 
 <!-- Section-->
    	<section class="py-4">
-   	<div style="display: flex; justify-content: center;">
-   	                       <c:choose>
-                           <c:when test="${dto != null && dto.cate_seq eq 1}">
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">홈/리빙</a>
-                           </c:when>
-                           <c:when test="${dto != null && dto.cate_seq eq 2}">
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">패션/잡화</a>
-                           </c:when>
-                           <c:when test="${dto != null && dto.cate_seq eq 3}">
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">뷰티</a>
-                           </c:when>
-                           <c:when test="${dto != null && dto.cate_seq eq 4}">
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">푸드</a>
-                           </c:when>
-                           <c:when test="${dto != null && dto.cate_seq eq 5}">
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">출판</a>
-                           </c:when>
-                           <c:when test="${dto != null && dto.cate_seq eq 6}">
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">반려동물</a>
-                           </c:when>
-                           <c:otherwise>
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!"> 기타</a>
-                           </c:otherwise>
-                       </c:choose>
-   	</div>
       <div class="container px-3 px-lg-4 mt-5">
            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 			<c:forEach  var="clist" items="${clist}">
