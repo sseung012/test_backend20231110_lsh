@@ -133,9 +133,7 @@ public class FundingController {
         System.out.println("Title: " + orderCommand.getTitle());
         System.out.println("Selected Reward: " + orderCommand.getSelect_reward());
         System.out.println("Selected Amount: " + orderCommand.getSelect_amount());
-        System.out.println("Address1: " + orderCommand.getAddress1());
-        System.out.println("Address2: " + orderCommand.getAddress2());
-        System.out.println("Address3: " + orderCommand.getAddress3());
+        System.out.println("Address: " + orderCommand.getAddress());
         System.out.println("Phone: " + orderCommand.getPhone());
         System.out.println("Total Price: " + orderCommand.getTotal_price());
         System.out.println("Reward Seq: " + orderCommand.getReward_seq());
