@@ -37,8 +37,7 @@
 	<insert id="saveOrder" parameterType="OrderDto">
 	      	INSERT INTO orders
 			VALUES(NULL, #{user_id}, #{user_name}, #{title}, #{select_reward}, #{select_amount}, #{address1},
-			#{address2},#{address3},
-			#{phone}, #{total_price}, #{reward_seq}, SYSDATE(), null, null)
+			#{address2},#{address3}, #{phone}, #{total_price}, #{reward_seq}, SYSDATE(), null, null)
    </insert> 
 
 </mapper>
