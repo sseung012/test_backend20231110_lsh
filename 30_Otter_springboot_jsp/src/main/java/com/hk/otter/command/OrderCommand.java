@@ -18,9 +18,10 @@ public class OrderCommand {
 	public int reward_seq;
 	public String order_date;
 
-	//결제정보 db에저장
+	// 결제정보 DB에 저장
 	public OrderCommand(int seq, String user_id, String user_name, String title, String select_reward,
-		 String address1, String address2, @NotBlank(message = "배송지를 등록하세요!") String address3, @NotBlank(message = "전화번호를 등록하세요!") String phone,
+			@NotBlank(message = "배송지를 등록하세요!") String address,
+			@NotBlank(message = "전화번호를 등록하세요!") String phone,
 			int total_price) {
 		super();
 		this.seq = seq;
@@ -150,3 +151,4 @@ public class OrderCommand {
 				+ order_date + "]";
 	}
 }
+

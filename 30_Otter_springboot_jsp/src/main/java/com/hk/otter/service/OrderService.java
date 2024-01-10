@@ -62,7 +62,7 @@ public class OrderService {
         }
     }
 
-	//결제정보 DB저장
+	// 결제정보 DB저장
 	public void saveOrder(OrderCommand orderCommand) {
 		OrderDto odto = new OrderDto();
 		odto.setUser_id(orderCommand.getUser_id());
