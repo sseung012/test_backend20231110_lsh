@@ -71,40 +71,8 @@
 			        <h1>전체회원목록</h1>
 			        <br />
 			        <div id="getUserList">
-			            <table class="table2">
-			                <tr>
-			                    <th>회원번호</th>
-			                    <th>아이디</th>
-			                    <th>이름</th>
-			                    <th>연락처</th>
-			                    <th>이메일</th>
-			                    <th>회원등급</th>
-			                    <th>탈퇴여부</th>
-			                </tr>
-							<%
-							    if (list == null || list.isEmpty()) {
-							%>
-							    <tr>
-							        <td colspan="8">-- 가입된 회원이 없습니다. --</td>
-							    </tr>
-							<%
-							    } else {
-							        for (UserDto dto : list) {
-							%>
-							            <tr>
-							                <td><%= dto.getSeq() %></td>
-							                <td><%= dto.getId() %></td>
-							                <td><%= dto.getUsername() %></td>
-							                <td><%= dto.getPhone() %></td>
-							                <td><%= dto.getUseremail() %></td>
-							                <td><%= dto.getRole() %></td>
-							                <td><%= (dto.getDelflag().equals("Y") ? "탈퇴" : "유저") %></td>
-							            </tr>
-							<%
-							        }
-							    }
-							%>
-			            </table>
+			        
+			            
 			        </div>
 			    </div>
 			</div>
