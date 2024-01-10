@@ -206,7 +206,7 @@ window.onload = function() {
 						               value="${reward_name[i]} ${count[i]}개" />
 						    </c:forEach>
 						</div><br/> 
-
+ 
 						<div class="payment">         
 							<div class="address_name" style="font-weight:bold; font-size:18px;">배송지 입력</div>
 							<input id="address1" style="width:200px;" readonly="readonly" placeholder="우편번호"> <a class="btn btn-primary" onclick="findAddr()">주소 찾기</a><br>
@@ -223,7 +223,7 @@ window.onload = function() {
                             <label for="payment_amount" class="form-label" style="font-weight:bold; font-size:18px;">결제금액</label>
                             <input type="text" name="total_price" class="form-control" value="${param.total_price}" readonly="readonly"/>
 								 						
-                        </div>&nbsp;
+                        </div>&nbsp; 
                         
                         <div class="payment">
 <!--                             <label for="order_date" class="form-label" style="font-weight:bold; font-size:18px;">주문날짜</label> -->
