@@ -26,6 +26,50 @@
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" /> -->
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/styles.css" rel="stylesheet" />
+<style>
+    #slider-container {
+      width: 1518px;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    #image-slider {
+      width: 1518px; /* 이미지 개수에 따라 조절하세요 */
+      display: flex;
+      transition: transform 0.8s ease-in-out;
+    }
+
+    .slide {
+      width: 1518px;
+      flex: 0 0 auto;
+    }
+
+    img {
+      width: 1518px;
+      height: 300px;
+    }
+
+    .slider-btn {
+      cursor: pointer;
+      position: absolute;
+      top: 250px;
+      transform: translateY(-50px);
+      font-size: 24px;
+      color: #fff;
+      background-color: #333;
+      border: none;
+      padding: 10px;
+      outline: none;
+    }
+
+    #prevBtn {
+      left: 0;
+    }
+
+    #nextBtn {
+      right: 0;
+    }
+  </style>
 </head>
 
 <body>
@@ -120,22 +164,55 @@
 </nav>
         
 <!-- Header-->
-   <header class="bg-dark py-5">
-       <div class="container px-4 px-lg-5 my-5">
-           <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Otter</h1>
-               <p class="lead fw-normal text-white-50 mb-0">펀딩은 크라우드 펀딩의 줄임말로, 온라인 플랫폼을 통해 불특정 다수에게 자금을 확보하는 방식입니다. 선주문 후생산 방식으로, 목표한 금액 달성 후 제품이 제작돼요. </p>
-         </div>
-      </div>
-   </header>
-   
+<!--    <header class="bg-dark py-5"> -->
+<!--        <div class="container px-4 px-lg-5 my-5"> -->
+<!--            <div class="text-center text-white"> -->
+<!--             <h1 class="display-4 fw-bolder">Otter</h1> -->
+<!--                <p class="lead fw-normal text-white-50 mb-0">펀딩은 크라우드 펀딩의 줄임말로, 온라인 플랫폼을 통해 불특정 다수에게 자금을 확보하는 방식입니다. 선주문 후생산 방식으로, 목표한 금액 달성 후 제품이 제작돼요. </p> -->
+<!--          </div> -->
+<!--       </div> -->
+<!--    </header> -->
+
+		<div id="slider-container">
+		  <div id="image-slider">
+		    <div class="slide"><img src="../upload/광고배너1.png" alt="이미지 1"></div>
+		    <div class="slide"><img src="../upload/광고배너2.png" alt="이미지 2"></div>
+		    <div class="slide"><img src="../upload/광고배너3.png" alt="이미지 3"></div>
+		    <!-- 필요에 따라 이미지를 추가하세요 -->
+		  </div>
+		  <button class="slider-btn" id="prevBtn" onclick="prevSlide()">‹</button>
+		  <button class="slider-btn" id="nextBtn" onclick="nextSlide()">›</button>
+	   </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  var currentIndex = 0;
+
+  function showSlide(index) {
+    var newTransformValue = -index * 100 + '%';
+    $('#image-slider').css('transform', 'translateX(' + newTransformValue + ')');
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + $('.slide').length) % $('.slide').length;
+    showSlide(currentIndex);
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % $('.slide').length;
+    showSlide(currentIndex);
+  }
+
+  // 자동 슬라이드 추가
+  setInterval(nextSlide, 5000); // 5초마다 다음 슬라이드로 이동
+</script>
    
 <!-- Section-->
-   	<section class="py-5">
-      <div class="container px-4 px-lg-5 mt-5">
+   	<section class="py-4">
+      <div class="container px-3 px-lg-4 mt-5">
            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 			<c:forEach  var="clist" items="${clist}">
-               <div class="col mb-5">
+               <div class="col mb-4">
                    <div class="card h-100">
 <!--                    Product image -->
                         <img class="card-img-top" src="/upload/${clist.img}" alt="..." width="200" height="220"/>
