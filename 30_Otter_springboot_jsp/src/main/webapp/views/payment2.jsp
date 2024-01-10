@@ -165,7 +165,7 @@ window.onload = function() {
 				        <p>주문상품: ${sessionScope.title}</p>
 <%-- 				        <p>주소: ${sessionScope.address}</p> --%>
 				        <p>전화번호: ${sessionScope.phone}</p>
-						
+						    
 						<br/>
 						
 				        <h2>선택한 리워드</h2>
