@@ -15,10 +15,13 @@
 	ProductDto dto = (ProductDto)request.getSession().getAttribute("dto");
 %>
 <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Otter</title>
+
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -119,17 +122,6 @@
    </div>
 </nav>
                
-<!-- Header-->
-   <header class="bg-dark py-5">
-       <div class="container px-4 px-lg-5 my-5">
-           <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Otter</h1>
-                   <p class="lead fw-normal text-white-50 mb-0">
-                   펀딩은 크라우드 펀딩의 줄임말로, 온라인 플랫폼을 통해 불특정 다수에게 자금을 확보하는 방식입니다. 선주문 후생산 방식으로, 목표한 금액 달성 후 제품이 제작돼요. 
-                   </p>
-         </div>
-      </div>
-   </header>
    
    
 <!-- Section--> 
