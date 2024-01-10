@@ -135,10 +135,9 @@
 								    </td>
 								</tr>
 								<tr>
-									<th>총 개수</th>
-									<td>
-										<input type="text" name="role" value="${odto.select_amount}" readonly="readonly" class="form-control1"/>
-									</td>
+<%-- 										<input type="text" name="role" value="${odto.select_amount}" readonly="readonly" class="form-control1"/> --%>
+										<input type="hidden" name="id" value="${odto.seq}"/>
+									
 								</tr>
 								<tr>
 									<th>총 금액</th>
