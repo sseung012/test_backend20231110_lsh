@@ -220,7 +220,7 @@
                         <img class="card-img-top" src="/upload/${clist.img}" alt="..." width="200" height="220"/>
 <!--                    Product details -->
                         <div class="card-body p-4">
-                           <div class="text-center">
+                           <div class="text-center">  
 <!--                    Product name -->
                                 <h5 class="fw-bolder">${clist.title}</h5>
 <!--                            제품 제조사 -->
