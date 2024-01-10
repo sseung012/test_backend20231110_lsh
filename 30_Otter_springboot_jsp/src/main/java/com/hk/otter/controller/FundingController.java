@@ -124,11 +124,11 @@ public class FundingController {
 
     }
    
-   //결제내역DB저장
-   @PostMapping("/orderSave")
-    public String orderSave(OrderCommand orderCommand, Model model) {
+    //결제내역DB저장
+    @PostMapping("/orderSave")
+    public String orderSave(HttpSession session, OrderCommand orderCommand, Model model) {
       
-      System.out.println("User ID: " + orderCommand.getUser_id());
+	   	System.out.println("User ID: " + orderCommand.getUser_id());
         System.out.println("User_name: " + orderCommand.getUser_name());
         System.out.println("Title: " + orderCommand.getTitle());
         System.out.println("Selected Reward: " + orderCommand.getSelect_reward());
@@ -143,11 +143,28 @@ public class FundingController {
 
         // 예시: 저장 성공 메시지를 모델에 추가
         model.addAttribute("saveSuccess", true);
+        
+        session.setAttribute("user_id", orderCommand.getUser_id());
+        session.setAttribute("user_name", orderCommand.getUser_name());
+        session.setAttribute("title", orderCommand.getTitle());
+        session.setAttribute("select_reward", Arrays.asList(orderCommand.getSelect_reward()));
+        session.setAttribute("address", orderCommand.getAddress());
+        session.setAttribute("phone", orderCommand.getPhone());
+        session.setAttribute("total_price", orderCommand.getTotal_price());
    
-        return "redirect:/";
+        return "redirect:/banking/payment2";
 
     }
 
+    @GetMapping("/payment2")
+    public String payment2( Model model, HttpSession session,String[] reward_name,String[] count,String total_price, String title) {
+    	
+    	 model.addAttribute("reward_name", reward_name);
+         model.addAttribute("count", count);
+         model.addAttribute("total_price", session.getAttribute("total_price"));
+         model.addAttribute("title", session.getAttribute("title"));
+        return "payment2";
+    }
    
    @GetMapping("/confirm")
     public String confirm(@RequestParam("orderId") String orderId,

@@ -108,7 +108,7 @@
 		<br/>
 		<p style="font-weight:bold;">총 결제금액</p>
 	    <p style="font-weight:bold;" id="amount"></p>
-    		<button type="button" id="confirm" class="btn btn-primary">결제완료</button>
+<!--     		<button type="button" id="confirm" class="btn btn-primary">결제완료</button> -->
     	</div>
     </form>
 

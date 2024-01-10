@@ -9,9 +9,6 @@ public class OrderCommand {
 	public String user_name;
 	public String title;
 	public String select_reward;
-	
-
-
 	public int select_amount;
 	@NotBlank(message = "배송지를 등록하세요!")
 	public String address;
