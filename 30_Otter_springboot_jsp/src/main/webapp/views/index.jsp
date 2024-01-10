@@ -37,7 +37,7 @@
       overflow: hidden;
     }
 
-    #image-slider {
+    #image-slider {   
       width: 1518px; /* 이미지 개수에 따라 조절하세요 */
       display: flex;
       transition: transform 0.8s ease-in-out;
