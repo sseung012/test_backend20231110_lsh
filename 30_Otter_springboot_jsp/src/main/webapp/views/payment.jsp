@@ -223,7 +223,7 @@ window.onload = function() {
                             <label for="payment_amount" class="form-label" style="font-weight:bold; font-size:18px;">결제금액</label>
                             <input type="text" name="total_price" class="form-control" value="${param.total_price}" readonly="readonly"/>
 								 						
-                        </div>&nbsp;
+                        </div>&nbsp; 
                         
                         <div class="payment">
 <!--                             <label for="order_date" class="form-label" style="font-weight:bold; font-size:18px;">주문날짜</label> -->
