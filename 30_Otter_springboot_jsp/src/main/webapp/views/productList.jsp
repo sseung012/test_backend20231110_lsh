@@ -122,7 +122,7 @@
 											                categoryName = "반려동물";
 											                break;
 											            default:
-											                categoryName = "알 수 없음";
+											                categoryName = "기타";
 											                break;
 											        }
 											

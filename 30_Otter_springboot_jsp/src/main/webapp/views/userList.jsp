@@ -71,7 +71,7 @@
 			        <h1>전체회원목록</h1>
 			        <br />
 			        <div id="getUserList">
-			            <table class="table2">
+			            <table class="table" style="width:1200px;">
 			                <tr>
 			                    <th>회원번호</th>
 			                    <th>아이디</th>
@@ -98,7 +98,7 @@
 							                <td><%= dto.getPhone() %></td>
 							                <td><%= dto.getUseremail() %></td>
 							                <td><%= dto.getRole() %></td>
-							                <td><%= (dto.getDelflag().equals("Y") ? "탈퇴" : "유저") %></td>
+							                <td><%= (dto.getDelflag().equals("Y") ? "탈퇴" : "사용중") %></td>
 							            </tr>
 							<%
 							        }

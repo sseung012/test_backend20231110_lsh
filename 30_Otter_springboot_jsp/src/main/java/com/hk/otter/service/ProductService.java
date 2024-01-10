@@ -23,10 +23,7 @@ import com.hk.otter.mapper.RewardMapper;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Service
-public class ProductService {
-		
-	
-	
+public class ProductService {	
 	@Autowired
 	private ProductMapper productMapper;
 	

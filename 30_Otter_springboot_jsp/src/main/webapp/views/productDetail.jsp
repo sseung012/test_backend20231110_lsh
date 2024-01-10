@@ -23,8 +23,8 @@
          }
          
          var total_price=0;
-         
-         $(document).ready(function(){
+
+         $(document).ready(function() {
 
              $("#reward_name").change(function(){
 //               alert($("#reward_name option:selected").text());   
@@ -35,23 +35,22 @@
                  var optionSelTxt=$("#reward_name option:selected").text();
                  var optionP=$("#reward_name option:selected").text().split("_");
                  var optionPP = parseInt(optionP[1].replace("원", ""))
-//                  console.log(optionPrice[0]);
-           
-             
+                        
                   var countEle=
-                     '<div class="cc">'
-                       + '<div class="' + seq + '">' + optionSelTxt + '</div>'
-                       + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
-                       + '<input type="number" name="count" class="form-class"'
-                       + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
-                       + '<div>' + optionPP + '</div>'
-                       + '<button class="remove">X</button>'
-// 					   + '<button id="remove" class="btn-close" aria-label="Close"></button>'
-                       + '</div>';
+                       '<div class="cc">'
+                         + '<div class="' + seq + '">' + optionSelTxt + '</div>'
+                         + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
+                         + '<input type="number" name="count" class="form-class"'
+                         + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
+                         + '<div style="float: right; ">' + optionPP + '</div>' 
+                         + '<button class="remove" style="border:none; background-color:white;"><img src="/upload/x.png" alt="" width="25px" height="30px"></button>'
+                         + '</div>';
+
                        
                      $("#test").append(countEle);    
                       total_price+=optionPP;
                       $("#total_price").val(total_price);
+                      
                } else {
                   // 기능 실행 X
                   alert("이미 추가한 리워드입니다!");
@@ -59,53 +58,43 @@
             });
               
             <!-- 중간, 최종 상품 금액 계산 -->
-//             이벤트 핸들러 함수 사용
+//          이벤트 핸들러 함수 사용
 
             $("#test").on("click","input[name=count]",function(){
                
                var inputCount=$(this); // input 엘리먼트
                
-               var optionPP2=inputCount.prev("div").text().split("_")[1].replace("원",""); // 40000원 -> 40000으로 출력
+               // 앞의 앞에 있는 'div'태그를 가져오는 거라 prevAll() 사용함!
+               var optionPP2=inputCount.prevAll("div").eq(0).text().split("_")[1].replace("원",""); 
                var count=$(this).val(); // 수량
                
                var optionPPDiv=$(this).next("div");
                optionPPDiv.text(optionPP2*count);
                var sum=0;   
                $(".cc").each(function(){
-                  sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
+                  sum+=parseInt($(this).find("div").eq(1).text()); 
                });
                total_price=sum;
-               $("#total_price").val(total_price); // 총 금액에 쓰임
+               $("#total_price").val(total_price); 
                
             });
-
-               
+        
 //             버튼을 눌렀을 때 지워지고(remove()활용) prev() 이용해서 값을 구하고 그걸 총금액에서 빼기
-//             기능 실행 X
             $("#test").on("click", ".remove", function(){
                var removebtn =$(this); // input 엘리먼트
                
-//                removebtn.parent().remove();
-               
-               //var rrr = removebtn.prev("div").text();
-               
                var optionPP2=removebtn.prev("div").text();
                var count=$(this).val(); // 수량
-               
-//                var optionPPDiv=$(this).next("div");
-//                optionPPDiv.text(optionPP2*count);
-//                var sum=0;
-//                $(".cc").each(function(){
-//                   sum+=parseInt($(this).find("div").eq(1).text()); // '<div>'+optionPP+'</div>' 의미
-//                });
-//                total_price-=sum;
+              
                removebtn.parent().remove();
                total_price = total_price-optionPP2
                $("#total_price").val(total_price); // 총 금액에 쓰임
             });         
             
            });            
-           
+
+        	           
+
         </script>
         <!-- Favicon-->
 <!--         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
@@ -129,7 +118,7 @@
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+<!--                          <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li> -->
       <!--                     <li class="nav-item"><a class="nav-link" href="#!">About</a></li> -->
                           <li class="nav-item dropdown">
                              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
@@ -323,11 +312,11 @@
                     <br/>
 <!--                     <th>수량</th> -->
 <!--                <form action="/product/" method="post"> -->
-               <form action="/banking/payment" method="post" class="pp"> 
+               		<form action="/banking/payment" method="post" class="pp"> 
                      <input type="hidden" name="title" value="${dto.title}"/>
                      
                     <div id="test">
-                    
+                    	
                     </div>
                     
                      <br/>
@@ -401,7 +390,7 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="js/scripts.js"></script>    
     </body>
 </html>
 

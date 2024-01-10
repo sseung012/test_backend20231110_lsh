@@ -9,7 +9,7 @@ import com.hk.otter.dtos.OrderDto;
 public interface OrderMapper {
 
 	//내가 펀딩참여한 프로젝트 표로 보여주기
-	public List<OrderDto> paylist(String userID);
+	public List<OrderDto> paylist(String user_id);
 
 	public OrderDto orderDetail(int seq);
 
@@ -17,5 +17,7 @@ public interface OrderMapper {
 	
 	public OrderDto orderSuccessok(OrderDto dto);
 	
+
+	public void saveOrder(OrderDto odto);
 
 }

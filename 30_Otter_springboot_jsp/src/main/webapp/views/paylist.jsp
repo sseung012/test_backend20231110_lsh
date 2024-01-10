@@ -46,7 +46,7 @@ response.setContentType("text/html; charset=UTF-8");
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                   <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+<!--                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li> -->
 <!--                     <li class="nav-item"><a class="nav-link" href="#!">About</a></li> -->
                     <li class="nav-item dropdown">
                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
@@ -103,7 +103,6 @@ response.setContentType("text/html; charset=UTF-8");
 			                <tr>
 			                    <th>제목</th>
 			                    <th>선택한 리워드</th>
-			                    <th>총 개수</th>
 			                    <th>총 결제금액</th>
 			                    <th>주문날짜</th>
 			                </tr>
@@ -124,7 +123,6 @@ response.setContentType("text/html; charset=UTF-8");
 							                    </a>
 							                </td>
 							                <td><%= odto.getSelect_reward() %></td>
-							                <td><%= odto.getSelect_amount() %></td>
 							                <td><%= odto.getTotal_price() %>원</td> 
 							                <td><%= odto.getOrder_date() %></td>
 							            </tr>

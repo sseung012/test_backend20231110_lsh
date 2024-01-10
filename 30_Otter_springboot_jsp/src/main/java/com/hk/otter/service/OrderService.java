@@ -7,11 +7,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartRequest;
 
 import com.hk.otter.command.InsertProductCommand;
-import com.hk.otter.command.SuccessCommand;
+import com.hk.otter.command.OrderCommand;
 import com.hk.otter.dtos.OrderDto;
 import com.hk.otter.dtos.ProductDto;
 import com.hk.otter.dtos.RewardDto;
@@ -27,47 +26,56 @@ public class OrderService {
 	private OrderMapper orderMapper;
 	
 	@Transactional
-	public List<OrderDto> paylist(String userID) {
-		return orderMapper.paylist(userID);
+	public List<OrderDto> paylist(String user_id) {
+		return orderMapper.paylist(user_id);
 	}
 
 	public OrderDto orderDetail(int seq) {
 		return orderMapper.orderDetail(seq);
 	}
-	
-	@Transactional
-	public void orderSuccessok(SuccessCommand successCommand, Model model, HttpServletRequest request)throws IllegalStateException, IOException {
-		OrderDto odto= new OrderDto();
-		odto.setSeq(successCommand.getSeq());
-		odto.setUser_id(successCommand.getUser_id());
-		odto.setUser_name(successCommand.getUser_name());
-		odto.setTitle(successCommand.getTitle());
-		odto.setSelect_reward(successCommand.getSelect_reward());
-		odto.setSelect_amount(successCommand.getSelect_amount());
-		odto.setAddress(successCommand.getAddress());
-		odto.setPhone(successCommand.getPhone());
-		odto.setTotal_price(successCommand.getTotal_price());
-		odto.setOrder_date(successCommand.getOrder_date());
-		odto.setOrderId(successCommand.getOrderId());
-		odto.setPaymentKey(successCommand.getPaymentKey());
-		orderMapper.orderSuccess(odto);
 
-	}
+//	@Transactional
+	public boolean orderSuccess(OrderCommand orderCommand) {
+        // 여기에 주문 성공 처리 로직을 작성
+        // 주문 정보를 데이터베이스에 저장하거나, 상태를 업데이트하거나 등등...
 
-
-//	public OrderDto orderSuccessok(OrderDto dto) {
-//		return orderMapper.orderSuccessok(dto);
-//	}
-
-	public void orderSuccessok(SuccessCommand successCommand, HttpServletRequest request) {
-		// TODO Auto-generated method stub
+		OrderDto odto=new OrderDto();
+		odto.setSeq(orderCommand.getSeq());
+		odto.setUser_id(orderCommand.getUser_id());
+		odto.setUser_name(orderCommand.getUser_name());
+		odto.setTitle(orderCommand.getTitle());
+		odto.setSelect_reward(orderCommand.getSelect_reward());
+		odto.setSelect_amount(orderCommand.getSelect_amount());
+		odto.setAddress(orderCommand.getAddress());
+		odto.setPhone(orderCommand.getPhone());
+		odto.setTotal_price(orderCommand.getTotal_price());
+		odto.setReward_seq(orderCommand.getReward_seq());
 		
+        try {
+        	orderMapper.orderSuccess(odto);
+                   
+            return true;
+        } catch (Exception e) {
+            // 주문 성공 처리 중 예외 발생 시 실패로 간주
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+	// 결제정보 DB저장
+	public void saveOrder(OrderCommand orderCommand) {
+		OrderDto odto = new OrderDto();
+		odto.setUser_id(orderCommand.getUser_id());
+		odto.setUser_name(orderCommand.getUser_name());
+		odto.setTitle(orderCommand.getTitle());
+		odto.setSelect_reward(orderCommand.getSelect_reward());
+		odto.setSelect_amount(orderCommand.getSelect_amount());
+		odto.setAddress(orderCommand.getAddress());
+		odto.setPhone(orderCommand.getPhone());
+		odto.setTotal_price(orderCommand.getTotal_price());
+		odto.setReward_seq(orderCommand.getReward_seq());
+
+		orderMapper.saveOrder(odto);
 	}
 
-	public List<OrderDto> orderSuccess(OrderDto odto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 }
