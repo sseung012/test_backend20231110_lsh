@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>    
 <%response.setContentType("text/html; charset=UTF-8"); %>
-<%@ page import="com.hk.otter.dtos.UserDto" %>   
+<%@ page import="com.hk.otter.dtos.UserDto" %>     
 <%@ page import="com.hk.otter.dtos.ProductDto" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
