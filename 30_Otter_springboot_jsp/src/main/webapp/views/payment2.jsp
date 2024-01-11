@@ -181,7 +181,7 @@ window.onload = function() {
 					<div style="display: flex; justify-content: center;">
 				    <button align="center" type="button" id="paypay" class="btn btn-primary">결제하기</button>
 				    </div>
-				    </form>
+				    </form>   
 				</div>
             </div>
         </div>
