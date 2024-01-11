@@ -243,7 +243,7 @@
 								    </c:otherwise>
 		                        </c:choose> 
 		                        <!-- 제품 지지자 수 -->
-		                        <p class="text-muted">${mlist.total_supporters}명</p>
+<%-- 		                        <p class="text-muted">${mlist.total_supporters}명</p> --%>
                      		</div>
                   		</div> 
                   		<!-- Product actions-->
