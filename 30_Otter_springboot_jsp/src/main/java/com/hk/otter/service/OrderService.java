@@ -82,4 +82,10 @@ public class OrderService {
 		orderMapper.saveOrder(odto);
 	}
 
+	//결제된 총 금액 구하기
+	public void addToTotalPrice(int Seq, int totalPrice) {
+		orderMapper.addToTotalPrice(Seq, totalPrice);
+		
+	}
+
 }

@@ -36,7 +36,6 @@
     }
 </style>
 <script type="text/javascript">
-
 function findAddr(){
 	new daum.Postcode({
         oncomplete: function(data) {
@@ -61,62 +60,21 @@ function findAddr(){
 }
 
 
+
+// $("#orderSave").click(function(){
+// 	var count = 0; 
+// 	count++;
+// 	console.log("count= " + count);
+// 	return false;
+// });
+
+
 // ------ 클라이언트 키로 객체 초기화 ------
 // var button ;
 // var clientKey = 'test_ck_ALnQvDd2VJz6wRev0vgwVMj7X41m'
 // var tossPayments = TossPayments(clientKey)
 
 
-// // 현재 날짜 나타내기
-// window.onload = function() {
-//    today = new Date();
-//    console.log("today.toISOString() >>>" + today.toISOString());
-//    today = today.toISOString().slice(0, 10);
-//    console.log("today >>>> " + today);
-//    bir = document.getElementById("order_date");
-//    bir.value = today;
-   
-//    button = document.getElementById("payment-button");
-   
-//    payment_amount = document.getElementsByName("payment_amount");
-//    payment_title = document.getElementsByName("title");
-//    payment_name = document.getElementsByName("username");
-
-// 	// orderId 랜덤생성
-//    function generateOrderId() {
-//        // 간단한 방법으로 랜덤 UUID 생성
-//        return '7_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-//    }
-	
-
-// // ------ 결제창 띄우기 ------
-//    button.addEventListener("click", function () {
-// // 	document.getElementById('payment-button').addEventListener('click', function () {
-//    tossPayments.requestPayment('카드', { // 결제수단 파라미터 (카드, 계좌이체, 가상계좌, 휴대폰 등)
-//      // 결제 정보 파라미터
-//      // 더 많은 결제 정보 파라미터는 결제창 Javascript SDK에서 확인하세요.
-//      // https://docs.tosspayments.com/reference/js-sdk
-//      amount: ${param.total_price}, // 결제 금액
-//      orderId: generateOrderId(), // 주문 ID(주문 ID는 상점에서 직접 만들어주세요.)
-//      orderName: '${param.title}', // 주문명
-//      customerName: '${ldto.username}', // 주문자명     
-//      successUrl: 'http://localhost:8087/banking/success?${ORDER_ID}${PAYMENT_KEY}${AMOUNT}', // 결제 성공 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
-//      failUrl: 'http://localhost:8087/banking/fail' // 결제 실패 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
-//    })
-//    // ------결제창을 띄울 수 없는 에러 처리 ------
-//    // 메서드 실행에 실패해서 reject 된 에러를 처리하는 블록입니다.
-//    // 결제창에서 발생할 수 있는 에러를 확인하세요.    
-//    // https://docs.tosspayments.com/reference/error-codes#결제창공통-sdk-에러
-//    .catch(function (error) {   
-   	
-//      if (error.code === 'USER_CANCEL') {
-//        // 결제 고객이 결제창을 닫았을 때 에러 처리
-//      } else if (error.code === 'INVALID_CARD_COMPANY') {
-//        // 유효하지 않은 카드 코드에 대한 에러 처리
-//      }
-//    });
-//    });
-// }
 
 
 
@@ -182,6 +140,7 @@ function findAddr(){
                 <div class="coll-lg-6">
                 <h1>펀딩 상품 결제</h1>
                     <form action="/banking/orderSave" method="post">
+                    	<input type="hidden" name="seq" value="${dto.seq}"/>
 <!--                     enctype="multipart/form-data"> -->
                     	<input type="hidden" name="user_id" value="${ldto.id}"/>
                     	<div class="addProduct">                          

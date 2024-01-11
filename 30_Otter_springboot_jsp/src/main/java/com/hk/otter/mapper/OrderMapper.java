@@ -2,6 +2,7 @@ package com.hk.otter.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.hk.otter.dtos.OrderDto;
 
@@ -19,5 +20,7 @@ public interface OrderMapper {
 	
 
 	public void saveOrder(OrderDto odto);
+
+	public void addToTotalPrice(@Param("Seq") int Seq, @Param("totalPrice") int totalPrice);
 
 }

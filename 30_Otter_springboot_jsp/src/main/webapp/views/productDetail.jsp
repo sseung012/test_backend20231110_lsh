@@ -312,6 +312,9 @@
                     <br/>
                		<form action="/banking/payment" method="post" class="pp"> 
                      <input type="hidden" name="title" value="${dto.title}"/>
+                     
+                     <input type="hidden" name="id" value="${dto.seq}"/>
+
                     <div id="test">
                     	
                     </div>
@@ -361,7 +364,7 @@
                         <c:when test="${ldto != null && ldto.role eq 'ADMIN' && dto.product_check eq 'N' && dto != null }">
 <!--                             <input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()"  -->
 <!--                                 style="float:right; margin:10px; height:40px; width:100px;"/> -->
-                        <input type="hidden" name="id" value="${dto.seq}"/>
+<%--                         <input type="hidden" name="id" value="${dto.seq}"/> --%>
                            <a class="btn btn-primary" id="approve" href="/product/approve/${dto.seq}"
                               style="float:right; margin:10px; height:40px; width:100px; font-size:17px; font-align:center;">승인</a>
                         </c:when>

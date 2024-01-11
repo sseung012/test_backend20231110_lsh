@@ -29,6 +29,7 @@ import org.springframework.web.multipart.MultipartRequest;
 import com.hk.otter.command.InsertProductCommand;
 import com.hk.otter.command.OrderCommand;
 import com.hk.otter.dtos.OrderDto;
+import com.hk.otter.dtos.ProductDto;
 import com.hk.otter.dtos.UserDto;
 import com.hk.otter.feignMapper.OpenBankingFeign;
 import com.hk.otter.service.OrderService;
@@ -54,7 +55,7 @@ public class FundingController {
    //결제
 
    @PostMapping(value = "/payment")
-   public String productDetail( Model model, HttpSession session,String[] reward_name,String[] count,String total_price ) {
+   public String productDetail(HttpServletRequest request, Model model, HttpSession session,String[] reward_name,String[] count,String total_price) {
          
 //      System.out.println(Arrays.toString(reward_name)+"\n"
 //                      +Arrays.toString(count)+"\n"
@@ -62,7 +63,16 @@ public class FundingController {
    
       model.addAttribute("reward_name", reward_name);
       model.addAttribute("count", count);
-
+      
+      ProductDto dto = (ProductDto) session.getAttribute("dto");
+      
+      if (dto != null) {
+          int seq = dto.getSeq();
+          System.out.println("dto:" + dto);
+          System.out.println("payment seq: " + seq);
+      } else {
+          System.out.println("dto가 null");
+      }
       return  "payment" ;
    }
 
@@ -143,6 +153,11 @@ public class FundingController {
 
         // 여기서 주문 정보를 DB에 저장하는 코드를 추가하면 됩니다.
          orderService.saveOrder(orderCommand); 
+         
+      // 결제 금액을 product 테이블의 total_price에 더하기
+         int Seq = orderCommand.getSeq();
+         int totalPrice = orderCommand.getTotal_price();
+         orderService.addToTotalPrice(Seq, totalPrice);
 
         // 예시: 저장 성공 메시지를 모델에 추가
         model.addAttribute("saveSuccess", true);
@@ -156,6 +171,9 @@ public class FundingController {
         session.setAttribute("address3", orderCommand.getAddress3());
         session.setAttribute("phone", orderCommand.getPhone());
         session.setAttribute("total_price", orderCommand.getTotal_price());
+        
+//        seq= (Integer)session.getAttribute("seq");
+//        System.out.println("seq : " +seq);
    
         return "redirect:/banking/payment2";
 
