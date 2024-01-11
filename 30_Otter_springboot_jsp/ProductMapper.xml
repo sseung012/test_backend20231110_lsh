@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.hk.otter.mapper.ProductMapper">
+   
+   <insert id="insertProduct" parameterType="ProductDto"
+    useGeneratedKeys="true" keyProperty="seq">
+      INSERT INTO product
+      VALUES(NULL, #{user_seq}, #{img}, #{maker}, #{goal_price}, #{title}, 
+            SYSDATE(), NULL, #{close_date}, #{content}, NULL, NULL, #{cate_seq}, 'N')      
+   </insert> 
+   
+<!--    제품 상세조회 -->
+   <select id="productDetail" parameterType="int" resultType="ProductDto">
+      SELECT seq, cate_seq, img, title, maker, goal_price, total_price, TIMESTAMPDIFF(DAY, SYSDATE(), close_date+1) AS remainingDays, content, product_check
+      FROM product
+      WHERE seq=#{seq}   
+   </select>
+   
+
+<!--    관리자-프로젝트 전체조회(승인) -->
+   <select id="getProductList"  resultType="ProductDto">
+      SELECT seq, cate_seq, title, maker, created_date, open_date, product_check
+      FROM product   
+      ORDER BY seq DESC
+   </select>
+
+<!--    index페이지에서 작게 프로젝트 조회 -->
+   <select id="getProductMini"  resultType="ProductDto">
+      SELECT seq, img, title, maker, TIMESTAMPDIFF(DAY, SYSDATE(), close_date+1) AS remainingDays, total_supporters
+      FROM product
+      WHERE product_check="Y"
+      ORDER BY seq DESC
+      LIMIT 8
+   </select>
+
+ 
+   
+   <!-- productMapper.xml -->
+
+   <select id="category" resultType="ProductDto" parameterType="String">
+       SELECT
+           product.seq AS SEQ,
+           product.img AS IMG,
+           product.maker AS MAKER,
+           product.goal_price AS GOAL_PRICE,
+           product.title AS TITLE,
+           product.created_date AS CREATED_DATE,
+           product.close_date AS CLOSE_DATE,
+           product.content AS CONTENT,
+           TIMESTAMPDIFF(DAY, SYSDATE(), product.close_date + 1) AS remainingDays,
+           product.total_supporters AS TOTAL_SUPPORTERS
+       FROM
+           product
+       <where>
+          <if test="cate_seq!=null">
+              product.cate_seq = #{cate_seq}
+          </if>    
+           and product.product_check="Y"
+       </where>
+       ORDER BY remainingDays DESC 
+
+   </select>
+
+
+ 
+   
+
+   <resultMap type="ProductDto" id="ProductDtoMap">
+      <id property="seq" column="SEQ"/>
+      <result property="img" column="IMG" />
+      <result property="maker" column="MAKER" />
+      <result property="goal_price" column="GOAL_PRICE" />
+      <result property="title" column="TITLE" />
+      <result property="created_date" column="CREATED_DATE" />
+      <result property="close_date" column="CLOSE_DATE" />
+      <result property="content" column="CONTENT" />
+      <result property="cate_seq" column="CATE_SEQ" />
+<!--       <association property="fileBoardDto"></association> -->
+      <collection property="RewardDto" resultMap="RewardDtoMap" ></collection>
+   </resultMap>
+   
+   <resultMap type="RewardDto" id="RewardDtoMap">
+      <id property="seq"            column="SEQ"/>
+      <result property="reward_name"       column="REWARD_NAME"/>
+      <result property="price" column="PRICE"/>
+      <result property="combination" column="COMBINATION"/>
+      <result property="stock" column="STOCK"/>
+   </resultMap>
+   
+   
+<!--    마이페이지-내 프로젝트 조회 -->
+<!--    <select id="myProject"  resultType="ProductDto"> -->
+<!--       SELECT seq, user_seq, cate_seq, title, maker, created_date, open_date, close_date, total_price, total_supporters, product_check, TIMESTAMPDIFF(DAY, SYSDATE(), close_date+1) AS remainingDays -->
+<!--       FROM product -->
+<!--       WHERE user_seq = #{userSeq} -->
+<!--       SELECT img, title, product_check -->
+<!--       FROM product -->
+<!--       WHERE user_seq=#{user_seq} -->
+<!--    </select> -->
+
+<!--      마이페이지-내 프로젝트 조회 -->
+   <select id="myProject"  resultType="ProductDto">
+      SELECT seq, user_seq, img, title, product_check
+      FROM (
+         SELECT ROW_NUMBER() OVER(PARTITION BY product_check ORDER BY product.seq DESC) rn, seq, user_seq,product_check, img, maker, title
+         FROM product
+         WHERE user_seq=#{user_seq}
+         ) a
+      WHERE rn BETWEEN 1 AND 4
+
+   </select>
+   
+   
+<!--    프로젝트 승인 -->
+   <update id="approve" parameterType="ProductDto">
+      UPDATE product
+      SET product_check='Y', open_date=DATE_FORMAT(NOW(), '%Y%m%d')
+      WHERE seq=#{seq};
+   </update>
+
+</mapper>

@@ -15,6 +15,7 @@ public class OrderDto {
    public int total_price;
    public int reward_seq;
    public String order_date;
+   
    public String getOrder_date() {
       return order_date;
    }
