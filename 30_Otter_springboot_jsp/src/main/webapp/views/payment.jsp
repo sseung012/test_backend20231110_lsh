@@ -138,7 +138,7 @@ function findAddr(){
         <div class="container myy-5">
             <div class="roww justify-content-center">
                 <div class="coll-lg-6">
-                <h1>펀딩 상품 결제</h1>
+                <h1>배송지 입력</h1>
                     <form action="/banking/orderSave" method="post">
                     	<input type="hidden" name="seq" value="${dto.seq}"/>
 <!--                     enctype="multipart/form-data"> -->
