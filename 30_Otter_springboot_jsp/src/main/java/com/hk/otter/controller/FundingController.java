@@ -133,7 +133,9 @@ public class FundingController {
         System.out.println("Title: " + orderCommand.getTitle());
         System.out.println("Selected Reward: " + orderCommand.getSelect_reward());
         System.out.println("Selected Amount: " + orderCommand.getSelect_amount());
-        System.out.println("Address: " + orderCommand.getAddress());
+        System.out.println("Address1: " + orderCommand.getAddress1());
+        System.out.println("Address2: " + orderCommand.getAddress2());
+        System.out.println("Address3: " + orderCommand.getAddress3());
         System.out.println("Phone: " + orderCommand.getPhone());
         System.out.println("Total Price: " + orderCommand.getTotal_price());
         System.out.println("Reward Seq: " + orderCommand.getReward_seq());
@@ -148,7 +150,9 @@ public class FundingController {
         session.setAttribute("user_name", orderCommand.getUser_name());
         session.setAttribute("title", orderCommand.getTitle());
         session.setAttribute("select_reward", Arrays.asList(orderCommand.getSelect_reward()));
-        session.setAttribute("address", orderCommand.getAddress());
+        session.setAttribute("address1", orderCommand.getAddress1());
+        session.setAttribute("address2", orderCommand.getAddress2());
+        session.setAttribute("address3", orderCommand.getAddress3());
         session.setAttribute("phone", orderCommand.getPhone());
         session.setAttribute("total_price", orderCommand.getTotal_price());
    

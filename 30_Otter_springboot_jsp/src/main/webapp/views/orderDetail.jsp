@@ -154,7 +154,9 @@
 								<tr>
 									<th>주소</th>
 									<td>
-										<input type="text" name="delflag" value="${odto.address}" readonly="readonly" class="form-control1"/>
+										<input type="text" name="delflag" value="${odto.address1}" readonly="readonly" class="form-control1"/>
+										<input type="text" name="delflag" value="${odto.address2}" readonly="readonly" class="form-control1"/>
+										<input type="text" name="delflag" value="${odto.address3}" readonly="readonly" class="form-control1"/>
 									</td>
 								</tr>
 								<tr>
