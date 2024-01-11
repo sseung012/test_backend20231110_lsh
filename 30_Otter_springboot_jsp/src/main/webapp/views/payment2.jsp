@@ -163,7 +163,7 @@ window.onload = function() {
 				        <p>주문자: ${sessionScope.user_name}</p>
 				        <p>결제금액: ${sessionScope.total_price}원</p>
 				        <p>주문상품: ${sessionScope.title}</p>
-<%-- 				        <p>주소: ${sessionScope.address}</p> --%>
+				        <p>주소: ${sessionScope.address1} ${sessionScope.address2} ${sessionScope.address3}</p>
 				        <p>전화번호: ${sessionScope.phone}</p>
 						    
 						<br/>

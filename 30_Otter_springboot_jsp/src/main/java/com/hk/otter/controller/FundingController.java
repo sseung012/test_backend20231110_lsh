@@ -161,12 +161,16 @@ public class FundingController {
     }
 
     @GetMapping("/payment2")
-    public String payment2( Model model, HttpSession session,String[] reward_name,String[] count,String total_price, String title) {
+    public String payment2( Model model, HttpSession session,String[] reward_name,String[] count,String total_price, 
+    		String title, String address1, String address2, String address3) {
     	
     	 model.addAttribute("reward_name", reward_name);
          model.addAttribute("count", count);
          model.addAttribute("total_price", session.getAttribute("total_price"));
          model.addAttribute("title", session.getAttribute("title"));
+         model.addAttribute("address1", session.getAttribute("address1"));
+         model.addAttribute("address2", session.getAttribute("address2"));
+         model.addAttribute("address3", session.getAttribute("address3"));
         return "payment2";
     }
    
