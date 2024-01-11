@@ -33,7 +33,6 @@
     }
 </style>
 <script type="text/javascript">
-
 function findAddr(){
 	new daum.Postcode({
         oncomplete: function(data) {
@@ -57,6 +56,20 @@ function findAddr(){
     }).open();
 }
 
+
+
+// $("#orderSave").click(function(){
+// 	var count = 0; 
+// 	count++;
+// 	console.log("count= " + count);
+// 	return false;
+// });
+
+
+// ------ 클라이언트 키로 객체 초기화 ------
+// var button ;
+// var clientKey = 'test_ck_ALnQvDd2VJz6wRev0vgwVMj7X41m'
+// var tossPayments = TossPayments(clientKey)
 
 
 
