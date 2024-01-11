@@ -116,7 +116,7 @@ response.setContentType("text/html; charset=UTF-8");
 							    	<tr>
 					                    <th>주문상품</th>
 					                    <th>선택한 리워드</th>
-					                    <th>총 결제금액</th>
+					                    <th width="100px">총 결제금액</th>
 					                    <th>주문날짜</th>
 			                		</tr>
 							    	<%
