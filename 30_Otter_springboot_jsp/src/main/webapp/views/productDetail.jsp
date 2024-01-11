@@ -102,6 +102,9 @@
 <!--         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/resources/css/productdetail.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
         
     </head>
     <%
@@ -202,65 +205,63 @@
    </div>
 </nav>
 
-        <!-- Page content-->
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-lg-8">
-                    <!-- Post content-->
-                    <article>
-                        <!-- Post header-->
-                           
-                       <header class="mb-4">
-                       <c:choose>
-                           <c:when test="${dto != null && dto.cate_seq eq 1}">
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">홈/리빙</a>
-                           </c:when>
-                           <c:when test="${dto != null && dto.cate_seq eq 2}">
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">패션/잡화</a>
-                           </c:when>
-                           <c:when test="${dto != null && dto.cate_seq eq 3}">
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">뷰티</a>
-                           </c:when>
-                           <c:when test="${dto != null && dto.cate_seq eq 4}">
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">푸드</a>
-                           </c:when>
-                           <c:when test="${dto != null && dto.cate_seq eq 5}">
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">출판</a>
-                           </c:when>
-                           <c:when test="${dto != null && dto.cate_seq eq 6}">
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!">반려동물</a>
-                           </c:when>
-                           <c:otherwise>
-                               <a class="badge bg-secondary text-decoration-none link-light" href="#!"> 기타</a>
-                           </c:otherwise>
-                       </c:choose>
-                   </header>
+<!-- Page content-->
+<div class="container mt-5">
+	<div class="row">
+    	<div class="col-lg-8">
+        <!-- Post content-->
+        <article>
+        <!-- Post header-->
+			<header class="mb-4">
+            	<c:choose>
+                	<c:when test="${dto != null && dto.cate_seq eq 1}">
+                    	<a class="badge bg-secondary text-decoration-none link-light" href="#!">홈/리빙</a>
+                    </c:when>
+                    <c:when test="${dto != null && dto.cate_seq eq 2}">
+                    	<a class="badge bg-secondary text-decoration-none link-light" href="#!">패션/잡화</a>
+                    </c:when>
+                    <c:when test="${dto != null && dto.cate_seq eq 3}">
+                    	<a class="badge bg-secondary text-decoration-none link-light" href="#!">뷰티</a>
+                    </c:when>
+                    <c:when test="${dto != null && dto.cate_seq eq 4}">
+                    	<a class="badge bg-secondary text-decoration-none link-light" href="#!">푸드</a>
+                    </c:when>
+                    <c:when test="${dto != null && dto.cate_seq eq 5}">
+                    	<a class="badge bg-secondary text-decoration-none link-light" href="#!">출판</a>
+					</c:when>
+                    <c:when test="${dto != null && dto.cate_seq eq 6}">
+                    	<a class="badge bg-secondary text-decoration-none link-light" href="#!">반려동물</a>
+                    </c:when>
+                    <c:otherwise>
+                    	<a class="badge bg-secondary text-decoration-none link-light" href="#!"> 기타</a>
+                    </c:otherwise>
+                    </c:choose>
+			</header>
                               
-                        <!-- Preview image figure-->
-<!--                         <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
-                            <tr>
-                            <td>
-                        <img style="width:700px; height:400px;" src="/upload/${dto.img}"/>
-                     </td>
-                     </tr>
-                        <!-- Post content-->
-                        <section class="mb-5">
-                            <tr>
-                     <td><h4>${dto.content}</h4></td>
-                     </tr>
-                        </section>
-                    </article>
-                    <!-- Comments section-->
-                    <section class="mb-5">
-                                <div class="d-flex mb-4">
-                        </div>
-                    </section>
-                </div>
+				<!-- Preview image figure-->
+				<!-- <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
+				<tr>
+			    	<td>
+		            	<img style="width:750px; height:500px;" src="/upload/${dto.img}"/>
+					</td>
+		       	</tr>
+		        <!-- Post content-->
+		        <session class="mb-5">
+		        	<tr>
+		            	<td><h4>${dto.content}</h4></td>
+		            </tr>
+		        </session>
+        </article>
+				<!-- Comments section-->
+				<section class="mb-5">
+		        	<div class="d-flex mb-4">
+		          	</div>
+		       	</section>
+        </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
                     <!-- Search widget-->
                     <div class="card mb-4">
-<!--                         <div class="card-header">Search</div> -->
                         <div class="card-body">
                             <div class="input-group">
                               <c:choose>
@@ -272,7 +273,7 @@
                                </c:otherwise>
                               </c:choose>
                 <tr>
-                     <td><h2 style="font-weight:bold;">${dto.title}</h2></td>
+                     <td><h3 style="font-weight:bold;">${dto.title}</h3></td>
                 </tr>
                 <br/>
                      
@@ -296,7 +297,6 @@
                 </tr>
                 <br/>
              </div>
-<!--                         </div> -->
          </div>
                        
                     <!-- 리워드 선택 -->
@@ -304,18 +304,14 @@
                      <input type="hidden" id="selectedRewardsInput" name="selectedRewards"/>
                             <select class="form-select" aria-label="Default select example" name="reward_name" id="reward_name">
                                <option>리워드 선택하기</option>
-
                                <c:forEach items="${rlist}" var="rlist">
                                    <option value="${rlist.seq}"> ${rlist.reward_name}_${rlist.price}원</option>
                                 </c:forEach>
                             </select>                 
                     </div> 
                     <br/>
-<!--                     <th>수량</th> -->
-<!--                <form action="/product/" method="post"> -->
                		<form action="/banking/payment" method="post" class="pp"> 
                      <input type="hidden" name="title" value="${dto.title}"/>
-                     
                     <div id="test">
                     	
                     </div>
@@ -323,19 +319,21 @@
                      <br/>
                      <tr>
                         <th>총 금액</th>
-                        <input name="total_price" id="total_price" class="form-control" />
+                        <input name="total_price" id="total_price" class="fform-control" />
                      </tr>
                      
                      <br/>
                      </form>
                      
                      <tr>
-                        <td>배송비 ㅣ 무료</td>
+                        <td><a style="margin-left:20px;">배송비 ㅣ 무료</a></td>
                      </tr>
 
 					 <c:choose>
                      	<c:when test="${dto.remainingDays le 0}">
-                        	<td><strong><font color="red">펀딩이 마감되었습니다!</font></strong></td>
+                        	<br>
+                        	<td><strong style="text-align: center;"><font color="red">펀딩이 마감되었습니다!</font></strong></td>
+                        	<br>
                         </c:when>
                         <c:otherwise>
                      		<a class="btn btn-primary" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
@@ -344,10 +342,8 @@
                                 
                     </div> 
                     <br/>
-                    <br/>
-                    
                     <div class="mb-3">
-                    <h4><label for="exampleFormControlTextarea1" class="form-label">리워드 안내</label></h4>
+                    <h3><label for="exampleFormControlTextarea1" class="form-label">리워드 안내</label></h3>
                     <label class="form-control" id="exampleFormControlTextarea1" rows="3">
                        <c:forEach items="${rlist}" var="rlist">
                              <p style="font-size:20px; font-weight:bold;">${rlist.price}원</p>
@@ -377,14 +373,9 @@
                         </c:otherwise>
                     </c:choose>
                 </div>
-
-
-            </div>
-
-
-         
-                        </div>
-                </div> 
+			</div>
+		</div>
+	</div> 
            
 
         <!-- Bootstrap core JS-->

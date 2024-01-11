@@ -11028,3 +11028,6 @@ textarea.form-control-lg {
     margin-right: calc(-.5 * var(--bs-gutter-x));
     margin-left: calc(-.5 * var(--bs-gutter-x));
 }
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+}

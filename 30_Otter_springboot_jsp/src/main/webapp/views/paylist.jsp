@@ -35,6 +35,9 @@ response.setContentType("text/html; charset=UTF-8");
 <!--         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" /> -->
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/styles.css" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
 </head>
 
@@ -95,24 +98,28 @@ response.setContentType("text/html; charset=UTF-8");
          <div class="roww justify-content-center">
             <div class="coll-lg-6">
             	<div class="contents">
-			        <h1>참여한 펀딩</h1>
+			        <h1>결제내역</h1>
 			        <br />
 			        <div id="paylist">
 			            <table class="table2" style="width:1200px;">
-			                <tr>
-			                    <th>제목</th>
-			                    <th>선택한 리워드</th>
-			                    <th>총 결제금액</th>
-			                    <th>주문날짜</th>
-			                </tr>
+							
+			                
 								<%
 							    if (list == null || list.isEmpty()) { 
 							%>
 							    <tr>
-							        <td colspan="8">-- 참여한 펀딩이 없습니다. --</td>
+							        <td colspan="4" style="text-align:center; color:blue; font-size:25px;">참여한 펀딩이 없습니다.</td>
 							    </tr>
 							<%
 							    } else {
+							    	%>
+							    	<tr>
+					                    <th>제목</th>
+					                    <th>선택한 리워드</th>
+					                    <th>총 결제금액</th>
+					                    <th>주문날짜</th>
+			                		</tr>
+							    	<%
 							        for (OrderDto odto : list) {
 							%>
 							            <tr>

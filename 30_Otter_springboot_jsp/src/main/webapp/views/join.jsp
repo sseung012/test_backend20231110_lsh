@@ -14,7 +14,9 @@
 <link rel="icon" type="image/x-icon" href="resources/assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/styles.css" rel="stylesheet" />
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
            
 <script type="text/javascript">
     //사용자 인증 요청하기(사용자 인증하면서 계좌등록까지 진행함)
