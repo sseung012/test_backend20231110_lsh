@@ -8,7 +8,9 @@ public class OrderDto {
    public String title;
    public String select_reward;
    public int select_amount;
-   public String address;
+   public String address1;
+   public String address2;
+   public String address3;
    public String phone; 
    public int total_price;
    public int reward_seq;
@@ -26,9 +28,10 @@ public class OrderDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public OrderDto(int seq, String user_id, String user_name, String title, String select_reward, int select_amount,
-			String address, String phone, int total_price, int reward_seq, String order_date, String orderId,
-			String paymentKey) {
+			String address1, String address2, String address3, String phone, int total_price, int reward_seq,
+			String order_date, String orderId, String paymentKey) {
 		super();
 		this.seq = seq;
 		this.user_id = user_id;
@@ -36,7 +39,9 @@ public class OrderDto {
 		this.title = title;
 		this.select_reward = select_reward;
 		this.select_amount = select_amount;
-		this.address = address;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.address3 = address3;
 		this.phone = phone;
 		this.total_price = total_price;
 		this.reward_seq = reward_seq;
@@ -80,11 +85,23 @@ public class OrderDto {
 	public void setSelect_amount(int select_amount) {
 		this.select_amount = select_amount;
 	}
-	public String getAddress() {
-		return address;
+	public String getAddress1() {
+		return address1;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+	public String getAddress2() {
+		return address2;
+	}
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+	public String getAddress3() {
+		return address3;
+	}
+	public void setAddress3(String address3) {
+		this.address3 = address3;
 	}
 	public String getPhone() {
 		return phone;
@@ -119,11 +136,10 @@ public class OrderDto {
 	@Override
 	public String toString() {
 		return "OrderDto [seq=" + seq + ", user_id=" + user_id + ", user_name=" + user_name + ", title=" + title
-				+ ", select_reward=" + select_reward + ", select_amount=" + select_amount + ", address=" + address
-				+ ", phone=" + phone + ", total_price=" + total_price + ", reward_seq=" + reward_seq + ", order_date="
-				+ order_date + ", orderId=" + orderId + ", paymentKey=" + paymentKey + "]";
+				+ ", select_reward=" + select_reward + ", select_amount=" + select_amount + ", address1=" + address1
+				+ ", address2=" + address2 + ", address3=" + address3 + ", phone=" + phone + ", total_price="
+				+ total_price + ", reward_seq=" + reward_seq + ", order_date=" + order_date + ", orderId=" + orderId
+				+ ", paymentKey=" + paymentKey + "]";
 	}
 	
-	
-   
 }

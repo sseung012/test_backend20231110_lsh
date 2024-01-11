@@ -46,7 +46,9 @@ public class OrderService {
 		odto.setTitle(orderCommand.getTitle());
 		odto.setSelect_reward(orderCommand.getSelect_reward());
 		odto.setSelect_amount(orderCommand.getSelect_amount());
-		odto.setAddress(orderCommand.getAddress());
+		odto.setAddress1(orderCommand.getAddress1());
+		odto.setAddress2(orderCommand.getAddress2());
+		odto.setAddress3(orderCommand.getAddress3());
 		odto.setPhone(orderCommand.getPhone());
 		odto.setTotal_price(orderCommand.getTotal_price());
 		odto.setReward_seq(orderCommand.getReward_seq());
@@ -70,7 +72,9 @@ public class OrderService {
 		odto.setTitle(orderCommand.getTitle());
 		odto.setSelect_reward(orderCommand.getSelect_reward());
 		odto.setSelect_amount(orderCommand.getSelect_amount());
-		odto.setAddress(orderCommand.getAddress());
+		odto.setAddress1(orderCommand.getAddress1());
+		odto.setAddress2(orderCommand.getAddress2());
+		odto.setAddress3(orderCommand.getAddress3());
 		odto.setPhone(orderCommand.getPhone());
 		odto.setTotal_price(orderCommand.getTotal_price());
 		odto.setReward_seq(orderCommand.getReward_seq());

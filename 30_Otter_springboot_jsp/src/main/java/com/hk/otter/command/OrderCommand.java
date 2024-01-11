@@ -10,8 +10,10 @@ public class OrderCommand {
 	public String title;
 	public String select_reward;
 	public int select_amount;
+	public String address1;
+	public String address2;
 	@NotBlank(message = "배송지를 등록하세요!")
-	public String address;
+	public String address3;
 	@NotBlank(message = "전화번호를 등록하세요!")
 	public String phone; 
 	public int total_price;
@@ -19,8 +21,8 @@ public class OrderCommand {
 	public String order_date;
 
 	// 결제정보 DB에 저장
-	public OrderCommand(int seq, String user_id, String user_name, String title, String select_reward,
-			@NotBlank(message = "배송지를 등록하세요!") String address,
+	public OrderCommand(int seq, String user_id, String user_name, String title, String select_reward, String address1,
+			String address2,@NotBlank(message = "배송지를 등록하세요!") String address3,
 			@NotBlank(message = "전화번호를 등록하세요!") String phone,
 			int total_price) {
 		super();
@@ -29,7 +31,9 @@ public class OrderCommand {
 		this.user_name = user_name;
 		this.title = title;
 		this.select_reward = select_reward;
-		this.address = address;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.address3 = address3;
 		this.phone = phone;
 		this.total_price = total_price;
 	}
@@ -38,8 +42,9 @@ public class OrderCommand {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public OrderCommand(int seq, String user_id, String user_name, String title, String select_reward, int select_amount,
-			@NotBlank(message = "배송지를 등록하세요!") String address, @NotBlank(message = "전화번호를 등록하세요!") String phone,
+			String address1, String address2,@NotBlank(message = "배송지를 등록하세요!") String address3, @NotBlank(message = "전화번호를 등록하세요!") String phone,
 			int total_price, int reward_seq) {
 		super();
 		this.seq = seq;
@@ -48,7 +53,9 @@ public class OrderCommand {
 		this.title = title;
 		this.select_reward = select_reward;
 		this.select_amount = select_amount;
-		this.address = address;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.address3 = address3;
 		this.phone = phone;
 		this.total_price = total_price;
 		this.reward_seq = reward_seq;
@@ -103,12 +110,28 @@ public class OrderCommand {
 		this.select_amount = select_amount;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getAddress1() {
+		return address1;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+	
+	public String getAddress2() {
+		return address2;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+	
+	public String getAddress3() {
+		return address3;
+	}
+
+	public void setAddress3(String address3) {
+		this.address3 = address3;
 	}
 
 	public String getPhone() {
@@ -142,13 +165,14 @@ public class OrderCommand {
 	public void setOrder_date(String order_date) {
 		this.order_date = order_date;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "OrderCommand [seq=" + seq + ", user_id=" + user_id + ", user_name=" + user_name + ", title=" + title
-				+ ", select_reward=" + select_reward + ", select_amount=" + select_amount + ", address=" + address
-				+ ", phone=" + phone + ", total_price=" + total_price + ", reward_seq=" + reward_seq + ", order_date="
-				+ order_date + "]";
+				+ ", select_reward=" + select_reward + ", select_amount=" + select_amount + ", address1=" + address1
+				+ ", address2=" + address2 + ", address3=" + address3 + ", phone=" + phone + ", total_price="
+				+ total_price + ", reward_seq=" + reward_seq + ", order_date=" + order_date + "]";
 	}
+	
 }
 
