@@ -97,15 +97,20 @@ public class ProductController {
   	
   	//프로젝트 상세보기
   	@GetMapping(value = "/productDetail/{seq}")
-  	public String productDetail(@PathVariable("seq") Integer seq, Model model) {
+  	public String productDetail(@PathVariable("seq") Integer seq, Model model, HttpSession session) {
 
   		System.out.println("프로젝트상세보기");
-  		ProductDto dto = productService.productDetail(seq);
   		
   		List<RewardDto> rlist = (List<RewardDto>) productService.rewardOption(seq);
 		model.addAttribute("rlist", rlist);
  		
-  		model.addAttribute("dto",dto);
+  		System.out.println("seq : "+seq );
+  		
+  		ProductDto dto = productService.productDetail(seq);
+
+  		System.out.println("상세보기dto:"+dto);
+  		session.setAttribute("dto", dto);
+
   		return "productDetail";
 
   	}

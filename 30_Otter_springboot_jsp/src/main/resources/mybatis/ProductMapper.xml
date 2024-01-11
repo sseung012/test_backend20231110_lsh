@@ -4,6 +4,8 @@
 
 <mapper namespace="com.hk.otter.mapper.ProductMapper">
    
+
+   
    <insert id="insertProduct" parameterType="ProductDto"
     useGeneratedKeys="true" keyProperty="seq">
       INSERT INTO product
