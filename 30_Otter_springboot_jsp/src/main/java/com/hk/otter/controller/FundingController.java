@@ -125,7 +125,8 @@ public class FundingController {
     }
    
     //결제내역DB저장
-    @PostMapping("/orderSave")
+//    @PostMapping("/orderSave")
+   @RequestMapping(value="/orderSave", method={RequestMethod.GET, RequestMethod.POST})
     public String orderSave(HttpSession session, OrderCommand orderCommand, Model model) {
       
 	   	System.out.println("User ID: " + orderCommand.getUser_id());

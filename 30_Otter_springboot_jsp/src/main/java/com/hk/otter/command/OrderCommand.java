@@ -19,33 +19,15 @@ public class OrderCommand {
 	public int total_price;
 	public int reward_seq;
 	public String order_date;
-
-	// 결제정보 DB에 저장
-	public OrderCommand(int seq, String user_id, String user_name, String title, String select_reward, String address1,
-			String address2,@NotBlank(message = "배송지를 등록하세요!") String address3,
-			@NotBlank(message = "전화번호를 등록하세요!") String phone,
-			int total_price) {
-		super();
-		this.seq = seq;
-		this.user_id = user_id;
-		this.user_name = user_name;
-		this.title = title;
-		this.select_reward = select_reward;
-		this.address1 = address1;
-		this.address2 = address2;
-		this.address3 = address3;
-		this.phone = phone;
-		this.total_price = total_price;
-	}
 	
 	public OrderCommand() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public OrderCommand(int seq, String user_id, String user_name, String title, String select_reward, int select_amount,
-			String address1, String address2,@NotBlank(message = "배송지를 등록하세요!") String address3, @NotBlank(message = "전화번호를 등록하세요!") String phone,
-			int total_price, int reward_seq) {
+
+	public OrderCommand(int seq, String user_id, String user_name, String title, String select_reward,
+			int select_amount, String address1, String address2, @NotBlank(message = "배송지를 등록하세요!") String address3,
+			@NotBlank(message = "전화번호를 등록하세요!") String phone, int total_price, int reward_seq, String order_date) {
 		super();
 		this.seq = seq;
 		this.user_id = user_id;
@@ -59,7 +41,7 @@ public class OrderCommand {
 		this.phone = phone;
 		this.total_price = total_price;
 		this.reward_seq = reward_seq;
-
+		this.order_date = order_date;
 	}
 
 	public int getSeq() {
@@ -117,7 +99,7 @@ public class OrderCommand {
 	public void setAddress1(String address1) {
 		this.address1 = address1;
 	}
-	
+
 	public String getAddress2() {
 		return address2;
 	}
@@ -125,7 +107,7 @@ public class OrderCommand {
 	public void setAddress2(String address2) {
 		this.address2 = address2;
 	}
-	
+
 	public String getAddress3() {
 		return address3;
 	}
@@ -173,6 +155,7 @@ public class OrderCommand {
 				+ ", address2=" + address2 + ", address3=" + address3 + ", phone=" + phone + ", total_price="
 				+ total_price + ", reward_seq=" + reward_seq + ", order_date=" + order_date + "]";
 	}
+
 	
 }
 
