@@ -31,7 +31,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
    <div class="container px-4 px-lg-5">
-       <a class="navbar-brand" href="/">Otter</a>
+       <a class="navbar-brand" href="/" style="margin-left:-10px;">Otter</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -70,10 +70,10 @@
          <div class="rowww justify-content-center">
             <div class="coll-lg-6">
             	<div class="contents">
-			        <h1>전체회원목록</h1>
+			        <h1 style="margin-left:-75px;">전체회원목록</h1>
 			        <br />
 			        <div id="getUserList">
-			            <table class="table" style="width:1200px;">
+			            <table class="table" style="width:1200px; margin-left:-75px;">
 			                <tr>
 			                    <th>회원번호</th>
 			                    <th>아이디</th>

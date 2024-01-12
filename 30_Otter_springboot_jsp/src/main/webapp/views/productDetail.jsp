@@ -43,9 +43,9 @@
                          + '<div class="' + seq + '">' + optionSelTxt + '</div>'
                          + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
                          + '<input type="number" name="count" class="form-class"' 
-                         + 'placeholder="수량" value="1" style="max-width:25rem" min="1"/>'
-                         + '<div style="float: right; margin-top:11px;">' + optionPP + '</div>' 
-                         + '<button class="remove" style="border:none; background-color:white;"><img src="/upload/x2.png" alt="" width="25px" height="30px"></button>'
+                         + 'placeholder="수량" value="1" style="max-width: 5rem; margin-top:8px; padding-top:8px; padding-bottom:8px; padding-left:10px; border-radius: 7px; border: 1px solid #ced4da;" min="1"/>'
+                         + '<div style="float: right; margin-top:8px;">' + optionPP + '</div>' 
+                         + '<button class="remove" style="border:none; background-color:white;"><img src="/upload/x2.png" alt="" width="25px" height="25px"></button>'
                          + '</div>';
 
                        
