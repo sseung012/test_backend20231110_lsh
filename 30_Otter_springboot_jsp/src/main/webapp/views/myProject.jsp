@@ -88,7 +88,7 @@
 <section class="py-5" style="padding-top:5px !important">
       <div class="container px-4 px-lg-5 mt-5">
       <h3>진행중인 프로젝트</h3><br/>
-           <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="background-color: #F4F0FF; padding-top:25px; height:500px;">
+           <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="background-color: #F4F0FF; padding-top:25px; height:460px; border-radius: 0.375rem;">
 			<c:forEach var="mylist" items="${mylist}">
 			<c:choose>
                <c:when test="${mylist.product_check eq 'Y'}">
@@ -122,7 +122,7 @@
 <!-- <section class="py-5"> -->
       <div class="container px-4 px-lg-5 mt-5">
       <h3>승인 대기 프로젝트</h3><br/>
-           <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="background-color: #F4F0FF; padding-top:25px;" height:500px;"> 
+           <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="background-color: #F4F0FF; padding-top:25px; height:460px; border-radius: 0.375rem;"> 
 			<c:forEach var="mylist" items="${mylist}" >
 			<c:choose>
                <c:when test="${mylist.product_check eq 'N'}">
