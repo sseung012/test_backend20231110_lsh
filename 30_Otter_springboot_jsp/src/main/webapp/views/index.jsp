@@ -241,7 +241,7 @@
 								    <c:otherwise>
 								        <p class="text-muted" style="font-weight:bold;">${mlist.remainingDays}일 남음</p>
 								    </c:otherwise>
-		                        </c:choose> 
+		                        </c:choose>    
 		                        <!-- 제품 지지자 수 -->
 		                        <p class="text-muted">${mlist.total_supporters}명</p>
                      		</div>
