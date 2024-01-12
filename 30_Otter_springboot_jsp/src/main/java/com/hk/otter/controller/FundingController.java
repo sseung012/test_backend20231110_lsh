@@ -92,9 +92,9 @@ public class FundingController {
       
       String userID=ldto.getId();
         
-         List<OrderDto> list = orderService.paylist(userID);
-         model.addAttribute("list", list);
-         System.out.println("list:"+list);
+     List<OrderDto> list = orderService.paylist(userID);
+     model.addAttribute("list", list);
+     System.out.println("list:"+list);
 
       return  "paylist";
    }
@@ -104,8 +104,8 @@ public class FundingController {
    public String orderDetail(@PathVariable("seq") Integer seq, OrderDto odto, Model model, HttpServletRequest request) {
       System.out.println("결제내역 상세보기");
       HttpSession session = request.getSession();
-      OrderDto dto = (OrderDto)session.getAttribute("dto");
-      request.setAttribute("dto", dto);
+//      OrderDto dto = (OrderDto)session.getAttribute("dto");
+//      request.setAttribute("dto", dto);
 
       UserDto ldto = (UserDto)session.getAttribute("ldto");
       request.setAttribute("dto", ldto);
