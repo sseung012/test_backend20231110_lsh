@@ -42,10 +42,10 @@
                        '<div class="cc">'
                          + '<div class="' + seq + '">' + optionSelTxt + '</div>'
                          + '<input type="hidden" name="reward_name" value="' + optionSelTxt + '"/>'
-                         + '<input type="number" name="count" class="form-class"'
-                         + 'placeholder="수량" value="1" style="max-width: 5rem" min="1"/>'
-                         + '<div style="float: right; ">' + optionPP + '</div>' 
-                         + '<button class="remove" style="border:none; background-color:white;"><img src="/upload/x.png" alt="" width="25px" height="30px"></button>'
+                         + '<input type="number" name="count" class="form-class"' 
+                         + 'placeholder="수량" value="1" style="max-width: 5rem; margin-top:8px; padding-top:8px; padding-bottom:8px; padding-left:10px; border-radius: 7px; border: 1px solid #ced4da;" min="1"/>'
+                         + '<div style="float: right; margin-top:8px;">' + optionPP + '</div>' 
+                         + '<button class="remove" style="border:none; background-color:white;"><img src="/upload/x2.png" alt="" width="25px" height="30px"></button>'
                          + '</div>';
 
                        
@@ -329,7 +329,7 @@
                      </form>
                      
                      <tr>
-                        <td><a style="margin-left:20px;">배송비 ㅣ 무료</a></td>
+                        <td><a style="margin-left:20px; margin-bottom:15px;">배송비 ㅣ 무료</a></td>
                      </tr>
 
 					 <c:choose>
