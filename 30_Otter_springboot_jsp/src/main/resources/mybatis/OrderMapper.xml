@@ -18,7 +18,7 @@
       SELECT user_id, seq, title, select_reward, select_amount, total_price, order_date
       FROM orders
       WHERE user_id=#{user_id}
-      ORDER BY order_date DESC
+      ORDER BY order_date DESC 
    </select>
    
 <!--    결제내역 상세보기 -->
