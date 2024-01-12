@@ -79,7 +79,7 @@
 			        <div id="getProductList">
 			            <table class="table2" style="width:1200px;">
 			                <tr>
-			                    <th>글번호</th>
+			                    <th>프로젝트번호</th>
 			                    <th>카테고리</th>
 			                    <th>제목</th>
 			                    <th>회사명</th>
