@@ -8,7 +8,7 @@
 <!--    결제된 총 금액 구하기 -->
    <update id="addToTotalPrice">
 	    UPDATE product
-	    SET total_price = COALESCE(total_price, 0) + #{totalPrice}
+	    SET total_price = COALESCE(total_price, 0) + #{totalPrice}, total_supporters= COALESCE(total_supporters, 0)+1
 	    WHERE seq = #{Seq};
 	</update>
 	
