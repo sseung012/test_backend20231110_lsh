@@ -39,10 +39,21 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                   <li class="nav-item"><a class="nav-link active" aria-current="page"></a></li>
-                    <li class="nav-item"><a class="nav-link"></a></li>
+                   <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+<!--                     <li class="nav-item"><a class="nav-link" href="#!">About</a></li> -->
                     <li class="nav-item dropdown">
-                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
+                       <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+                           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+	                            <li><a class="dropdown-item" href="/product/category">전체</a></li>
+	                            <li><hr class="dropdown-divider" /></li>
+	                            <li><a class="dropdown-item" href="/product/category?cate_seq=1">홈/리빙</a></li>
+	                            <li><a class="dropdown-item" href="/product/category?cate_seq=2">패션/잡화</a></li>
+	                            <li><a class="dropdown-item" href="/product/category?cate_seq=3">뷰티</a></li>
+	                            <li><a class="dropdown-item" href="/product/category?cate_seq=4">푸드</a></li>
+	                            <li><a class="dropdown-item" href="/product/category?cate_seq=5">출판</a></li>
+	                            <li><a class="dropdown-item" href="/product/category?cate_seq=6">반려동물</a></li>
+	                            <li><a class="dropdown-item" href="/product/category?cate_seq=7">기타</a></li>
+                            </ul> 
 	               </li>
 	            </ul>
             	<form class="dd-flex">
