@@ -333,19 +333,19 @@
                         	<br>
                         </c:when>
                         <c:otherwise>
-                     		<a class="btn btn-light" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
+                     		<a class="btn btn-warning" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
                         </c:otherwise>
                      </c:choose>  
                                 
                     </div> 
                     <br/>
                     <div class="mb-3">
-                    <h3><label for="exampleFormControlTextarea1" class="form-label">리워드 안내</label></h3>
-                    <label class="form-control" id="exampleFormControlTextarea1" rows="3">
+                    <h3><label for="exampleFormControlTextarea1" class="form-label"> 리워드 안내</label></h3>
+                    <label class="form-control" id="exampleFormControlTextarea1">
                        <c:forEach items="${rlist}" var="rlist">
-                             <p style="font-size:20px; font-weight:bold;">${rlist.price}원</p>
-                                   <p style="font-size:20px;">${rlist.reward_name}</p>           
-                                   <p>${rlist.combination}</p>
+                             <p style="font-size:17px; font-weight:bold; margin-left:2%; margin-right:2%;">${rlist.price}원</p>
+                                   <p style="font-size:17px; margin-left:2%; margin-right:2%;">${rlist.reward_name}</p>           
+                                   <p style="font-size:15px; margin-left:2%; margin-right:2%;">${rlist.combination}</p>
                                    <hr/>
                             </c:forEach>
                     
@@ -359,8 +359,8 @@
 <!--                             <input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()"  -->
 <!--                                 style="float:right; margin:10px; height:40px; width:100px;"/> -->
 <%--                         <input type="hidden" name="id" value="${dto.seq}"/> --%>
-                           <a class="btn btn-primary" id="approve" href="/product/approve/${dto.seq}"
-                              style="float:right; margin:10px; height:40px; width:100px; font-size:17px; font-align:center;">승인</a>
+                           <a class="btn bbtn-warning"  id="approve" href="/product/approve/${dto.seq}"
+                              style="float:right;">승인</a>
                         </c:when>
                         <c:when test="${ldto == null}">
                             <!-- ldto가 null일 경우, 승인 버튼을 보이지 않게 함 -->
