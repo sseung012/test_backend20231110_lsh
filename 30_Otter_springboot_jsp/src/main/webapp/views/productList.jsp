@@ -72,7 +72,7 @@
 <section class="pyyy-5">
       <div class="container mmyy-5">
          <div class="rowww justify-content-center"> 
-            <div class="coll-lg-6">
+            <div class="coll-lg-6">   
             	<div class="contents">
 			        <h1>프로젝트 목록</h1>
 			        <br />
