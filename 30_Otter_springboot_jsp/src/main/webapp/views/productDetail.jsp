@@ -278,21 +278,19 @@
                 <br/>
                      
                 <tr>
-                    <th>창작자</th>
-                    <br/>
+                    <th><h6>창작자</h6></th>
                     <td><strong>${dto.maker}</strong></td>
                 </tr>
                 <br/>
                      
                 <tr>
-                   <th>목표금액</th>
+                   <th><h6>목표금액</h6></th>
                    <td><strong>${dto.goal_price}원</strong></td>
                 </tr>
                 <br/>
                      
                 <tr>
-                   <th>모인금액</th>
-                   <br/>
+                   <th><h6>모인금액</h6></th>
                     <td><strong>${dto.total_price}원</strong></td>
                 </tr>
                 <br/>
@@ -309,29 +307,25 @@
                                 </c:forEach>
                             </select>                 
                     </div> 
-                    <br/>
                		<form action="/banking/payment" method="post" class="pp"> 
-                     <input type="hidden" name="title" value="${dto.title}"/>
+                     <input type="hidden" name="title" value="${dto.title}" />
                      
                      <input type="hidden" name="id" value="${dto.seq}"/>
-
-                    <div id="test">
-                    	
-                    </div>
-                    
-                     <br/>
+	                    <div id="test">
+	                    	
+	                    </div>
                      <tr>
-                        <th>총 금액</th>
-                        <input name="total_price" id="total_price" class="fform-control" />
+                        <th><a style="margin-left:5px">총 금액 </a></th>
+                        <input name="total_price" id="total_price" class="fform-control" readonly="readonly"/>
                      </tr>
                      
-                     <br/>
                      </form>
                      
                      <tr>
                         <td><a style="margin-left:20px;">배송비 ㅣ 무료</a></td>
                      </tr>
-
+                     
+                     
 					 <c:choose>
                      	<c:when test="${dto.remainingDays le 0}">
                         	<br>
@@ -339,7 +333,7 @@
                         	<br>
                         </c:when>
                         <c:otherwise>
-                     		<a class="btn btn-primary" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
+                     		<a class="btn btn-light" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
                         </c:otherwise>
                      </c:choose>  
                                 
@@ -356,7 +350,7 @@
                             </c:forEach>
                     
                     </label>
-               </div>
+               	</div>
                          
                        
                 <div>
