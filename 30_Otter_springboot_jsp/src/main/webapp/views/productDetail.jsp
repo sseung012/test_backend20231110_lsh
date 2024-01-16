@@ -332,8 +332,11 @@
                         	<td><strong style="text-align: center;"><font color="red">펀딩이 마감되었습니다!</font></strong></td>
                         	<br>
                         </c:when>
+                        <c:when test="${ldto != null && ldto.role eq 'ADMIN' && dto.product_check eq 'N' && dto != null }">
+                     		<a class="btn bbtn-warning" id="button-search" disabled>펀딩 참여하기</a>                           
+                        </c:when>
                         <c:otherwise>
-                     		<a class="btn btn-warning" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
+                     		<a class="btn bbtn-warning" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
                         </c:otherwise>
                      </c:choose>  
                                 
@@ -356,10 +359,7 @@
                 <div>
                   <c:choose>
                         <c:when test="${ldto != null && ldto.role eq 'ADMIN' && dto.product_check eq 'N' && dto != null }">
-<!--                             <input class="btn btn-outline-darkk" id="approve" type="submit" value="승인" onclick="approve()"  -->
-<!--                                 style="float:right; margin:10px; height:40px; width:100px;"/> -->
-<%--                         <input type="hidden" name="id" value="${dto.seq}"/> --%>
-                           <a class="btn bbtn-warning"  id="approve" href="/product/approve/${dto.seq}"
+                           <a class="btn btn-warning"  id="approve" href="/product/approve/${dto.seq}"
                               style="float:right;">승인</a>
                         </c:when>
                         <c:when test="${ldto == null}">

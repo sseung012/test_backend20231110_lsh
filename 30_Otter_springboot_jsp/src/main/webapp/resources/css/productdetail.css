@@ -2887,8 +2887,8 @@ textarea.form-control-lg {
   --bs-btn-disabled-color: #000;
   --bs-btn-disabled-bg: #6A5ACD;
   --bs-btn-disabled-border-color: #6A5ACD;
-   width: 92%;
-  margin-left: 4%;
+   width: 30%;
+  margin-right: 2%;
   margin-top: 2%;
   margin-bottom: 3%;
 }
@@ -2908,8 +2908,8 @@ textarea.form-control-lg {
   --bs-btn-disabled-color: #000;
   --bs-btn-disabled-bg: #6A5ACD;
   --bs-btn-disabled-border-color: #6A5ACD;
-   width: 30%;
-  margin-right: 2%;
+  width: 92%;
+  margin-left: 4%;
   margin-top: 2%;
   margin-bottom: 3%;
 }
