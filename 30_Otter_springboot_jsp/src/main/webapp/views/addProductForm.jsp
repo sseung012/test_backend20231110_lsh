@@ -117,7 +117,6 @@ const remove = (obj) => {
          </div>
    </div>
 </nav>
-
 <section class="pyy-5">
         <div class="container myy-5">
             <div class="roww justify-content-center">
@@ -168,7 +167,7 @@ const remove = (obj) => {
                         </div>&nbsp;
                         <div class="addProduct">
                             <label for="userseqno" class="form-label">카테고리 선택</label>
-                            <select name="cate_seq" id="category">
+                            <select name="cate_seq" id="category" >
                             	<option>-- 카테고리 선택 --</option>
                             	<option>전체</option>
                             	<option value="1">홈/리빙</option>
@@ -183,16 +182,15 @@ const remove = (obj) => {
                         <div  id="rewardbox">
                         	<div class="addReward">
 	                            <label for="userseqno" class="form-label">리워드</label>
-	                            <input type="text" name="reward_name" class="form-control" placeholder="리워드 제목" />&nbsp;
-	                            <input type="text" name="price" class="form-control" placeholder="리워드 가격(숫자만 입력해주세요)"/>&nbsp;
-	                            <input type="text" name="combination" class="form-control" placeholder="리워드 설명"/>&nbsp;
-	                            <input type="number" name="stock" class="form-control" placeholder="리워드 수량"/>
+		                            <input type="text" name="reward_name" class="form-control" placeholder="리워드 제목" />&nbsp;
+		                            <input type="text" name="price" class="form-control" placeholder="리워드 가격(숫자만 입력해주세요)"/>&nbsp;
+		                            <input type="text" name="combination" class="form-control" placeholder="리워드 설명"/>&nbsp;
+		                            <input type="number" name="stock" class="form-control" placeholder="리워드 수량"/>
                         	</div>
-                        </div>   
-                        <input type="button" value="추가" class="btn btn-outline-dark" onclick="add_textbox()" />
-<!--                             <input type="submit" value="삭제" class="btn btn-outline-dark" /> -->
+                        </div>
+                        <input type="button" value="리워드 추가" class="btn bbtn-secondary" onclick="add_textbox()" style="float: right;" />
                         <br><br>
-                        <input type="submit" value="프로젝트 등록" class="btn btn-primary" />
+                        <input type="submit" value="프로젝트 등록" class="btn bbbtn-warning" style="float: right;" />
                     </form>
                 </div>
             </div>
