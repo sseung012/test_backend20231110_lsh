@@ -336,7 +336,7 @@
                      		<a class="btn bbtn-warning" id="button-search" disabled>펀딩 참여하기</a>                           
                         </c:when>
                         <c:otherwise>
-                     		<a class="btn bbtn-warning" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
+                     		<a class="btn bbbtn-warning" id="button-search" href="#" onclick="funding()">펀딩 참여하기</a>                           
                         </c:otherwise>
                      </c:choose>  
                                 

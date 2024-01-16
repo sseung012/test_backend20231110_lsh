@@ -182,7 +182,7 @@ window.onload = function() {
 
 				    <br/>
 					<div style="display: flex; justify-content: center;">
-				    <button align="center" type="button" id="paypay" class="btn btn-primary">결제하기</button>
+				    <button align="center" type="button" id="paypay" class="btn btn-outline-darkkk">결제하기</button>
 				    </div>
 				    </form>   
 				</div>

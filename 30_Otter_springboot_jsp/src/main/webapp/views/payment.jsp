@@ -138,7 +138,7 @@ function findAddr(){
         <div class="container myy-5">
             <div class="roww justify-content-center">
                 <div class="coll-lg-6">
-                <h1>배송지 입력</h1>
+                <h1>주문정보</h1>
                     <form action="/banking/orderSave" method="post">
                     	<input type="hidden" name="seq" value="${dto.seq}"/>
 <!--                     enctype="multipart/form-data"> -->
@@ -151,22 +151,18 @@ function findAddr(){
                         </div>&nbsp;
                                   
                         <div class="payment">
-                            <label for="user_name" class="form-label" style="font-weight:bold; font-size:18px;">주문자</label>
+                            <label for="user_name" class="form-label" style="font-weight:bold; font-size:17px;">주문자</label>
                             <input type="text" name="user_name" class="form-control" value="${ldto.username}" readonly="readonly" />
                         </div>&nbsp;
                         <div class="payment"> 
 
-                            <label for="title" class="form-label" style="font-weight:bold; font-size:18px;">주문상품</label>
+                            <label for="title" class="form-label" style="font-weight:bold; font-size:17px;">주문상품</label>
                             <input type="text" name="title" class="form-control" value="${param.title}" readonly="readonly"/>
 
                         </div>&nbsp;     
-<!--                         <div class="payment"> -->
-<!--                             <label for="reward_name" class="form-label">선택한 리워드</label> -->
-<%--                             <input type="text" name="reward_name" class="form-control" value="${reward_name[0]} ${count[0]}개" /> --%>
-<!--                         </div>&nbsp; -->
 
 						<div class="payment">
-						    <label for="reward_name" class="form-label" style="font-weight:bold; font-size:18px;">선택한 리워드</label>
+						    <label for="reward_name" class="form-label" style="font-weight:bold; font-size:17px;">선택한 리워드</label>
 						    <c:forEach var="i" begin="0" end="${fn:length(reward_name) - 1}">
 						        <input type="text" name="select_reward" class="form-control" readonly="readonly"
 						               value="${reward_name[i]} ${count[i]}개" />
@@ -174,11 +170,10 @@ function findAddr(){
 						</div><br/> 
  
 						<div class="payment">         
-							<div class="address" style="font-weight:bold; font-size:18px;">배송지 입력</div>
-							<input id="address1" name="address1" style="width:200px;" readonly="readonly" placeholder="우편번호"> <a class="btn btn-primary" onclick="findAddr()">주소 찾기</a><br>
-							<input id="address2" name="address2" style="width:500px;" readonly="readonly" placeholder="주소">
-							<br>
-							<input id="address3" name="address3" style="width:500px;" placeholder="상세주소">
+							<div class="address" style="font-weight:bold; font-size:17px;">배송지 입력</div>
+							<input id="address1" name="address1"  readonly="readonly" placeholder="우편번호" /> <a class="btn btn-outline-darkkk" onclick="findAddr()">주소 찾기</a>
+							<input id="address2" name="address2"  readonly="readonly" placeholder="주소" />
+							<input id="address3" name="address3"  placeholder="상세주소" />
 						</div>
 						<br/>
                         <div class="payment">
@@ -200,20 +195,10 @@ function findAddr(){
 							        document.getElementById("order_date").innerHTML = formattedDate.style.display="none";
 							    </script>
 							</div>
-<!--                             <input type="date" name="order_date" id="order_date" class="form-control"/> -->
 							
                         </div>&nbsp;
                         
-                        <br><br>
-        
-<!-- 								<div id="payment-method"></div> -->
-<!-- 								<div id="agreement"></div> -->
-<!-- 								<a class="btn btn-outline-darkk" type="submit" href="/banking/orderSave"> -->
-<!-- 				                <i class="bi-cart-fill me-1"></i> -->
-<!-- 				                DB저장 -->
-<!-- 				            	</a> -->
-								<button type="submit" id="orderSave" class="btn btn-primary">다음</button>
-<!-- 								<button type="button" id="payment-button" class="btn btn-primary">결제하기</button> -->
+								<button type="submit" id="orderSave" class="btn btn-outline-darkkk" style="float:right">다음</button>
 				
                     </form>
                 </div>

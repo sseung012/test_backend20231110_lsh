@@ -10894,6 +10894,27 @@ textarea.form-control-lg {
   font-size: 13px;
 }
 
+.btn-outline-darkkk {
+  --bs-btn-color: white;
+  --bs-btn-border-color: #212529;
+  --bs-btn-bg:black;
+  --bs-btn-hover-color: black;
+  --bs-btn-hover-bg: white;
+  --bs-btn-hover-border-color: #212529;
+  --bs-btn-focus-shadow-rgb: 33, 37, 41;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #212529;
+  --bs-btn-active-border-color: #212529;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #212529;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: #212529;
+
+  font-size: 15px;
+  margin-top: 5px;
+  margin-bottom: 7px;
+}
+
 .table1 {
   --bs-table-color: var(--bs-body-color);
   --bs-table-bg: transparent;
@@ -11092,4 +11113,23 @@ textarea.form-control-lg {
 	border-radius: 0.35rem;
 }
 
+.hhhh{
+	margin-top: 50px;
+}
 
+#address1{
+	border: 1px solid #000;
+	border-radius: 5px;
+	padding: 5px;
+	margin-bottom: 7px;
+	margin-top: 7px;
+	width: 200px;
+}
+
+#address2, #address3{
+	border: 1px solid #000;
+	border-radius: 5px;
+	padding: 5px;
+	margin-bottom: 7px;
+	width: 500px;
+}

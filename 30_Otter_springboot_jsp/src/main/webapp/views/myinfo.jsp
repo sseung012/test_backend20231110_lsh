@@ -103,7 +103,7 @@
          <div class="roww justify-content-center">
             <div class="coll-lg-6">
             	<div class="contents">
-					<h1>나의 정보</h1>
+					<h1 class="hhhh">나의 정보</h1>
 					<div id="myinfo">
 						<form action="/user/updateUser" method="post">
 							<input type="hidden" name="id" value="${ldto.id}"/>
