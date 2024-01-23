@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hk.calboard.mapper.CalMapper">
+
+	<!-- 일정추가 -->
+	<insert id="insertCalBoard" parameterType="CalDto">
+		INSERT INTO calboard
+		VALUES (NULL,#{id},#{title}, #{content}, #{mdate}, SYSDATE())
+	</insert>
+
+	<!-- 일정목록 -->
+	<select id="calBoardList" parameterType="Map" resultType="CalDto">
+		SELECT seq,id,title,content,mdate,regdate
+		FROM calboard
+		WHERE SUBSTRING(mdate,1,8) = #{yyyyMMdd} and id=#{id}
+	</select>
+	
+	<!-- 일정 상세조회 -->
+	<select id="calBoardDetail" parameterType="int" resultType="CalDto">
+		SELECT seq,id,title,content,mdate,regdate
+		FROM calboard
+		WHERE seq=#{seq}
+	</select>
+	
+	<!-- 일정 수정 -->
+	<update id="calBoardUpdate" parameterType="CalDto">
+		UPDATE calboard
+		SET title=#{title}, content=#{content}, mdate=#{mdate}, regdate=SYSDATE()
+		WHERE seq=#{seq}
+	</update>
+	
+	<!-- 일정 삭제 -->
+	<delete id="calMuldel" parameterType="Map">
+		DELETE FROM calboard WHERE seq IN 
+		<foreach collection="seqs" item="seq" open="(" close=")" separator=",">
+			#{seq}
+		</foreach>
+	</delete>
+	
+	<!--  달력에서 일정 일부를 보여주기 (최대 3개까지) -->
+	<select id="calViewList" parameterType="Map" resultType="CalDto">
+		SELECT rn,seq, id, title, content, mdate, regdate
+		From(SELECT ROW_NUMBER() OVER(PARTITION BY SUBSTR(mdate,1,8) ORDER BY mdate)
+						rn, seq, id, title, content, mdate, regdate
+				FROM calboard
+				WHERE id=#{id} AND SUBSTR(mdate,1,6)=#{yyyyMM}) cal
+		WHERE rn BETWEEN 1 AND 3
+	</select>
+
+	<!-- 해당 날짜에 마우스를 올리면 일정의 개수를 보여주는 쿼리 -->
+	<select id="calBoardCount" parameterType="Map" resultType="Integer">
+		SELECT COUNT(*) 
+		FROM calboard
+		WHERE id=#{id} AND SUBSTR(mdate,1,8)=#{yyyyMMdd}
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
