@@ -1,0 +1,85 @@
+@charset "UTF-8";
+*{
+	margin:0px;
+	padding: 0px;
+}
+
+body{
+   background-color: azure;
+}
+
+/*id를 선택할땐 #*/
+#navbar{
+	background-color: darkslategrey;
+	height: 60px;
+}
+.navbar ul{
+	width: 800px;
+	margin-left: 100px;
+}
+
+.navbar li{
+	display:inline-block;
+	margin-top: 16px;
+	font-size: 20px;
+	color: white;
+	margin-left: 15px;
+}
+.navbar a{
+	color: white;
+	text-decoration: none;
+}
+.footer{
+	position: absolute;
+	left: 0px; 
+	right: 0px;
+	bottom: 0px;	
+	text-align: left;
+	color: white;
+	line-height: 50px;
+	height: 50px;
+	background-color: darkslategrey;
+	font-size: 10px;
+}
+
+.first,.second,.contents{
+	margin-left: 50px;
+	margin-top: 10px;
+}
+.third{
+	margin-left: 60px;
+	margin-top: 20px;
+}
+.idse{
+	width: 150px;
+	margin-left: 10px;
+}
+.sebtn{
+	margin-left: 10px;
+}
+/*.insertbtn{*/
+/*	text-align: right;*/
+/*	display:inline-block;*/
+/*}*/
+
+.list{
+	margin-left: 60px;
+}
+.insertboard{
+	margin-left: 60px;
+	margin-top: 10px;
+	table-layout: fixed;
+	background-color: azure;
+	
+}
+textarea, input{
+	background-color: azure;
+	table-layout: fixed;
+}
+.insertbtn{
+	background-color: azure;
+}
+
+
+
+
